@@ -1,2 +1,2 @@
 # E-Commers-Shop work in progress!
-# Tech: {React (Redux , Styled Components), TypeScript , Node JS (Express JS) , MongoDB , Firebase}
+# Tech: {React JS (Redux , Styled Components), TypeScript , Node JS (Express JS) , MongoDB , Firebase}
