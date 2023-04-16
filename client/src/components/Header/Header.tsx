@@ -15,7 +15,7 @@ const HeaderSection = () => {
   const [activeLeftMenu, setActiveLeftMenu] = useState<boolean>(false);
   const [ScrollAction, setScrollAction] = useState<boolean>(true);
   const { width, height }: WindowSizeType = useWindowSize();
-  const { position } = useScrollPosition();
+  const { position }: ScrollPositionType = useScrollPosition();
 
   useEffect(() => {
     if (position && position > 100) {
