@@ -6,6 +6,7 @@ export type JsxProps = {
   display?: string;
   scroll?: boolean;
   scrollDisplay?: string;
+  width?: number;
 };
 
 export type WindowSizeType = {

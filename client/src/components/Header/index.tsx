@@ -63,7 +63,14 @@ Header.Hamburger = function HeaderHamburger(props: JsxProps) {
   return (
     <Hamburger
       style={
-        props.scroll ? { display: "flex", justifyContent: "flex-end" } : {}
+        props.scroll
+          ? {
+              display: "flex",
+              justifyContent: `${
+                props.width && props.width > 1250 ? "flex-end" : "center"
+              }`,
+            }
+          : {}
       }
     >
       {props.children}

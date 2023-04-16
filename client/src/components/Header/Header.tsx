@@ -27,7 +27,7 @@ const HeaderSection = () => {
   return (
     <Header>
       <Header.Panel scroll={ScrollAction}>
-        <Header.Hamburger scroll={ScrollAction}>
+        <Header.Hamburger scroll={ScrollAction} width={width}>
           <Header.HamburgerContainer>
             <GiHamburgerMenu
               onClick={() => setActiveLeftMenu((prev) => !prev)}
