@@ -19,7 +19,6 @@ const HeaderSection = () => {
 
   useEffect(() => {
     if (position && position > 100) {
-      console.log(position);
       setScrollAction(true);
     } else {
       setScrollAction(false);
