@@ -3,7 +3,7 @@ import HeaderSection from "../components/Header/Header";
 
 const HomePage = () => {
   return (
-    <div>
+    <div style={{ minHeight: "200vh" }}>
       <HeaderSection />
     </div>
   );

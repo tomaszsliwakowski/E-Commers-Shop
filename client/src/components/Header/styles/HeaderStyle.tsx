@@ -1,6 +1,7 @@
 import styled from "styled-components/macro";
 
 export const Container = styled.div`
+  position: fixed;
   background-color: white;
   width: 100%;
   display: flex;
@@ -8,7 +9,7 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 0.5rem;
-  border-bottom: 1px solid silver;
+  border-bottom: 1px solid rgb(204, 204, 204);
   margin: 0 auto;
   @media screen and (max-width: 768px) {
     padding: 0 1rem;
@@ -26,19 +27,39 @@ export const Menu = styled.div`
   align-items: center;
   grid-column-start: 1;
   grid-column-end: 4;
-  z-index: 12;
+
   @media screen and (max-width: 1250px) {
     position: absolute;
     display: block;
     width: 100vw;
-    max-width: 360px;
+    max-width: 320px;
     height: 100vh;
     background-color: white;
     padding: 0px;
     left: 0;
     top: 0;
     border-right: 1px solid silver;
+    z-index: 12;
   }
+`;
+
+export const MenuScroll = styled.div`
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  z-index: 12;
+  position: absolute;
+  display: block;
+  width: 100vw;
+  max-width: 320px;
+  height: 100vh;
+  background-color: white;
+  padding: 0px;
+  left: 0;
+  top: 0;
+  border-right: 1px solid silver;
 `;
 export const Logo = styled.div`
   width: 100%;
@@ -65,18 +86,34 @@ export const Panel = styled.div`
   grid-template-columns: 0.2fr 0.55fr 0.25fr;
   background-color: white;
   width: 100%;
-  padding-top: 0.8rem;
+  padding-top: 0.6rem;
   max-width: 1250px;
   margin: 0 auto;
   justify-content: center;
   @media screen and (max-width: 1250px) {
-    padding: 0.8rem 0;
+    padding: 0.6rem 0;
     grid-template-columns: 0.1fr 0.2fr 0.65fr 0.25fr;
   }
   @media screen and (max-width: 768px) {
     grid-template-columns: 0.2fr 0.8fr;
+    padding-bottom: 1rem;
   }
 `;
+export const PanelScroll = styled.div`
+  display: grid;
+  background-color: white;
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+  justify-content: center;
+  padding: 0.6rem 0;
+  grid-template-columns: 0.1fr 0.2fr 0.65fr 0.25fr;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 0.2fr 0.8fr;
+    padding-bottom: 1rem;
+  }
+`;
+
 export const Search = styled.div`
   width: 100%;
   max-width: 700px;
@@ -166,9 +203,23 @@ export const List = styled.ul`
   padding-bottom: 5px;
   @media screen and (max-width: 1250px) {
     flex-direction: column;
-    height: 94vh;
-    padding: 0;
+    justify-content: flex-start;
+    gap: 1rem;
+    height: 93vh;
+    padding: 1.5rem 0 0 0;
   }
+`;
+export const ListScroll = styled.ul`
+  list-style-type: none;
+  width: 100%;
+  display: flex;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+  height: 93vh;
+  padding: 1.5rem 0 0 0;
 `;
 export const ListEl = styled.li`
   display: flex;
@@ -179,6 +230,10 @@ export const ListEl = styled.li`
   background-color: aliceblue;
   font-size: 15px;
   transition: all 0.3s;
+  @media screen and (max-width: 1250px) {
+    width: 100%;
+    max-width: 320px;
+  }
   & a {
     padding: 5px 10px;
     text-decoration: none;
@@ -187,8 +242,41 @@ export const ListEl = styled.li`
     display: flex;
     align-items: center;
     gap: 5px;
+    @media screen and (max-width: 1250px) {
+      padding: 5px 20px;
+    }
     &:hover {
       box-shadow: 0 0 10px silver;
+      @media screen and (max-width: 1250px) {
+        box-shadow: 0 0 5px silver;
+      }
+    }
+    & svg {
+      font-size: 20px;
+    }
+  }
+`;
+export const ListElScroll = styled.li`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+  font-size: 15px;
+  transition: all 0.3s;
+  width: 100%;
+  max-width: 320px;
+  & a {
+    text-decoration: none;
+    width: 100%;
+    color: rgb(26, 26, 26);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 5px 20px;
+
+    &:hover {
+      box-shadow: 0 0 5px silver;
     }
     & svg {
       font-size: 20px;
@@ -263,19 +351,25 @@ export const CloseMenu = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0.8rem 0;
+  padding: 1rem 0;
   gap: 2rem;
   padding-left: 1rem;
+  border-bottom: 1px solid rgb(204, 204, 204);
+  & svg {
+    cursor: pointer;
+    font-size: 25px;
+    transition: all 0.3s;
+    &:hover {
+      background-color: silver;
+      border-radius: 1rem;
+    }
+  }
 `;
 export const ClosePanel = styled.div`
   font-size: 20px;
   font-weight: bold;
   display: flex;
   align-items: center;
-
-  & svg {
-    font-size: 25px;
-  }
 `;
 export const Blur = styled.div`
   display: flex;

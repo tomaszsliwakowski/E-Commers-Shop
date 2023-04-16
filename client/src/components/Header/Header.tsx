@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Header } from "./index";
 import { AiOutlineSearch, AiOutlineUser, AiOutlineClose } from "react-icons/ai";
 import { RiComputerFill } from "react-icons/ri";
@@ -7,14 +7,32 @@ import { FiSmartphone } from "react-icons/fi";
 import { GiComputerFan, GiHamburgerMenu } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
 import { SlBasket } from "react-icons/sl";
+import useWindowSize from "../../hooks/useWindowSize";
+import { ScrollPositionType, WindowSizeType } from "../../types/propsTypes";
+import useScrollPosition from "../../hooks/ScrollPosition";
 
 const HeaderSection = () => {
+  const [activeLeftMenu, setActiveLeftMenu] = useState<boolean>(false);
+  const [ScrollAction, setScrollAction] = useState<boolean>(true);
+  const { width, height }: WindowSizeType = useWindowSize();
+  const { position } = useScrollPosition();
+
+  useEffect(() => {
+    if (position && position > 100) {
+      console.log(position);
+      setScrollAction(true);
+    } else {
+      setScrollAction(false);
+    }
+  }, [position]);
   return (
     <Header>
-      <Header.Panel>
-        <Header.Hamburger>
+      <Header.Panel scroll={ScrollAction}>
+        <Header.Hamburger scroll={ScrollAction}>
           <Header.HamburgerContainer>
-            <GiHamburgerMenu />
+            <GiHamburgerMenu
+              onClick={() => setActiveLeftMenu((prev) => !prev)}
+            />
           </Header.HamburgerContainer>
         </Header.Hamburger>
         <Header.Logo>
@@ -38,38 +56,54 @@ const HeaderSection = () => {
             <Header.PanelName>Konto</Header.PanelName>
           </Header.UserPanelAccount>
         </Header.UserPanel>
-        <Header.Menu>
-          <Header.MenuClosePanel>
-            <Header.CloseMenu>
-              <AiOutlineClose />
-              Menu
-            </Header.CloseMenu>
-          </Header.MenuClosePanel>
-          <Header.MenuList>
-            <Header.MenuListEl>
+        <Header.Menu
+          display={
+            width
+              ? width < 1250
+                ? activeLeftMenu
+                  ? "block"
+                  : "none"
+                : "block"
+              : "block"
+          }
+          scroll={ScrollAction}
+          scrollDisplay={activeLeftMenu ? "block" : "none"}
+        >
+          {activeLeftMenu ? (
+            <Header.MenuClosePanel>
+              <Header.CloseMenu>
+                <AiOutlineClose
+                  onClick={() => setActiveLeftMenu((prev) => !prev)}
+                />
+                Menu
+              </Header.CloseMenu>
+            </Header.MenuClosePanel>
+          ) : null}
+          <Header.MenuList scroll={ScrollAction}>
+            <Header.MenuListEl scroll={ScrollAction}>
               <NavLink to="#">
                 <FiSmartphone /> Smartphony
               </NavLink>
             </Header.MenuListEl>
-            <Header.MenuListEl>
+            <Header.MenuListEl scroll={ScrollAction}>
               <NavLink to="#">
                 <BsLaptop />
                 Laptopy
               </NavLink>
             </Header.MenuListEl>
-            <Header.MenuListEl>
+            <Header.MenuListEl scroll={ScrollAction}>
               <NavLink to="#">
                 <RiComputerFill /> Komputery
               </NavLink>
             </Header.MenuListEl>
-            <Header.MenuListEl>
+            <Header.MenuListEl scroll={ScrollAction}>
               <NavLink to="#">
                 <GiComputerFan /> Podzespoły komputerowe
               </NavLink>
             </Header.MenuListEl>
           </Header.MenuList>
         </Header.Menu>
-        <Header.Blur></Header.Blur>
+        {activeLeftMenu ? <Header.Blur></Header.Blur> : null}
       </Header.Panel>
     </Header>
   );

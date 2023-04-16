@@ -19,6 +19,10 @@ import {
   ClosePanel,
   CloseMenu,
   Blur,
+  MenuScroll,
+  PanelScroll,
+  ListScroll,
+  ListElScroll,
 } from "./styles/HeaderStyle";
 import { JsxProps } from "../../types/propsTypes";
 
@@ -27,14 +31,28 @@ export function Header(props: JsxProps) {
 }
 
 Header.Menu = function HeaderMenu(props: JsxProps) {
-  return <Menu>{props.children}</Menu>;
+  return props.scroll ? (
+    <MenuScroll style={{ display: props.scrollDisplay }}>
+      {props.children}
+    </MenuScroll>
+  ) : (
+    <Menu style={{ display: props.display }}>{props.children}</Menu>
+  );
 };
 
 Header.MenuList = function HeaderMenuList(props: JsxProps) {
-  return <List>{props.children}</List>;
+  return props.scroll ? (
+    <ListScroll>{props.children}</ListScroll>
+  ) : (
+    <List>{props.children}</List>
+  );
 };
 Header.MenuListEl = function HeaderMenuListEL(props: JsxProps) {
-  return <ListEl>{props.children}</ListEl>;
+  return props.scroll ? (
+    <ListElScroll>{props.children}</ListElScroll>
+  ) : (
+    <ListEl>{props.children}</ListEl>
+  );
 };
 
 Header.Logo = function HeaderLogo(props: JsxProps) {
@@ -42,7 +60,15 @@ Header.Logo = function HeaderLogo(props: JsxProps) {
 };
 
 Header.Hamburger = function HeaderHamburger(props: JsxProps) {
-  return <Hamburger>{props.children}</Hamburger>;
+  return (
+    <Hamburger
+      style={
+        props.scroll ? { display: "flex", justifyContent: "flex-end" } : {}
+      }
+    >
+      {props.children}
+    </Hamburger>
+  );
 };
 Header.HamburgerContainer = function HeaderHamburgerContainer(props: JsxProps) {
   return <HamburgerContainer>{props.children}</HamburgerContainer>;
@@ -62,7 +88,11 @@ Header.SearchBtn = function HeaderSearchBtn(props: JsxProps) {
 };
 
 Header.Panel = function HeaderPanel(props: JsxProps) {
-  return <Panel>{props.children}</Panel>;
+  return props.scroll ? (
+    <PanelScroll>{props.children}</PanelScroll>
+  ) : (
+    <Panel>{props.children}</Panel>
+  );
 };
 
 Header.UserPanel = function HeaderUserPanel(props: JsxProps) {
