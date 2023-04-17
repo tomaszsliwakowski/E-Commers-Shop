@@ -2,6 +2,7 @@ import styled from "styled-components/macro";
 
 export const Container = styled.div`
   position: fixed;
+  top: 0;
   background-color: white;
   width: 100%;
   display: flex;
@@ -11,6 +12,7 @@ export const Container = styled.div`
   gap: 0.5rem;
   border-bottom: 1px solid rgb(204, 204, 204);
   margin: 0 auto;
+  z-index: 22;
   @media screen and (max-width: 768px) {
     padding: 0 1rem;
   }
@@ -27,7 +29,7 @@ export const Menu = styled.div`
   align-items: center;
   grid-column-start: 1;
   grid-column-end: 4;
-
+  z-index: 50;
   @media screen and (max-width: 1250px) {
     position: absolute;
     display: block;
@@ -39,7 +41,7 @@ export const Menu = styled.div`
     left: 0;
     top: 0;
     border-right: 1px solid silver;
-    z-index: 12;
+    z-index: 50;
   }
 `;
 
@@ -83,7 +85,7 @@ export const Logo = styled.div`
 `;
 export const Panel = styled.div`
   display: grid;
-  grid-template-columns: 0.2fr 0.55fr 0.25fr;
+  grid-template-columns: 0.1fr 0.65fr 0.25fr;
   background-color: white;
   width: 100%;
   padding-top: 0.6rem;
@@ -116,7 +118,7 @@ export const PanelScroll = styled.div`
 
 export const Search = styled.div`
   width: 100%;
-  max-width: 700px;
+  max-width: 750px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,6 +135,7 @@ export const UserPanel = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  gap: 10px;
   @media screen and (max-width: 768px) {
     display: grid;
     grid-column-start: 2;
@@ -146,6 +149,9 @@ export const UserPanel = styled.div`
   }
   @media screen and (max-width: 400px) {
     padding: 0 0 0 20px;
+  }
+  & svg {
+    color: rgb(0, 112, 204);
   }
 `;
 export const SearchBar = styled.div`
@@ -227,13 +233,14 @@ export const ListEl = styled.li`
   align-items: center;
   width: auto;
   max-width: 250px;
-  background-color: aliceblue;
+  background-color: white;
   font-size: 15px;
   transition: all 0.3s;
   @media screen and (max-width: 1250px) {
     width: 100%;
     max-width: 320px;
   }
+
   & a {
     padding: 5px 10px;
     text-decoration: none;
@@ -246,7 +253,8 @@ export const ListEl = styled.li`
       padding: 5px 20px;
     }
     &:hover {
-      box-shadow: 0 0 10px silver;
+      box-shadow: 0 0 5px silver;
+      border-radius: 8px;
       @media screen and (max-width: 1250px) {
         box-shadow: 0 0 5px silver;
       }
@@ -260,7 +268,7 @@ export const ListElScroll = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: aliceblue;
+  background-color: white;
   font-size: 15px;
   transition: all 0.3s;
   width: 100%;
@@ -272,7 +280,7 @@ export const ListElScroll = styled.li`
     display: flex;
     align-items: center;
     gap: 5px;
-
+    background-color: white;
     padding: 5px 20px;
 
     &:hover {
@@ -301,7 +309,8 @@ export const PanelAccount = styled.a`
     padding: 0 10px;
   }
   &:hover {
-    box-shadow: 0 0 10px silver;
+    box-shadow: 0 0 5px silver;
+    border-radius: 8px;
   }
 `;
 export const PanelBasket = styled.a`
@@ -321,7 +330,8 @@ export const PanelBasket = styled.a`
     padding: 0 10px;
   }
   &:hover {
-    box-shadow: 0 0 10px silver;
+    box-shadow: 0 0 5px silver;
+    border-radius: 8px;
   }
 `;
 export const Name = styled.span``;

@@ -125,6 +125,6 @@ Header.CloseMenu = function HeaderCloseMenu(props: JsxProps) {
   return <CloseMenu>{props.children}</CloseMenu>;
 };
 
-Header.Blur = function HeaderBlur() {
-  return <Blur></Blur>;
+Header.Blur = function HeaderBlur({ ...restprops }) {
+  return <Blur {...restprops}></Blur>;
 };

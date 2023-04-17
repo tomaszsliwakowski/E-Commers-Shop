@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Header } from "./index";
 import { AiOutlineSearch, AiOutlineUser, AiOutlineClose } from "react-icons/ai";
 import { RiComputerFill } from "react-icons/ri";
-import { BsLaptop } from "react-icons/bs";
+import { BsLaptop, BsKeyboard } from "react-icons/bs";
 import { FiSmartphone } from "react-icons/fi";
 import { GiComputerFan, GiHamburgerMenu } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
@@ -16,6 +16,7 @@ const HeaderSection = () => {
   const [ScrollAction, setScrollAction] = useState<boolean>(true);
   const { width, height }: WindowSizeType = useWindowSize();
   const { position }: ScrollPositionType = useScrollPosition();
+  const [SearchInput, setSearchInput] = useState<string>("");
 
   useEffect(() => {
     if (position && position > 100) {
@@ -39,7 +40,14 @@ const HeaderSection = () => {
         </Header.Logo>
         <Header.Search>
           <Header.SearchBar>
-            <Header.SearchInput type="text" placeholder="Search..." />
+            <Header.SearchInput
+              type="text"
+              placeholder="Search..."
+              value={SearchInput}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setSearchInput(e.target.value)
+              }
+            />
             <Header.SearchBtn>
               <AiOutlineSearch />
             </Header.SearchBtn>
@@ -100,9 +108,16 @@ const HeaderSection = () => {
                 <GiComputerFan /> Podzespoły komputerowe
               </NavLink>
             </Header.MenuListEl>
+            <Header.MenuListEl scroll={ScrollAction}>
+              <NavLink to="#">
+                <BsKeyboard /> Akcesoria
+              </NavLink>
+            </Header.MenuListEl>
           </Header.MenuList>
         </Header.Menu>
-        {activeLeftMenu ? <Header.Blur></Header.Blur> : null}
+        {activeLeftMenu ? (
+          <Header.Blur onClick={() => setActiveLeftMenu(false)}></Header.Blur>
+        ) : null}
       </Header.Panel>
     </Header>
   );

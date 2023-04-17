@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 export type JsxProps = {
-  children: ReactNode;
+  children?: ReactNode;
   href?: string;
   display?: string;
   scroll?: boolean;
