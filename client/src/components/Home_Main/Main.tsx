@@ -1,7 +1,9 @@
 import React from "react";
-import Main from "./index";
+import { Main } from "./index";
 import useWindowSize from "../../hooks/useWindowSize";
 import { WindowSizeType } from "../../types/propsTypes";
+import TopLeftSection from "./TopLeft";
+import TopRightSection from "./TopRight";
 
 const HomeMainSection = () => {
   const { width, height }: WindowSizeType = useWindowSize();
@@ -9,20 +11,20 @@ const HomeMainSection = () => {
     <Main width={width}>
       <Main.Baner>
         {width && width > 550 ? (
-          <img
+          <Main.Image
             src="https://cdn.x-kom.pl/i/img/banners/normal,,229b75e02d70451ba3ba95bb375a1ec0.jpg?filters=trim"
             alt="baner"
           />
         ) : (
-          <img
+          <Main.Image
             src="https://cdn.x-kom.pl/i/img/banners/normal,,ec68270904714efeb90221110433f301.jpg?filters=trim"
             alt="baner"
           />
         )}
       </Main.Baner>
       <Main.Top>
-        <Main.TopLeft>l</Main.TopLeft>
-        <Main.TopRight>r</Main.TopRight>
+        <TopLeftSection />
+        <TopRightSection />
       </Main.Top>
       <Main.BestSellery>
         <Main.BestSelleryTop>bt</Main.BestSelleryTop>
