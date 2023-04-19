@@ -4,6 +4,7 @@ import useWindowSize from "../../hooks/useWindowSize";
 import { WindowSizeType } from "../../types/propsTypes";
 import TopLeftSection from "./TopLeft";
 import TopRightSection from "./TopRight";
+import BestSellerSection from "./BestSeller";
 
 const HomeMainSection = () => {
   const { width, height }: WindowSizeType = useWindowSize();
@@ -27,8 +28,10 @@ const HomeMainSection = () => {
         <TopRightSection />
       </Main.Top>
       <Main.BestSellery>
-        <Main.BestSelleryTop>bt</Main.BestSelleryTop>
-        <Main.BestSelleryBottom>bb</Main.BestSelleryBottom>
+        <Main.BestSelleryTop>Bestsellery</Main.BestSelleryTop>
+        <Main.BestSelleryBottom>
+          <BestSellerSection />
+        </Main.BestSelleryBottom>
       </Main.BestSellery>
       <Main.Bottom>
         <Main.Newsletter>n</Main.Newsletter>

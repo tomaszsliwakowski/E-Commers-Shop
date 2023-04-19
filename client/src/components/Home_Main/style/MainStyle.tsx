@@ -11,10 +11,11 @@ export const Container = styled.div`
   max-width: 1250px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 2rem;
 `;
 export const Baner = styled.div`
   max-width: 1250px;
-  padding: 1rem 2rem;
+  padding: 1rem 0;
   & img {
     width: 100%;
     height: auto;
@@ -31,7 +32,7 @@ export const Top = styled.div`
   height: 100%;
   margin-top: 1rem;
   gap: 0.4rem;
-  padding: 0 2rem;
+
   @media screen and (max-width: 768px) {
     gap: 2rem;
   }
@@ -58,8 +59,10 @@ export const Right = styled.div`
   width: 65%;
   margin-right: 2rem;
   border-top: 1px solid rgb(204, 204, 204);
-  border-bottom: 1px solid rgb(204, 204, 204);
+
   @media screen and (max-width: 768px) {
+    overflow: hidden;
+    margin: 0;
     width: 100%;
   }
   @media screen and (min-width: 768px) {
@@ -69,9 +72,26 @@ export const Right = styled.div`
 export const BestSellery = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+  width: 100%;
+  border-top: 1px solid rgb(204, 204, 204);
+  border-bottom: 1px solid rgb(204, 204, 204);
+  overflow: hidden;
 `;
-export const BestSelleryTop = styled.div``;
-export const BestSelleryBottom = styled.div``;
+export const BestSelleryTop = styled.h2`
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  width: 100%;
+`;
+export const BestSelleryBottom = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 0 5px;
+`;
 export const Bottom = styled.div`
   display: flex;
   justify-content: center;
@@ -143,7 +163,11 @@ export const RightProduct = styled.div`
   padding: 0.5rem 1rem;
   gap: 0.2rem;
   transition: all 0.3s;
-
+  @media screen and (max-width: 768px) {
+    font-size: 1.2vw;
+    min-width: 150px;
+    margin-bottom: 1rem;
+  }
   &:hover {
     box-shadow: 0 0 10px silver;
     border-radius: 1rem;
@@ -153,6 +177,9 @@ export const RightName = styled.div`
   font-size: 12px;
   width: 100%;
   overflow: hidden;
+  @media screen and (max-width: 768px) {
+    font-size: 1.2vw;
+  }
 `;
 export const RightBuyPanel = styled.div`
   display: flex;
@@ -161,3 +188,40 @@ export const RightBuyPanel = styled.div`
 `;
 export const RightPrice = styled.div``;
 export const RightAddToCart = styled.div``;
+
+export const BestProduct = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 230px;
+  width: 100%;
+  height: auto;
+  padding: 0.5rem 1rem;
+  gap: 0.2rem;
+  transition: all 0.3s;
+  font-size: 18px;
+  min-width: 140px;
+  margin-bottom: 1rem;
+  margin-top: 5px;
+  @media screen and (max-width: 768px) {
+    font-size: 1.2vw;
+    min-width: 150px;
+    margin-bottom: 1rem;
+  }
+
+  &:hover {
+    box-shadow: 0 0 10px silver;
+    border-radius: 1rem;
+  }
+`;
+export const BestName = styled.div`
+  font-size: 12px;
+  width: 100%;
+  overflow: hidden;
+`;
+export const BestBuyPanel = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0 1rem 0;
+`;
+export const BestPrice = styled.div``;
+export const BestAddToCart = styled.div``;

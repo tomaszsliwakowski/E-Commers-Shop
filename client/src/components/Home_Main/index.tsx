@@ -26,6 +26,11 @@ import {
   RightBuyPanel,
   RightPrice,
   RightAddToCart,
+  BestProduct,
+  BestAddToCart,
+  BestBuyPanel,
+  BestName,
+  BestPrice,
 } from "./style/MainStyle";
 
 export function Main(props: JsxProps) {
@@ -126,4 +131,21 @@ TopRight.BuyPanel = function TopRightBuyPanel(props: JsxProps) {
 };
 TopRight.AddToCart = function TopRightAddToCart(props: JsxProps) {
   return <RightAddToCart>{props.children}</RightAddToCart>;
+};
+
+Main.Product = function MainProduct(props: JsxProps) {
+  return <BestProduct>{props.children}</BestProduct>;
+};
+
+Main.Name = function MainName(props: JsxProps) {
+  return <BestName>{props.children}</BestName>;
+};
+Main.Price = function MainPrice(props: JsxProps) {
+  return <BestPrice>{props.children}</BestPrice>;
+};
+Main.BuyPanel = function MainBuyPanel(props: JsxProps) {
+  return <BestBuyPanel>{props.children}</BestBuyPanel>;
+};
+Main.AddToCart = function MainAddToCart(props: JsxProps) {
+  return <BestAddToCart>{props.children}</BestAddToCart>;
 };

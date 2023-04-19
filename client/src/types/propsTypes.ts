@@ -1,3 +1,4 @@
+import { type } from "os";
 import { ReactNode } from "react";
 
 export type JsxProps = {
@@ -16,4 +17,19 @@ export type WindowSizeType = {
 
 export type ScrollPositionType = {
   position: number | undefined;
+};
+
+export type DateType = {
+  Year: number;
+  Month: number;
+  Day: number;
+  Hours: number;
+  Minutes: number;
+  Seconds: number;
+};
+
+export type TimerType = {
+  second: number;
+  minutes: number;
+  hour: number;
 };
