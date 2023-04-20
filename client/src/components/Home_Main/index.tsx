@@ -31,6 +31,12 @@ import {
   BestBuyPanel,
   BestName,
   BestPrice,
+  NextShot,
+  RemTime,
+  OneTime,
+  TimeName,
+  Dot,
+  Time,
 } from "./style/MainStyle";
 
 export function Main(props: JsxProps) {
@@ -82,7 +88,7 @@ Main.MobileApp = function MainMobileApp(props: JsxProps) {
 };
 
 export function TopLeft(props: JsxProps) {
-  return <Left>{props.children}</Left>;
+  return <Left href={props.href}>{props.children}</Left>;
 }
 
 export function TopRight(props: JsxProps) {
@@ -110,6 +116,25 @@ TopLeft.NewPrice = function TopLeftNewPrice(props: JsxProps) {
 
 TopLeft.OldPrice = function TopLeftOldPrice(props: JsxProps) {
   return <LeftOldPrice>{props.children}</LeftOldPrice>;
+};
+TopLeft.NextShot = function TopLeftNextShot(props: JsxProps) {
+  return <NextShot>{props.children}</NextShot>;
+};
+TopLeft.OneTime = function TopLeftOneTime(props: JsxProps) {
+  return <OneTime>{props.children}</OneTime>;
+};
+TopLeft.TimeName = function TopLeftTimeName(props: JsxProps) {
+  return <TimeName>{props.children}</TimeName>;
+};
+
+TopLeft.RemTime = function TopLeftRemTime(props: JsxProps) {
+  return <RemTime>{props.children}</RemTime>;
+};
+TopLeft.Time = function TopLeftTime(props: JsxProps) {
+  return <Time>{props.children}</Time>;
+};
+TopLeft.Dot = function TopLeftDot(props: JsxProps) {
+  return <Dot>{props.children}</Dot>;
 };
 
 TopRight.Hits = function TopRightHits(props: JsxProps) {

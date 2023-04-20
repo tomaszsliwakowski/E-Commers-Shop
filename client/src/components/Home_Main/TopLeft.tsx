@@ -3,14 +3,14 @@ import { Main, TopLeft } from "./index";
 import { DateType, TimerType } from "../../types/propsTypes";
 
 const TopLeftSection = () => {
-  const [Timer, setTimer] = useState<TimerType | null>(null);
+  const [Timer, setTimer] = useState<TimerType | undefined>();
   const TimeToExpire = () => {
     let dateTomorrow: Date = new Date();
     let date: Date = new Date();
     let tomorrow: Date = new Date(
       dateTomorrow.setDate(dateTomorrow.getDate() + 1)
     );
-    let expireToday = new Date(
+    let expireToday: number = new Date(
       date.getFullYear(),
       date.getMonth(),
       date.getDay(),
@@ -19,7 +19,7 @@ const TopLeftSection = () => {
       0,
       0
     ).getTime();
-    let expiretomorrow = new Date(
+    let expiretomorrow: number = new Date(
       tomorrow.getFullYear(),
       tomorrow.getMonth(),
       tomorrow.getDate(),
@@ -51,7 +51,7 @@ const TopLeftSection = () => {
   }, []);
 
   return (
-    <TopLeft>
+    <TopLeft href="/">
       <TopLeft.ImageAndTitle>
         <Main.Title>Gorący strzał</Main.Title>
         <Main.Image
@@ -65,7 +65,41 @@ const TopLeftSection = () => {
         <TopLeft.OldPrice>Cena regularna: 299,00 zł</TopLeft.OldPrice>
       </TopLeft.PriceCon>
       <TopLeft.TimerCon>
-        {Timer?.second}s : {Timer?.minutes}m : {Timer?.hour}h
+        <TopLeft.NextShot>Następny gorący strzał:</TopLeft.NextShot>
+        <TopLeft.RemTime>
+          <TopLeft.OneTime>
+            <TopLeft.Time>
+              {Timer !== undefined
+                ? Timer.hour > 9
+                  ? Timer?.hour
+                  : `0${Timer?.hour}`
+                : `00`}
+            </TopLeft.Time>
+            <TopLeft.TimeName>godz.</TopLeft.TimeName>
+          </TopLeft.OneTime>
+          <TopLeft.Dot>:</TopLeft.Dot>
+          <TopLeft.OneTime>
+            <TopLeft.Time>
+              {Timer !== undefined
+                ? Timer.minutes > 9
+                  ? Timer?.minutes
+                  : `0${Timer?.minutes}`
+                : `00`}
+            </TopLeft.Time>
+            <TopLeft.TimeName>min.</TopLeft.TimeName>
+          </TopLeft.OneTime>
+          <TopLeft.Dot>:</TopLeft.Dot>
+          <TopLeft.OneTime>
+            <TopLeft.Time>
+              {Timer !== undefined
+                ? Timer.second > 9
+                  ? Timer?.second
+                  : `0${Timer?.second}`
+                : `00`}
+            </TopLeft.Time>
+            <TopLeft.TimeName>sek.</TopLeft.TimeName>
+          </TopLeft.OneTime>
+        </TopLeft.RemTime>
       </TopLeft.TimerCon>
     </TopLeft>
   );
