@@ -18,29 +18,21 @@ code {
     monospace;
 }
 
-button.rec-dot {
-  display: none;
+.react-multi-carousel-list {
+  width: 100%;
+  height: auto;
 }
 
-button.rec-arrow-right,
-button.rec-arrow-left {
-  background-color: white;
-  box-shadow: 0 0 5px silver;
-  transition: all 0.3s;
+.react-multi-carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-button.rec-arrow:hover:enabled {
-  background-color: rgb(204, 204, 204);
-  box-shadow: 0 0 5px silver;
+.react-multiple-carousel__arrow--right {
+  right: 0;
 }
 
-button.rec-arrow:focus:enabled {
-  background-color: white;
-  color: rgb(51, 51, 51);
-  box-shadow: 0 0 10px silver;
-}
-button.rec-arrow:focus:enabled:hover {
-  background-color: rgb(204, 204, 204);
-  box-shadow: 0 0 10px silver;
-  color: white;
+.react-multiple-carousel__arrow--left {
+  left: 0;
 }

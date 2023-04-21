@@ -65,6 +65,7 @@ export const Right = styled.div`
     overflow: hidden;
     margin: 0;
     width: 100%;
+    padding-right: 0;
   }
   @media screen and (min-width: 768px) {
     width: 62%;
@@ -75,7 +76,7 @@ export const BestSellery = styled.div`
   justify-content: center;
   flex-direction: column;
   margin: 2rem 0 1rem 0;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0 1.5rem 0;
   width: 100%;
   border-top: 1px solid rgb(204, 204, 204);
   border-bottom: 1px solid rgb(204, 204, 204);
@@ -176,6 +177,7 @@ export const Hits = styled.div`
   justify-content: center;
   max-height: 550px;
   margin-bottom: 0.5rem;
+
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: row;
@@ -215,7 +217,8 @@ export const RightProduct = styled.div`
   @media screen and (max-width: 768px) {
     font-size: 1.2vw;
     min-width: 150px;
-    margin-bottom: 1rem;
+
+    margin: 0 2px 0.5rem 2px;
   }
   &:hover {
     box-shadow: 0 0 10px silver;
@@ -230,7 +233,7 @@ export const RightName = styled.div`
   width: 100%;
   overflow: hidden;
   @media screen and (max-width: 768px) {
-    font-size: 1.2vw;
+    font-size: 12px;
   }
 `;
 export const RightBuyPanel = styled.div`
@@ -241,6 +244,13 @@ export const RightBuyPanel = styled.div`
 export const RightPrice = styled.div`
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 900px) {
+    font-size: 1.4vw;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export const BestName = styled.div`
@@ -251,9 +261,11 @@ export const BestName = styled.div`
 export const BestBuyPanel = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 0 1rem 0;
+  padding: 0.5rem 0 0.5rem 0;
 `;
-export const BestPrice = styled.div``;
+export const BestPrice = styled.div`
+  font-size: 16px;
+`;
 export const BestAddToCart = styled.div`
   border: 1px solid green;
   font-size: 20px;
@@ -286,12 +298,12 @@ export const BestProduct = styled.div`
   transition: all 0.3s;
   font-size: 18px;
   min-width: 140px;
-  margin-bottom: 1rem;
-  margin-top: 5px;
+  margin: 5px 2px 1rem 2px;
+
   @media screen and (max-width: 768px) {
     font-size: 1.2vw;
     min-width: 150px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   &:hover {

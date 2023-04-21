@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Main, TopLeft } from "./index";
-import { DateType, TimerType } from "../../types/propsTypes";
+import { TimerType } from "../../types/propsTypes";
 
 const TopLeftSection = () => {
   const [Timer, setTimer] = useState<TimerType | undefined>();
