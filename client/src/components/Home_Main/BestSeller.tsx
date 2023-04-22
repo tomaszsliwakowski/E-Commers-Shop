@@ -4,11 +4,13 @@ import { BsCartPlus } from "react-icons/bs";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "../../index.css";
+import { HomeProductType } from "../../types/Types";
 
 const prod: any = {
   img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2021/7/pr_2021_7_1_8_25_10_978_06.jpg",
   name: "Gigabyte GeForce RTX 3060 Ti EAGLE OC LHR 8GB GDDR6",
-  price: "1269,00 zł",
+  price: 1269.0,
+  link: "#",
 };
 const responsive = {
   superLargeDesktop: {
@@ -58,13 +60,13 @@ const BestSellerSection = () => {
 
 export default BestSellerSection;
 
-const Product = (prod: any) => {
+const Product = (prod: HomeProductType) => {
   return (
-    <Main.Product>
+    <Main.Product to={prod.link}>
       <Main.Image src={prod.img} alt="prod" />
       <Main.Name>{prod.name}</Main.Name>
       <Main.BuyPanel>
-        <Main.Price>{prod.price}</Main.Price>
+        <Main.Price>{prod.price}zł</Main.Price>
         <Main.AddToCart>
           <BsCartPlus />
         </Main.AddToCart>

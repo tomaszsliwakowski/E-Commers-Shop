@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ScrollPositionType } from "../types/propsTypes";
+import { ScrollPositionType } from "../types/Types";
 
 const useScrollPosition = () => {
   const [scrollPosition, setScrollPosition] = useState<ScrollPositionType>({

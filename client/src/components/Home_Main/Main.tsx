@@ -1,7 +1,7 @@
 import React from "react";
 import { Main } from "./index";
 import useWindowSize from "../../hooks/useWindowSize";
-import { WindowSizeType } from "../../types/propsTypes";
+import { WindowSizeType } from "../../types/Types";
 import TopLeftSection from "./TopLeft";
 import TopRightSection from "./TopRight";
 import BestSellerSection from "./BestSeller";
@@ -34,8 +34,26 @@ const HomeMainSection = () => {
         </Main.BestSelleryBottom>
       </Main.BestSellery>
       <Main.Bottom>
-        <Main.Newsletter>n</Main.Newsletter>
-        <Main.MobileApp>ma</Main.MobileApp>
+        <Main.Newsletter>
+          <Main.NewsletterA>
+            <Main.NewsletterTitle>
+              Odbierz bon 20 zł w prezencie
+            </Main.NewsletterTitle>
+            <Main.NewsletterText>
+              Zapisz się do newslettera i bądź na bieżąco.
+            </Main.NewsletterText>
+            <Main.NewsletterEmailInput>
+              <Main.NewsletterInput type="email" placeholder="Twój e-mail" />
+              <Main.NewsletterBtn>Zapisz się</Main.NewsletterBtn>
+            </Main.NewsletterEmailInput>
+          </Main.NewsletterA>
+          <Main.NewsletterB>
+            <Main.Image
+              src="https://ma.stati.pl/is/kampanie/NL20_1apr2023/footer.png"
+              alt="gift"
+            />
+          </Main.NewsletterB>
+        </Main.Newsletter>
       </Main.Bottom>
     </Main>
   );

@@ -8,7 +8,7 @@ import { GiComputerFan, GiHamburgerMenu } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
 import { SlBasket } from "react-icons/sl";
 import useWindowSize from "../../hooks/useWindowSize";
-import { ScrollPositionType, WindowSizeType } from "../../types/propsTypes";
+import { ScrollPositionType, WindowSizeType } from "../../types/Types";
 import useScrollPosition from "../../hooks/ScrollPosition";
 
 const HeaderSection = () => {

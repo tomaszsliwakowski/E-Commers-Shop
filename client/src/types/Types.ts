@@ -10,6 +10,11 @@ export type JsxProps = {
   width?: number;
 };
 
+export type LinkProps = {
+  children?: ReactNode;
+  to: string;
+};
+
 export type WindowSizeType = {
   width: number | undefined;
   height: number | undefined;
@@ -32,4 +37,11 @@ export type TimerType = {
   second: number;
   minutes: number;
   hour: number;
+};
+
+export type HomeProductType = {
+  name: string;
+  img: string;
+  price: number;
+  link: string;
 };

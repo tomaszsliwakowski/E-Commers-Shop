@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 
 export const Container = styled.div`
@@ -94,12 +95,7 @@ export const BestSelleryBottom = styled.div`
   gap: 1rem;
   padding: 0 5px;
 `;
-export const Bottom = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-export const Newsletter = styled.div``;
-export const Mobile = styled.div``;
+
 export const Title = styled.h1`
   font-size: 22px;
   padding: 8px 0px 10px 12px;
@@ -204,7 +200,7 @@ export const RightAddToCart = styled.div`
   }
 `;
 
-export const RightProduct = styled.div`
+export const RightProduct = styled(Link)`
   display: flex;
   flex-direction: column;
   max-width: 230px;
@@ -213,7 +209,8 @@ export const RightProduct = styled.div`
   padding: 0.5rem 1rem 0 1rem;
   gap: 0.1rem;
   transition: all 0.3s;
-
+  text-decoration: none;
+  color: black;
   @media screen and (max-width: 768px) {
     font-size: 1.2vw;
     min-width: 150px;
@@ -287,7 +284,7 @@ export const BestAddToCart = styled.div`
   }
 `;
 
-export const BestProduct = styled.div`
+export const BestProduct = styled(Link)`
   display: flex;
   flex-direction: column;
   max-width: 230px;
@@ -299,7 +296,8 @@ export const BestProduct = styled.div`
   font-size: 18px;
   min-width: 140px;
   margin: 5px 2px 1rem 2px;
-
+  text-decoration: none;
+  color: black;
   @media screen and (max-width: 768px) {
     font-size: 1.2vw;
     min-width: 150px;
@@ -355,4 +353,78 @@ export const Dot = styled.div`
   @media screen and (min-width: 768px) {
     font-size: 1.85rem;
   }
+`;
+export const Bottom = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+`;
+export const Newsletter = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 0.55fr 0.45fr;
+  box-shadow: 0 0 8px silver;
+  border-radius: 1rem;
+  max-width: 700px;
+  padding: 1rem 0.2rem;
+  @media screen and (max-width: 600px) {
+    display: flex;
+    justify-content: center;
+  }
+`;
+
+export const NewsletterA = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+`;
+export const NewsletterB = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+
+  & img {
+    max-width: 112px;
+  }
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+`;
+export const NewsletterTitle = styled.h2`
+  font-size: 22px;
+  padding-top: 0.2rem;
+`;
+export const NewsletterText = styled.p`
+  padding: 0.2rem 0 1rem 0;
+`;
+export const NewsletterInput = styled.input`
+  height: 30px;
+  border-radius: 1rem 0rem 0rem 1rem;
+  padding: 0 10px 0 20px;
+  border: 1px solid silver;
+  outline: none;
+`;
+export const NewsletterEmailInput = styled.div`
+  position: relative;
+  padding-bottom: 0.5rem;
+  @media screen and (max-width: 600px) {
+    display: flex;
+    justify-content: center;
+  }
+`;
+export const NewsletterBtn = styled.button`
+  height: 30px;
+  border-radius: 1rem;
+  position: relative;
+  right: 20px;
+  padding: 0 10px;
+  background-color: rgb(0, 130, 250);
+  color: white;
+  border: none;
+  cursor: pointer;
 `;

@@ -1,5 +1,5 @@
 import React from "react";
-import { JsxProps } from "../../types/propsTypes";
+import { JsxProps, LinkProps } from "../../types/Types";
 import {
   Container,
   Baner,
@@ -10,7 +10,6 @@ import {
   BestSelleryTop,
   BestSelleryBottom,
   Newsletter,
-  Mobile,
   Bottom,
   LeftImageAndTitleCon,
   Title,
@@ -37,6 +36,13 @@ import {
   TimeName,
   Dot,
   Time,
+  NewsletterA,
+  NewsletterB,
+  NewsletterTitle,
+  NewsletterText,
+  NewsletterInput,
+  NewsletterEmailInput,
+  NewsletterBtn,
 } from "./style/MainStyle";
 
 export function Main(props: JsxProps) {
@@ -81,10 +87,6 @@ Main.Bottom = function MainBotttom(props: JsxProps) {
 
 Main.Newsletter = function MainNewsletter(props: JsxProps) {
   return <Newsletter>{props.children}</Newsletter>;
-};
-
-Main.MobileApp = function MainMobileApp(props: JsxProps) {
-  return <Mobile>{props.children}</Mobile>;
 };
 
 export function TopLeft(props: JsxProps) {
@@ -141,8 +143,8 @@ TopRight.Hits = function TopRightHits(props: JsxProps) {
   return <Hits>{props.children}</Hits>;
 };
 
-TopRight.Product = function TopRightProduct(props: JsxProps) {
-  return <RightProduct>{props.children}</RightProduct>;
+TopRight.Product = function TopRightProduct(props: LinkProps) {
+  return <RightProduct to={props.to}>{props.children}</RightProduct>;
 };
 
 TopRight.Name = function TopRightName(props: JsxProps) {
@@ -158,8 +160,8 @@ TopRight.AddToCart = function TopRightAddToCart(props: JsxProps) {
   return <RightAddToCart>{props.children}</RightAddToCart>;
 };
 
-Main.Product = function MainProduct(props: JsxProps) {
-  return <BestProduct>{props.children}</BestProduct>;
+Main.Product = function MainProduct(props: LinkProps) {
+  return <BestProduct to={props.to}>{props.children}</BestProduct>;
 };
 
 Main.Name = function MainName(props: JsxProps) {
@@ -173,4 +175,28 @@ Main.BuyPanel = function MainBuyPanel(props: JsxProps) {
 };
 Main.AddToCart = function MainAddToCart(props: JsxProps) {
   return <BestAddToCart>{props.children}</BestAddToCart>;
+};
+
+Main.NewsletterA = function MainNewsletterA(props: JsxProps) {
+  return <NewsletterA>{props.children}</NewsletterA>;
+};
+Main.NewsletterB = function MainNewsletterB(props: JsxProps) {
+  return <NewsletterB>{props.children}</NewsletterB>;
+};
+
+Main.NewsletterTitle = function MainNewsletterTitle(props: JsxProps) {
+  return <NewsletterTitle>{props.children}</NewsletterTitle>;
+};
+Main.NewsletterText = function MainNewsletterText(props: JsxProps) {
+  return <NewsletterText>{props.children}</NewsletterText>;
+};
+Main.NewsletterInput = function MainNewsletterInput({ ...restprops }) {
+  return <NewsletterInput {...restprops} />;
+};
+
+Main.NewsletterEmailInput = function MainNewsletterEmailInput(props: JsxProps) {
+  return <NewsletterEmailInput>{props.children}</NewsletterEmailInput>;
+};
+Main.NewsletterBtn = function MainNewsletterBtn(props: JsxProps) {
+  return <NewsletterBtn>{props.children}</NewsletterBtn>;
 };

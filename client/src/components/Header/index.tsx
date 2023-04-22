@@ -24,7 +24,7 @@ import {
   ListScroll,
   ListElScroll,
 } from "./styles/HeaderStyle";
-import { JsxProps } from "../../types/propsTypes";
+import { JsxProps } from "../../types/Types";
 
 export function Header(props: JsxProps) {
   return <Container>{props.children}</Container>;
