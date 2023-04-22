@@ -36,13 +36,14 @@ import {
   TimeName,
   Dot,
   Time,
-  NewsletterA,
-  NewsletterB,
-  NewsletterTitle,
-  NewsletterText,
-  NewsletterInput,
-  NewsletterEmailInput,
-  NewsletterBtn,
+  BottomA,
+  BottomB,
+  BottomTitle,
+  BottomText,
+  BottomInput,
+  BottomCon,
+  BottomBtn,
+  MobileAd,
 } from "./style/MainStyle";
 
 export function Main(props: JsxProps) {
@@ -177,26 +178,30 @@ Main.AddToCart = function MainAddToCart(props: JsxProps) {
   return <BestAddToCart>{props.children}</BestAddToCart>;
 };
 
-Main.NewsletterA = function MainNewsletterA(props: JsxProps) {
-  return <NewsletterA>{props.children}</NewsletterA>;
+Main.BottomA = function MainBottomA(props: JsxProps) {
+  return <BottomA>{props.children}</BottomA>;
 };
-Main.NewsletterB = function MainNewsletterB(props: JsxProps) {
-  return <NewsletterB>{props.children}</NewsletterB>;
-};
-
-Main.NewsletterTitle = function MainNewsletterTitle(props: JsxProps) {
-  return <NewsletterTitle>{props.children}</NewsletterTitle>;
-};
-Main.NewsletterText = function MainNewsletterText(props: JsxProps) {
-  return <NewsletterText>{props.children}</NewsletterText>;
-};
-Main.NewsletterInput = function MainNewsletterInput({ ...restprops }) {
-  return <NewsletterInput {...restprops} />;
+Main.BottomB = function MainBottomB(props: JsxProps) {
+  return <BottomB>{props.children}</BottomB>;
 };
 
-Main.NewsletterEmailInput = function MainNewsletterEmailInput(props: JsxProps) {
-  return <NewsletterEmailInput>{props.children}</NewsletterEmailInput>;
+Main.BottomTitle = function MainBottomTitle(props: JsxProps) {
+  return <BottomTitle>{props.children}</BottomTitle>;
 };
-Main.NewsletterBtn = function MainNewsletterBtn(props: JsxProps) {
-  return <NewsletterBtn>{props.children}</NewsletterBtn>;
+Main.BottomText = function MainBottomText(props: JsxProps) {
+  return <BottomText>{props.children}</BottomText>;
+};
+Main.BottomInput = function MainBottomInput({ ...restprops }) {
+  return <BottomInput {...restprops} />;
+};
+
+Main.BottomCon = function MainBottomCon(props: JsxProps) {
+  return <BottomCon>{props.children}</BottomCon>;
+};
+Main.BottomBtn = function MainBottomBtn(props: JsxProps) {
+  return <BottomBtn>{props.children}</BottomBtn>;
+};
+
+Main.MobileAd = function MainMobileAd(props: JsxProps) {
+  return <MobileAd>{props.children}</MobileAd>;
 };

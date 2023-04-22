@@ -35,25 +35,51 @@ const HomeMainSection = () => {
       </Main.BestSellery>
       <Main.Bottom>
         <Main.Newsletter>
-          <Main.NewsletterA>
-            <Main.NewsletterTitle>
-              Odbierz bon 20 zł w prezencie
-            </Main.NewsletterTitle>
-            <Main.NewsletterText>
+          <Main.BottomA>
+            <Main.BottomTitle>Odbierz bon 20 zł w prezencie</Main.BottomTitle>
+            <Main.BottomText>
               Zapisz się do newslettera i bądź na bieżąco.
-            </Main.NewsletterText>
-            <Main.NewsletterEmailInput>
-              <Main.NewsletterInput type="email" placeholder="Twój e-mail" />
-              <Main.NewsletterBtn>Zapisz się</Main.NewsletterBtn>
-            </Main.NewsletterEmailInput>
-          </Main.NewsletterA>
-          <Main.NewsletterB>
+            </Main.BottomText>
+            <Main.BottomCon>
+              <Main.BottomInput type="email" placeholder="Twój e-mail" />
+              <Main.BottomBtn>Zapisz się</Main.BottomBtn>
+            </Main.BottomCon>
+          </Main.BottomA>
+          <Main.BottomB>
             <Main.Image
               src="https://ma.stati.pl/is/kampanie/NL20_1apr2023/footer.png"
               alt="gift"
             />
-          </Main.NewsletterB>
+          </Main.BottomB>
         </Main.Newsletter>
+        <Main.MobileAd>
+          <Main.BottomA>
+            <Main.BottomTitle>Aplikacja mobilna</Main.BottomTitle>
+            <Main.BottomText>
+              Sprawdzaj promocje, które dostępne są tylko w aplikacji.
+            </Main.BottomText>
+            <Main.BottomCon>
+              <Main.Image
+                src="https://assets.x-kom.pl/public-spa/xkom/0f6ff6eee36d1bb3.svg"
+                alt="AppStore"
+              />
+              <Main.Image
+                src="https://assets.x-kom.pl/public-spa/xkom/32fe7e427a8819cc.svg"
+                alt="GooglePlay"
+              />
+              <Main.Image
+                src="https://assets.x-kom.pl/public-spa/xkom/de8bbc5c651b4ad9.svg"
+                alt="AppGallery"
+              />
+            </Main.BottomCon>
+          </Main.BottomA>
+          <Main.BottomB>
+            <Main.Image
+              src="https://assets.x-kom.pl/public-spa/xkom/dc932e41baa41f9d.png"
+              alt="mobile"
+            />
+          </Main.BottomB>
+        </Main.MobileAd>
       </Main.Bottom>
     </Main>
   );

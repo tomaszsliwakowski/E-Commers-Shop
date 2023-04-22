@@ -81,6 +81,9 @@ export const Logo = styled.div`
     font-size: 30px;
     font-weight: bold;
     color: rgb(26, 26, 26);
+    @media screen and (min-width: 1024px) {
+      padding-left: 1.2rem;
+    }
   }
 `;
 export const Panel = styled.div`

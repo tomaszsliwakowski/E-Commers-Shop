@@ -146,7 +146,7 @@ export const LeftTimerCon = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 0 1rem 0;
+  padding: 0.5rem 0 0.6rem 0;
 `;
 export const Image = styled.img`
   position: relative;
@@ -357,67 +357,109 @@ export const Dot = styled.div`
 export const Bottom = styled.div`
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
+  gap: 1rem;
   width: 100%;
   margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+  }
 `;
 export const Newsletter = styled.div`
   width: 100%;
-  display: grid;
-  grid-template-columns: 0.55fr 0.45fr;
-  box-shadow: 0 0 8px silver;
+  box-shadow: 0 0 5px silver;
   border-radius: 1rem;
-  max-width: 700px;
   padding: 1rem 0.2rem;
-  @media screen and (max-width: 600px) {
-    display: flex;
-    justify-content: center;
-  }
+  display: flex;
+  justify-content: center;
 `;
 
-export const NewsletterA = styled.div`
+export const BottomA = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0.5rem 1rem;
+  width: 50%;
+  @media screen and (max-width: 350px) {
+    padding: 0.5rem 0.2rem;
+  }
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    justify-content: center;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 60%;
+  }
 `;
-export const NewsletterB = styled.div`
-  width: 100%;
+export const BottomB = styled.div`
   height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.5rem 1rem;
-
+  width: 50%;
   & img {
     max-width: 112px;
   }
   @media screen and (max-width: 600px) {
     display: none;
+    width: 100%;
+  }
+  @media screen and (min-width: 1024px) {
+    justify-content: flex-end;
+    width: 40%;
   }
 `;
-export const NewsletterTitle = styled.h2`
+export const BottomTitle = styled.h2`
   font-size: 22px;
   padding-top: 0.2rem;
+  @media screen and (max-width: 600px) {
+    text-align: center;
+  }
 `;
-export const NewsletterText = styled.p`
+export const BottomText = styled.p`
   padding: 0.2rem 0 1rem 0;
+  font-size: 14px;
+  @media screen and (max-width: 600px) {
+    text-align: center;
+  }
 `;
-export const NewsletterInput = styled.input`
+export const BottomInput = styled.input`
   height: 30px;
   border-radius: 1rem 0rem 0rem 1rem;
   padding: 0 10px 0 20px;
   border: 1px solid silver;
   outline: none;
+  width: 55%;
+  @media screen and (min-width: 350px) {
+    width: 60%;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 65%;
+  }
 `;
-export const NewsletterEmailInput = styled.div`
+export const BottomCon = styled.div`
   position: relative;
   padding-bottom: 0.5rem;
+  display: flex;
+  gap: 5px;
+  @media screen and (max-width: 500px) {
+    &:last-of-type {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      & img {
+        max-width: 45%;
+      }
+    }
+  }
   @media screen and (max-width: 600px) {
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 `;
-export const NewsletterBtn = styled.button`
+export const BottomBtn = styled.button`
   height: 30px;
   border-radius: 1rem;
   position: relative;
@@ -427,4 +469,15 @@ export const NewsletterBtn = styled.button`
   color: white;
   border: none;
   cursor: pointer;
+`;
+export const MobileAd = styled.div`
+  width: 100%;
+  display: flex;
+  box-shadow: 0 0 5px silver;
+  border-radius: 1rem;
+  padding: 1rem 0.2rem;
+  justify-content: center;
+  @media screen and (max-width: 600px) {
+    padding: 1rem 0;
+  }
 `;
