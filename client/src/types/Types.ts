@@ -8,6 +8,7 @@ export type JsxProps = {
   scroll?: boolean;
   scrollDisplay?: string;
   width?: number;
+  style?: string;
 };
 
 export type LinkProps = {

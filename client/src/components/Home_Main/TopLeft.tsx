@@ -13,7 +13,7 @@ const TopLeftSection = () => {
     let expireToday: number = new Date(
       date.getFullYear(),
       date.getMonth(),
-      date.getDay(),
+      date.getDate(),
       12,
       0,
       0,
@@ -28,7 +28,7 @@ const TopLeftSection = () => {
       0,
       0
     ).getTime();
-    if (date.getHours() > 12) {
+    if (date.getHours() >= 12) {
       let remainingTime: number = expiretomorrow - date.getTime();
       setTimer({
         second: Math.floor((remainingTime / 1000) % 60),

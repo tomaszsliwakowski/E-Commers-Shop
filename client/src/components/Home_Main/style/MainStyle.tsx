@@ -360,7 +360,7 @@ export const Bottom = styled.div`
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
   margin-top: 1rem;
   @media screen and (min-width: 1024px) {
     flex-direction: row;
