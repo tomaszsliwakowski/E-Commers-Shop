@@ -13,6 +13,7 @@ export const Top = styled.div`
   display: flex;
   width: 100%;
   padding-bottom: 2rem;
+  position: relative;
   @media screen and (max-width: 600px) {
     flex-direction: column;
     align-items: center;
@@ -40,6 +41,9 @@ export const Contact = styled.div`
   @media screen and (max-width: 600px) {
     align-items: center;
     padding: 0;
+  }
+  @media screen and (min-width: 1250px) {
+    padding-left: 25%;
   }
 `;
 export const Copyright = styled.span`
@@ -69,17 +73,26 @@ export const List = styled.ul`
 `;
 export const Title = styled.h2`
   font-size: 18px;
+  &:last-of-type {
+    padding-bottom: 0.5rem;
+  }
 `;
 export const Text = styled.p`
   font-size: 14px;
+  padding-top: 0.5rem;
+  @media screen and (min-width: 1250px) {
+    font-size: 18px;
+  }
 `;
 
 export const Link = styled.a`
   color: black;
   text-decoration: none;
+
   & svg {
     color: black;
     font-size: 22px;
+    transition: all 0.3s;
     &:hover {
       color: ${({ color }) => color};
     }
