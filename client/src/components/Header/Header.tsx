@@ -13,6 +13,7 @@ import useScrollPosition from "../../hooks/ScrollPosition";
 
 const HeaderSection = () => {
   const [activeLeftMenu, setActiveLeftMenu] = useState<boolean>(false);
+  const [activeRightMenu, setActiveRightMenu] = useState<boolean>(false);
   const [ScrollAction, setScrollAction] = useState<boolean>(true);
   const { width, height }: WindowSizeType = useWindowSize();
   const { position }: ScrollPositionType = useScrollPosition();
@@ -25,6 +26,22 @@ const HeaderSection = () => {
       setScrollAction(false);
     }
   }, [position]);
+
+  useEffect(() => {
+    const body = document.querySelector("body");
+    if (
+      (body !== null && activeRightMenu) ||
+      (body !== null && activeLeftMenu)
+    ) {
+      body.style.overflow = "hidden";
+    } else {
+      return;
+    }
+    return () => {
+      body.style.overflow = "initial";
+    };
+  }, [activeRightMenu, activeLeftMenu]);
+
   return (
     <Header>
       <Header.Panel scroll={ScrollAction}>
@@ -54,11 +71,11 @@ const HeaderSection = () => {
           </Header.SearchBar>
         </Header.Search>
         <Header.UserPanel>
-          <Header.UserPanelBasket href="#">
+          <Header.UserPanelBasket href="#" click={setActiveRightMenu}>
             <SlBasket />
             <Header.PanelName>Koszyk</Header.PanelName>
           </Header.UserPanelBasket>
-          <Header.UserPanelAccount href="#">
+          <Header.UserPanelAccount href="#" click={setActiveRightMenu}>
             <AiOutlineUser />
             <Header.PanelName>Konto</Header.PanelName>
           </Header.UserPanelAccount>
@@ -117,6 +134,9 @@ const HeaderSection = () => {
         </Header.Menu>
         {activeLeftMenu ? (
           <Header.Blur onClick={() => setActiveLeftMenu(false)}></Header.Blur>
+        ) : null}
+        {activeRightMenu ? (
+          <Header.Blur onClick={() => setActiveRightMenu(false)}></Header.Blur>
         ) : null}
       </Header.Panel>
     </Header>

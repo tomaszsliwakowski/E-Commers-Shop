@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const Top = styled.div`
   display: flex;
   width: 100%;
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
   position: relative;
   @media screen and (max-width: 600px) {
     flex-direction: column;
@@ -72,7 +72,7 @@ export const List = styled.ul`
   gap: 0.2rem;
 `;
 export const Title = styled.h2`
-  font-size: 18px;
+  font-size: 22px;
   &:last-of-type {
     padding-bottom: 0.5rem;
   }

@@ -1,5 +1,5 @@
 import { type } from "os";
-import { ReactNode } from "react";
+import { ReactNode, SetStateAction } from "react";
 
 export type JsxProps = {
   children?: ReactNode;
@@ -9,6 +9,12 @@ export type JsxProps = {
   scrollDisplay?: string;
   width?: number;
   style?: string;
+};
+
+export type DropDownProps = {
+  children?: ReactNode;
+  href?: string;
+  click: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export type LinkProps = {

@@ -12,7 +12,8 @@ export const Container = styled.div`
   gap: 0.5rem;
   border-bottom: 1px solid rgb(204, 204, 204);
   margin: 0 auto;
-  z-index: 22;
+  z-index: 1001;
+
   @media screen and (max-width: 768px) {
     padding: 0 1rem;
   }
@@ -253,7 +254,7 @@ export const ListEl = styled.li`
     align-items: center;
     gap: 5px;
     @media screen and (max-width: 1250px) {
-      padding: 5px 20px;
+      padding: 1rem 20px;
     }
     &:hover {
       box-shadow: 0 0 5px silver;
@@ -284,7 +285,7 @@ export const ListElScroll = styled.li`
     align-items: center;
     gap: 5px;
     background-color: white;
-    padding: 5px 20px;
+    padding: 1rem 20px;
 
     &:hover {
       box-shadow: 0 0 5px silver;
@@ -386,10 +387,10 @@ export const ClosePanel = styled.div`
 `;
 export const Blur = styled.div`
   display: flex;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 70%);
 `;

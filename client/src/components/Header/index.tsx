@@ -24,7 +24,7 @@ import {
   ListScroll,
   ListElScroll,
 } from "./styles/HeaderStyle";
-import { JsxProps } from "../../types/Types";
+import { DropDownProps, JsxProps } from "../../types/Types";
 
 export function Header(props: JsxProps) {
   return <Container>{props.children}</Container>;
@@ -106,12 +106,25 @@ Header.UserPanel = function HeaderUserPanel(props: JsxProps) {
   return <UserPanel>{props.children}</UserPanel>;
 };
 
-Header.UserPanelAccount = function HeaderUserPanelAccount(props: JsxProps) {
-  return <PanelAccount href={props.href}>{props.children}</PanelAccount>;
+Header.UserPanelAccount = function HeaderUserPanelAccount(
+  props: DropDownProps
+) {
+  return (
+    <PanelAccount
+      href={props.href}
+      onClick={() => props.click((prev) => !prev)}
+    >
+      {props.children}
+    </PanelAccount>
+  );
 };
 
-Header.UserPanelBasket = function HeaderUserPanelBasket(props: JsxProps) {
-  return <PanelBasket href={props.href}>{props.children}</PanelBasket>;
+Header.UserPanelBasket = function HeaderUserPanelBasket(props: DropDownProps) {
+  return (
+    <PanelBasket href={props.href} onClick={() => props.click((prev) => !prev)}>
+      {props.children}
+    </PanelBasket>
+  );
 };
 Header.PanelName = function HeaderPanelName(props: JsxProps) {
   return <Name>{props.children}</Name>;
