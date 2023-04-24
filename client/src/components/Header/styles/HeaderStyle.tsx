@@ -155,7 +155,7 @@ export const UserPanel = styled.div`
     padding: 0 0 0 20px;
   }
   & svg {
-    color: rgb(0, 112, 204);
+    color: rgb(77, 77, 77);
   }
 `;
 export const SearchBar = styled.div`
@@ -374,7 +374,7 @@ export const DropBtn = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 5px;
 `;
 
 export const PanelAccount = styled.a`
