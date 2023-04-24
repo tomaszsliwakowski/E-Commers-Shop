@@ -8,12 +8,19 @@ import { GiComputerFan, GiHamburgerMenu } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
 import { SlBasket } from "react-icons/sl";
 import useWindowSize from "../../hooks/useWindowSize";
-import { ScrollPositionType, WindowSizeType } from "../../types/Types";
+import {
+  PanelActiveProps,
+  ScrollPositionType,
+  WindowSizeType,
+} from "../../types/Types";
 import useScrollPosition from "../../hooks/ScrollPosition";
 
 const HeaderSection = () => {
   const [activeLeftMenu, setActiveLeftMenu] = useState<boolean>(false);
-  const [activeRightMenu, setActiveRightMenu] = useState<boolean>(false);
+  const [activeRightMenu, setActiveRightMenu] = useState<PanelActiveProps>({
+    Account: false,
+    Basket: false,
+  });
   const [ScrollAction, setScrollAction] = useState<boolean>(true);
   const { width, height }: WindowSizeType = useWindowSize();
   const { position }: ScrollPositionType = useScrollPosition();
@@ -29,21 +36,21 @@ const HeaderSection = () => {
 
   useEffect(() => {
     const body = document.querySelector("body");
-    if (
-      (body !== null && activeRightMenu) ||
-      (body !== null && activeLeftMenu)
-    ) {
-      body.style.overflow = "hidden";
-    } else {
+    if (body === null) {
       return;
+    }
+    if (activeLeftMenu || activeRightMenu.Account || activeRightMenu.Basket) {
+      body.style.overflow = "hidden";
+      body.style.paddingRight = "1.05rem";
     }
     return () => {
       body.style.overflow = "initial";
+      body.style.paddingRight = "0rem";
     };
   }, [activeRightMenu, activeLeftMenu]);
 
   return (
-    <Header>
+    <Header active={activeRightMenu} active2={activeLeftMenu}>
       <Header.Panel scroll={ScrollAction}>
         <Header.Hamburger scroll={ScrollAction} width={width}>
           <Header.HamburgerContainer>
@@ -71,28 +78,81 @@ const HeaderSection = () => {
           </Header.SearchBar>
         </Header.Search>
         <Header.UserPanel>
-          <Header.UserPanelBasket href="#" click={setActiveRightMenu}>
-            <Header.DropBtn>
-              <SlBasket />
-              Koszyk
-            </Header.DropBtn>
-            <Header.DropDown>
-              <Header.DropOpt>1</Header.DropOpt>
-              <Header.DropOpt>2</Header.DropOpt>
-              <Header.DropOpt>3</Header.DropOpt>
-            </Header.DropDown>
-          </Header.UserPanelBasket>
-          <Header.UserPanelAccount href="#" click={setActiveRightMenu}>
-            <Header.DropBtn>
-              <AiOutlineUser />
-              Konto
-            </Header.DropBtn>
-            <Header.DropDown>
-              <Header.DropOpt>1</Header.DropOpt>
-              <Header.DropOpt>2</Header.DropOpt>
-              <Header.DropOpt>3</Header.DropOpt>
-            </Header.DropDown>
-          </Header.UserPanelAccount>
+          {width && width >= 1250 ? (
+            <>
+              <Header.UserPanelBasket href="#">
+                <Header.DropBtn>
+                  <SlBasket />
+                  Koszyk
+                </Header.DropBtn>
+                <Header.DropDown>
+                  <Header.DropOpt>1</Header.DropOpt>
+                  <Header.DropOpt>2</Header.DropOpt>
+                  <Header.DropOpt>3</Header.DropOpt>
+                </Header.DropDown>
+              </Header.UserPanelBasket>
+              <Header.UserPanelAccount href="#">
+                <Header.DropBtn>
+                  <AiOutlineUser />
+                  Konto
+                </Header.DropBtn>
+                <Header.DropDown>
+                  <Header.DropOpt>1</Header.DropOpt>
+                  <Header.DropOpt>2</Header.DropOpt>
+                  <Header.DropOpt>3</Header.DropOpt>
+                </Header.DropDown>
+              </Header.UserPanelAccount>
+            </>
+          ) : (
+            <>
+              <Header.UserPanelBasketMin click={setActiveRightMenu}>
+                <Header.DropBtn>
+                  <SlBasket />
+                  Koszyk
+                </Header.DropBtn>
+              </Header.UserPanelBasketMin>
+              <Header.UserPanelAccountMin click={setActiveRightMenu}>
+                <Header.DropBtn>
+                  <AiOutlineUser />
+                  Konto
+                </Header.DropBtn>
+              </Header.UserPanelAccountMin>
+              {activeRightMenu.Account ? (
+                <Header.DropDown>
+                  <Header.CloseRightPanel>
+                    <Header.CloseRight>
+                      <AiOutlineClose
+                        onClick={() =>
+                          setActiveRightMenu({ Account: false, Basket: false })
+                        }
+                      />
+                      Konto
+                    </Header.CloseRight>
+                  </Header.CloseRightPanel>
+                  <Header.DropOpt>A</Header.DropOpt>
+                  <Header.DropOpt>A</Header.DropOpt>
+                  <Header.DropOpt>A</Header.DropOpt>
+                </Header.DropDown>
+              ) : null}
+              {activeRightMenu.Basket ? (
+                <Header.DropDown>
+                  <Header.CloseRightPanel>
+                    <Header.CloseRight>
+                      <AiOutlineClose
+                        onClick={() =>
+                          setActiveRightMenu({ Account: false, Basket: false })
+                        }
+                      />
+                      Koszyk
+                    </Header.CloseRight>
+                  </Header.CloseRightPanel>
+                  <Header.DropOpt>B</Header.DropOpt>
+                  <Header.DropOpt>B</Header.DropOpt>
+                  <Header.DropOpt>B</Header.DropOpt>
+                </Header.DropDown>
+              ) : null}
+            </>
+          )}
         </Header.UserPanel>
         <Header.Menu
           display={
@@ -149,8 +209,12 @@ const HeaderSection = () => {
         {activeLeftMenu ? (
           <Header.Blur onClick={() => setActiveLeftMenu(false)}></Header.Blur>
         ) : null}
-        {activeRightMenu ? (
-          <Header.Blur onClick={() => setActiveRightMenu(false)}></Header.Blur>
+        {activeRightMenu.Account || activeRightMenu.Basket ? (
+          <Header.Blur
+            onClick={() =>
+              setActiveRightMenu({ Account: false, Basket: false })
+            }
+          ></Header.Blur>
         ) : null}
       </Header.Panel>
     </Header>

@@ -362,6 +362,15 @@ export const DropDown = styled.div`
   box-shadow: 0px 0px 5px silver;
   z-index: 1;
   border-radius: 8px 0px 8px 8px;
+  @media screen and (max-width: 1250px) {
+    display: block;
+    min-height: 100vh;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    max-width: 320px;
+    border-radius: 0;
+  }
 `;
 export const DropOpt = styled.div`
   color: black;
@@ -390,6 +399,7 @@ export const PanelAccount = styled.a`
   font-size: 18px;
   color: rgb(26, 26, 26);
   transition: all 0.3s;
+  cursor: pointer;
   @media screen and (max-width: 400px) {
     font-size: 14px;
     padding: 0 10px;
@@ -401,6 +411,7 @@ export const PanelAccount = styled.a`
       border-radius: 8px 8px 0 0;
       border: none;
       background-color: rgb(204, 204, 204);
+      cursor: default;
     }
   }
   @media screen and (min-width: 1250px) {
@@ -423,6 +434,7 @@ export const PanelBasket = styled.a`
   font-size: 18px;
   color: rgb(26, 26, 26);
   transition: all 0.3s;
+  cursor: pointer;
   @media screen and (max-width: 400px) {
     font-size: 14px;
     padding: 0 10px;
@@ -434,16 +446,40 @@ export const PanelBasket = styled.a`
       border-radius: 8px 8px 0 0;
       border: none;
       background-color: rgb(204, 204, 204);
+      cursor: default;
     }
   }
 
   @media screen and (min-width: 1250px) {
     &:hover ${DropDown} {
       display: block;
-      right: -2.9rem;
+      right: -2.75rem;
       top: 2.2rem;
       z-index: 100;
       border-radius: 0px 8px 8px 8px;
     }
   }
+`;
+export const RightClose = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  font-size: 20px;
+  font-weight: bold;
+  & svg {
+    margin-left: 1rem;
+    font-size: 26px;
+    &:hover {
+      background-color: silver;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+`;
+export const RightPanelClose = styled.div`
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid silver;
+  display: flex;
+  align-items: center;
 `;

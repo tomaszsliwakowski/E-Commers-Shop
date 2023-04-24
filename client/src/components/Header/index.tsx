@@ -26,11 +26,25 @@ import {
   DropDown,
   DropOpt,
   DropBtn,
+  RightClose,
+  RightPanelClose,
 } from "./styles/HeaderStyle";
 import { DropDownProps, JsxProps } from "../../types/Types";
 
 export function Header(props: JsxProps) {
-  return <Container>{props.children}</Container>;
+  return (
+    <Container
+      style={{
+        paddingRight: `${
+          props.active?.Account || props.active?.Basket || props.active2
+            ? "1.05rem"
+            : "0rem"
+        }`,
+      }}
+    >
+      {props.children}
+    </Container>
+  );
 }
 
 Header.Menu = function HeaderMenu(props: JsxProps) {
@@ -109,26 +123,48 @@ Header.UserPanel = function HeaderUserPanel(props: JsxProps) {
   return <UserPanel>{props.children}</UserPanel>;
 };
 
-Header.UserPanelAccount = function HeaderUserPanelAccount(
+Header.UserPanelAccountMin = function HeaderUserPanelAccountMin(
   props: DropDownProps
 ) {
   return (
     <PanelAccount
-      href={props.href}
-      onClick={() => props.click((prev) => !prev)}
+      onClick={() =>
+        props.click({
+          Account: true,
+          Basket: false,
+        })
+      }
     >
       {props.children}
     </PanelAccount>
   );
 };
 
-Header.UserPanelBasket = function HeaderUserPanelBasket(props: DropDownProps) {
+Header.UserPanelBasketMin = function HeaderUserPanelBasketMin(
+  props: DropDownProps
+) {
   return (
-    <PanelBasket href={props.href} onClick={() => props.click((prev) => !prev)}>
+    <PanelBasket
+      onClick={() =>
+        props.click({
+          Account: false,
+          Basket: true,
+        })
+      }
+    >
       {props.children}
     </PanelBasket>
   );
 };
+
+Header.UserPanelAccount = function HeaderUserPanelAccount(props: JsxProps) {
+  return <PanelAccount href={props.href}>{props.children}</PanelAccount>;
+};
+
+Header.UserPanelBasket = function HeaderUserPanelBasket(props: JsxProps) {
+  return <PanelBasket href={props.href}>{props.children}</PanelBasket>;
+};
+
 Header.PanelName = function HeaderPanelName(props: JsxProps) {
   return <Name>{props.children}</Name>;
 };
@@ -155,4 +191,11 @@ Header.DropDown = function HeaderDropDown(props: JsxProps) {
 
 Header.DropOpt = function HeaderDropOpt(props: JsxProps) {
   return <DropOpt>{props.children}</DropOpt>;
+};
+
+Header.CloseRightPanel = function CloseRightPanel(props: JsxProps) {
+  return <RightPanelClose>{props.children}</RightPanelClose>;
+};
+Header.CloseRight = function CloseRight(props: JsxProps) {
+  return <RightClose>{props.children}</RightClose>;
 };

@@ -1,5 +1,5 @@
 import { type } from "os";
-import { ReactNode, SetStateAction } from "react";
+import { ReactNode } from "react";
 
 export type JsxProps = {
   children?: ReactNode;
@@ -9,12 +9,19 @@ export type JsxProps = {
   scrollDisplay?: string;
   width?: number;
   style?: string;
+  active?: PanelActiveProps;
+  active2?: boolean;
 };
 
 export type DropDownProps = {
   children?: ReactNode;
   href?: string;
-  click: React.Dispatch<React.SetStateAction<boolean>>;
+  click: React.Dispatch<React.SetStateAction<PanelActiveProps>>;
+};
+
+export type PanelActiveProps = {
+  Account: boolean;
+  Basket: boolean;
 };
 
 export type LinkProps = {
