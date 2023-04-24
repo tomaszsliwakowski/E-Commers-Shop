@@ -72,12 +72,26 @@ const HeaderSection = () => {
         </Header.Search>
         <Header.UserPanel>
           <Header.UserPanelBasket href="#" click={setActiveRightMenu}>
-            <SlBasket />
-            <Header.PanelName>Koszyk</Header.PanelName>
+            <Header.DropBtn>
+              <SlBasket />
+              Koszyk
+            </Header.DropBtn>
+            <Header.DropDown>
+              <Header.DropOpt>1</Header.DropOpt>
+              <Header.DropOpt>2</Header.DropOpt>
+              <Header.DropOpt>3</Header.DropOpt>
+            </Header.DropDown>
           </Header.UserPanelBasket>
           <Header.UserPanelAccount href="#" click={setActiveRightMenu}>
-            <AiOutlineUser />
-            <Header.PanelName>Konto</Header.PanelName>
+            <Header.DropBtn>
+              <AiOutlineUser />
+              Konto
+            </Header.DropBtn>
+            <Header.DropDown>
+              <Header.DropOpt>1</Header.DropOpt>
+              <Header.DropOpt>2</Header.DropOpt>
+              <Header.DropOpt>3</Header.DropOpt>
+            </Header.DropDown>
           </Header.UserPanelAccount>
         </Header.UserPanel>
         <Header.Menu

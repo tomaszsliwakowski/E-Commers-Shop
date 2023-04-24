@@ -23,6 +23,9 @@ import {
   PanelScroll,
   ListScroll,
   ListElScroll,
+  DropDown,
+  DropOpt,
+  DropBtn,
 } from "./styles/HeaderStyle";
 import { DropDownProps, JsxProps } from "../../types/Types";
 
@@ -140,4 +143,16 @@ Header.CloseMenu = function HeaderCloseMenu(props: JsxProps) {
 
 Header.Blur = function HeaderBlur({ ...restprops }) {
   return <Blur {...restprops}></Blur>;
+};
+
+Header.DropBtn = function HeaderDropBtn({ ...restprops }) {
+  return <DropBtn {...restprops} />;
+};
+
+Header.DropDown = function HeaderDropDown(props: JsxProps) {
+  return <DropDown>{props.children}</DropDown>;
+};
+
+Header.DropOpt = function HeaderDropOpt(props: JsxProps) {
+  return <DropOpt>{props.children}</DropOpt>;
 };

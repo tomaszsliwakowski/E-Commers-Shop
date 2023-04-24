@@ -296,49 +296,6 @@ export const ListElScroll = styled.li`
   }
 `;
 
-export const PanelAccount = styled.a`
-  text-decoration: none;
-  height: 2.2rem;
-  width: auto;
-  padding: 0px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  font-size: 18px;
-  color: rgb(26, 26, 26);
-  transition: all 0.3s;
-  @media screen and (max-width: 400px) {
-    font-size: 14px;
-    padding: 0 10px;
-  }
-  &:hover {
-    box-shadow: 0 0 5px silver;
-    border-radius: 8px;
-  }
-`;
-export const PanelBasket = styled.a`
-  text-decoration: none;
-  height: 2.2rem;
-  width: auto;
-  padding: 0px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  font-size: 18px;
-  color: rgb(26, 26, 26);
-  transition: all 0.3s;
-  @media screen and (max-width: 400px) {
-    font-size: 14px;
-    padding: 0 10px;
-  }
-  &:hover {
-    box-shadow: 0 0 5px silver;
-    border-radius: 8px;
-  }
-`;
-export const Name = styled.span``;
 export const Hamburger = styled.div`
   display: flex;
   justify-content: center;
@@ -393,4 +350,100 @@ export const Blur = styled.div`
   min-height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 70%);
+`;
+
+export const DropDown = styled.div`
+  display: none;
+  position: absolute;
+  top: 2.2rem;
+  right: 0;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 0px 5px silver;
+  z-index: 1;
+  border-radius: 8px 0px 8px 8px;
+`;
+export const DropOpt = styled.div`
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+`;
+export const Name = styled.span``;
+export const DropBtn = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+`;
+
+export const PanelAccount = styled.a`
+  position: relative;
+  text-decoration: none;
+  height: 2.2rem;
+  width: auto;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 18px;
+  color: rgb(26, 26, 26);
+  transition: all 0.3s;
+  @media screen and (max-width: 400px) {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+  &:hover {
+    border-radius: 8px;
+    box-shadow: 0 0 5px silver;
+    @media screen and (min-width: 1250px) {
+      border-radius: 8px 8px 0 0;
+      border: none;
+      background-color: rgb(204, 204, 204);
+    }
+  }
+  @media screen and (min-width: 1250px) {
+    &:hover ${DropDown} {
+      display: block;
+      z-index: 100;
+    }
+  }
+`;
+export const PanelBasket = styled.a`
+  position: relative;
+  text-decoration: none;
+  height: 2.2rem;
+  width: auto;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 18px;
+  color: rgb(26, 26, 26);
+  transition: all 0.3s;
+  @media screen and (max-width: 400px) {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+  &:hover {
+    box-shadow: 0 0 5px silver;
+    border-radius: 8px;
+    @media screen and (min-width: 1250px) {
+      border-radius: 8px 8px 0 0;
+      border: none;
+      background-color: rgb(204, 204, 204);
+    }
+  }
+
+  @media screen and (min-width: 1250px) {
+    &:hover ${DropDown} {
+      display: block;
+      right: -2.9rem;
+      top: 2.2rem;
+      z-index: 100;
+      border-radius: 0px 8px 8px 8px;
+    }
+  }
 `;
