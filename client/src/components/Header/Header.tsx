@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Header } from "./index";
-import { AiOutlineSearch, AiOutlineUser, AiOutlineClose } from "react-icons/ai";
-import { RiComputerFill } from "react-icons/ri";
-import { BsLaptop, BsKeyboard } from "react-icons/bs";
-import { FiSmartphone } from "react-icons/fi";
-import { GiComputerFan, GiHamburgerMenu } from "react-icons/gi";
+import { AiOutlineSearch } from "react-icons/ai";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
-import { SlBasket } from "react-icons/sl";
+
 import useWindowSize from "../../hooks/useWindowSize";
 import {
   PanelActiveProps,
@@ -14,6 +11,8 @@ import {
   WindowSizeType,
 } from "../../types/Types";
 import useScrollPosition from "../../hooks/ScrollPosition";
+import UserPanel from "./userpanel";
+import Menu from "./menu";
 
 const HeaderSection = () => {
   const [activeLeftMenu, setActiveLeftMenu] = useState<boolean>(false);
@@ -78,81 +77,11 @@ const HeaderSection = () => {
           </Header.SearchBar>
         </Header.Search>
         <Header.UserPanel>
-          {width && width >= 1250 ? (
-            <>
-              <Header.UserPanelBasket href="#">
-                <Header.DropBtn>
-                  <SlBasket />
-                  Koszyk
-                </Header.DropBtn>
-                <Header.DropDown>
-                  <Header.DropOpt>1</Header.DropOpt>
-                  <Header.DropOpt>2</Header.DropOpt>
-                  <Header.DropOpt>3</Header.DropOpt>
-                </Header.DropDown>
-              </Header.UserPanelBasket>
-              <Header.UserPanelAccount href="#">
-                <Header.DropBtn>
-                  <AiOutlineUser />
-                  Konto
-                </Header.DropBtn>
-                <Header.DropDown>
-                  <Header.DropOpt>1</Header.DropOpt>
-                  <Header.DropOpt>2</Header.DropOpt>
-                  <Header.DropOpt>3</Header.DropOpt>
-                </Header.DropDown>
-              </Header.UserPanelAccount>
-            </>
-          ) : (
-            <>
-              <Header.UserPanelBasketMin click={setActiveRightMenu}>
-                <Header.DropBtn>
-                  <SlBasket />
-                  Koszyk
-                </Header.DropBtn>
-              </Header.UserPanelBasketMin>
-              <Header.UserPanelAccountMin click={setActiveRightMenu}>
-                <Header.DropBtn>
-                  <AiOutlineUser />
-                  Konto
-                </Header.DropBtn>
-              </Header.UserPanelAccountMin>
-              {activeRightMenu.Account ? (
-                <Header.DropDown>
-                  <Header.CloseRightPanel>
-                    <Header.CloseRight>
-                      <AiOutlineClose
-                        onClick={() =>
-                          setActiveRightMenu({ Account: false, Basket: false })
-                        }
-                      />
-                      Konto
-                    </Header.CloseRight>
-                  </Header.CloseRightPanel>
-                  <Header.DropOpt>A</Header.DropOpt>
-                  <Header.DropOpt>A</Header.DropOpt>
-                  <Header.DropOpt>A</Header.DropOpt>
-                </Header.DropDown>
-              ) : null}
-              {activeRightMenu.Basket ? (
-                <Header.DropDown>
-                  <Header.CloseRightPanel>
-                    <Header.CloseRight>
-                      <AiOutlineClose
-                        onClick={() =>
-                          setActiveRightMenu({ Account: false, Basket: false })
-                        }
-                      />
-                      Koszyk
-                    </Header.CloseRight>
-                  </Header.CloseRightPanel>
-                  <Header.DropOpt>B</Header.DropOpt>
-                  <Header.DropOpt>B</Header.DropOpt>
-                  <Header.DropOpt>B</Header.DropOpt>
-                </Header.DropDown>
-              ) : null}
-            </>
-          )}
+          <UserPanel
+            width={width}
+            activeRightMenu={activeRightMenu}
+            setActiveRightMenu={setActiveRightMenu}
+          />
         </Header.UserPanel>
         <Header.Menu
           display={
@@ -167,44 +96,11 @@ const HeaderSection = () => {
           scroll={ScrollAction}
           scrollDisplay={activeLeftMenu ? "block" : "none"}
         >
-          {activeLeftMenu ? (
-            <Header.MenuClosePanel>
-              <Header.CloseMenu>
-                <AiOutlineClose
-                  onClick={() => setActiveLeftMenu((prev) => !prev)}
-                />
-                Menu
-              </Header.CloseMenu>
-            </Header.MenuClosePanel>
-          ) : null}
-          <Header.MenuList scroll={ScrollAction}>
-            <Header.MenuListEl scroll={ScrollAction}>
-              <NavLink to="#">
-                <FiSmartphone /> Smartphony
-              </NavLink>
-            </Header.MenuListEl>
-            <Header.MenuListEl scroll={ScrollAction}>
-              <NavLink to="#">
-                <BsLaptop />
-                Laptopy
-              </NavLink>
-            </Header.MenuListEl>
-            <Header.MenuListEl scroll={ScrollAction}>
-              <NavLink to="#">
-                <RiComputerFill /> Komputery
-              </NavLink>
-            </Header.MenuListEl>
-            <Header.MenuListEl scroll={ScrollAction}>
-              <NavLink to="#">
-                <GiComputerFan /> Podzespoły komputerowe
-              </NavLink>
-            </Header.MenuListEl>
-            <Header.MenuListEl scroll={ScrollAction}>
-              <NavLink to="#">
-                <BsKeyboard /> Akcesoria
-              </NavLink>
-            </Header.MenuListEl>
-          </Header.MenuList>
+          <Menu
+            activeLeftMenu={activeLeftMenu}
+            setActiveLeftMenu={setActiveLeftMenu}
+            ScrollAction={ScrollAction}
+          />
         </Header.Menu>
         {activeLeftMenu ? (
           <Header.Blur onClick={() => setActiveLeftMenu(false)}></Header.Blur>

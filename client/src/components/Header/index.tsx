@@ -28,6 +28,8 @@ import {
   DropBtn,
   RightClose,
   RightPanelClose,
+  LogBtn,
+  RegBtn,
 } from "./styles/HeaderStyle";
 import { DropDownProps, JsxProps } from "../../types/Types";
 
@@ -193,9 +195,17 @@ Header.DropOpt = function HeaderDropOpt(props: JsxProps) {
   return <DropOpt>{props.children}</DropOpt>;
 };
 
-Header.CloseRightPanel = function CloseRightPanel(props: JsxProps) {
+Header.CloseRightPanel = function HeaderCloseRightPanel(props: JsxProps) {
   return <RightPanelClose>{props.children}</RightPanelClose>;
 };
-Header.CloseRight = function CloseRight(props: JsxProps) {
+Header.CloseRight = function HeaderCloseRight(props: JsxProps) {
   return <RightClose>{props.children}</RightClose>;
+};
+
+Header.LoginBtn = function HeaderLoginBtn(props: JsxProps) {
+  return <LogBtn>{props.children}</LogBtn>;
+};
+
+Header.RegisterBtn = function HeaderRegisterBtn(props: JsxProps) {
+  return <RegBtn>{props.children}</RegBtn>;
 };

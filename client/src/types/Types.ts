@@ -59,3 +59,15 @@ export type HomeProductType = {
   price: number;
   link: string;
 };
+
+export type UserPanelProps = {
+  width?: number;
+  activeRightMenu: PanelActiveProps;
+  setActiveRightMenu: React.Dispatch<React.SetStateAction<PanelActiveProps>>;
+};
+
+export type UserMenuProps = {
+  activeLeftMenu: boolean;
+  setActiveLeftMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  ScrollAction: boolean;
+};

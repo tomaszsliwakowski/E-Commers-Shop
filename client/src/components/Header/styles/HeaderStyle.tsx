@@ -356,12 +356,13 @@ export const DropDown = styled.div`
   display: none;
   position: absolute;
   top: 2.2rem;
-  right: 0;
+  right: 0rem;
   background-color: white;
   min-width: 160px;
   box-shadow: 0px 0px 5px silver;
   z-index: 1;
   border-radius: 8px 0px 8px 8px;
+
   @media screen and (max-width: 1250px) {
     display: block;
     min-height: 100vh;
@@ -377,8 +378,12 @@ export const DropOpt = styled.div`
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  width: 100%;
 `;
-export const Name = styled.span``;
+export const Name = styled.span`
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+`;
 export const DropBtn = styled.span`
   display: flex;
   align-items: center;
@@ -411,13 +416,19 @@ export const PanelAccount = styled.a`
       border-radius: 8px 8px 0 0;
       border: none;
       background-color: rgb(204, 204, 204);
-      cursor: default;
     }
   }
   @media screen and (min-width: 1250px) {
     &:hover ${DropDown} {
       display: block;
       z-index: 100;
+      min-width: 200px;
+    }
+    &:hover ${DropOpt} {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: default;
     }
   }
 `;
@@ -446,17 +457,23 @@ export const PanelBasket = styled.a`
       border-radius: 8px 8px 0 0;
       border: none;
       background-color: rgb(204, 204, 204);
-      cursor: default;
     }
   }
 
   @media screen and (min-width: 1250px) {
     &:hover ${DropDown} {
       display: block;
-      right: -2.75rem;
+      right: -8.4rem;
       top: 2.2rem;
       z-index: 100;
       border-radius: 0px 8px 8px 8px;
+    }
+    &:hover ${DropOpt} {
+      min-width: 250px;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      cursor: default;
     }
   }
 `;
@@ -482,4 +499,33 @@ export const RightPanelClose = styled.div`
   border-bottom: 1px solid silver;
   display: flex;
   align-items: center;
+`;
+
+export const LogBtn = styled.button`
+  width: 90%;
+  height: 30px;
+  margin: 0.5rem 0 0 0;
+  border-radius: 1rem;
+  background-color: rgb(0, 130, 250);
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(0, 112, 204);
+  }
+`;
+export const RegBtn = styled.button`
+  width: 90%;
+  height: 30px;
+  margin: 0 0 0.5rem 0;
+  border-radius: 1rem;
+  border: 1px solid rgb(0, 130, 250);
+  color: rgb(0, 130, 250);
+  font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(0, 112, 204);
+    color: white;
+  }
 `;
