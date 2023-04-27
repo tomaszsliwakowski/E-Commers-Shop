@@ -26,29 +26,29 @@ const Menu = ({
         </Header.MenuClosePanel>
       ) : null}
       <Header.MenuList scroll={ScrollAction}>
-        <Header.MenuListEl scroll={ScrollAction}>
-          <NavLink to="/products/phone">
+        <Header.MenuListEl scroll={ScrollAction} Click={setActiveLeftMenu}>
+          <NavLink to="/products/Smartphony">
             <FiSmartphone /> Smartphony
           </NavLink>
         </Header.MenuListEl>
-        <Header.MenuListEl scroll={ScrollAction}>
-          <NavLink to="/products/notebook">
+        <Header.MenuListEl scroll={ScrollAction} Click={setActiveLeftMenu}>
+          <NavLink to="/products/Laptopy">
             <BsLaptop />
             Laptopy
           </NavLink>
         </Header.MenuListEl>
-        <Header.MenuListEl scroll={ScrollAction}>
-          <NavLink to="/products/desktop">
+        <Header.MenuListEl scroll={ScrollAction} Click={setActiveLeftMenu}>
+          <NavLink to="/products/Komputery">
             <RiComputerFill /> Komputery
           </NavLink>
         </Header.MenuListEl>
-        <Header.MenuListEl scroll={ScrollAction}>
-          <NavLink to="/products/components">
+        <Header.MenuListEl scroll={ScrollAction} Click={setActiveLeftMenu}>
+          <NavLink to="/products/Podzespoły-komputerowe">
             <GiComputerFan /> Podzespoły komputerowe
           </NavLink>
         </Header.MenuListEl>
-        <Header.MenuListEl scroll={ScrollAction}>
-          <NavLink to="/products/accessories">
+        <Header.MenuListEl scroll={ScrollAction} Click={setActiveLeftMenu}>
+          <NavLink to="/products/Akcesoria">
             <BsKeyboard /> Akcesoria
           </NavLink>
         </Header.MenuListEl>

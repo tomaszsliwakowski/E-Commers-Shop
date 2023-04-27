@@ -31,7 +31,7 @@ import {
   LogBtn,
   RegBtn,
 } from "./styles/HeaderStyle";
-import { DropDownProps, JsxProps } from "../../types/Types";
+import { DropDownProps, HeaderProps, JsxProps } from "../../types/Types";
 
 export function Header(props: JsxProps) {
   return (
@@ -66,11 +66,13 @@ Header.MenuList = function HeaderMenuList(props: JsxProps) {
     <List>{props.children}</List>
   );
 };
-Header.MenuListEl = function HeaderMenuListEL(props: JsxProps) {
+Header.MenuListEl = function HeaderMenuListEL(props: HeaderProps) {
   return props.scroll ? (
-    <ListElScroll>{props.children}</ListElScroll>
+    <ListElScroll onClick={() => props.Click(false)}>
+      {props.children}
+    </ListElScroll>
   ) : (
-    <ListEl>{props.children}</ListEl>
+    <ListEl onClick={() => props.Click(false)}>{props.children}</ListEl>
   );
 };
 

@@ -523,6 +523,7 @@ export const RegBtn = styled.button`
   border: 1px solid rgb(0, 130, 250);
   color: rgb(0, 130, 250);
   font-weight: bold;
+  background-color: white;
   cursor: pointer;
   &:hover {
     background-color: rgb(0, 112, 204);

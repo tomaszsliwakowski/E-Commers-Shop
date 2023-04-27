@@ -71,3 +71,9 @@ export type UserMenuProps = {
   setActiveLeftMenu: React.Dispatch<React.SetStateAction<boolean>>;
   ScrollAction: boolean;
 };
+
+export type HeaderProps = {
+  children?: ReactNode;
+  Click: Function;
+  scroll?: boolean;
+};
