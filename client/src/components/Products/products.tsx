@@ -8,14 +8,17 @@ const prod: any = {
   price: 1269.0,
   link: "#",
   id: 0,
-  category: "",
-  producer: "",
-  destiny: "",
+  filters: {
+    category: "cat",
+    producer: "prod",
+    destiny: "des",
+  },
 };
 
 const ProductsSection = () => {
   let { category } = useParams();
-
+  let filtrCount: string[] = Object.keys(prod.filters);
+  let filtrData: any = Object.values(prod.filters);
   return (
     <Products>
       <Products.Header>
@@ -28,12 +31,14 @@ const ProductsSection = () => {
           <Products.F_ClearBtn>Wyczyść filtry</Products.F_ClearBtn>
         </Products.F_Top>
         <Products.F_Bottom>
-          <Products.F_Section>
-            <Products.F_Name>Producent</Products.F_Name>
-            <Products.F_List>
-              <Products.F_Element>el1</Products.F_Element>
-            </Products.F_List>
-          </Products.F_Section>
+          {filtrCount.map((item, id) => (
+            <Products.F_Section key={id}>
+              <Products.F_Name>{filtrCount[id]}</Products.F_Name>
+              <Products.F_List>
+                <Products.F_Element>{filtrData[id]}</Products.F_Element>
+              </Products.F_List>
+            </Products.F_Section>
+          ))}
         </Products.F_Bottom>
       </Products.Filters>
       <Products.ProductsSec>

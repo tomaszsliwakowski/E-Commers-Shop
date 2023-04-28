@@ -11,7 +11,7 @@ export const Container = styled.div`
   min-height: 100vh;
   display: grid;
   grid-template-columns: 0.3fr 0.7fr;
-  grid-template-rows: 0.1fr 0.9fr;
+  grid-template-rows: 0.08fr 0.92fr;
 `;
 export const Filters = styled.div`
   background-color: silver;
@@ -40,14 +40,23 @@ export const FTop = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
 `;
 export const FBottom = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  padding: 0.5rem;
 `;
 export const FTitle = styled.h3``;
-export const FClearBtn = styled.button``;
+export const FClearBtn = styled.button`
+  width: 60%;
+  background: none;
+  border: none;
+  cursor: pointer;
+`;
 export const FSection = styled.div``;
 export const FName = styled.h4``;
 export const FList = styled.ul`
@@ -56,3 +65,55 @@ export const FList = styled.ul`
 export const FElement = styled.li``;
 export const HCount = styled.span``;
 export const HTitle = styled.h1``;
+
+export const FCheckbox = styled.input`
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+`;
+export const FCheckmark = styled.span`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+  &::after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+`;
+
+export const FChoose = styled.label`
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  &:hover ${FCheckbox} ~ ${FCheckmark} {
+    background-color: #ccc;
+  }
+  & ${FCheckbox}:checked ~ ${FCheckmark} {
+    background-color: #2196f3;
+  }
+  & ${FCheckbox}:checked ~ ${FCheckmark}::after {
+    display: block;
+  }
+  & ${FCheckmark}::after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
+`;
