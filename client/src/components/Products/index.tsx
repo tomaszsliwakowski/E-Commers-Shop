@@ -36,6 +36,13 @@ import {
   FPriceCurrensy,
   FPriceFromTo,
   FPriceInput,
+  SPList,
+  SPListEl,
+  SPSelect,
+  SPShow,
+  SPShowOpt,
+  SPSort,
+  AddToCart,
 } from "./style/productStyle";
 
 export function Products(props: JsxProps) {
@@ -162,4 +169,26 @@ Products.I_Price = function ProductsItemPrice(props: JsxProps) {
 };
 Products.I_Basket = function ProductsItemBasket(props: JsxProps) {
   return <IBasket>{props.children}</IBasket>;
+};
+Products.AddToCart = function ProductsAddToCart(props: JsxProps) {
+  return <AddToCart>{props.children}</AddToCart>;
+};
+
+Products.SP_Select = function ProductsSPSelect(props: JsxProps) {
+  return <SPSelect>{props.children}</SPSelect>;
+};
+Products.SP_Sort = function ProductsSPSort(props: JsxProps) {
+  return <SPSort>{props.children}</SPSort>;
+};
+Products.SP_Show = function ProductsSPShow(props: JsxProps) {
+  return <SPShow>{props.children}</SPShow>;
+};
+Products.SP_ShowOpt = function ProductsSPShowOpt(props: JsxProps) {
+  return <SPShowOpt>{props.children}</SPShowOpt>;
+};
+Products.SP_List = function ProductsSList(props: JsxProps) {
+  return <SPList>{props.children}</SPList>;
+};
+Products.SP_ListEl = function ProductsSListEl(props: JsxProps) {
+  return <SPListEl>{props.children}</SPListEl>;
 };

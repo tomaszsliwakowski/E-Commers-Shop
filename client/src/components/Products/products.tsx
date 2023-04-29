@@ -3,6 +3,7 @@ import { Products } from ".";
 import { useParams } from "react-router-dom";
 import Product from "./productList";
 import { GetProductsType, ProductsType } from "../../types/Types";
+import { AiOutlineCaretDown, AiFillCaretUp } from "react-icons/ai";
 
 const prod: GetProductsType = {
   products: [
@@ -13,6 +14,92 @@ const prod: GetProductsType = {
       link: "#",
       id: 0,
       category: "Laptop",
+      opinion: 3,
+      spec: [
+        "Procesor: AMD Ryzen 5 6600H",
+        "Pamięć: 16 GB",
+        "Grafika: Nvidia GeForce RTX 3060",
+        "Ekran: Matowy,LED,IPS",
+      ],
+      //components: "karta graficzna",
+    },
+    {
+      img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/6/pr_2022_6_7_14_59_54_423_00.jpg",
+      name: "Acer Nitro 5 R5-6600H/16GB/512 RTX3060 165Hz",
+      price: 4599.0,
+      link: "#",
+      id: 0,
+      category: "Laptop",
+      opinion: 3,
+      spec: [
+        "Procesor: AMD Ryzen 5 6600H",
+        "Pamięć: 16 GB",
+        "Grafika: Nvidia GeForce RTX 3060",
+        "Ekran: Matowy,LED,IPS",
+      ],
+      //components: "karta graficzna",
+    },
+    {
+      img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/6/pr_2022_6_7_14_59_54_423_00.jpg",
+      name: "Acer Nitro 5 R5-6600H/16GB/512 RTX3060 165Hz",
+      price: 4599.0,
+      link: "#",
+      id: 0,
+      category: "Laptop",
+      opinion: 3,
+      spec: [
+        "Procesor: AMD Ryzen 5 6600H",
+        "Pamięć: 16 GB",
+        "Grafika: Nvidia GeForce RTX 3060",
+        "Ekran: Matowy,LED,IPS",
+      ],
+      //components: "karta graficzna",
+    },
+    {
+      img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/6/pr_2022_6_7_14_59_54_423_00.jpg",
+      name: "Acer Nitro 5 R5-6600H/16GB/512 RTX3060 165Hz",
+      price: 4599.0,
+      link: "#",
+      id: 0,
+      category: "Laptop",
+      opinion: 3,
+      spec: [
+        "Procesor: AMD Ryzen 5 6600H",
+        "Pamięć: 16 GB",
+        "Grafika: Nvidia GeForce RTX 3060",
+        "Ekran: Matowy,LED,IPS",
+      ], //components: "karta graficzna",
+    },
+    {
+      img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/6/pr_2022_6_7_14_59_54_423_00.jpg",
+      name: "Acer Nitro 5 R5-6600H/16GB/512 RTX3060 165Hz",
+      price: 4599.0,
+      link: "#",
+      id: 0,
+      category: "Laptop",
+      opinion: 3,
+      spec: [
+        "Procesor: AMD Ryzen 5 6600H",
+        "Pamięć: 16 GB",
+        "Grafika: Nvidia GeForce RTX 3060",
+        "Ekran: Matowy,LED,IPS",
+      ],
+      //components: "karta graficzna",
+    },
+    {
+      img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/6/pr_2022_6_7_14_59_54_423_00.jpg",
+      name: "Acer Nitro 5 R5-6600H/16GB/512 RTX3060 165Hz",
+      price: 4599.0,
+      link: "#",
+      id: 0,
+      category: "Laptop",
+      opinion: 3,
+      spec: [
+        "Procesor: AMD Ryzen 5 6600H",
+        "Pamięć: 16 GB",
+        "Grafika: Nvidia GeForce RTX 3060",
+        "Ekran: Matowy,LED,IPS",
+      ],
       //components: "karta graficzna",
     },
   ],
@@ -92,7 +179,18 @@ const ProductsSection = () => {
         </Products.F_Bottom>
       </Products.Filters>
       <Products.ProductsSec>
-        <Products.SortPanel>sp</Products.SortPanel>
+        <Products.SortPanel>
+          <Products.SP_Select>
+            <Products.SP_Sort>sortowanie</Products.SP_Sort>
+            <Products.SP_Show>
+              <Products.SP_ShowOpt>Od najpopularniejszych</Products.SP_ShowOpt>
+              <AiOutlineCaretDown />
+            </Products.SP_Show>
+            <Products.SP_List>
+              <Products.SP_ListEl>cena</Products.SP_ListEl>
+            </Products.SP_List>
+          </Products.SP_Select>
+        </Products.SortPanel>
         <Products.All>
           {prod.products.map((item: ProductsType, id: number) => (
             <Product item={item} key={id} />

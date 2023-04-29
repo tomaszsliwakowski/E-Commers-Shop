@@ -8,7 +8,6 @@ export const Container = styled.div`
   margin-right: auto;
   padding: 0 2rem 0 2rem;
   margin-top: 7rem;
-  min-height: 100vh;
   display: grid;
   grid-template-columns: 0.25fr 0.75fr;
   grid-template-rows: 0.08fr 0.92fr;
@@ -24,15 +23,8 @@ export const Filters = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  border: 1px solid silver;
-  border-radius: 10px;
 `;
-export const ProductsSec = styled.div`
-  background-color: lightgreen;
-  width: 100%;
-  padding: 0.5rem;
-  border: none;
-`;
+
 export const Header = styled.div`
   background-color: white;
   grid-column-start: 1;
@@ -47,16 +39,33 @@ export const Header = styled.div`
     padding-left: 1rem;
   }
 `;
-export const SortPanel = styled.div`
-  background-color: wheat;
+export const ProductsSec = styled.div`
+  background-color: white;
+  width: 100%;
+  padding: 0 1.5rem;
+  border: none;
+  display: grid;
+  grid-template-rows: 0.1fr 0.9fr;
 `;
-export const All = styled.div``;
+export const SortPanel = styled.div`
+  background-color: white;
+  height: 60px;
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
 export const FTop = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
+  border: 1px solid silver;
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: none;
   @media screen and (min-width: 1250px) {
     padding: 0.5rem 1rem;
   }
@@ -67,6 +76,9 @@ export const FBottom = styled.div`
   flex-direction: column;
   gap: 10px;
   padding: 0.5rem;
+  border: 1px solid silver;
+  border-radius: 0px 0px 10px 10px;
+  border-top: none;
   @media screen and (min-width: 1250px) {
     padding: 0.5rem 1rem;
   }
@@ -197,24 +209,133 @@ export const FPriceCurrensy = styled.div`
   width: fit-content;
   padding: 0 5px;
 `;
+export const All = styled.div`
+  padding: 1rem 0.5rem;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+`;
 
-export const Item = styled.div``;
 export const IImg = styled.div`
   width: 100%;
   max-width: 300px;
 `;
 export const IDesc = styled.div``;
-export const IName = styled.div``;
-export const IOpinion = styled.div``;
-export const ISpecList = styled.ul``;
+export const IName = styled.div`
+  font-size: 14px;
+  width: 100%;
+`;
+export const IOpinion = styled.div`
+  width: 100%;
+  height: 20px;
+  display: flex;
+  padding-top: 2px;
+  align-items: center;
+  & img {
+    width: 20px;
+  }
+`;
+export const ISpecList = styled.ul`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 5px 0;
+`;
 export const ISpecEl = styled.li`
   list-style: none;
+  font-size: 12px;
+  color: rgb(77, 77, 77);
 `;
-export const IBuyPanel = styled.div``;
-export const IPrice = styled.div``;
+export const IBuyPanel = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0 0rem 0;
+`;
+export const IPrice = styled.span`
+  font-size: 18px;
+  letter-spacing: 1px;
+`;
 export const IBasket = styled.div``;
 export const Image = styled.img`
   position: relative;
   width: 100%;
   height: auto;
+`;
+
+export const SPSelect = styled.div`
+  display: flex;
+  border: 1px solid silver;
+  border-radius: 10px;
+  position: relative;
+  height: 35px;
+  margin-left: 1rem;
+  padding: 2px 0.5rem;
+  width: 40%;
+  max-width: 300px;
+  cursor: pointer;
+`;
+export const SPSort = styled.span`
+  position: absolute;
+  top: -12px;
+  left: 5px;
+  background-color: white;
+  padding: 0 5px;
+  color: silver;
+  font-size: 14px;
+`;
+export const SPShow = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+`;
+export const SPShowOpt = styled.span`
+  padding: 0 8px;
+  font-size: 1.8vw;
+  @media screen and (min-width: 850px) {
+    font-size: 16px;
+  }
+`;
+export const SPList = styled.ul`
+  list-style: none;
+  position: absolute;
+  display: none;
+`;
+export const SPListEl = styled.li``;
+export const AddToCart = styled.div`
+  border: 1px solid green;
+  font-size: 20px;
+  padding: 5px;
+  display: flex;
+  visibility: hidden;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  & svg {
+    color: green;
+  }
+  &:hover {
+    background-color: green;
+    & svg {
+      color: white;
+    }
+  }
+`;
+export const Item = styled.a`
+  width: 100%;
+  max-width: 280px;
+  cursor: pointer;
+  padding: 10px;
+  transition: all 0.3s;
+  &:hover ${AddToCart} {
+    visibility: visible;
+  }
+  &:hover {
+    box-shadow: 0 0 8px silver;
+    border-radius: 10px;
+  }
 `;

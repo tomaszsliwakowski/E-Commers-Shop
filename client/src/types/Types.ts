@@ -86,6 +86,8 @@ export type ProductsType = {
   link: string;
   category: string;
   components?: string;
+  opinion: number;
+  spec?: string[];
 };
 
 export type FiltersType = {
