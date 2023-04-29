@@ -77,3 +77,28 @@ export type HeaderProps = {
   Click: Function;
   scroll?: boolean;
 };
+
+export type ProductsType = {
+  id: number;
+  name: string;
+  img: string;
+  price: number;
+  link: string;
+  category: string;
+  components?: string;
+};
+
+export type FiltersType = {
+  Producent?: string[];
+  Przeznaczenie?: string[];
+  Komponenty?: string[];
+};
+
+export type GetProductsType = {
+  products: Array<ProductsType>;
+  filters?: FiltersType;
+};
+
+export type ProductsItemType = {
+  item: ProductsType;
+};

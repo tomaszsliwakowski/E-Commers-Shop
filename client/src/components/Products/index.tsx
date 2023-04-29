@@ -17,6 +17,25 @@ import {
   FElement,
   HTitle,
   HCount,
+  FCheckbox,
+  FCheckmark,
+  FChoose,
+  Item,
+  IBasket,
+  IBuyPanel,
+  IDesc,
+  IImg,
+  IName,
+  IOpinion,
+  IPrice,
+  ISpecEl,
+  ISpecList,
+  Image,
+  FPrice,
+  FPriceCon,
+  FPriceCurrensy,
+  FPriceFromTo,
+  FPriceInput,
 } from "./style/productStyle";
 
 export function Products(props: JsxProps) {
@@ -76,4 +95,71 @@ Products.F_List = function ProductsFList(props: JsxProps) {
 };
 Products.F_Element = function ProductsFElement(props: JsxProps) {
   return <FElement>{props.children}</FElement>;
+};
+Products.F_Checkbox = function ProductsFCheckbox({ ...restprops }) {
+  return <FCheckbox {...restprops} />;
+};
+
+Products.F_Choose = function ProductsFChoose(props: JsxProps) {
+  return <FChoose>{props.children}</FChoose>;
+};
+
+Products.F_Checkmark = function ProductsFCheckmark(props: JsxProps) {
+  return <FCheckmark>{props.children}</FCheckmark>;
+};
+
+Products.F_PriceCon = function ProductsFPriceCon(props: JsxProps) {
+  return <FPriceCon>{props.children}</FPriceCon>;
+};
+Products.F_Price = function ProductsFPrice(props: JsxProps) {
+  return <FPrice>{props.children}</FPrice>;
+};
+Products.F_PriceFromTo = function ProductsFFromTo(props: JsxProps) {
+  return <FPriceFromTo>{props.children}</FPriceFromTo>;
+};
+Products.F_PriceInput = function ProductsFPriceInput({ ...restprops }) {
+  return <FPriceInput {...restprops} />;
+};
+Products.F_PriceCurrency = function ProductsFPriceCurrency(props: JsxProps) {
+  return <FPriceCurrensy>{props.children}</FPriceCurrensy>;
+};
+
+Products.Item = function ProductsItem(props: JsxProps) {
+  return <Item>{props.children}</Item>;
+};
+
+Products.I_Img = function ProductsItemImg(props: JsxProps) {
+  return <IImg>{props.children}</IImg>;
+};
+Products.Image = function ProductsImage({ ...restprops }) {
+  return <Image {...restprops} />;
+};
+
+Products.I_Desc = function ProductsItemDesc(props: JsxProps) {
+  return <IDesc>{props.children}</IDesc>;
+};
+
+Products.I_Name = function ProductsItemName(props: JsxProps) {
+  return <IName>{props.children}</IName>;
+};
+
+Products.I_Opinion = function ProductsItemOpinion(props: JsxProps) {
+  return <IOpinion>{props.children}</IOpinion>;
+};
+
+Products.I_SpecList = function ProductsItemSpecList(props: JsxProps) {
+  return <ISpecList>{props.children}</ISpecList>;
+};
+Products.I_SpecEl = function ProductsItemSpecEl(props: JsxProps) {
+  return <ISpecEl>{props.children}</ISpecEl>;
+};
+Products.I_BuyPanel = function ProductsItemBuyPanel(props: JsxProps) {
+  return <IBuyPanel>{props.children}</IBuyPanel>;
+};
+
+Products.I_Price = function ProductsItemPrice(props: JsxProps) {
+  return <IPrice>{props.children}</IPrice>;
+};
+Products.I_Basket = function ProductsItemBasket(props: JsxProps) {
+  return <IBasket>{props.children}</IBasket>;
 };
