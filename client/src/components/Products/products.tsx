@@ -122,9 +122,10 @@ const ProductsSection = () => {
   let { category } = useParams();
 
   useEffect(() => {
-    const close = (e: any) => {
+    const close = (e: Event) => {
+      let target = e.target as HTMLElement;
       let tag = ["SPAN", "LI", "DIV"];
-      if (tag.includes(e.target.tagName) && e.target.id !== "sort") {
+      if (tag.includes(target.tagName) && target.id !== "sort") {
         setActiveSort(false);
       }
     };
