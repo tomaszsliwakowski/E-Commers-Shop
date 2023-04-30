@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Products } from ".";
 import { useParams } from "react-router-dom";
 import Product from "./productList";
 import { GetProductsType, ProductsType } from "../../types/Types";
 import { AiOutlineCaretDown, AiFillCaretUp } from "react-icons/ai";
+import Filters from "./filters";
 
 const prod: GetProductsType = {
+  category: "Laptop",
   products: [
     {
       img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/6/pr_2022_6_7_14_59_54_423_00.jpg",
@@ -110,12 +112,27 @@ const prod: GetProductsType = {
 };
 
 const ProductsSection = () => {
+  const SortName = [
+    "Ocena klientów: od najlepszej",
+    "Cena: od najtańszych",
+    "Cena: od najdroższych",
+  ];
+  const [SortOpt, setSortOpt] = useState("Ocena klientów: od najlepszej");
+  const [activeSort, setActiveSort] = useState<boolean>(false);
   let { category } = useParams();
-  let filtrCount: string[] = prod.filters ? Object.keys(prod.filters) : [];
-  let filtrData: Array<string[]> = prod.filters
-    ? Object.values(prod.filters)
-    : [];
 
+  useEffect(() => {
+    const close = (e: any) => {
+      let tag = ["SPAN", "LI", "DIV"];
+      if (tag.includes(e.target.tagName) && e.target.id !== "sort") {
+        setActiveSort(false);
+      }
+    };
+    document.body.addEventListener("click", close);
+    return () => {
+      document.body.removeEventListener("click", close);
+    };
+  }, []);
   return (
     <Products>
       <Products.Header>
@@ -148,46 +165,28 @@ const ProductsSection = () => {
               </Products.F_PriceFromTo>
             </Products.F_Price>
           </Products.F_PriceCon>
-          {filtrCount.map((item, id) => (
-            <Products.F_Section key={id}>
-              <Products.F_Name>{item}</Products.F_Name>
-              {item === filtrCount[0]
-                ? filtrData[0].map((it, id) => (
-                    <Products.F_List key={id}>
-                      <Products.F_Element>
-                        <Products.F_Choose>
-                          {it}
-                          <Products.F_Checkbox type="checkbox" />
-                          <Products.F_Checkmark></Products.F_Checkmark>
-                        </Products.F_Choose>
-                      </Products.F_Element>
-                    </Products.F_List>
-                  ))
-                : filtrData[1].map((it, id) => (
-                    <Products.F_List key={id}>
-                      <Products.F_Element>
-                        <Products.F_Choose>
-                          {it}
-                          <Products.F_Checkbox type="checkbox" />
-                          <Products.F_Checkmark></Products.F_Checkmark>
-                        </Products.F_Choose>
-                      </Products.F_Element>
-                    </Products.F_List>
-                  ))}
-            </Products.F_Section>
-          ))}
+          <Filters product={prod} />
         </Products.F_Bottom>
       </Products.Filters>
       <Products.ProductsSec>
         <Products.SortPanel>
-          <Products.SP_Select>
+          <Products.SP_Select active2={activeSort}>
+            <Products.SP_Checkbox
+              type="checkbox"
+              checked={activeSort}
+              onChange={() => setActiveSort((prev) => !prev)}
+            />
             <Products.SP_Sort>sortowanie</Products.SP_Sort>
             <Products.SP_Show>
-              <Products.SP_ShowOpt>Od najpopularniejszych</Products.SP_ShowOpt>
-              <AiOutlineCaretDown />
+              <Products.SP_ShowOpt>{SortOpt}</Products.SP_ShowOpt>
+              {activeSort ? <AiFillCaretUp /> : <AiOutlineCaretDown />}
             </Products.SP_Show>
-            <Products.SP_List>
-              <Products.SP_ListEl>cena</Products.SP_ListEl>
+            <Products.SP_List active={activeSort} click={setActiveSort}>
+              {SortName.map((el, id) => (
+                <Products.SP_ListEl key={id} click={setSortOpt} el={el}>
+                  {el}
+                </Products.SP_ListEl>
+              ))}
             </Products.SP_List>
           </Products.SP_Select>
         </Products.SortPanel>

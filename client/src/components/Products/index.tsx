@@ -1,5 +1,5 @@
 import React from "react";
-import { JsxProps } from "../../types/Types";
+import { JsxProps, SortChooseJSXProps, SortJSXProps } from "../../types/Types";
 import {
   Container,
   Filters,
@@ -43,6 +43,7 @@ import {
   SPShowOpt,
   SPSort,
   AddToCart,
+  SPCheckbox,
 } from "./style/productStyle";
 
 export function Products(props: JsxProps) {
@@ -175,20 +176,49 @@ Products.AddToCart = function ProductsAddToCart(props: JsxProps) {
 };
 
 Products.SP_Select = function ProductsSPSelect(props: JsxProps) {
-  return <SPSelect>{props.children}</SPSelect>;
+  return (
+    <SPSelect
+      id="sort"
+      style={{
+        borderRadius: `${props.active2 ? "10px 10px 0px 0px" : "10px"}`,
+      }}
+    >
+      {props.children}
+    </SPSelect>
+  );
 };
 Products.SP_Sort = function ProductsSPSort(props: JsxProps) {
-  return <SPSort>{props.children}</SPSort>;
+  return <SPSort id="sort">{props.children}</SPSort>;
 };
 Products.SP_Show = function ProductsSPShow(props: JsxProps) {
-  return <SPShow>{props.children}</SPShow>;
+  return <SPShow id="sort">{props.children}</SPShow>;
 };
 Products.SP_ShowOpt = function ProductsSPShowOpt(props: JsxProps) {
-  return <SPShowOpt>{props.children}</SPShowOpt>;
+  return <SPShowOpt id="sort">{props.children}</SPShowOpt>;
 };
-Products.SP_List = function ProductsSList(props: JsxProps) {
-  return <SPList>{props.children}</SPList>;
+Products.SP_List = function ProductsSList(props: SortJSXProps) {
+  return (
+    <SPList
+      id="sort"
+      onClick={() => props.click((prev) => !prev)}
+      style={{ display: `${props.active ? "flex" : "none"}` }}
+    >
+      {props.children}
+    </SPList>
+  );
 };
-Products.SP_ListEl = function ProductsSListEl(props: JsxProps) {
-  return <SPListEl>{props.children}</SPListEl>;
+Products.SP_ListEl = function ProductsSListEl(props: SortChooseJSXProps) {
+  return (
+    <SPListEl
+      onClick={() => props.click(props.el)}
+      style={{ fontWeight: `${props.active ? "bold" : "400"}` }}
+      id="sort"
+    >
+      {props.children}
+    </SPListEl>
+  );
+};
+
+Products.SP_Checkbox = function ProductsSPCheckbox({ ...restprops }) {
+  return <SPCheckbox {...restprops} />;
 };

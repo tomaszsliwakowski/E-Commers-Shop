@@ -18,6 +18,17 @@ export type DropDownProps = {
   href?: string;
   click: React.Dispatch<React.SetStateAction<PanelActiveProps>>;
 };
+export type SortJSXProps = {
+  children?: ReactNode;
+  click: React.Dispatch<React.SetStateAction<boolean>>;
+  active?: boolean;
+};
+export type SortChooseJSXProps = {
+  children?: ReactNode;
+  active?: boolean;
+  click: React.Dispatch<React.SetStateAction<string>>;
+  el: string;
+};
 
 export type PanelActiveProps = {
   Account: boolean;
@@ -97,10 +108,15 @@ export type FiltersType = {
 };
 
 export type GetProductsType = {
+  category: string;
   products: Array<ProductsType>;
   filters?: FiltersType;
 };
 
 export type ProductsItemType = {
   item: ProductsType;
+};
+
+export type FiltersProps = {
+  product: GetProductsType;
 };

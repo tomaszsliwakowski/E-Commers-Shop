@@ -148,7 +148,7 @@ export const FChoose = styled.label`
   -ms-user-select: none;
   user-select: none;
   &:hover ${FCheckbox} ~ ${FCheckmark} {
-    background-color: #ccc;
+    background-color: rgb(231, 228, 228);
   }
   & ${FCheckbox}:checked ~ ${FCheckmark} {
     background-color: #2196f3;
@@ -272,7 +272,7 @@ export const SPSelect = styled.div`
   height: 35px;
   margin-left: 1rem;
   padding: 2px 0.5rem;
-  width: 40%;
+  width: 45%;
   max-width: 300px;
   cursor: pointer;
 `;
@@ -296,15 +296,35 @@ export const SPShowOpt = styled.span`
   padding: 0 8px;
   font-size: 1.8vw;
   @media screen and (min-width: 850px) {
-    font-size: 16px;
+    font-size: 15px;
   }
 `;
 export const SPList = styled.ul`
   list-style: none;
   position: absolute;
   display: none;
+  width: calc(100% + 2px);
+  background-color: white;
+  top: 2.1rem;
+  height: 6.9rem;
+  flex-direction: column;
+  left: -1px;
+  z-index: 22;
+  border: 1px solid silver;
+  padding: 0rem 0;
+  border-radius: 0 0 10px 10px;
 `;
-export const SPListEl = styled.li``;
+export const SPListEl = styled.li`
+  padding: 0.5rem 1rem;
+  transition: all 0.3s;
+  font-size: 15px;
+  &:hover {
+    background-color: rgb(231, 228, 228);
+  }
+  &:last-of-type {
+    border-radius: 0 0 10px 10px;
+  }
+`;
 export const AddToCart = styled.div`
   border: 1px solid green;
   font-size: 20px;
@@ -338,4 +358,18 @@ export const Item = styled.a`
     box-shadow: 0 0 8px silver;
     border-radius: 10px;
   }
+`;
+export const SPCheckbox = styled.input`
+  background-color: transparent;
+  opacity: 0;
+  border: none;
+  outline: none;
+  position: absolute;
+  width: calc(100% + 2px);
+  top: 0rem;
+  left: 0rem;
+  border-radius: 10px;
+  z-index: 100;
+  cursor: pointer;
+  height: 100%;
 `;
