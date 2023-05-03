@@ -2,9 +2,20 @@ import React, { useState, useEffect } from "react";
 import { Products } from ".";
 import { useParams } from "react-router-dom";
 import Product from "./productList";
-import { GetProductsType, ProductsType } from "../../types/Types";
-import { AiOutlineCaretDown, AiFillCaretUp } from "react-icons/ai";
+import {
+  GetProductsType,
+  ProductsType,
+  WindowSizeType,
+} from "../../types/Types";
+import {
+  AiOutlineCaretDown,
+  AiFillCaretUp,
+  AiOutlineCloseCircle,
+} from "react-icons/ai";
+
+import { BsFilter } from "react-icons/bs";
 import Filters from "./filters";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const prod: GetProductsType = {
   category: "Laptop",
@@ -119,7 +130,10 @@ const ProductsSection = () => {
   ];
   const [SortOpt, setSortOpt] = useState("Ocena klientów: od najlepszej");
   const [activeSort, setActiveSort] = useState<boolean>(false);
+  const [activeFilters, setActiveFilters] = useState<boolean>(false);
+  let { width, height }: WindowSizeType = useWindowSize();
   let { category } = useParams();
+  let { search } = useParams();
 
   useEffect(() => {
     const close = (e: Event) => {
@@ -137,7 +151,7 @@ const ProductsSection = () => {
   return (
     <Products>
       <Products.Header>
-        <Products.H_Title>{category}</Products.H_Title>
+        <Products.H_Title>{category ? category : search}</Products.H_Title>
         <Products.H_Count>{`(${prod.products.length} ${
           prod.products.length === 1
             ? "wynik"
@@ -146,10 +160,16 @@ const ProductsSection = () => {
             : "wyników"
         })`}</Products.H_Count>
       </Products.Header>
-      <Products.Filters>
+      <Products.Filters active2={activeFilters} width={width}>
         <Products.F_Top>
           <Products.F_Title>Filtry</Products.F_Title>
-          <Products.F_ClearBtn>Wyczyść filtry</Products.F_ClearBtn>
+          <Products.F_ClearBtn>
+            {activeFilters ? (
+              <AiOutlineCloseCircle onClick={() => setActiveFilters(false)} />
+            ) : (
+              "Wyczyść filtry"
+            )}
+          </Products.F_ClearBtn>
         </Products.F_Top>
         <Products.F_Bottom>
           <Products.F_PriceCon>
@@ -167,10 +187,18 @@ const ProductsSection = () => {
             </Products.F_Price>
           </Products.F_PriceCon>
           <Filters product={prod} />
+          {activeFilters ? (
+            <Products.AcceptFiltrBtn>Zastosuj</Products.AcceptFiltrBtn>
+          ) : null}
         </Products.F_Bottom>
       </Products.Filters>
       <Products.ProductsSec>
         <Products.SortPanel>
+          {width && width <= 550 ? (
+            <Products.FiltrBtn>
+              <BsFilter onClick={() => setActiveFilters(true)} />
+            </Products.FiltrBtn>
+          ) : null}
           <Products.SP_Select active2={activeSort}>
             <Products.SP_Checkbox
               type="checkbox"

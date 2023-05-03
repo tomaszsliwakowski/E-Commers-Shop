@@ -11,8 +11,19 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 0.25fr 0.75fr;
   grid-template-rows: 0.08fr 0.92fr;
+
   @media screen and (max-width: 1250px) {
     margin-top: 5rem;
+  }
+  @media screen and (max-width: 768px) {
+    margin-top: 7rem;
+    grid-template-columns: 0.4fr 0.6fr;
+  }
+  @media screen and (max-width: 550px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    padding: 0 5px;
+    position: relative;
   }
 `;
 export const Filters = styled.div`
@@ -23,6 +34,13 @@ export const Filters = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  @media screen and (max-width: 550px) {
+    position: absolute;
+    z-index: 100;
+    width: fit-content;
+    margin: 4rem 10px 0 10px;
+    height: fit-content;
+  }
 `;
 
 export const Header = styled.div`
@@ -38,6 +56,9 @@ export const Header = styled.div`
   @media screen and (min-width: 1250px) {
     padding-left: 1rem;
   }
+  @media screen and (max-width: 550px) {
+    justify-content: center;
+  }
 `;
 export const ProductsSec = styled.div`
   background-color: white;
@@ -46,6 +67,11 @@ export const ProductsSec = styled.div`
   border: none;
   display: grid;
   grid-template-rows: 0.1fr 0.9fr;
+  @media screen and (max-width: 550px) {
+    padding: 0 10px;
+    grid-template-rows: 1fr;
+    margin-bottom: 3rem;
+  }
 `;
 export const SortPanel = styled.div`
   background-color: white;
@@ -55,6 +81,9 @@ export const SortPanel = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  @media screen and (max-width: 550px) {
+    justify-content: center;
+  }
 `;
 
 export const FTop = styled.div`
@@ -89,6 +118,9 @@ export const FClearBtn = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+  & svg {
+    font-size: 30px;
+  }
 `;
 export const FName = styled.h4``;
 export const FSection = styled.div`
@@ -110,6 +142,11 @@ export const HCount = styled.span`
 export const HTitle = styled.h1`
   font-size: 24px;
   padding: 1rem 0;
+  max-width: 1000px;
+  overflow: hidden;
+  @media screen and (max-width: 1250px) {
+    max-width: 250px;
+  }
 `;
 
 export const FCheckbox = styled.input`
@@ -272,7 +309,7 @@ export const SPSelect = styled.div`
   height: 35px;
   margin-left: 1rem;
   padding: 2px 0.5rem;
-  width: 45%;
+  width: 100%;
   max-width: 300px;
   cursor: pointer;
 `;
@@ -297,6 +334,12 @@ export const SPShowOpt = styled.span`
   font-size: 1.8vw;
   @media screen and (min-width: 850px) {
     font-size: 15px;
+  }
+  @media screen and (max-width: 550px) {
+    font-size: 12px;
+  }
+  @media screen and (max-width: 300px) {
+    font-size: 10px;
   }
 `;
 export const SPList = styled.ul`
@@ -358,6 +401,9 @@ export const Item = styled.a`
     box-shadow: 0 0 8px silver;
     border-radius: 10px;
   }
+  @media screen and (max-width: 550px) {
+    margin: 0 auto;
+  }
 `;
 export const SPCheckbox = styled.input`
   background-color: transparent;
@@ -372,4 +418,29 @@ export const SPCheckbox = styled.input`
   z-index: 100;
   cursor: pointer;
   height: 100%;
+  @media screen and (max-width: 550px) {
+    z-index: 0;
+  }
+`;
+
+export const FiltrBtn = styled.span`
+  & svg {
+    font-size: 30px;
+    @media screen and (min-width: 350px) {
+      font-size: 35px;
+      margin-right: 5px;
+    }
+  }
+`;
+
+export const AcceptFiltrBtn = styled.button`
+  width: 100%;
+  height: 30px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background-color: #2196f3;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 `;

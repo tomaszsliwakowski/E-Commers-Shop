@@ -3,6 +3,7 @@ import { Header } from ".";
 import { SlBasket } from "react-icons/sl";
 import { AiOutlineUser, AiOutlineClose } from "react-icons/ai";
 import { UserPanelProps } from "../../types/Types";
+import { BasketRoute, LoginRoute, RegisterRoute } from "../../routes";
 
 const UserPanel = ({
   width,
@@ -12,7 +13,7 @@ const UserPanel = ({
   return width !== undefined ? (
     width >= 1250 ? (
       <>
-        <Header.UserPanelBasket href="#">
+        <Header.UserPanelBasket href={BasketRoute}>
           <Header.DropBtn>
             <SlBasket />
             Koszyk
@@ -23,17 +24,19 @@ const UserPanel = ({
             </Header.DropOpt>
           </Header.DropDown>
         </Header.UserPanelBasket>
-        <Header.UserPanelAccount href="#">
+        <Header.UserPanelAccount href="">
           <Header.DropBtn>
             <AiOutlineUser />
             Konto
           </Header.DropBtn>
           <Header.DropDown>
             <Header.DropOpt>
-              <Header.LoginBtn>Zaloguj</Header.LoginBtn>
+              <Header.LoginBtn href={LoginRoute}>Zaloguj</Header.LoginBtn>
             </Header.DropOpt>
             <Header.DropOpt>
-              <Header.RegisterBtn>Zarejestruj się</Header.RegisterBtn>
+              <Header.RegisterBtn href={RegisterRoute}>
+                Zarejestruj się
+              </Header.RegisterBtn>
             </Header.DropOpt>
           </Header.DropDown>
         </Header.UserPanelAccount>

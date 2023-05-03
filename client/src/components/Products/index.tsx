@@ -44,6 +44,8 @@ import {
   SPSort,
   AddToCart,
   SPCheckbox,
+  FiltrBtn,
+  AcceptFiltrBtn,
 } from "./style/productStyle";
 
 export function Products(props: JsxProps) {
@@ -51,7 +53,21 @@ export function Products(props: JsxProps) {
 }
 
 Products.Filters = function ProductsFilters(props: JsxProps) {
-  return <Filters>{props.children}</Filters>;
+  return (
+    <Filters
+      style={{
+        display: `${
+          props.width && props.width <= 550 && props.active2
+            ? "flex"
+            : !props.active2 && props.width && props.width <= 550
+            ? "none"
+            : "flex"
+        }`,
+      }}
+    >
+      {props.children}
+    </Filters>
+  );
 };
 
 Products.ProductsSec = function ProductsProductsSec(props: JsxProps) {
@@ -221,4 +237,12 @@ Products.SP_ListEl = function ProductsSListEl(props: SortChooseJSXProps) {
 
 Products.SP_Checkbox = function ProductsSPCheckbox({ ...restprops }) {
   return <SPCheckbox {...restprops} />;
+};
+
+Products.FiltrBtn = function ProductsFiltrBtn(props: JsxProps) {
+  return <FiltrBtn>{props.children}</FiltrBtn>;
+};
+
+Products.AcceptFiltrBtn = function ProductsAcceptFiltrBtn(props: JsxProps) {
+  return <AcceptFiltrBtn>{props.children}</AcceptFiltrBtn>;
 };

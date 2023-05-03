@@ -30,6 +30,11 @@ export type SortChooseJSXProps = {
   el: string;
 };
 
+export type SearchPropsFunction = {
+  children?: ReactNode;
+  click: Function;
+};
+
 export type PanelActiveProps = {
   Account: boolean;
   Basket: boolean;

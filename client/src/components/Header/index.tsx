@@ -31,7 +31,12 @@ import {
   LogBtn,
   RegBtn,
 } from "./styles/HeaderStyle";
-import { DropDownProps, HeaderProps, JsxProps } from "../../types/Types";
+import {
+  DropDownProps,
+  HeaderProps,
+  JsxProps,
+  SearchPropsFunction,
+} from "../../types/Types";
 
 export function Header(props: JsxProps) {
   return (
@@ -111,8 +116,8 @@ Header.SearchBar = function HeaderSearchBar(props: JsxProps) {
 Header.SearchInput = function HeaderSearchInput({ ...restprops }) {
   return <SearchInput {...restprops} />;
 };
-Header.SearchBtn = function HeaderSearchBtn(props: JsxProps) {
-  return <SearchBtn>{props.children}</SearchBtn>;
+Header.SearchBtn = function HeaderSearchBtn(props: SearchPropsFunction) {
+  return <SearchBtn onClick={() => props.click()}>{props.children}</SearchBtn>;
 };
 
 Header.Panel = function HeaderPanel(props: JsxProps) {
@@ -205,9 +210,9 @@ Header.CloseRight = function HeaderCloseRight(props: JsxProps) {
 };
 
 Header.LoginBtn = function HeaderLoginBtn(props: JsxProps) {
-  return <LogBtn>{props.children}</LogBtn>;
+  return <LogBtn to={props.href ? props.href : ""}>{props.children}</LogBtn>;
 };
 
 Header.RegisterBtn = function HeaderRegisterBtn(props: JsxProps) {
-  return <RegBtn>{props.children}</RegBtn>;
+  return <RegBtn to={props.href ? props.href : ""}>{props.children}</RegBtn>;
 };

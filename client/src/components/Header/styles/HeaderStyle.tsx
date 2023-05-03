@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   position: fixed;
@@ -172,6 +173,11 @@ export const SearchInput = styled.input`
   border: none;
   border: 1px solid silver;
   padding-left: 20px;
+  outline: none;
+  &:focus {
+    border: 1px solid rgb(26, 26, 26);
+    border-right: none;
+  }
   @media screen and (max-width: 768px) {
     width: 85%;
   }
@@ -501,7 +507,7 @@ export const RightPanelClose = styled.div`
   align-items: center;
 `;
 
-export const LogBtn = styled.button`
+export const LogBtn = styled(Link)`
   width: 90%;
   height: 30px;
   margin: 0.5rem 0 0 0;
@@ -510,12 +516,17 @@ export const LogBtn = styled.button`
   border: none;
   color: white;
   font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
   cursor: pointer;
   &:hover {
     background-color: rgb(0, 112, 204);
   }
 `;
-export const RegBtn = styled.button`
+export const RegBtn = styled(Link)`
   width: 90%;
   height: 30px;
   margin: 0 0 0.5rem 0;
@@ -524,7 +535,12 @@ export const RegBtn = styled.button`
   color: rgb(0, 130, 250);
   font-weight: bold;
   background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
   &:hover {
     background-color: rgb(0, 112, 204);
     color: white;

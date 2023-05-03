@@ -3,6 +3,7 @@ import { Header } from "./index";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import useWindowSize from "../../hooks/useWindowSize";
 import {
@@ -24,6 +25,7 @@ const HeaderSection = () => {
   const { width, height }: WindowSizeType = useWindowSize();
   const { position }: ScrollPositionType = useScrollPosition();
   const [SearchInput, setSearchInput] = useState<string>("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (position && position > 100) {
@@ -48,6 +50,12 @@ const HeaderSection = () => {
     };
   }, [activeRightMenu, activeLeftMenu]);
 
+  const searchproducts = () => {
+    if (SearchInput !== "") {
+      navigate(`/products/search/${SearchInput}`);
+    }
+  };
+
   return (
     <Header active={activeRightMenu} active2={activeLeftMenu}>
       <Header.Panel scroll={ScrollAction}>
@@ -71,7 +79,7 @@ const HeaderSection = () => {
                 setSearchInput(e.target.value)
               }
             />
-            <Header.SearchBtn>
+            <Header.SearchBtn click={searchproducts}>
               <AiOutlineSearch />
             </Header.SearchBtn>
           </Header.SearchBar>
