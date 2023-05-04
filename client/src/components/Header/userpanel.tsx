@@ -67,9 +67,14 @@ const UserPanel = ({
                 Konto
               </Header.CloseRight>
             </Header.CloseRightPanel>
-            <Header.DropOpt>A</Header.DropOpt>
-            <Header.DropOpt>A</Header.DropOpt>
-            <Header.DropOpt>A</Header.DropOpt>
+            <Header.DropOpt>
+              <Header.LoginBtn href={LoginRoute}>Zaloguj</Header.LoginBtn>
+            </Header.DropOpt>
+            <Header.DropOpt>
+              <Header.RegisterBtn href={RegisterRoute}>
+                Zarejestruj się
+              </Header.RegisterBtn>
+            </Header.DropOpt>
           </Header.DropDown>
         ) : null}
         {activeRightMenu.Basket ? (
@@ -84,9 +89,9 @@ const UserPanel = ({
                 Koszyk
               </Header.CloseRight>
             </Header.CloseRightPanel>
-            <Header.DropOpt>B</Header.DropOpt>
-            <Header.DropOpt>B</Header.DropOpt>
-            <Header.DropOpt>B</Header.DropOpt>
+            <Header.DropOpt>
+              <Header.EmptyBasket>Twój koszyk jest pusty!</Header.EmptyBasket>
+            </Header.DropOpt>
           </Header.DropDown>
         ) : null}
       </>

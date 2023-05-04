@@ -383,8 +383,9 @@ export const DropOpt = styled.div`
   color: black;
   padding: 12px 16px;
   text-decoration: none;
-  display: block;
+  display: flex;
   width: 100%;
+  justify-content: center;
 `;
 export const Name = styled.span`
   padding: 0.5rem 1rem;
@@ -480,6 +481,7 @@ export const PanelBasket = styled.a`
       display: flex;
       align-items: center;
       cursor: default;
+      text-align: center;
     }
   }
 `;
@@ -545,4 +547,9 @@ export const RegBtn = styled(Link)`
     background-color: rgb(0, 112, 204);
     color: white;
   }
+`;
+
+export const EmptyBasket = styled.span`
+  width: 100%;
+  text-align: center;
 `;

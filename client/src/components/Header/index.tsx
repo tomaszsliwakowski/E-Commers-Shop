@@ -30,6 +30,7 @@ import {
   RightPanelClose,
   LogBtn,
   RegBtn,
+  EmptyBasket,
 } from "./styles/HeaderStyle";
 import {
   DropDownProps,
@@ -215,4 +216,8 @@ Header.LoginBtn = function HeaderLoginBtn(props: JsxProps) {
 
 Header.RegisterBtn = function HeaderRegisterBtn(props: JsxProps) {
   return <RegBtn to={props.href ? props.href : ""}>{props.children}</RegBtn>;
+};
+
+Header.EmptyBasket = function HeaderEmptyBasket(props: JsxProps) {
+  return <EmptyBasket>{props.children}</EmptyBasket>;
 };
