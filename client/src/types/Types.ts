@@ -30,6 +30,11 @@ export type SortChooseJSXProps = {
   el: string;
 };
 
+export type TsxPropsBoolean = {
+  children?: ReactNode;
+  click: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 export type SearchPropsFunction = {
   children?: ReactNode;
   click: Function;
