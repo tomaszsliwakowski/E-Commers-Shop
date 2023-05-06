@@ -9,6 +9,9 @@ export const Container = styled.div`
   grid-template-rows: 1fr;
   max-width: 1050px;
   margin: 2rem auto;
+  @media screen and (max-width: 950px) {
+    grid-template-columns: 0.5fr 0.5fr;
+  }
   @media screen and (max-width: 700px) {
     display: flex;
     flex-direction: column;
@@ -96,6 +99,7 @@ export const InfoReg = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 2rem;
+  margin-bottom: 1.2rem;
   @media screen and (max-width: 700px) {
     margin-left: 0;
   }
