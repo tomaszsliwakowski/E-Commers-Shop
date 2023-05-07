@@ -19,7 +19,7 @@ const FooterSection = () => {
           </Footer.Text>
         </Footer.AboutUs>
         <Footer.Contact>
-          <Footer.Title>Contact</Footer.Title>
+          <Footer.Title>Kontakt</Footer.Title>
           <Footer.List>
             <Footer.ContactOption>
               <FaPhoneAlt />

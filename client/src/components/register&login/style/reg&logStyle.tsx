@@ -44,6 +44,7 @@ export const Btn = styled.button`
   font-size: 16px;
   cursor: pointer;
   margin: 1rem 0 1rem 0;
+  font-family: Lato, sans-serif;
 `;
 
 export const Info = styled.div`

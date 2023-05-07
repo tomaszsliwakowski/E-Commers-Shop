@@ -5,14 +5,14 @@ import { RegisterRoute } from "../../routes";
 import InfoList from "../register&login/infolist";
 
 const LoginSection = () => {
-  const [ShowPass, setShowPass] = useState(false);
+  const [ShowPass, setShowPass] = useState<boolean>(false);
   return (
     <Login>
       <Login.Panel>
         <Login.Title>Zaloguj się</Login.Title>
         <Login.Form>
           <Login.InputCon>
-            <Login.Input type="text" autocomplete="off" required />
+            <Login.Input type="text" required />
             <Login.InputName>E-mail</Login.InputName>
           </Login.InputCon>
           <Login.InputCon>

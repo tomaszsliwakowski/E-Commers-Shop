@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Login from "../Login/index";
 import { LogRegBtn } from "../register&login";
-import { LoginRoute, RegisterRoute } from "../../routes";
+import { LoginRoute } from "../../routes";
 import InfoList from "../register&login/infolist";
 import RegisterConsens from ".";
 

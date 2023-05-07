@@ -523,6 +523,7 @@ export const LogBtn = styled(Link)`
   justify-content: center;
   align-items: center;
   font-size: 16px;
+  transition: all 0.3s;
   cursor: pointer;
   &:hover {
     background-color: rgb(0, 112, 204);
@@ -543,6 +544,7 @@ export const RegBtn = styled(Link)`
   cursor: pointer;
   font-size: 16px;
   text-decoration: none;
+  transition: all 0.3s;
   &:hover {
     background-color: rgb(0, 112, 204);
     color: white;

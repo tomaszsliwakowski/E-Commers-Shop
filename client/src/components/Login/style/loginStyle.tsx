@@ -59,6 +59,7 @@ export const InputName = styled.span`
   pointer-events: none;
   transition: all 0.1s ease;
   color: rgb(148, 148, 148);
+  font-family: Lato, sans-serif;
 `;
 export const PassShow = styled.span`
   position: absolute;
@@ -69,6 +70,7 @@ export const PassShow = styled.span`
   right: 35px;
   font-size: 14px;
   cursor: pointer;
+  font-family: Lato, sans-serif;
 `;
 export const Input = styled.input`
   width: 90%;
