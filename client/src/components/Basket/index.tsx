@@ -1,6 +1,28 @@
 import React from "react";
-import { JsxProps } from "../../types/Types";
-import { Container } from "./style/basketStyle";
+import { JsxProps, LinkProps } from "../../types/Types";
+import {
+  Container,
+  Items,
+  Image,
+  Sum,
+  BuyPanel,
+  BuyPanelPrice,
+  Header,
+  List,
+  BuyPanelBtn,
+  ClearBasket,
+  PayAccept,
+  PayAcceptList,
+  PayAcceptTitle,
+  Product,
+  Property,
+  PropertyOpt,
+  Desc,
+  OtherProperty,
+  Title,
+  Goto,
+  BuyPanelCon,
+} from "./style/basketStyle";
 
 export default function Basket(props: JsxProps) {
   return <Container>{props.children}</Container>;
@@ -26,6 +48,10 @@ Basket.BuyPanelBtn = function BasketBuyPanelBtn(props: JsxProps) {
 
 Basket.Header = function BasketHeader(props: JsxProps) {
   return <Header>{props.children}</Header>;
+};
+
+Basket.Title = function BasketTitle(props: JsxProps) {
+  return <Title>{props.children}</Title>;
 };
 
 Basket.ClearBasket = function BasketClearBasket(props: JsxProps) {
@@ -55,6 +81,12 @@ Basket.OtherProperty = function BasketOtherProperty(props: JsxProps) {
 
 Basket.Image = function BasketImage({ ...restprops }) {
   return <Image {...restprops} />;
+};
+Basket.Goto = function BasketGoto(props: LinkProps) {
+  return <Goto to={props.to}>{props.children}</Goto>;
+};
+Basket.BuyPanelCon = function BaskeBuyPanelCon(props: JsxProps) {
+  return <BuyPanelCon>{props.children}</BuyPanelCon>;
 };
 
 Basket.PayAccept = function BasketPayAccept(props: JsxProps) {
