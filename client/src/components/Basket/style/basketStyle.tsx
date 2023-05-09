@@ -164,6 +164,9 @@ export const PayAccept = styled.div`
   margin-bottom: 1rem;
   margin-top: 2rem;
   padding-left: 2rem;
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
   @media screen and (max-width: 768px) {
     padding-left: 0.5rem;
   }
