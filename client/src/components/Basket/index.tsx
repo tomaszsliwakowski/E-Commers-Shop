@@ -22,6 +22,13 @@ import {
   Title,
   Goto,
   BuyPanelCon,
+  Info,
+  ProdCount,
+  CountInput,
+  CountActive,
+  CountList,
+  CountEl,
+  Count,
 } from "./style/basketStyle";
 
 export default function Basket(props: JsxProps) {
@@ -98,4 +105,28 @@ Basket.PayAcceptTitle = function BasketPayAcceptTitle(props: JsxProps) {
 };
 Basket.PayAcceptList = function BasketPayAcceptList(props: JsxProps) {
   return <PayAcceptList>{props.children}</PayAcceptList>;
+};
+Basket.Info = function BasketInfo(props: JsxProps) {
+  return <Info>{props.children}</Info>;
+};
+
+Basket.ProdCount = function BasketProdCount(props: JsxProps) {
+  return <ProdCount>{props.children}</ProdCount>;
+};
+
+Basket.CountInput = function BasketCountInput({ ...restprops }) {
+  return <CountInput {...restprops} />;
+};
+Basket.CountActive = function BasketCountActive({ ...restprops }) {
+  return <CountActive {...restprops} />;
+};
+
+Basket.CountList = function BasketCountList(props: JsxProps) {
+  return <CountList>{props.children}</CountList>;
+};
+Basket.CountEl = function BasketCountEl(props: JsxProps) {
+  return <CountEl>{props.children}</CountEl>;
+};
+Basket.Count = function BasketCount(props: JsxProps) {
+  return <Count>{props.children}</Count>;
 };
