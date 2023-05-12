@@ -29,6 +29,12 @@ export type SortChooseJSXProps = {
   click: React.Dispatch<React.SetStateAction<string>>;
   el: string;
 };
+export type ProdCountPropsType = {
+  children?: ReactNode;
+  click: Function;
+  item: number;
+  id?: string;
+};
 
 export type TsxPropsBoolean = {
   children?: ReactNode;

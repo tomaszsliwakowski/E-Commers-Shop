@@ -1,5 +1,5 @@
 import React from "react";
-import { JsxProps, LinkProps } from "../../types/Types";
+import { JsxProps, LinkProps, ProdCountPropsType } from "../../types/Types";
 import {
   Container,
   Items,
@@ -111,7 +111,16 @@ Basket.Info = function BasketInfo(props: JsxProps) {
 };
 
 Basket.ProdCount = function BasketProdCount(props: JsxProps) {
-  return <ProdCount>{props.children}</ProdCount>;
+  return (
+    <ProdCount
+      style={{
+        borderRadius: `${props.active2 ? "1rem 1rem 0 0 " : "2rem"}`,
+        borderBottom: `${props.active2 ? "none" : ""}`,
+      }}
+    >
+      {props.children}
+    </ProdCount>
+  );
 };
 
 Basket.CountInput = function BasketCountInput({ ...restprops }) {
@@ -122,11 +131,21 @@ Basket.CountActive = function BasketCountActive({ ...restprops }) {
 };
 
 Basket.CountList = function BasketCountList(props: JsxProps) {
-  return <CountList>{props.children}</CountList>;
+  return (
+    <CountList style={{ display: `${props.active2 ? "flex" : "none"}` }}>
+      {props.children}
+    </CountList>
+  );
 };
 Basket.CountEl = function BasketCountEl(props: JsxProps) {
   return <CountEl>{props.children}</CountEl>;
 };
-Basket.Count = function BasketCount(props: JsxProps) {
-  return <Count>{props.children}</Count>;
+Basket.Count = function BasketCount(props: ProdCountPropsType) {
+  return props.item && props.item < 9 ? (
+    <Count id={props.id} onClick={() => props.click()}>
+      {props.children}
+    </Count>
+  ) : (
+    <Count onClick={() => props.click()}>{props.children}</Count>
+  );
 };

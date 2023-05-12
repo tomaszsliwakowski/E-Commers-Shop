@@ -220,21 +220,33 @@ export const ProdCount = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid rgb(204, 204, 204);
-  padding: 5px 10px;
+  padding: 6px 16px 6px 16px;
   border-radius: 2rem;
+
   & svg {
     font-size: 12px;
+    position: absolute;
+    right: 6px;
   }
 `;
 export const CountInput = styled.input`
   width: 15px;
   text-align: center;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 500;
   border: none;
   outline: none;
   background: none;
   color: black;
+  width: 28px;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  & {
+    -moz-appearance: textfield;
+  }
 `;
 export const CountActive = styled.input`
   position: absolute;
@@ -246,7 +258,37 @@ export const CountActive = styled.input`
   opacity: 0;
 `;
 export const CountList = styled.ul`
-  display: none;
+  position: absolute;
+  list-style: none;
+  top: 1.6rem;
+  right: px;
+  display: flex;
+  border: 1px solid rgb(204, 204, 204);
+  border-top: 1px solid rgb(231, 228, 228);
+  width: calc(100% + 2px);
+  height: auto;
+  border-radius: 0px 0px 10px 10px;
+  z-index: 100;
+  background-color: white;
 `;
-export const CountEl = styled.li``;
-export const Count = styled.span``;
+export const CountEl = styled.li`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+export const Count = styled.span`
+  width: 100%;
+  height: 100%;
+  padding: 3px 0;
+  &:hover {
+    background-color: rgb(204, 204, 204);
+    cursor: pointer;
+  }
+  &:last-of-type {
+    border-radius: 0 0 0.5rem 0.5rem;
+    padding-bottom: 5px;
+  }
+`;
