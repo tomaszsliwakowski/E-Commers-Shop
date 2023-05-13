@@ -85,6 +85,7 @@ export const ClearBasket = styled.div`
   align-items: center;
   gap: 5px;
   padding-right: 1rem;
+  cursor: pointer;
   @media screen and (max-width: 350px) {
     padding-right: 0;
   }

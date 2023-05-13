@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Basket from ".";
 import { BsTrash } from "react-icons/bs";
 import { PayAcceptList } from "../../assets";
@@ -7,7 +7,7 @@ import { LogRegOut } from "../register&login";
 import { HomeRoute } from "../../routes";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { AiOutlineCaretDown } from "react-icons/ai";
-import { Item } from "../Products/style/productStyle";
+
 const prod: any = {
   img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2021/7/pr_2021_7_1_8_25_10_978_06.jpg",
   name: "Gigabyte GeForce RTX 3060 Ti EAGLE OC LHR 8GB GDDR6",
@@ -21,6 +21,8 @@ const BasketSection = () => {
   const [ActiveCount, setActiveCount] = useState<boolean>(false);
   const [ActiveCountInput, setActiveCountInput] = useState<boolean>(false);
   const [ProductCount, setProductCount] = useState<number>(1);
+  const [CountInput, setCountInput] = useState<number>(1);
+  let InputRef = useRef<HTMLInputElement>(null);
 
   const HandleCount = (count: number) => {
     setProductCount(count);
@@ -31,33 +33,57 @@ const BasketSection = () => {
     setActiveCountInput(true);
     setActiveCount(false);
     setTimeout(() => {
-      document.getElementById("countInput")?.focus();
+      if (InputRef.current) {
+        InputRef.current.focus();
+      }
     }, 200);
   };
+  useEffect(() => {
+    // console.log(InputRef);
+    if (ActiveCountInput) {
+      setTimeout(() => {
+        if (InputRef.current) {
+          InputRef.current.focus();
+        }
+      }, 0);
+    }
+  }, [ActiveCountInput]);
 
   useEffect(() => {
-    if (ActiveCountInput) {
-      const handle = () => {
-        setActiveCountInput(false);
-      };
-      setTimeout(() => {
-        handle();
-      }, 3000);
+    if (!ActiveCountInput) {
+      setProductCount(() => {
+        if (CountInput === 0) {
+          return 1;
+        } else {
+          return CountInput;
+        }
+      });
     }
   }, [ActiveCountInput]);
 
   useEffect(() => {
     const close = (e: Event) => {
       let target = e.target as HTMLElement;
-      if (target.id !== "count" || target.id !== "countInput") {
+      if (target.id !== "count") {
         setActiveCount(false);
+        setActiveCountInput(false);
       }
     };
+
     document.body.addEventListener("click", close);
     return () => {
       document.body.removeEventListener("click", close);
     };
   }, []);
+
+  const HandleInputCount = (e: Event) => {
+    let target = e.target as HTMLInputElement;
+    const value: number = Number(target.value);
+    if (Number.isInteger(value) && value >= 0) {
+      setCountInput(value);
+    }
+  };
+
   return (
     <>
       <Basket>
@@ -87,11 +113,12 @@ const BasketSection = () => {
                       {ActiveCountInput ? (
                         <Basket.CountInput
                           type="number"
-                          value={ProductCount}
-                          id="countInput"
-                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                            setProductCount(parseInt(e.target.value))
-                          }
+                          value={CountInput || ""}
+                          ref={InputRef}
+                          id="count"
+                          min="1"
+                          max="999"
+                          onChange={HandleInputCount}
                         />
                       ) : (
                         <Basket.CountInput

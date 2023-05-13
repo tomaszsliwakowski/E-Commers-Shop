@@ -113,6 +113,7 @@ Basket.Info = function BasketInfo(props: JsxProps) {
 Basket.ProdCount = function BasketProdCount(props: JsxProps) {
   return (
     <ProdCount
+      id="count"
       style={{
         borderRadius: `${props.active2 ? "1rem 1rem 0 0 " : "2rem"}`,
         borderBottom: `${props.active2 ? "none" : ""}`,
@@ -132,13 +133,16 @@ Basket.CountActive = function BasketCountActive({ ...restprops }) {
 
 Basket.CountList = function BasketCountList(props: JsxProps) {
   return (
-    <CountList style={{ display: `${props.active2 ? "flex" : "none"}` }}>
+    <CountList
+      id="count"
+      style={{ display: `${props.active2 ? "flex" : "none"}` }}
+    >
       {props.children}
     </CountList>
   );
 };
 Basket.CountEl = function BasketCountEl(props: JsxProps) {
-  return <CountEl>{props.children}</CountEl>;
+  return <CountEl id="count">{props.children}</CountEl>;
 };
 Basket.Count = function BasketCount(props: ProdCountPropsType) {
   return props.item && props.item < 9 ? (
@@ -146,6 +150,8 @@ Basket.Count = function BasketCount(props: ProdCountPropsType) {
       {props.children}
     </Count>
   ) : (
-    <Count onClick={() => props.click()}>{props.children}</Count>
+    <Count id="count" onClick={() => props.click()}>
+      {props.children}
+    </Count>
   );
 };
