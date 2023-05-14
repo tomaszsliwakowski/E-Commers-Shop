@@ -31,6 +31,8 @@ import {
   LogBtn,
   RegBtn,
   EmptyBasket,
+  DropOptSmall,
+  DropOptFull,
 } from "./styles/HeaderStyle";
 import {
   DropDownProps,
@@ -45,7 +47,7 @@ export function Header(props: JsxProps) {
       style={{
         paddingRight: `${
           props.active?.Account || props.active?.Basket || props.active2
-            ? "1.05rem"
+            ? `${props.width && props.width > 500 ? "5px" : "0px"}`
             : "0rem"
         }`,
       }}
@@ -200,11 +202,23 @@ Header.DropDown = function HeaderDropDown(props: JsxProps) {
 };
 
 Header.DropOpt = function HeaderDropOpt(props: JsxProps) {
-  return <DropOpt>{props.children}</DropOpt>;
+  return props.style === "min" ? (
+    <DropOptFull>{props.children}</DropOptFull>
+  ) : props.style === "max" ? (
+    <DropOptSmall>{props.children}</DropOptSmall>
+  ) : (
+    <DropOpt>{props.children}</DropOpt>
+  );
 };
 
 Header.CloseRightPanel = function HeaderCloseRightPanel(props: JsxProps) {
-  return <RightPanelClose>{props.children}</RightPanelClose>;
+  return (
+    <RightPanelClose
+      style={{ paddingLeft: `${props.style === "full" ? "1rem" : ""}` }}
+    >
+      {props.children}
+    </RightPanelClose>
+  );
 };
 Header.CloseRight = function HeaderCloseRight(props: JsxProps) {
   return <RightClose>{props.children}</RightClose>;

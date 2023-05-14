@@ -18,7 +18,7 @@ export const Container = styled.div`
     margin-right: 0.5rem;
   }
   @media screen and (min-width: 768px) {
-    min-height: 44vh;
+    min-height: 70vh;
     margin-bottom: 0;
     display: grid;
     gap: 1rem;
@@ -27,6 +27,9 @@ export const Container = styled.div`
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+  }
+  @media screen and (min-width: 1250px) {
+    min-height: 66vh;
   }
 `;
 
@@ -39,11 +42,39 @@ export const Items = styled.div`
   }
 `;
 export const BuyPanel = styled.div`
-  padding-right: 0.5rem;
+  padding-right: 0.7rem;
   @media screen and (max-width: 768px) {
     padding: 0;
   }
 `;
+export const BuyPanelFixed = styled.div`
+  padding-right: 0.7rem;
+  position: absolute;
+  width: 100%;
+  border-radius: 0;
+  bottom: 0;
+  @media screen and (max-width: 768px) {
+    padding: 0;
+  }
+`;
+export const BuyPanelCon = styled.div`
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  height: auto;
+`;
+export const BuyPanelRelative = styled.div`
+  padding: 0;
+  position: relative;
+  border-radius: 0;
+  & ${BuyPanelCon} {
+    border-radius: 0rem 0rem 0.5rem 0.5rem;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+  }
+`;
+
 export const Sum = styled.div`
   display: flex;
   justify-content: space-between;
@@ -100,6 +131,10 @@ export const Product = styled.div`
     margin-bottom: 2rem;
   }
 `;
+export const ProductSmall = styled.div`
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 10px;
+`;
 export const Property = styled.div`
   padding: 1rem;
   display: flex;
@@ -120,6 +155,15 @@ export const PropertyOpt = styled.div`
     width: auto;
   }
 `;
+export const PropertyOptSmall = styled.div`
+  gap: 0.5rem;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  & a {
+    width: auto;
+  }
+`;
 export const Desc = styled.div`
   padding: 0 0.5rem;
   font-size: 14px;
@@ -128,6 +172,19 @@ export const Desc = styled.div`
   overflow: hidden;
   max-height: 2.5em;
   line-height: 1.2em;
+  @media screen and (max-width: 500px) {
+    text-align: center;
+  }
+`;
+export const DescSmall = styled.div`
+  padding: 0 0.5rem;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 2.5em;
+  line-height: 1.2em;
+  text-align: center;
 `;
 export const OtherProperty = styled.div`
   display: flex;
@@ -143,7 +200,7 @@ export const OtherProperty = styled.div`
     text-align: center;
   }
   & .trash {
-    font-size: 30px;
+    font-size: 35px;
     margin-left: 10px;
     cursor: pointer;
   }
@@ -163,11 +220,14 @@ export const Image = styled.img`
 `;
 export const PayAccept = styled.div`
   margin-bottom: 1rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   padding-left: 2rem;
   max-width: 1250px;
   margin-left: auto;
   margin-right: auto;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding-bottom: 2rem;
+
   @media screen and (max-width: 768px) {
     padding-left: 0.5rem;
   }
@@ -190,12 +250,7 @@ export const Goto = styled(Link)`
   display: flex;
   align-items: center;
 `;
-export const BuyPanelCon = styled.div`
-  border: 1px solid rgb(221, 221, 221);
-  border-radius: 10px;
-  padding: 0.5rem 0.8rem;
-  height: auto;
-`;
+
 export const Info = styled.div`
   margin: 0.5rem 0;
   display: flex;

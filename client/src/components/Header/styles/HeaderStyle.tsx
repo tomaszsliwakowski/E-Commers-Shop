@@ -364,10 +364,10 @@ export const DropDown = styled.div`
   top: 2.2rem;
   right: 0rem;
   background-color: white;
-  min-width: 160px;
+  min-width: 250px;
   box-shadow: 0px 0px 5px silver;
   z-index: 1;
-  border-radius: 8px 0px 8px 8px;
+  border-radius: 0px 8px 8px 8px;
 
   @media screen and (max-width: 1250px) {
     display: block;
@@ -381,12 +381,41 @@ export const DropDown = styled.div`
 `;
 export const DropOpt = styled.div`
   color: black;
-  padding: 12px 16px;
+  padding: 12px 16px 12px 16px;
   text-decoration: none;
   display: flex;
   width: 100%;
   justify-content: center;
+  @media screen and (max-width: 400px) {
+    max-height: 28vh;
+  }
 `;
+export const DropOptFull = styled.div`
+  color: black;
+  padding: 12px 16px 12px 16px;
+  text-decoration: none;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  max-height: 78vh;
+  gap: 10px;
+  overflow: auto;
+  @media screen and (max-width: 400px) {
+    max-height: 68vh;
+  }
+`;
+export const DropOptSmall = styled(DropOptFull)`
+  color: black;
+  padding: 12px 16px 12px 16px;
+  text-decoration: none;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  overflow: auto;
+  max-height: 60vh;
+`;
+
 export const Name = styled.span`
   padding: 0.5rem 1rem;
   font-weight: 500;
@@ -430,6 +459,7 @@ export const PanelAccount = styled.a`
       display: block;
       z-index: 100;
       min-width: 200px;
+      left: 0;
     }
     &:hover ${DropOpt} {
       display: flex;
@@ -470,10 +500,11 @@ export const PanelBasket = styled.a`
   @media screen and (min-width: 1250px) {
     &:hover ${DropDown} {
       display: block;
-      right: -8.4rem;
+      right: 0rem;
       top: 2.2rem;
       z-index: 100;
-      border-radius: 0px 8px 8px 8px;
+      border-radius: 8px 0px 8px 8px;
+      min-width: 320px;
     }
     &:hover ${DropOpt} {
       min-width: 250px;
@@ -504,7 +535,7 @@ export const RightClose = styled.div`
 export const RightPanelClose = styled.div`
   width: 100%;
   height: 60px;
-  border-bottom: 1px solid silver;
+  border-bottom: 1px solid rgb(204, 204, 204);
   display: flex;
   align-items: center;
 `;

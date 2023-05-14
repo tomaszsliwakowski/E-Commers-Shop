@@ -29,6 +29,11 @@ import {
   CountList,
   CountEl,
   Count,
+  ProductSmall,
+  PropertyOptSmall,
+  DescSmall,
+  BuyPanelFixed,
+  BuyPanelRelative,
 } from "./style/basketStyle";
 
 export default function Basket(props: JsxProps) {
@@ -40,7 +45,13 @@ Basket.Items = function BasketItems(props: JsxProps) {
 };
 
 Basket.BuyPanel = function BasketBuyPanel(props: JsxProps) {
-  return <BuyPanel>{props.children}</BuyPanel>;
+  return props.style === "fixed" ? (
+    <BuyPanelFixed>{props.children}</BuyPanelFixed>
+  ) : props.style === "relative" ? (
+    <BuyPanelRelative>{props.children}</BuyPanelRelative>
+  ) : (
+    <BuyPanel>{props.children}</BuyPanel>
+  );
 };
 
 Basket.BuyPanelSum = function BasketBuyPanelSum(props: JsxProps) {
@@ -70,20 +81,40 @@ Basket.List = function BasketList(props: JsxProps) {
 };
 
 Basket.Product = function BasketProduct(props: JsxProps) {
-  return <Product>{props.children}</Product>;
+  return props.style === "small" ? (
+    <ProductSmall>{props.children}</ProductSmall>
+  ) : (
+    <Product>{props.children}</Product>
+  );
 };
 
 Basket.Property = function BasketProperty(props: JsxProps) {
   return <Property>{props.children}</Property>;
 };
 Basket.PropertyOpt = function BasketPropertyOpt(props: JsxProps) {
-  return <PropertyOpt>{props.children}</PropertyOpt>;
+  return props.style === "grid" ? (
+    <PropertyOptSmall>{props.children}</PropertyOptSmall>
+  ) : (
+    <PropertyOpt>{props.children}</PropertyOpt>
+  );
 };
 Basket.ProductDesc = function BasketProductDesc(props: JsxProps) {
-  return <Desc>{props.children}</Desc>;
+  return props.style === "center" ? (
+    <DescSmall>{props.children}</DescSmall>
+  ) : (
+    <Desc>{props.children}</Desc>
+  );
 };
 Basket.OtherProperty = function BasketOtherProperty(props: JsxProps) {
-  return <OtherProperty>{props.children}</OtherProperty>;
+  return (
+    <OtherProperty
+      style={{
+        flexDirection: `${props.style === "column" ? props.style : "row"}`,
+      }}
+    >
+      {props.children}
+    </OtherProperty>
+  );
 };
 
 Basket.Image = function BasketImage({ ...restprops }) {

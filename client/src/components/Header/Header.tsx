@@ -42,11 +42,13 @@ const HeaderSection = () => {
     }
     if (activeLeftMenu || activeRightMenu.Account || activeRightMenu.Basket) {
       body.style.overflow = "hidden";
-      body.style.paddingRight = "1.05rem";
+      if (width && width > 500) {
+        body.style.paddingRight = "5px";
+      }
     }
     return () => {
       body.style.overflow = "initial";
-      body.style.paddingRight = "0rem";
+      body.style.paddingRight = "0px";
     };
   }, [activeRightMenu, activeLeftMenu]);
 
@@ -57,7 +59,7 @@ const HeaderSection = () => {
   };
 
   return (
-    <Header active={activeRightMenu} active2={activeLeftMenu}>
+    <Header active={activeRightMenu} active2={activeLeftMenu} width={width}>
       <Header.Panel scroll={ScrollAction}>
         <Header.Hamburger scroll={ScrollAction} width={width}>
           <Header.HamburgerContainer>

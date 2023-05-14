@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Basket from ".";
 import { BsTrash } from "react-icons/bs";
 import { PayAcceptList } from "../../assets";
@@ -22,10 +22,10 @@ const BasketSection = () => {
   const [ActiveCountInput, setActiveCountInput] = useState<boolean>(false);
   const [ProductCount, setProductCount] = useState<number>(1);
   const [CountInput, setCountInput] = useState<number>(1);
-  let InputRef = useRef<HTMLInputElement>(null);
 
   const HandleCount = (count: number) => {
     setProductCount(count);
+    setCountInput(count);
     setActiveCount(false);
   };
 
@@ -33,21 +33,12 @@ const BasketSection = () => {
     setActiveCountInput(true);
     setActiveCount(false);
     setTimeout(() => {
-      if (InputRef.current) {
-        InputRef.current.focus();
+      const el: HTMLInputElement | null = document.querySelector(".inputCount");
+      if (el && el !== null) {
+        el.focus();
       }
-    }, 200);
+    }, 300);
   };
-  useEffect(() => {
-    // console.log(InputRef);
-    if (ActiveCountInput) {
-      setTimeout(() => {
-        if (InputRef.current) {
-          InputRef.current.focus();
-        }
-      }, 0);
-    }
-  }, [ActiveCountInput]);
 
   useEffect(() => {
     if (!ActiveCountInput) {
@@ -79,7 +70,7 @@ const BasketSection = () => {
   const HandleInputCount = (e: Event) => {
     let target = e.target as HTMLInputElement;
     const value: number = Number(target.value);
-    if (Number.isInteger(value) && value >= 0) {
+    if (Number.isInteger(value) && value >= 0 && value <= 999) {
       setCountInput(value);
     }
   };
@@ -114,10 +105,8 @@ const BasketSection = () => {
                         <Basket.CountInput
                           type="number"
                           value={CountInput || ""}
-                          ref={InputRef}
                           id="count"
-                          min="1"
-                          max="999"
+                          className="inputCount"
                           onChange={HandleInputCount}
                         />
                       ) : (
@@ -194,6 +183,11 @@ const BasketSection = () => {
           </Basket.Info>
         </Basket.BuyPanel>
       </Basket>
+      <LogRegOut>
+        <LogRegOut.OutBtn href={HomeRoute}>
+          <MdOutlineArrowBackIosNew /> Wyjdź
+        </LogRegOut.OutBtn>
+      </LogRegOut>
       <Basket.PayAccept>
         <Basket.PayAcceptTitle>Akceptujemy</Basket.PayAcceptTitle>
         <Basket.PayAcceptList>
@@ -202,11 +196,6 @@ const BasketSection = () => {
           })}
         </Basket.PayAcceptList>
       </Basket.PayAccept>
-      <LogRegOut>
-        <LogRegOut.OutBtn href={HomeRoute}>
-          <MdOutlineArrowBackIosNew /> Wyjdź
-        </LogRegOut.OutBtn>
-      </LogRegOut>
     </>
   );
 };
