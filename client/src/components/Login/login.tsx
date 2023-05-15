@@ -9,9 +9,6 @@ const LoginSection = () => {
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const target = e.target;
-    //const data = new FormData(target);
-    console.log(target);
   };
 
   return (
