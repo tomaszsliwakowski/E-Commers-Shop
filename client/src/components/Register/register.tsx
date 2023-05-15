@@ -7,11 +7,12 @@ import RegisterConsens from ".";
 
 const RegisterSection = () => {
   const [ShowPass, setShowPass] = useState(false);
+  const handleRegister = () => {};
   return (
     <Login>
       <Login.Panel>
         <Login.Title>Załóż konto</Login.Title>
-        <Login.Form>
+        <Login.Form submit={handleRegister}>
           <Login.InputCon>
             <Login.Input type="text" autocomplete="off" required />
             <Login.InputName>Imię</Login.InputName>

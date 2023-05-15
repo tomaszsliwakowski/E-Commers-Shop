@@ -519,11 +519,16 @@ export const PanelBasket = styled.a`
 export const RightClose = styled.div`
   display: flex;
   align-items: center;
-  gap: 3rem;
   font-size: 20px;
   font-weight: bold;
+  & span {
+    margin-left: 5px;
+    letter-spacing: 1px;
+    color: rgb(77, 77, 77);
+  }
   & svg {
     margin-left: 1rem;
+    margin-right: 3rem;
     font-size: 26px;
     &:hover {
       background-color: silver;

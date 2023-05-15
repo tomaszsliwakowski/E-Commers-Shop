@@ -4,7 +4,6 @@ import { SlBasket } from "react-icons/sl";
 import { AiOutlineUser, AiOutlineClose } from "react-icons/ai";
 import { UserPanelProps } from "../../types/Types";
 import { BasketRoute, LoginRoute, RegisterRoute } from "../../routes";
-import Basket from "../Basket";
 import DropOptMin from "./dropOptMin";
 import DropOptMax from "./dropOptMax";
 
@@ -53,7 +52,9 @@ const UserPanel = ({
           ) : (
             <Header.DropDown>
               <Header.CloseRightPanel style="full">
-                <Header.CloseRight>Koszyk</Header.CloseRight>
+                <Header.CloseRight>
+                  Koszyk<span>(1)</span>
+                </Header.CloseRight>
               </Header.CloseRightPanel>
               {!true ? (
                 <Header.DropOpt>
@@ -114,7 +115,7 @@ const UserPanel = ({
                     setActiveRightMenu({ Account: false, Basket: false })
                   }
                 />
-                Koszyk
+                Koszyk<span>(1)</span>
               </Header.CloseRight>
             </Header.CloseRightPanel>
             {!true ? (

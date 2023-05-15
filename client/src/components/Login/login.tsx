@@ -6,13 +6,21 @@ import InfoList from "../register&login/infolist";
 
 const LoginSection = () => {
   const [ShowPass, setShowPass] = useState<boolean>(false);
+
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const target = e.target;
+    //const data = new FormData(target);
+    console.log(target);
+  };
+
   return (
     <Login>
       <Login.Panel>
         <Login.Title>Zaloguj się</Login.Title>
-        <Login.Form>
+        <Login.Form submit={() => handleLogin}>
           <Login.InputCon>
-            <Login.Input type="text" required />
+            <Login.Input type="text" required name="email" />
             <Login.InputName>E-mail</Login.InputName>
           </Login.InputCon>
           <Login.InputCon>
@@ -20,6 +28,7 @@ const LoginSection = () => {
               type={ShowPass ? "text" : "password"}
               autocomplete="off"
               required
+              name="password"
             />
             <Login.InputName>Hasło</Login.InputName>
             <Login.PassShow click={setShowPass}>

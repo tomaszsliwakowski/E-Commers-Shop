@@ -1,5 +1,5 @@
 import React from "react";
-import { JsxProps, TsxPropsBoolean } from "../../types/Types";
+import { FormProps, JsxProps, TsxPropsBoolean } from "../../types/Types";
 import {
   Container,
   Panel,
@@ -29,8 +29,8 @@ Login.Info = function LoginInfo(props: JsxProps) {
 Login.Title = function LoginTitle(props: JsxProps) {
   return <Title>{props.children}</Title>;
 };
-Login.Form = function LoginForm(props: JsxProps) {
-  return <Form>{props.children}</Form>;
+Login.Form = function LoginForm(props: FormProps) {
+  return <Form onSubmit={props.submit()}>{props.children}</Form>;
 };
 
 Login.Input = function LoginInput({ ...restprops }) {

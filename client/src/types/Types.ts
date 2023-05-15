@@ -23,6 +23,12 @@ export type SortJSXProps = {
   click: React.Dispatch<React.SetStateAction<boolean>>;
   active?: boolean;
 };
+
+export type FormProps = {
+  submit: Function;
+  children: ReactNode;
+};
+
 export type SortChooseJSXProps = {
   children?: ReactNode;
   active?: boolean;
