@@ -9,7 +9,8 @@ import {
   Input,
   InputName,
   PassShow,
-  InputCon,
+  InputReg,
+  InputLog,
   InfoReg,
   RegBtn,
 } from "./style/loginStyle";
@@ -37,7 +38,11 @@ Login.Input = function LoginInput({ ...restprops }) {
   return <Input {...restprops} />;
 };
 Login.InputCon = function LoginInputCon(props: JsxProps) {
-  return <InputCon>{props.children}</InputCon>;
+  return props.style === "reg" ? (
+    <InputReg>{props.children}</InputReg>
+  ) : (
+    <InputLog>{props.children}</InputLog>
+  );
 };
 
 Login.InputName = function LoginInputName(props: JsxProps) {

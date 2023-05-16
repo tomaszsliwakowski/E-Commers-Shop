@@ -142,3 +142,22 @@ export type ProductsItemType = {
 export type FiltersProps = {
   product: GetProductsType;
 };
+
+export type LoginValueType = {
+  email: string;
+  password: string;
+};
+
+export type RegisterValueType = {
+  name: string;
+  lastname: string;
+  email: string;
+  password: string;
+};
+
+export type FormErrorType = {
+  name?: boolean;
+  lastname?: boolean;
+  email: boolean;
+  password: boolean;
+};

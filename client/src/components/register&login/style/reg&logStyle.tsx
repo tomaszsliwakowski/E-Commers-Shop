@@ -90,3 +90,10 @@ export const Name = styled.span`
     font-size: 12px;
   }
 `;
+
+export const Error = styled.span`
+  color: red;
+  font-size: 14px;
+  padding-top: 5px;
+  width: 90%;
+`;

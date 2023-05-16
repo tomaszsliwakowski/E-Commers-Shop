@@ -5,6 +5,7 @@ export const Consens = styled.div`
   flex-direction: column;
   width: 90%;
   margin: 0 auto;
+  margin-top: 1rem;
 `;
 export const Title = styled.h4`
   margin-bottom: 1rem;

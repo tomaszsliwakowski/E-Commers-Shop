@@ -1,5 +1,9 @@
 import React from "react";
-import { JsxProps } from "../../types/Types";
+import {
+  JsxProps,
+  SearchPropsFunction,
+  TsxPropsBoolean,
+} from "../../types/Types";
 import {
   Header,
   Logo,
@@ -12,6 +16,7 @@ import {
   Element,
   Image,
   Name,
+  Error,
 } from "./style/reg&logStyle";
 
 export default function LogRegHeader(props: JsxProps) {
@@ -30,8 +35,8 @@ LogRegOut.OutBtn = function LogRegOutBtn(props: JsxProps) {
   return <OutBtn href={props.href}>{props.children}</OutBtn>;
 };
 
-export function LogRegBtn(props: JsxProps) {
-  return <Btn>{props.children}</Btn>;
+export function LogRegBtn(props: SearchPropsFunction) {
+  return <Btn onClick={() => props.click()}>{props.children}</Btn>;
 }
 
 export function LogRegInfo(props: JsxProps) {
@@ -55,3 +60,7 @@ LogRegInfo.Image = function LogRegInfoImage({ ...restprops }) {
 LogRegInfo.Name = function LogRegInfoName(props: JsxProps) {
   return <Name>{props.children}</Name>;
 };
+
+export function LogRegError(props: JsxProps) {
+  return <Error>{props.children}</Error>;
+}

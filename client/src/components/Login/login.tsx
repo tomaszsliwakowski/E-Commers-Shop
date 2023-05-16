@@ -1,14 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Login from ".";
-import { LogRegBtn } from "../register&login";
+import { LogRegBtn, LogRegError } from "../register&login";
 import { RegisterRoute } from "../../routes";
 import InfoList from "../register&login/infolist";
+import { FormErrorType, LoginValueType } from "../../types/Types";
 
 const LoginSection = () => {
   const [ShowPass, setShowPass] = useState<boolean>(false);
+  const [LoginValues, setLoginValues] = useState<LoginValueType>({
+    email: "",
+    password: "",
+  });
+  const [FormError, setFormError] = useState<FormErrorType>({
+    email: false,
+    password: false,
+  });
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+  };
+
+  const HandleForm = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLoginValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const HandleFormError = () => {
+    setFormError({
+      email: !(LoginValues.email.includes("@") && LoginValues.email.length > 6),
+      password: !(LoginValues.password.length > 6),
+    });
   };
 
   return (
@@ -16,23 +36,39 @@ const LoginSection = () => {
       <Login.Panel>
         <Login.Title>Zaloguj się</Login.Title>
         <Login.Form submit={() => handleLogin}>
-          <Login.InputCon>
-            <Login.Input type="text" required name="email" />
+          <Login.InputCon style="log">
+            <Login.Input
+              type="text"
+              required
+              name="email"
+              onChange={HandleForm}
+            />
             <Login.InputName>E-mail</Login.InputName>
           </Login.InputCon>
-          <Login.InputCon>
+          {FormError.email ? (
+            <LogRegError>Podaj poprawny email</LogRegError>
+          ) : null}
+          <Login.InputCon style="log">
             <Login.Input
               type={ShowPass ? "text" : "password"}
               autocomplete="off"
               required
               name="password"
+              onChange={HandleForm}
             />
             <Login.InputName>Hasło</Login.InputName>
             <Login.PassShow click={setShowPass}>
               {ShowPass ? "Ukryj" : "Pokaż"}
             </Login.PassShow>
           </Login.InputCon>
-          <LogRegBtn>Zaloguj się</LogRegBtn>
+          {FormError.password ? (
+            <LogRegError>
+              {LoginValues.password.length < 1
+                ? "Pole nie może być puste"
+                : "Hasło musi być dłuższe niż 6 znaków"}
+            </LogRegError>
+          ) : null}
+          <LogRegBtn click={HandleFormError}>Zaloguj się</LogRegBtn>
         </Login.Form>
       </Login.Panel>
       <Login.Info>

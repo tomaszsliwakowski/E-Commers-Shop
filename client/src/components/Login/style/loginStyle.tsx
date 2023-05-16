@@ -49,6 +49,9 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  & button {
+    margin-top: 2rem;
+  }
 `;
 
 export const InputName = styled.span`
@@ -86,15 +89,26 @@ export const Input = styled.input`
     padding: 0 8px;
   }
 `;
-export const InputCon = styled.div`
+export const InputReg = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
   position: relative;
-  margin-bottom: 1.5rem;
+  margin-top: 1.2rem;
 `;
+
+export const InputLog = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin-top: 1.5rem;
+`;
+
 export const InfoReg = styled.div`
   width: 100%;
   max-width: 450px;
