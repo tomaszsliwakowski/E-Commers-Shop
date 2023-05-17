@@ -4,6 +4,8 @@ import { LogRegBtn, LogRegError } from "../register&login";
 import { RegisterRoute } from "../../routes";
 import InfoList from "../register&login/infolist";
 import { FormErrorType, LoginValueType } from "../../types/Types";
+import { auth } from "../../firebase/firebase-config";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginSection = () => {
   const [ShowPass, setShowPass] = useState<boolean>(false);
@@ -18,6 +20,22 @@ const LoginSection = () => {
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!FormError.email && !FormError.password) {
+      login(LoginValues.email, LoginValues.password);
+    }
+  };
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      console.log(user);
+    });
+  }, []);
+
+  const login = async (email: string, password: string) => {
+    try {
+      const user = await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      console.log((error as Error).message);
+    }
   };
 
   const HandleForm = (e: React.ChangeEvent<HTMLInputElement>) => {

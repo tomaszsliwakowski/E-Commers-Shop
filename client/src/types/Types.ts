@@ -161,3 +161,7 @@ export type FormErrorType = {
   email: boolean;
   password: boolean;
 };
+
+export type AuthProviderType = {
+  children: ReactNode;
+};
