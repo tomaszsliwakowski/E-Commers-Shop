@@ -4,7 +4,9 @@ import { LogRegBtn, LogRegError } from "../register&login";
 import { RegisterRoute } from "../../routes";
 import InfoList from "../register&login/infolist";
 import { FormErrorType, LoginValueType } from "../../types/Types";
-import axios from "axios";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase/firebase-config";
+import { useNavigate } from "react-router";
 
 const LoginSection = () => {
   const [ShowPass, setShowPass] = useState<boolean>(false);
@@ -17,15 +19,23 @@ const LoginSection = () => {
     password: false,
   });
   const [LoginStatus, setLoginStatus] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!FormError.email && !FormError.password) {
+    if (!Object.values(LoginValues).includes("false")) {
       login(LoginValues.email, LoginValues.password);
     }
   };
 
-  const login = async (email: string, password: string) => {};
+  const login = async (email: string, password: string) => {
+    try {
+      const user = await signInWithEmailAndPassword(auth, email, password);
+      navigate("/");
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+  };
 
   const HandleForm = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));

@@ -14,14 +14,14 @@ const DropOptMax = () => {
   return (
     <>
       <Header.DropOpt style="max">
-        {tab.map((ite) => (
-          <Basket.Product style="max">
+        {tab.map((ite, id) => (
+          <Basket.Product style="max" key={id}>
             <Basket.Property>
               <Basket.Goto to={"/products/:category"}>
                 <Basket.Image src={prod.img} alt={prod.name} />
               </Basket.Goto>
               <Basket.PropertyOpt style="grid">
-                <Basket.Goto to={"/products/:category"}>
+                <Basket.Goto to={"/basket"}>
                   <Basket.ProductDesc style="center">
                     {prod.name}
                   </Basket.ProductDesc>
@@ -43,7 +43,9 @@ const DropOptMax = () => {
             <Basket.BuyPanelPrice>Łączna kwota</Basket.BuyPanelPrice>
             <Basket.BuyPanelPrice>1234.00 zł</Basket.BuyPanelPrice>
           </Basket.BuyPanelSum>
-          <Basket.BuyPanelBtn>Przejdź do koszyka</Basket.BuyPanelBtn>
+          <Basket.BuyPanelBtn href="/basket">
+            Przejdź do koszyka
+          </Basket.BuyPanelBtn>
         </Basket.BuyPanelCon>
       </Basket.BuyPanel>
     </>

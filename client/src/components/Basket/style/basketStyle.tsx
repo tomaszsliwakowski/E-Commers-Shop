@@ -91,8 +91,12 @@ export const Title = styled.h1`
     letter-spacing: 2px;
   }
 `;
-export const BuyPanelPrice = styled.div``;
-export const BuyPanelBtn = styled.button`
+export const BuyPanelPrice = styled.span``;
+export const BuyPanelBtn = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
   width: 100%;
   border-radius: 2rem;
   height: 40px;
@@ -103,6 +107,7 @@ export const BuyPanelBtn = styled.button`
   font-weight: bold;
   transition: all 0.3s;
   margin-bottom: 0.5rem;
+  font-size: 16px;
   &:hover {
     background: rgb(0, 125, 0);
   }
@@ -164,7 +169,7 @@ export const PropertyOptSmall = styled.div`
     width: auto;
   }
 `;
-export const Desc = styled.div`
+export const Desc = styled.p`
   padding: 0 0.5rem;
   font-size: 14px;
   text-overflow: ellipsis;
@@ -176,7 +181,7 @@ export const Desc = styled.div`
     text-align: center;
   }
 `;
-export const DescSmall = styled.div`
+export const DescSmall = styled.p`
   padding: 0 0.5rem;
   font-size: 14px;
   text-overflow: ellipsis;

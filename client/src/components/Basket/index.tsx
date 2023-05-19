@@ -61,7 +61,11 @@ Basket.BuyPanelPrice = function BasketBuyPanelPrice(props: JsxProps) {
   return <BuyPanelPrice>{props.children}</BuyPanelPrice>;
 };
 Basket.BuyPanelBtn = function BasketBuyPanelBtn(props: JsxProps) {
-  return <BuyPanelBtn>{props.children}</BuyPanelBtn>;
+  return (
+    <BuyPanelBtn to={props.href && props.href ? props.href : "#"}>
+      {props.children}
+    </BuyPanelBtn>
+  );
 };
 
 Basket.Header = function BasketHeader(props: JsxProps) {
@@ -147,7 +151,7 @@ Basket.ProdCount = function BasketProdCount(props: JsxProps) {
       id="count"
       style={{
         borderRadius: `${props.active2 ? "1rem 1rem 0 0 " : "2rem"}`,
-        borderBottom: `${props.active2 ? "none" : ""}`,
+        borderBottom: `${props.active2 ? "1px solid transparent" : ""}`,
       }}
     >
       {props.children}

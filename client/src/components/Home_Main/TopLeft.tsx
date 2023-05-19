@@ -51,7 +51,7 @@ const TopLeftSection = () => {
   }, []);
 
   return (
-    <TopLeft href="/">
+    <TopLeft href="/products/:id">
       <TopLeft.ImageAndTitle>
         <Main.Title>Gorący strzał</Main.Title>
         <Main.Image

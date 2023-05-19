@@ -33,6 +33,11 @@ import {
   EmptyBasket,
   DropOptSmall,
   DropOptFull,
+  LogOut,
+  PanelBasketEmpty,
+  UserName,
+  Orders,
+  AccountSet,
 } from "./styles/HeaderStyle";
 import {
   DropDownProps,
@@ -170,11 +175,15 @@ Header.UserPanelBasketMin = function HeaderUserPanelBasketMin(
 };
 
 Header.UserPanelAccount = function HeaderUserPanelAccount(props: JsxProps) {
-  return <PanelAccount href={props.href}>{props.children}</PanelAccount>;
+  return <PanelAccount>{props.children}</PanelAccount>;
 };
 
 Header.UserPanelBasket = function HeaderUserPanelBasket(props: JsxProps) {
-  return <PanelBasket href={props.href}>{props.children}</PanelBasket>;
+  return props.style === "true" ? (
+    <PanelBasket>{props.children}</PanelBasket>
+  ) : (
+    <PanelBasketEmpty to={"/basket"}>{props.children}</PanelBasketEmpty>
+  );
 };
 
 Header.PanelName = function HeaderPanelName(props: JsxProps) {
@@ -234,4 +243,24 @@ Header.RegisterBtn = function HeaderRegisterBtn(props: JsxProps) {
 
 Header.EmptyBasket = function HeaderEmptyBasket(props: JsxProps) {
   return <EmptyBasket>{props.children}</EmptyBasket>;
+};
+Header.LogOutBtn = function HeaderLogOutBtn(props: SearchPropsFunction) {
+  return <LogOut onClick={() => props.click()}>{props.children}</LogOut>;
+};
+Header.UserName = function HeaderUserName(props: JsxProps) {
+  return <UserName>{props.children}</UserName>;
+};
+Header.Orders = function HeaderOrders(props: JsxProps) {
+  return (
+    <Orders to={props.href && props.href ? props.href : ""}>
+      {props.children}
+    </Orders>
+  );
+};
+Header.AccountSet = function HeaderAccountSet(props: JsxProps) {
+  return (
+    <AccountSet to={props.href && props.href ? props.href : ""}>
+      {props.children}
+    </AccountSet>
+  );
 };

@@ -10,7 +10,7 @@ const prod: any = {
   img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2021/7/pr_2021_7_1_8_25_10_978_06.jpg",
   name: "Gigabyte GeForce RTX 3060 Ti EAGLE OC LHR 8GB GDDR6",
   price: 1269.0,
-  link: "#",
+  link: "/products/:id",
 };
 const responsive = {
   superLargeDesktop: {

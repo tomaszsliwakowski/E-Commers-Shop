@@ -10,7 +10,7 @@ const corsOptions = {
 const app = express();
 app.use(cors(corsOptions));
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(morgan("tiny"));
 

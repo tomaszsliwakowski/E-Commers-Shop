@@ -5,6 +5,9 @@ import { LoginRoute } from "../../routes";
 import InfoList from "../register&login/infolist";
 import RegisterConsens from ".";
 import { FormErrorType, RegisterValueType } from "../../types/Types";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../../firebase/firebase-config";
+import { useNavigate } from "react-router";
 
 const RegisterSection = () => {
   const [ShowPass, setShowPass] = useState<boolean>(false);
@@ -22,6 +25,7 @@ const RegisterSection = () => {
     email: false,
     password: false,
   });
+  const navigate = useNavigate();
 
   const HandleForm = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRegisterValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -45,6 +49,38 @@ const RegisterSection = () => {
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!Object.values(RegisterValues).includes("false")) {
+      Register(
+        RegisterValues.email,
+        RegisterValues.password,
+        RegisterValues.name,
+        RegisterValues.lastname
+      );
+    }
+  };
+
+  const Register = async (
+    email: string,
+    password: string,
+    name: string,
+    lastname: string
+  ) => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      if (auth.currentUser === null) return;
+      await updateProfile(auth.currentUser, {
+        displayName: `${name + " " + lastname}`,
+      });
+      setRegisterValues({
+        name: "",
+        lastname: "",
+        email: "",
+        password: "",
+      });
+      navigate("/");
+    } catch (error) {
+      console.log((error as Error).message);
+    }
   };
 
   return (
@@ -127,7 +163,7 @@ const RegisterSection = () => {
             </RegisterConsens.Container>
           </RegisterConsens>
           {ConsensError ? <LogRegError>Zaznacz zgodę</LogRegError> : null}
-          <LogRegBtn click={HandleFormError}>Zaloguj się</LogRegBtn>
+          <LogRegBtn click={HandleFormError}>Zarejestruj się</LogRegBtn>
         </Login.Form>
       </Login.Panel>
       <Login.Info>

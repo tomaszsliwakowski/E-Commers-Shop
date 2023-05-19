@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Header } from ".";
 import { SlBasket } from "react-icons/sl";
 import { AiOutlineUser, AiOutlineClose } from "react-icons/ai";
@@ -6,6 +6,9 @@ import { UserPanelProps } from "../../types/Types";
 import { BasketRoute, LoginRoute, RegisterRoute } from "../../routes";
 import DropOptMin from "./dropOptMin";
 import DropOptMax from "./dropOptMax";
+import { AuthContext } from "../../assets/auth";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase/firebase-config";
 
 const prod: any = {
   img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2021/7/pr_2021_7_1_8_25_10_978_06.jpg",
@@ -19,26 +22,55 @@ const UserPanel = ({
   activeRightMenu,
   setActiveRightMenu,
 }: UserPanelProps) => {
+  const [User, setUser] = useState({ Name: "", Email: "" });
+  const logged: any = useContext(AuthContext);
+  useEffect(() => {
+    if (logged) {
+      setUser({ Name: logged.displayName, Email: logged.email });
+    }
+  }, [logged]);
+
+  const logout = async () => {
+    await signOut(auth);
+  };
+
   return width !== undefined ? (
     width >= 1250 ? (
       <>
-        <Header.UserPanelAccount href="">
+        <Header.UserPanelAccount>
           <Header.DropBtn>
             <AiOutlineUser />
             Konto
           </Header.DropBtn>
           <Header.DropDown>
-            <Header.DropOpt>
-              <Header.LoginBtn href={LoginRoute}>Zaloguj</Header.LoginBtn>
-            </Header.DropOpt>
-            <Header.DropOpt>
-              <Header.RegisterBtn href={RegisterRoute}>
-                Zarejestruj się
-              </Header.RegisterBtn>
-            </Header.DropOpt>
+            {logged ? (
+              <>
+                <Header.DropOpt>
+                  <Header.UserName>{User.Name.split(" ")[0]}</Header.UserName>
+                  <Header.Orders>Zamówienia</Header.Orders>
+                  <Header.AccountSet>Ustawiania</Header.AccountSet>
+                </Header.DropOpt>
+                <Header.DropOpt>
+                  <Header.LogOutBtn click={logout}>
+                    Wyloguj się
+                  </Header.LogOutBtn>
+                </Header.DropOpt>
+              </>
+            ) : (
+              <>
+                <Header.DropOpt>
+                  <Header.LoginBtn href={LoginRoute}>Zaloguj</Header.LoginBtn>
+                </Header.DropOpt>
+                <Header.DropOpt>
+                  <Header.RegisterBtn href={RegisterRoute}>
+                    Zarejestruj się
+                  </Header.RegisterBtn>
+                </Header.DropOpt>
+              </>
+            )}
           </Header.DropDown>
         </Header.UserPanelAccount>
-        <Header.UserPanelBasket href={BasketRoute}>
+        <Header.UserPanelBasket style={true.toString()}>
           <Header.DropBtn>
             <SlBasket />
             Koszyk
@@ -51,11 +83,13 @@ const UserPanel = ({
             </Header.DropDown>
           ) : (
             <Header.DropDown>
-              <Header.CloseRightPanel style="full">
-                <Header.CloseRight>
-                  Koszyk<span>(1)</span>
-                </Header.CloseRight>
-              </Header.CloseRightPanel>
+              {true ? (
+                <Header.CloseRightPanel style="full">
+                  <Header.CloseRight>
+                    Koszyk<span>(1)</span>
+                  </Header.CloseRight>
+                </Header.CloseRightPanel>
+              ) : null}
               {!true ? (
                 <Header.DropOpt>
                   <Header.EmptyBasket>
@@ -96,14 +130,27 @@ const UserPanel = ({
                 Konto
               </Header.CloseRight>
             </Header.CloseRightPanel>
-            <Header.DropOpt>
-              <Header.LoginBtn href={LoginRoute}>Zaloguj</Header.LoginBtn>
-            </Header.DropOpt>
-            <Header.DropOpt>
-              <Header.RegisterBtn href={RegisterRoute}>
-                Zarejestruj się
-              </Header.RegisterBtn>
-            </Header.DropOpt>
+            {logged ? (
+              <>
+                <Header.DropOpt>Witaj {User.Name}</Header.DropOpt>
+                <Header.DropOpt>
+                  <Header.LogOutBtn click={logout}>
+                    Wyloguj się
+                  </Header.LogOutBtn>
+                </Header.DropOpt>
+              </>
+            ) : (
+              <>
+                <Header.DropOpt>
+                  <Header.LoginBtn href={LoginRoute}>Zaloguj</Header.LoginBtn>
+                </Header.DropOpt>
+                <Header.DropOpt>
+                  <Header.RegisterBtn href={RegisterRoute}>
+                    Zarejestruj się
+                  </Header.RegisterBtn>
+                </Header.DropOpt>
+              </>
+            )}
           </Header.DropDown>
         ) : null}
         {activeRightMenu.Basket ? (

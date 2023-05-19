@@ -381,11 +381,17 @@ export const DropDown = styled.div`
 `;
 export const DropOpt = styled.div`
   color: black;
-  padding: 12px 16px 12px 16px;
+  padding: 10px 16px 10px 16px;
+  gap: 10px;
   text-decoration: none;
   display: flex;
   width: 100%;
-  justify-content: center;
+  flex-direction: column;
+
+  & span {
+    text-align: left;
+  }
+
   @media screen and (max-width: 400px) {
     max-height: 28vh;
   }
@@ -427,7 +433,7 @@ export const DropBtn = styled.span`
   gap: 5px;
 `;
 
-export const PanelAccount = styled.a`
+export const PanelAccount = styled.div`
   position: relative;
   text-decoration: none;
   height: 2.2rem;
@@ -469,7 +475,7 @@ export const PanelAccount = styled.a`
     }
   }
 `;
-export const PanelBasket = styled.a`
+export const PanelBasket = styled.div`
   position: relative;
   text-decoration: none;
   height: 2.2rem;
@@ -516,6 +522,55 @@ export const PanelBasket = styled.a`
     }
   }
 `;
+
+export const PanelBasketEmpty = styled(Link)`
+  position: relative;
+  text-decoration: none;
+  height: 2.2rem;
+  width: auto;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 18px;
+  color: rgb(26, 26, 26);
+  transition: all 0.3s;
+  cursor: pointer;
+  @media screen and (max-width: 400px) {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+  &:hover {
+    box-shadow: 0 0 5px silver;
+    border-radius: 8px;
+    @media screen and (min-width: 1250px) {
+      border-radius: 8px 8px 0 0;
+      border: none;
+      background-color: rgb(204, 204, 204);
+    }
+  }
+
+  @media screen and (min-width: 1250px) {
+    &:hover ${DropDown} {
+      display: block;
+      right: 0rem;
+      top: 2.2rem;
+      z-index: 100;
+      border-radius: 8px 0px 8px 8px;
+      min-width: 320px;
+    }
+    &:hover ${DropOpt} {
+      min-width: 250px;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      cursor: default;
+      text-align: center;
+    }
+  }
+`;
+
 export const RightClose = styled.div`
   display: flex;
   align-items: center;
@@ -590,4 +645,66 @@ export const RegBtn = styled(Link)`
 export const EmptyBasket = styled.span`
   width: 100%;
   text-align: center;
+`;
+
+export const LogOpt = styled.button`
+  width: 90%;
+  height: 30px;
+  margin: 0.5rem 0 0 0;
+  border-radius: 1rem;
+  background-color: rgb(0, 130, 250);
+  border: none;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(0, 112, 204);
+  }
+`;
+export const LogOut = styled.button`
+  width: 90%;
+  height: 30px;
+  margin: 0.5rem 0 0 0;
+  border-radius: 1rem;
+  background-color: rgb(0, 130, 250);
+  border: none;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(0, 112, 204);
+  }
+`;
+
+export const UserName = styled.span`
+  font-weight: 500;
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 2.5em;
+  line-height: 1.8em;
+  max-width: 100%;
+  display: flex;
+`;
+export const Orders = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+export const AccountSet = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;

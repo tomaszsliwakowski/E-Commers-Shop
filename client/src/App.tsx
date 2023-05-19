@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import HomePage from "./containers/HomePage";
 import { Route, Routes } from "react-router";
 import {
   BasketRoute,
   HomeRoute,
   LoginRoute,
+  ProductRoute,
   ProductsRoute,
   RegisterRoute,
   SearchRoute,
@@ -13,17 +14,21 @@ import ProductsPage from "./containers/ProductsPage";
 import LoginPage from "./containers/LoginPage";
 import RegisterPage from "./containers/RegisterPage";
 import BasketPage from "./containers/BasketPage";
+import { AuthProvider } from "./assets/auth";
 
 function App() {
   return (
-    <Routes>
-      <Route path={HomeRoute} element={<HomePage />} />
-      <Route path={ProductsRoute} element={<ProductsPage />} />
-      <Route path={SearchRoute} element={<ProductsPage />} />
-      <Route path={LoginRoute} element={<LoginPage />} />
-      <Route path={RegisterRoute} element={<RegisterPage />} />
-      <Route path={BasketRoute} element={<BasketPage />} />
-    </Routes>
+    <AuthProvider>
+      <Routes>
+        <Route path={HomeRoute} element={<HomePage />} />
+        <Route path={ProductsRoute} element={<ProductsPage />} />
+        <Route path={ProductRoute} element={<ProductsPage />} />
+        <Route path={SearchRoute} element={<ProductsPage />} />
+        <Route path={LoginRoute} element={<LoginPage />} />
+        <Route path={RegisterRoute} element={<RegisterPage />} />
+        <Route path={BasketRoute} element={<BasketPage />} />
+      </Routes>
+    </AuthProvider>
   );
 }
 

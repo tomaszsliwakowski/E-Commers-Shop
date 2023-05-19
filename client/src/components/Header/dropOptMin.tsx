@@ -14,8 +14,8 @@ const DropOptMin = () => {
   return (
     <>
       <Header.DropOpt style="min">
-        {tab.map((ite) => (
-          <Basket.Product style="small">
+        {tab.map((ite, id) => (
+          <Basket.Product style="small" key={id}>
             <Basket.Property>
               <Basket.Goto to={"/products/:category"}>
                 <Basket.Image src={prod.img} alt={prod.name} />
@@ -43,7 +43,9 @@ const DropOptMin = () => {
             <Basket.BuyPanelPrice>Łączna kwota</Basket.BuyPanelPrice>
             <Basket.BuyPanelPrice>1234.00 zł</Basket.BuyPanelPrice>
           </Basket.BuyPanelSum>
-          <Basket.BuyPanelBtn>Przejdź do koszyka</Basket.BuyPanelBtn>
+          <Basket.BuyPanelBtn href="/basket">
+            Przejdź do koszyka
+          </Basket.BuyPanelBtn>
         </Basket.BuyPanelCon>
       </Basket.BuyPanel>
     </>
