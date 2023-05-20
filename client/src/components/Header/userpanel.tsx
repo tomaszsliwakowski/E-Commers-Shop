@@ -132,7 +132,11 @@ const UserPanel = ({
             </Header.CloseRightPanel>
             {logged ? (
               <>
-                <Header.DropOpt>Witaj {User.Name}</Header.DropOpt>
+                <Header.DropOpt>
+                  <Header.UserName>{User.Name.split(" ")[0]}</Header.UserName>
+                  <Header.Orders>Zamówienia</Header.Orders>
+                  <Header.AccountSet>Ustawiania</Header.AccountSet>
+                </Header.DropOpt>
                 <Header.DropOpt>
                   <Header.LogOutBtn click={logout}>
                     Wyloguj się
