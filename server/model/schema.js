@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose");
 
-let schema = new mongoose.Schema({});
+//let schema = new mongoose.Schema({});
 
-const Userdb = mongoose.model("ProdDB", schema);
+//const Userdb = mongoose.model("ProdDB", schema);
 
-module.exports = Userdb;
+//module.exports = Userdb;
