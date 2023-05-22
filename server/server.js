@@ -4,6 +4,10 @@ const bodyparser = require("body-parser");
 const cors = require("cors");
 const connectDB = require("./database/connectDB");
 const dotenv = require("dotenv");
+const ProdNTB_DB = require("./model/schema_NTB");
+const ProdPHONE_DB = require("./model/Schema_Phone");
+const ProdDSK_DB = require("./model/Schema_DSK");
+const ProdPCCOM_DB = require("./model/Schema.Com");
 
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -21,6 +25,15 @@ const PORT = process.env.PORT || 1000;
 app.use(morgan("tiny"));
 
 connectDB();
+
+const data = ProdPCCOM_DB({
+  category: "Komponenty",
+  products: [],
+  filters: {
+    Producent: [],
+    Komponenty: [],
+  },
+});
 
 app.use(bodyparser.urlencoded({ extended: true }));
 

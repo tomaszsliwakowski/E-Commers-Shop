@@ -15,8 +15,8 @@ const Filters = ({ product }: FiltersProps) => {
         ? filtrCount.map((item, id) => (
             <Products.F_Section key={id}>
               <Products.F_Name>{item}</Products.F_Name>
-              {item === filtrCount[0]
-                ? filtrData[0].map((it, id) => (
+              {item === filtrCount[id]
+                ? filtrData[id].map((it, id) => (
                     <Products.F_List key={id}>
                       <Products.F_Element>
                         <Products.F_Choose>
@@ -27,17 +27,7 @@ const Filters = ({ product }: FiltersProps) => {
                       </Products.F_Element>
                     </Products.F_List>
                   ))
-                : filtrData[1].map((it, id) => (
-                    <Products.F_List key={id}>
-                      <Products.F_Element>
-                        <Products.F_Choose>
-                          {it}
-                          <Products.F_Checkbox type="checkbox" />
-                          <Products.F_Checkmark></Products.F_Checkmark>
-                        </Products.F_Choose>
-                      </Products.F_Element>
-                    </Products.F_List>
-                  ))}
+                : null}
             </Products.F_Section>
           ))
         : null}
