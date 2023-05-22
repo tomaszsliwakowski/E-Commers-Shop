@@ -8,6 +8,7 @@ const ProdNTB_DB = require("./model/schema_NTB");
 const ProdPHONE_DB = require("./model/Schema_Phone");
 const ProdDSK_DB = require("./model/Schema_DSK");
 const ProdPCCOM_DB = require("./model/Schema.Com");
+const ProdACC_DB = require("./model/Schema_Acc");
 
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -26,12 +27,12 @@ app.use(morgan("tiny"));
 
 connectDB();
 
-const data = ProdPCCOM_DB({
-  category: "Komponenty",
+const data = ProdACC_DB({
+  category: "Akcesoria",
   products: [],
   filters: {
     Producent: [],
-    Komponenty: [],
+    Akcesoria: [],
   },
 });
 
