@@ -116,17 +116,20 @@ export type ProductsType = {
   name: string;
   img: string;
   price: number;
-  link: string;
+  link?: string;
   category: string;
+  producer?: string;
   components?: string;
   opinion: number;
   spec?: string[];
+  destiny?: string;
 };
 
 export type FiltersType = {
   Producent?: string[];
   Przeznaczenie?: string[];
   Komponenty?: string[];
+  Akcesoria?: string[];
 };
 
 export type GetProductsType = {

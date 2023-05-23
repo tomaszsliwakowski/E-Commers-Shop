@@ -43,7 +43,7 @@ const Menu = ({
           </NavLink>
         </Header.MenuListEl>
         <Header.MenuListEl scroll={ScrollAction} Click={setActiveLeftMenu}>
-          <NavLink to="/products/Podzespoły-komputerowe">
+          <NavLink to="/products/Podzespoly-komputerowe">
             <GiComputerFan /> Podzespoły komputerowe
           </NavLink>
         </Header.MenuListEl>

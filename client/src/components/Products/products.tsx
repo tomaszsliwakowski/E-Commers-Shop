@@ -16,111 +16,7 @@ import {
 import { BsFilter } from "react-icons/bs";
 import Filters from "./filters";
 import useWindowSize from "../../hooks/useWindowSize";
-
-const prod: GetProductsType = {
-  category: "Laptop",
-  products: [
-    {
-      img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/6/pr_2022_6_7_14_59_54_423_00.jpg",
-      name: "Acer Nitro 5 R5-6600H/16GB/512 RTX3060 165Hz",
-      price: 4599.0,
-      link: "#",
-      id: 0,
-      category: "Laptop",
-      opinion: 3,
-      spec: [
-        "Procesor: AMD Ryzen 5 6600H",
-        "Pamięć: 16 GB",
-        "Grafika: Nvidia GeForce RTX 3060",
-        "Ekran: Matowy,LED,IPS",
-      ],
-      //components: "karta graficzna",
-    },
-    {
-      img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/6/pr_2022_6_7_14_59_54_423_00.jpg",
-      name: "Acer Nitro 5 R5-6600H/16GB/512 RTX3060 165Hz",
-      price: 4599.0,
-      link: "#",
-      id: 0,
-      category: "Laptop",
-      opinion: 3,
-      spec: [
-        "Procesor: AMD Ryzen 5 6600H",
-        "Pamięć: 16 GB",
-        "Grafika: Nvidia GeForce RTX 3060",
-        "Ekran: Matowy,LED,IPS",
-      ],
-      //components: "karta graficzna",
-    },
-    {
-      img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/6/pr_2022_6_7_14_59_54_423_00.jpg",
-      name: "Acer Nitro 5 R5-6600H/16GB/512 RTX3060 165Hz",
-      price: 4599.0,
-      link: "#",
-      id: 0,
-      category: "Laptop",
-      opinion: 3,
-      spec: [
-        "Procesor: AMD Ryzen 5 6600H",
-        "Pamięć: 16 GB",
-        "Grafika: Nvidia GeForce RTX 3060",
-        "Ekran: Matowy,LED,IPS",
-      ],
-      //components: "karta graficzna",
-    },
-    {
-      img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/6/pr_2022_6_7_14_59_54_423_00.jpg",
-      name: "Acer Nitro 5 R5-6600H/16GB/512 RTX3060 165Hz",
-      price: 4599.0,
-      link: "#",
-      id: 0,
-      category: "Laptop",
-      opinion: 3,
-      spec: [
-        "Procesor: AMD Ryzen 5 6600H",
-        "Pamięć: 16 GB",
-        "Grafika: Nvidia GeForce RTX 3060",
-        "Ekran: Matowy,LED,IPS",
-      ], //components: "karta graficzna",
-    },
-    {
-      img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/6/pr_2022_6_7_14_59_54_423_00.jpg",
-      name: "Acer Nitro 5 R5-6600H/16GB/512 RTX3060 165Hz",
-      price: 4599.0,
-      link: "#",
-      id: 0,
-      category: "Laptop",
-      opinion: 3,
-      spec: [
-        "Procesor: AMD Ryzen 5 6600H",
-        "Pamięć: 16 GB",
-        "Grafika: Nvidia GeForce RTX 3060",
-        "Ekran: Matowy,LED,IPS",
-      ],
-      //components: "karta graficzna",
-    },
-    {
-      img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/6/pr_2022_6_7_14_59_54_423_00.jpg",
-      name: "Acer Nitro 5 R5-6600H/16GB/512 RTX3060 165Hz",
-      price: 4599.0,
-      link: "#",
-      id: 0,
-      category: "Laptop",
-      opinion: 3,
-      spec: [
-        "Procesor: AMD Ryzen 5 6600H",
-        "Pamięć: 16 GB",
-        "Grafika: Nvidia GeForce RTX 3060",
-        "Ekran: Matowy,LED,IPS",
-      ],
-      //components: "karta graficzna",
-    },
-  ],
-  filters: {
-    Producent: ["Asus", "Acer", "Msi", "HP", "Dell"],
-    Przeznaczenie: ["Do Gier", "Biznes", "Uniwersalne"],
-  },
-};
+import axios from "axios";
 
 const ProductsSection = () => {
   const SortName = [
@@ -131,9 +27,30 @@ const ProductsSection = () => {
   const [SortOpt, setSortOpt] = useState("Ocena klientów: od najlepszej");
   const [activeSort, setActiveSort] = useState<boolean>(false);
   const [activeFilters, setActiveFilters] = useState<boolean>(false);
+  const [ProductsData, setProductsData] = useState<GetProductsType>({
+    category: "",
+    products: [],
+    filters: {
+      Producent: [],
+      Przeznaczenie: [],
+    },
+  });
   let { width, height }: WindowSizeType = useWindowSize();
   let { category } = useParams();
   let { search } = useParams();
+
+  useEffect(() => {
+    if (category) {
+      axios
+        .get(`http://localhost:10000/api/products/${category}`)
+        .then((reasult) => {
+          setProductsData(reasult.data[0]);
+        })
+        .catch((err) => {
+          console.log("fail get data");
+        });
+    }
+  }, [category]);
 
   useEffect(() => {
     const close = (e: Event) => {
@@ -148,14 +65,22 @@ const ProductsSection = () => {
       document.body.removeEventListener("click", close);
     };
   }, []);
+
   return (
     <Products>
       <Products.Header>
-        <Products.H_Title>{category ? category : search}</Products.H_Title>
-        <Products.H_Count>{`(${prod.products.length} ${
-          prod.products.length === 1
+        <Products.H_Title>
+          {category
+            ? category.split("-")[1] !== undefined
+              ? category.split("-")[0] + " " + category.split("-")[1]
+              : category
+            : search}
+        </Products.H_Title>
+        <Products.H_Count>{`(${ProductsData.products.length} ${
+          ProductsData.products.length === 1
             ? "wynik"
-            : prod.products.length > 0 && prod.products.length < 5
+            : ProductsData.products.length > 0 &&
+              ProductsData.products.length < 5
             ? "wyniki"
             : "wyników"
         })`}</Products.H_Count>
@@ -186,7 +111,7 @@ const ProductsSection = () => {
               </Products.F_PriceFromTo>
             </Products.F_Price>
           </Products.F_PriceCon>
-          <Filters product={prod} />
+          <Filters product={ProductsData} />
           {activeFilters ? (
             <Products.AcceptFiltrBtn>Zastosuj</Products.AcceptFiltrBtn>
           ) : null}
@@ -220,9 +145,11 @@ const ProductsSection = () => {
           </Products.SP_Select>
         </Products.SortPanel>
         <Products.All>
-          {prod.products.map((item: ProductsType, id: number) => (
-            <Product item={item} key={id} />
-          ))}
+          {ProductsData.products.length > 0
+            ? ProductsData.products.map((item: ProductsType, id: number) => (
+                <Product item={item} key={id} />
+              ))
+            : null}
         </Products.All>
       </Products.ProductsSec>
     </Products>

@@ -2,7 +2,7 @@ import styled from "styled-components/macro";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: fit-content;
   max-width: 1250px;
   margin-left: auto;
   margin-right: auto;
@@ -10,7 +10,6 @@ export const Container = styled.div`
   margin-top: 7rem;
   display: grid;
   grid-template-columns: 0.25fr 0.75fr;
-  grid-template-rows: 0.08fr 0.92fr;
 
   @media screen and (max-width: 1250px) {
     margin-top: 5rem;
@@ -66,7 +65,8 @@ export const ProductsSec = styled.div`
   padding: 0 1.5rem;
   border: none;
   display: grid;
-  grid-template-rows: 0.1fr 0.9fr;
+  grid-template-rows: 0.05fr 0.95fr;
+  height: fit-content;
   @media screen and (max-width: 550px) {
     padding: 0 10px;
     grid-template-rows: 1fr;
@@ -394,6 +394,9 @@ export const Item = styled.a`
   cursor: pointer;
   padding: 10px;
   transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   &:hover ${AddToCart} {
     visibility: visible;
   }
