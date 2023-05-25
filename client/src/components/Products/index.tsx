@@ -1,5 +1,10 @@
 import React from "react";
-import { JsxProps, SortChooseJSXProps, SortJSXProps } from "../../types/Types";
+import {
+  ClearFiltrProps,
+  JsxProps,
+  SortChooseJSXProps,
+  SortJSXProps,
+} from "../../types/Types";
 import {
   Container,
   Filters,
@@ -103,8 +108,10 @@ Products.F_Title = function ProductsFTitle(props: JsxProps) {
   return <FTitle>{props.children}</FTitle>;
 };
 
-Products.F_ClearBtn = function ProductsFClearBtn(props: JsxProps) {
-  return <FClearBtn>{props.children}</FClearBtn>;
+Products.F_ClearBtn = function ProductsFClearBtn(props: ClearFiltrProps) {
+  return (
+    <FClearBtn onClick={() => props.setfilters()}>{props.children}</FClearBtn>
+  );
 };
 
 Products.F_Section = function ProductsFSection(props: JsxProps) {

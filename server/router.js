@@ -7,5 +7,6 @@ route.get("/api/products/Komputery", controller.prod_DSK);
 route.get("/api/products/Smartphony", controller.prod_PHONE);
 route.get("/api/products/Podzespoly-komputerowe", controller.prod_COM);
 route.get("/api/products/Akcesoria", controller.prod_ACC);
+route.get("/api/products/All", controller.prod_All);
 
 module.exports = route;

@@ -6,6 +6,7 @@ import {
   GetProductsType,
   ProductsType,
   WindowSizeType,
+  filtr,
 } from "../../types/Types";
 import {
   AiOutlineCaretDown,
@@ -35,9 +36,28 @@ const ProductsSection = () => {
       Przeznaczenie: [],
     },
   });
+  const [prodFilters, setprodFilters] = useState<filtr>({
+    filtr_one: [],
+    filtr_two: [],
+    price: {
+      from: 0,
+      to: 0,
+    },
+  });
   let { width, height }: WindowSizeType = useWindowSize();
   let { category } = useParams();
   let { search } = useParams();
+
+  useEffect(() => {
+    setprodFilters({
+      filtr_one: [],
+      filtr_two: [],
+      price: {
+        from: 0,
+        to: 0,
+      },
+    });
+  }, [category, search]);
 
   useEffect(() => {
     if (category) {
@@ -66,6 +86,32 @@ const ProductsSection = () => {
     };
   }, []);
 
+  const ProductsFiltrOne =
+    prodFilters.filtr_one.length > 0
+      ? ProductsData.products.filter((item) =>
+          prodFilters.filtr_one.includes(item.producer)
+        )
+      : ProductsData.products;
+  const ProductsFiltrTwo =
+    prodFilters.filtr_two.length > 0
+      ? ProductsFiltrOne.filter((item) =>
+          prodFilters.filtr_two.includes(
+            item.destiny
+              ? item.destiny
+              : item.components
+              ? item.components
+              : item.accesories
+              ? item.accesories
+              : ""
+          )
+        )
+      : ProductsFiltrOne;
+  const FinalFiltersProducts = ProductsFiltrTwo.filter(
+    (item) =>
+      item.price > prodFilters.price.from &&
+      item.price < (prodFilters.price.to !== 0 ? prodFilters.price.to : 100000)
+  );
+
   return (
     <Products>
       <Products.Header>
@@ -88,7 +134,18 @@ const ProductsSection = () => {
       <Products.Filters active2={activeFilters} width={width}>
         <Products.F_Top>
           <Products.F_Title>Filtry</Products.F_Title>
-          <Products.F_ClearBtn>
+          <Products.F_ClearBtn
+            setfilters={() =>
+              setprodFilters({
+                filtr_one: [],
+                filtr_two: [],
+                price: {
+                  from: 0,
+                  to: 0,
+                },
+              })
+            }
+          >
             {activeFilters ? (
               <AiOutlineCloseCircle onClick={() => setActiveFilters(false)} />
             ) : (
@@ -101,17 +158,57 @@ const ProductsSection = () => {
             <Products.F_Name>Cena</Products.F_Name>
             <Products.F_Price>
               <Products.F_PriceFromTo>
-                <Products.F_PriceInput placeholder="od" type="number" />
+                <Products.F_PriceInput
+                  placeholder="od"
+                  type="number"
+                  name="from"
+                  value={
+                    prodFilters.price.from === 0 ? "od" : prodFilters.price.from
+                  }
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setprodFilters((prev) => ({
+                      ...prev,
+                      price: {
+                        from: !Number.isNaN(parseInt(e.target.value))
+                          ? parseInt(e.target.value)
+                          : 0,
+                        to: prev.price.to,
+                      },
+                    }))
+                  }
+                />
                 <Products.F_PriceCurrency>zł</Products.F_PriceCurrency>
               </Products.F_PriceFromTo>
               -
               <Products.F_PriceFromTo>
-                <Products.F_PriceInput placeholder="do" type="number" />
+                <Products.F_PriceInput
+                  placeholder="do"
+                  type="number"
+                  name="to"
+                  value={
+                    prodFilters.price.to === 0 ? "do" : prodFilters.price.to
+                  }
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setprodFilters((prev) => ({
+                      ...prev,
+                      price: {
+                        from: prev.price.from,
+                        to: !Number.isNaN(parseInt(e.target.value))
+                          ? parseInt(e.target.value)
+                          : 0,
+                      },
+                    }))
+                  }
+                />
                 <Products.F_PriceCurrency>zł</Products.F_PriceCurrency>
               </Products.F_PriceFromTo>
             </Products.F_Price>
           </Products.F_PriceCon>
-          <Filters product={ProductsData} />
+          <Filters
+            product={ProductsData}
+            setfilters={setprodFilters}
+            filters={prodFilters}
+          />
           {activeFilters ? (
             <Products.AcceptFiltrBtn>Zastosuj</Products.AcceptFiltrBtn>
           ) : null}
@@ -145,8 +242,8 @@ const ProductsSection = () => {
           </Products.SP_Select>
         </Products.SortPanel>
         <Products.All>
-          {ProductsData.products.length > 0
-            ? ProductsData.products.map((item: ProductsType, id: number) => (
+          {FinalFiltersProducts.length > 0
+            ? FinalFiltersProducts.map((item: ProductsType, id: number) => (
                 <Product item={item} key={id} />
               ))
             : null}

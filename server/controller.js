@@ -74,3 +74,4 @@ exports.prod_ACC = (req, res) => {
       console.log(err);
     });
 };
+exports.prod_All = (req, res) => {};

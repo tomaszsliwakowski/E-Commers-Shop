@@ -9,6 +9,7 @@ export const Container = styled.div`
   padding: 0 2rem 0 2rem;
   margin-top: 7rem;
   display: grid;
+  margin-bottom: 3rem;
   grid-template-columns: 0.25fr 0.75fr;
 
   @media screen and (max-width: 1250px) {

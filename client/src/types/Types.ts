@@ -118,8 +118,9 @@ export type ProductsType = {
   price: number;
   link?: string;
   category: string;
-  producer?: string;
+  producer: string;
   components?: string;
+  accesories?: string;
   opinion: number;
   spec?: string[];
   destiny?: string;
@@ -144,6 +145,22 @@ export type ProductsItemType = {
 
 export type FiltersProps = {
   product: GetProductsType;
+  setfilters: React.Dispatch<React.SetStateAction<filtr>>;
+  filters: filtr;
+};
+
+export type ClearFiltrProps = {
+  children: ReactNode;
+  setfilters: Function;
+};
+
+export type filtr = {
+  filtr_one: string[];
+  filtr_two: string[];
+  price: {
+    from: number;
+    to: number;
+  };
 };
 
 export type LoginValueType = {
