@@ -94,7 +94,7 @@ Products.SortPanel = function ProductsSortPanel(props: JsxProps) {
   return <SortPanel>{props.children}</SortPanel>;
 };
 Products.All = function ProductsAll(props: JsxProps) {
-  return <All>{props.children}</All>;
+  return <All style={{ display: `${props.style}` }}>{props.children}</All>;
 };
 
 Products.F_Top = function ProductsFTop(props: JsxProps) {

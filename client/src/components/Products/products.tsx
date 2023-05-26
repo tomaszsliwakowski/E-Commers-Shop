@@ -86,6 +86,16 @@ const ProductsSection = () => {
     };
   }, []);
 
+  const FiltrOpt = (item: ProductsType) => {
+    return item.destiny
+      ? item.destiny
+      : item.components
+      ? item.components
+      : item.accesories
+      ? item.accesories
+      : "";
+  };
+
   const ProductsFiltrOne =
     prodFilters.filtr_one.length > 0
       ? ProductsData.products.filter((item) =>
@@ -95,15 +105,7 @@ const ProductsSection = () => {
   const ProductsFiltrTwo =
     prodFilters.filtr_two.length > 0
       ? ProductsFiltrOne.filter((item) =>
-          prodFilters.filtr_two.includes(
-            item.destiny
-              ? item.destiny
-              : item.components
-              ? item.components
-              : item.accesories
-              ? item.accesories
-              : ""
-          )
+          prodFilters.filtr_two.includes(FiltrOpt(item))
         )
       : ProductsFiltrOne;
   const FinalFiltersProducts = ProductsFiltrTwo.filter(
@@ -111,6 +113,27 @@ const ProductsSection = () => {
       item.price > prodFilters.price.from &&
       item.price < (prodFilters.price.to !== 0 ? prodFilters.price.to : 100000)
   );
+
+  const HandleSort = () => {
+    switch (SortOpt) {
+      case SortName[0]:
+        return FinalFiltersProducts.sort(function (a, b) {
+          return b.opinion - a.opinion;
+        });
+      case SortName[1]:
+        return FinalFiltersProducts.sort(function (a, b) {
+          return a.price - b.price;
+        });
+
+      case SortName[2]:
+        return FinalFiltersProducts.sort(function (a, b) {
+          return b.price - a.price;
+        });
+      default:
+        return FinalFiltersProducts;
+    }
+  };
+  const ShowProducts = HandleSort();
 
   return (
     <Products>
@@ -241,12 +264,16 @@ const ProductsSection = () => {
             </Products.SP_List>
           </Products.SP_Select>
         </Products.SortPanel>
-        <Products.All>
-          {FinalFiltersProducts.length > 0
-            ? FinalFiltersProducts.map((item: ProductsType, id: number) => (
-                <Product item={item} key={id} />
-              ))
-            : null}
+        <Products.All
+          style={FinalFiltersProducts.length === 2 ? "flex" : "grid"}
+        >
+          {ShowProducts.length > 0 ? (
+            ShowProducts.map((item: ProductsType, id: number) => (
+              <Product item={item} key={id} />
+            ))
+          ) : (
+            <div>Nie znaleziono produktów</div>
+          )}
         </Products.All>
       </Products.ProductsSec>
     </Products>

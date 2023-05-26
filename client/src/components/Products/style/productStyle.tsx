@@ -252,6 +252,10 @@ export const All = styled.div`
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: 0.1fr 0.8fr;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const IImg = styled.div`
