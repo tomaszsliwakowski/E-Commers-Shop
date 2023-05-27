@@ -75,3 +75,7 @@ exports.prod_ACC = (req, res) => {
     });
 };
 exports.prod_All = (req, res) => {};
+
+exports.Single_prod = (req, res) => {
+  res.send(req.params["id"] + " " + req.params["category"]);
+};

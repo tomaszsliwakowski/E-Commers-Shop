@@ -135,6 +135,8 @@ const ProductsSection = () => {
   };
   const ShowProducts = HandleSort();
 
+  console.log(ProductsData);
+
   return (
     <Products>
       <Products.Header>
