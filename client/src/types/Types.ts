@@ -134,11 +134,13 @@ export type FiltersType = {
 };
 
 export type GetProductsType = {
-  category: string;
+  category?: string;
   products: Array<ProductsType>;
   filters?: FiltersType;
 };
-
+export type AllProductsType = {
+  products: Array<ProductsType>;
+};
 export type ProductsItemType = {
   item: ProductsType;
 };
@@ -147,6 +149,7 @@ export type FiltersProps = {
   product: GetProductsType;
   setfilters: React.Dispatch<React.SetStateAction<filtr>>;
   filters: filtr;
+  ShowProd: ProductsType[];
 };
 
 export type ClearFiltrProps = {

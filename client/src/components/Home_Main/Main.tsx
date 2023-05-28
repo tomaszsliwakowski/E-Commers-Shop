@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Main } from "./index";
 import useWindowSize from "../../hooks/useWindowSize";
-import { WindowSizeType } from "../../types/Types";
+import { AllProductsType, WindowSizeType } from "../../types/Types";
 import TopLeftSection from "./TopLeft";
 import TopRightSection from "./TopRight";
 import BestSellerSection from "./BestSeller";
+import axios from "axios";
 
 const HomeMainSection = () => {
   const { width, height }: WindowSizeType = useWindowSize();
+  const [ProductsData, setProductsData] = useState<AllProductsType>({
+    products: [],
+  });
+  useEffect(() => {
+    axios
+      .get("http://localhost:10000/api/products/All")
+      .then((reasult) => {
+        setProductsData(reasult.data[0]);
+      })
+      .catch((err) => console.log(err));
+  }, [width]);
+
   return (
     <Main width={width}>
       <Main.Baner>
@@ -25,12 +38,12 @@ const HomeMainSection = () => {
       </Main.Baner>
       <Main.Top>
         <TopLeftSection />
-        <TopRightSection />
+        <TopRightSection {...ProductsData} />
       </Main.Top>
       <Main.BestSellery>
         <Main.BestSelleryTop>Bestsellery</Main.BestSelleryTop>
         <Main.BestSelleryBottom>
-          <BestSellerSection />
+          <BestSellerSection {...ProductsData} />
         </Main.BestSelleryBottom>
       </Main.BestSellery>
       <Main.Bottom>

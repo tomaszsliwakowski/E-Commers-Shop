@@ -29,7 +29,7 @@ const Product = ({ item }: ProductsItemType) => {
   };
 
   return (
-    <Products.Item>
+    <Products.Item href={`/product/${item.id}`}>
       <Products.I_Img>
         <Products.Image src={item.img} alt={item.name} />
       </Products.I_Img>

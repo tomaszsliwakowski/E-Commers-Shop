@@ -1,17 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Main } from "./index";
 import { BsCartPlus } from "react-icons/bs";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "../../index.css";
-import { HomeProductType } from "../../types/Types";
+import { AllProductsType, ProductsType } from "../../types/Types";
 
-const prod: any = {
-  img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2021/7/pr_2021_7_1_8_25_10_978_06.jpg",
-  name: "Gigabyte GeForce RTX 3060 Ti EAGLE OC LHR 8GB GDDR6",
-  price: 1269.0,
-  link: "/products/:id",
-};
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 1024 },
@@ -31,7 +25,13 @@ const responsive = {
   },
 };
 
-const BestSellerSection = () => {
+const BestSellerSection = (ProductsData: AllProductsType) => {
+  const ProductsShow = ProductsData.products
+    .sort(function (a, b) {
+      return b.opinion - a.opinion;
+    })
+    .splice(0, 10);
+
   return (
     <>
       <Carousel
@@ -47,12 +47,9 @@ const BestSellerSection = () => {
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
       >
-        <Product {...prod} />
-        <Product {...prod} />
-        <Product {...prod} />
-        <Product {...prod} />
-        <Product {...prod} />
-        <Product {...prod} />
+        {ProductsShow.map((item, id) => (
+          <Product {...item} key={id} />
+        ))}
       </Carousel>
     </>
   );
@@ -60,13 +57,13 @@ const BestSellerSection = () => {
 
 export default BestSellerSection;
 
-const Product = (prod: HomeProductType) => {
+const Product = (item: ProductsType) => {
   return (
-    <Main.Product to={prod.link}>
-      <Main.Image src={prod.img} alt="prod" />
-      <Main.Name>{prod.name}</Main.Name>
+    <Main.Product to={""}>
+      <Main.Image src={item.img} alt={item.category} />
+      <Main.Name>{item.name}</Main.Name>
       <Main.BuyPanel>
-        <Main.Price>{prod.price}zł</Main.Price>
+        <Main.Price>{item.price}zł</Main.Price>
         <Main.AddToCart>
           <BsCartPlus />
         </Main.AddToCart>

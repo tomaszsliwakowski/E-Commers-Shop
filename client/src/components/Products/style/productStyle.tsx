@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 
 export const Container = styled.div`
@@ -266,6 +267,7 @@ export const IDesc = styled.div``;
 export const IName = styled.div`
   font-size: 14px;
   width: 100%;
+  color: black;
 `;
 export const IOpinion = styled.div`
   width: 100%;
@@ -298,6 +300,7 @@ export const IBuyPanel = styled.div`
 export const IPrice = styled.span`
   font-size: 18px;
   letter-spacing: 1px;
+  color: black;
 `;
 export const IBasket = styled.div``;
 export const Image = styled.img`
@@ -393,7 +396,8 @@ export const AddToCart = styled.div`
     }
   }
 `;
-export const Item = styled.a`
+export const Item = styled(Link)`
+  text-decoration: none;
   width: 100%;
   max-width: 280px;
   cursor: pointer;

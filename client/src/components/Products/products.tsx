@@ -69,6 +69,15 @@ const ProductsSection = () => {
         .catch((err) => {
           console.log("fail get data");
         });
+    } else {
+      axios
+        .get(`http://localhost:10000/api/products/all`)
+        .then((reasult) => {
+          setProductsData(reasult.data[0]);
+        })
+        .catch((err) => {
+          console.log("fail get data");
+        });
     }
   }, [category]);
 
@@ -133,10 +142,12 @@ const ProductsSection = () => {
         return FinalFiltersProducts;
     }
   };
-  const ShowProducts = HandleSort();
-
-  console.log(ProductsData);
-
+  let ShowProducts = HandleSort();
+  if (search) {
+    ShowProducts = ShowProducts.filter((item) =>
+      item.name.toLowerCase().includes(search ? search.toLowerCase() : "")
+    );
+  }
   return (
     <Products>
       <Products.Header>
@@ -233,6 +244,7 @@ const ProductsSection = () => {
             product={ProductsData}
             setfilters={setprodFilters}
             filters={prodFilters}
+            ShowProd={ShowProducts}
           />
           {activeFilters ? (
             <Products.AcceptFiltrBtn>Zastosuj</Products.AcceptFiltrBtn>

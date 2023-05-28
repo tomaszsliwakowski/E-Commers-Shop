@@ -156,7 +156,11 @@ Products.F_PriceCurrency = function ProductsFPriceCurrency(props: JsxProps) {
 };
 
 Products.Item = function ProductsItem(props: JsxProps) {
-  return <Item>{props.children}</Item>;
+  return (
+    <Item to={props.href && props.href ? props.href : ""}>
+      {props.children}
+    </Item>
+  );
 };
 
 Products.I_Img = function ProductsItemImg(props: JsxProps) {

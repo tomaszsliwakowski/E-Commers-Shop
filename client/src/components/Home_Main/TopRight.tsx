@@ -1,18 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Main, TopRight } from "./index";
 import { BsCartPlus } from "react-icons/bs";
 import useWindowSize from "../../hooks/useWindowSize";
-import { HomeProductType, WindowSizeType } from "../../types/Types";
+import {
+  AllProductsType,
+  ProductsType,
+  WindowSizeType,
+} from "../../types/Types";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "../../index.css";
 
-const prod = {
-  img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2021/7/pr_2021_7_1_8_25_10_978_06.jpg",
-  name: "Gigabyte GeForce RTX 3060 Ti EAGLE OC LHR 8GB GDDR6",
-  price: 1269.0,
-  link: "/products/:id",
-};
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 1024 },
@@ -32,20 +30,22 @@ const responsive = {
   },
 };
 
-const TopRightSection = () => {
+const TopRightSection = (ProductsData: AllProductsType) => {
+  const number = [0, 19, 46, 52, 57, 69];
   const { width, height }: WindowSizeType = useWindowSize();
+  const ProductsShow = ProductsData.products.filter((item) =>
+    number.includes(item.id)
+  );
+
   return (
     <TopRight>
       <Main.Title>Hity tygodnia</Main.Title>
       <TopRight.Hits>
         {width && width > 768 ? (
           <>
-            <Product {...prod} />
-            <Product {...prod} />
-            <Product {...prod} />
-            <Product {...prod} />
-            <Product {...prod} />
-            <Product {...prod} />
+            {ProductsShow.map((item, id) => (
+              <Product key={id} {...item} />
+            ))}
           </>
         ) : (
           <Carousel
@@ -61,12 +61,9 @@ const TopRightSection = () => {
             dotListClass="custom-dot-list-style"
             itemClass="carousel-item-padding-40-px"
           >
-            <Product {...prod} />
-            <Product {...prod} />
-            <Product {...prod} />
-            <Product {...prod} />
-            <Product {...prod} />
-            <Product {...prod} />
+            {ProductsShow.map((item, id) => (
+              <Product key={id} {...item} />
+            ))}
           </Carousel>
         )}
       </TopRight.Hits>
@@ -76,13 +73,13 @@ const TopRightSection = () => {
 
 export default TopRightSection;
 
-const Product = (prod: HomeProductType) => {
+const Product = (item: ProductsType) => {
   return (
-    <TopRight.Product to={prod.link}>
-      <Main.Image src={prod.img} alt="prod" />
-      <TopRight.Name>{prod.name}</TopRight.Name>
+    <TopRight.Product to={""}>
+      <Main.Image src={item.img} alt={item.category} />
+      <TopRight.Name>{item.name}</TopRight.Name>
       <TopRight.BuyPanel>
-        <TopRight.Price>{prod.price}zł</TopRight.Price>
+        <TopRight.Price>{item.price}zł</TopRight.Price>
         <TopRight.AddToCart>
           <BsCartPlus />
         </TopRight.AddToCart>

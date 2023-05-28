@@ -15,6 +15,7 @@ import LoginPage from "./containers/LoginPage";
 import RegisterPage from "./containers/RegisterPage";
 import BasketPage from "./containers/BasketPage";
 import { AuthProvider } from "./assets/auth";
+import SingleProductsPage from "./containers/SingleProductPage";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
       <Routes>
         <Route path={HomeRoute} element={<HomePage />} />
         <Route path={ProductsRoute} element={<ProductsPage />} />
-        <Route path={ProductRoute} element={<ProductsPage />} />
+        <Route path={ProductRoute} element={<SingleProductsPage />} />
         <Route path={SearchRoute} element={<ProductsPage />} />
         <Route path={LoginRoute} element={<LoginPage />} />
         <Route path={RegisterRoute} element={<RegisterPage />} />

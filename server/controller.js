@@ -1,5 +1,6 @@
 const ProdPCCOM_DB = require("./model/Schema.Com");
 const ProdACC_DB = require("./model/Schema_Acc");
+const ProdAll_DB = require("./model/Schema_All");
 const ProdDSK_DB = require("./model/Schema_DSK");
 const ProdPHONE_DB = require("./model/Schema_Phone");
 let ProdNTB_DB = require("./model/schema_NTB");
@@ -74,8 +75,36 @@ exports.prod_ACC = (req, res) => {
       console.log(err);
     });
 };
-exports.prod_All = (req, res) => {};
+exports.prod_All = (req, res) => {
+  ProdAll_DB.find()
+    .then((reasult) => {
+      if (!reasult) {
+        res.status(404).send({ message: `Not found any products` });
+      } else {
+        res.send(reasult);
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ message: `Error get NTB` });
+      console.log(err);
+    });
+};
 
 exports.Single_prod = (req, res) => {
-  res.send(req.params["id"] + " " + req.params["category"]);
+  ProdAll_DB.find()
+    .then((reasult) => {
+      if (!reasult) {
+        res.status(404).send({ message: `Not found any products` });
+      } else {
+        res.send(
+          reasult[0].products.filter(
+            (item) => item.id === parseInt(req.params["id"])
+          )
+        );
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ message: `Error get NTB` });
+      console.log(err);
+    });
 };

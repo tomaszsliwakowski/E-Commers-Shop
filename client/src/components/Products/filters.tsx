@@ -1,14 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Products } from ".";
 import { FiltersProps } from "../../types/Types";
+import { useParams } from "react-router-dom";
 
-const Filters = ({ product, setfilters, filters }: FiltersProps) => {
-  let filtrCount: string[] = product.filters
-    ? Object.keys(product.filters)
-    : [];
-  let filtrData: Array<string[]> = product.filters
-    ? Object.values(product.filters)
-    : [];
+const Filters = ({ product, setfilters, filters, ShowProd }: FiltersProps) => {
+  let { category } = useParams();
+  let { search } = useParams();
+
+  let filtrCount: string[] = category
+    ? product.filters
+      ? Object.keys(product.filters)
+      : []
+    : ["Producent"];
+
+  let filtrData: Array<string[]> = category
+    ? product.filters
+      ? Object.values(product.filters)
+      : []
+    : [Object.values(ShowProd.map((item) => item.producer))];
+
+  if (search) {
+    let filters = filtrData[0].filter(
+      (el, index) => filtrData[0].indexOf(el) === index
+    );
+    filtrData[0] = filters;
+  }
+
+  useEffect(() => {
+    if (search && filtrData[0].length === 1) {
+      setfilters((prev) => ({
+        ...prev,
+        filtr_one: [filtrData[0][0]],
+      }));
+    }
+  }, [search, ShowProd, filtrData]);
 
   return (
     <>

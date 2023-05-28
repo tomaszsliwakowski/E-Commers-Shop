@@ -4,6 +4,7 @@ const bodyparser = require("body-parser");
 const cors = require("cors");
 const connectDB = require("./database/connectDB");
 const dotenv = require("dotenv");
+const ProdAll_DB = require("./model/Schema_All");
 
 const corsOptions = {
   origin: "http://localhost:3000",
