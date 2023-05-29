@@ -111,6 +111,17 @@ export type HeaderProps = {
   scroll?: boolean;
 };
 
+export type BasketConPropsType = {
+  ActiveCount: boolean;
+  ActiveCountInput: boolean;
+  CountInput: Number;
+  HandleInputCount: Function;
+  ProductCount: Number;
+  setActiveCount: React.Dispatch<React.SetStateAction<boolean>>;
+  HandleCount: Function;
+  HandleActiveCountInput: Function;
+};
+
 export type ProductsType = {
   id: number;
   name: string;
