@@ -14,7 +14,6 @@ import {
   BuyPanel,
   SpecList,
   SpecEl,
-  GoSpecBtn,
   Price,
   Basket,
   BuyInfoList,
@@ -72,10 +71,6 @@ SingleProduct.SpecList = function SingleProductSpecList(props: JsxProps) {
 
 SingleProduct.SpecEl = function SingleProductSpecEl(props: JsxProps) {
   return <SpecEl>{props.children}</SpecEl>;
-};
-
-SingleProduct.GoSpecBtn = function SingleProductGoSpecBtn(props: JsxProps) {
-  return <GoSpecBtn>{props.children}</GoSpecBtn>;
 };
 
 SingleProduct.Price = function SingleProductPrice(props: JsxProps) {

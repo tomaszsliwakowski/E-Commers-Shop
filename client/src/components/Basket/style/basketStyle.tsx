@@ -344,6 +344,7 @@ export const Count = styled.span`
   width: 100%;
   height: 100%;
   padding: 3px 0;
+  text-align: center;
   &:hover {
     background-color: rgb(204, 204, 204);
     cursor: pointer;

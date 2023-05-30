@@ -10,7 +10,13 @@ import {
 import useWindowSize from "../../hooks/useWindowSize";
 import { Rating } from "../Products/productList";
 import Basket from "../Basket";
-import { AiOutlineCaretUp } from "react-icons/ai";
+import {
+  AiOutlineCaretUp,
+  AiOutlineCheckCircle,
+  AiOutlineClockCircle,
+  AiOutlineShop,
+} from "react-icons/ai";
+import { CiDeliveryTruck } from "react-icons/ci";
 import { AiOutlineCaretDown } from "react-icons/ai";
 
 const CountOpt: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -99,7 +105,7 @@ const SingleProductSection = () => {
           </SingleProduct.Header>
         ) : null}
         <SingleProduct.ProdImg>
-          <SingleProduct.Image src="" alt="" />
+          <SingleProduct.Image src={ProductData?.img} alt={ProductData?.name} />
         </SingleProduct.ProdImg>
         <SingleProduct.ProdProperty>
           {width && width > 1050 ? (
@@ -113,12 +119,16 @@ const SingleProductSection = () => {
           <SingleProduct.Spec>
             <SingleProduct.SpecList>
               {ProductData?.spec?.map((item, id) => (
-                <SingleProduct.SpecEl key={id}>{item}</SingleProduct.SpecEl>
+                <SingleProduct.SpecEl key={id}>
+                  {item.split(":")[0] + ":" + " " + item.split(":")[1]}
+                </SingleProduct.SpecEl>
               ))}
             </SingleProduct.SpecList>
           </SingleProduct.Spec>
           <SingleProduct.BuyPanel>
-            <SingleProduct.Price>{ProductData?.price}</SingleProduct.Price>
+            <SingleProduct.Price>
+              {ProductData?.price.toFixed(2) + " " + "zł"}
+            </SingleProduct.Price>
             <SingleProduct.Basket>
               <BasketCon
                 ActiveCount={ActiveCount}
@@ -130,17 +140,31 @@ const SingleProductSection = () => {
                 CountInput={CountInput}
                 ProductCount={ProductCount}
               />
+              <Basket.BuyPanelBtn>Dodaj do koszyka</Basket.BuyPanelBtn>
             </SingleProduct.Basket>
             <SingleProduct.BuyInfoList>
               <SingleProduct.BuyInfoEL>
-                <SingleProduct.BuyInfo>dostepny</SingleProduct.BuyInfo>
+                <SingleProduct.BuyInfo>
+                  <AiOutlineCheckCircle />
+                  Dostepny
+                </SingleProduct.BuyInfo>
               </SingleProduct.BuyInfoEL>
+              {ProductData?.price && ProductData.price > 99 ? (
+                <SingleProduct.BuyInfoEL>
+                  <SingleProduct.BuyInfo>
+                    <CiDeliveryTruck />
+                    Darmowa dostawa
+                  </SingleProduct.BuyInfo>
+                </SingleProduct.BuyInfoEL>
+              ) : null}
               <SingleProduct.BuyInfoEL>
-                <SingleProduct.BuyInfo>ddarmowa dosatwa</SingleProduct.BuyInfo>
+                <SingleProduct.BuyInfo>
+                  <AiOutlineClockCircle /> Kup teraz, otrzymasz pojutrze
+                </SingleProduct.BuyInfo>
               </SingleProduct.BuyInfoEL>
               <SingleProduct.BuyInfoEL>
                 <SingleProduct.BuyInfo>
-                  dostepny w salonach
+                  <AiOutlineShop /> Dostepny w salonach
                 </SingleProduct.BuyInfo>
               </SingleProduct.BuyInfoEL>
             </SingleProduct.BuyInfoList>
