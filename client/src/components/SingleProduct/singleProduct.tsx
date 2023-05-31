@@ -98,17 +98,19 @@ const SingleProductSection = () => {
   return (
     <SingleProduct>
       <SingleProduct.Top>
-        {width && width <= 1050 ? (
+        {width && width <= 1250 ? (
           <SingleProduct.Header>
             <SingleProduct.Title>{ProductData?.name}</SingleProduct.Title>
-            <SingleProduct.Opinion>stars</SingleProduct.Opinion>
+            <SingleProduct.Opinion>
+              {ProductData ? Rating(ProductData) : null}
+            </SingleProduct.Opinion>
           </SingleProduct.Header>
         ) : null}
         <SingleProduct.ProdImg>
           <SingleProduct.Image src={ProductData?.img} alt={ProductData?.name} />
         </SingleProduct.ProdImg>
         <SingleProduct.ProdProperty>
-          {width && width > 1050 ? (
+          {width && width > 1250 ? (
             <SingleProduct.Header>
               <SingleProduct.Title>{ProductData?.name}</SingleProduct.Title>
               <SingleProduct.Opinion>
