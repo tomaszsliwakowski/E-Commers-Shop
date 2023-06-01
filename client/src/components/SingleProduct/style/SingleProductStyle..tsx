@@ -7,7 +7,7 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding: 0 2rem 0 2rem;
-  margin-top: 10rem;
+  margin-top: 12rem;
   @media screen and (max-width: 1250px) {
     margin-top: 7rem;
   }
@@ -23,10 +23,11 @@ export const Top = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 8rem;
   @media screen and (max-width: 1250px) {
     display: grid;
     grid-template-columns: 0.6fr 0.4fr;
+    margin-bottom: 0rem;
   }
   @media screen and (max-width: 768px) {
     display: flex;
@@ -53,6 +54,9 @@ export const ProdProperty = styled.div`
   @media screen and (max-width: 1250px) {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-rows: 0.5fr 0.5fr;
   }
 `;
 export const Header = styled.div`
@@ -203,4 +207,49 @@ export const BuyInfo = styled.span`
   display: flex;
   align-items: center;
   gap: 1rem;
+`;
+
+export const Desc = styled.div`
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgb(221, 221, 221);
+  border-bottom: 1px solid rgb(221, 221, 221);
+  margin: 5rem 0 5rem 0;
+  padding: 1rem 0;
+  @media screen and (max-width: 768px) {
+    margin: 4rem 0 4rem 0;
+    flex-direction: column;
+    gap: 1rem;
+    & img {
+      max-height: 250px;
+      width: auto;
+    }
+  }
+`;
+export const DescText = styled.span`
+  text-align: center;
+  @media screen and (max-width: 768px) {
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+  }
+`;
+export const Nav = styled.div`
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  gap: 5%;
+  padding-left: 1rem;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+  @media screen and (min-width: 1250px) {
+    gap: 3%;
+  }
+`;
+export const NavBtn = styled.a`
+  font-weight: normal;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
 `;

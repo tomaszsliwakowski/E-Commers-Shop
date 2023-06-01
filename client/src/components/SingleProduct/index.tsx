@@ -19,6 +19,10 @@ import {
   BuyInfoList,
   BuyInfoEl,
   BuyInfo,
+  Desc,
+  Nav,
+  DescText,
+  NavBtn,
 } from "./style/SingleProductStyle.";
 
 export default function SingleProduct(props: JsxProps) {
@@ -90,4 +94,20 @@ SingleProduct.BuyInfoEL = function SingleProductBuyInfoEl(props: JsxProps) {
 
 SingleProduct.BuyInfo = function SingleProductBuyInfo(props: JsxProps) {
   return <BuyInfo>{props.children}</BuyInfo>;
+};
+
+SingleProduct.Navigation = function SingleProductNavigation(props: JsxProps) {
+  return <Nav>{props.children}</Nav>;
+};
+
+SingleProduct.NavBtn = function SingleProductNavBtn(props: JsxProps) {
+  return <NavBtn href={props.href}>{props.children}</NavBtn>;
+};
+
+SingleProduct.Description = function SingleProductDescription(props: JsxProps) {
+  return <Desc>{props.children}</Desc>;
+};
+
+SingleProduct.DescText = function SingleProductDescText(props: JsxProps) {
+  return <DescText>{props.children}</DescText>;
 };

@@ -78,10 +78,11 @@ export const Title = styled.h2`
   }
 `;
 export const Text = styled.p`
-  font-size: 14px;
+  font-size: 12px;
   padding-top: 0.5rem;
+  font-family: Arial, Helvetica, sans-serif;
   @media screen and (min-width: 1250px) {
-    font-size: 18px;
+    font-size: 16px;
   }
 `;
 

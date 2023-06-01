@@ -1,9 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Main, TopLeft } from "./index";
-import { AllProductsType, TimerType } from "../../types/Types";
+import { AllProductsType, ProductsType, TimerType } from "../../types/Types";
+import { useParams } from "react-router";
+import axios from "axios";
 
 const TopLeftSection = () => {
   const [Timer, setTimer] = useState<TimerType | undefined>();
+  const [ProductData, setProductData] = useState<ProductsType>();
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:10000/api/product/19`)
+      .then((reasult) => {
+        setProductData(reasult.data[0]);
+      })
+      .catch((err) => {
+        console.log("fail get data");
+      });
+  }, []);
+
   const TimeToExpire = () => {
     let dateTomorrow: Date = new Date();
     let date: Date = new Date();
@@ -51,18 +66,17 @@ const TopLeftSection = () => {
   }, []);
 
   return (
-    <TopLeft href="/products/:id">
+    <TopLeft href={`/product/${ProductData?.id}`}>
       <TopLeft.ImageAndTitle>
         <Main.Title>Gorący strzał</Main.Title>
-        <Main.Image
-          src="https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/11/pr_2022_11_9_8_35_50_340_00.jpg"
-          alt="product"
-        />
+        <Main.Image src={ProductData?.img} alt={ProductData?.category} />
       </TopLeft.ImageAndTitle>
-      <TopLeft.Name>Taotronics TT-BH097</TopLeft.Name>
+      <TopLeft.Name>{ProductData?.name}</TopLeft.Name>
       <TopLeft.PriceCon>
-        <TopLeft.NewPrice>149,00 zł</TopLeft.NewPrice>
-        <TopLeft.OldPrice>Cena regularna: 299,00 zł</TopLeft.OldPrice>
+        <TopLeft.NewPrice>2199,00 zł</TopLeft.NewPrice>
+        <TopLeft.OldPrice>
+          Cena regularna: {ProductData?.price} zł
+        </TopLeft.OldPrice>
       </TopLeft.PriceCon>
       <TopLeft.TimerCon>
         <TopLeft.NextShot>Następny gorący strzał:</TopLeft.NextShot>

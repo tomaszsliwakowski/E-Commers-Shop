@@ -2,24 +2,18 @@ import React, { useEffect, useState } from "react";
 import SingleProduct from ".";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import {
-  BasketConPropsType,
-  ProductsType,
-  WindowSizeType,
-} from "../../types/Types";
+import { ProductsType, WindowSizeType } from "../../types/Types";
 import useWindowSize from "../../hooks/useWindowSize";
 import { Rating } from "../Products/productList";
 import Basket from "../Basket";
 import {
-  AiOutlineCaretUp,
   AiOutlineCheckCircle,
   AiOutlineClockCircle,
   AiOutlineShop,
 } from "react-icons/ai";
 import { CiDeliveryTruck } from "react-icons/ci";
-import { AiOutlineCaretDown } from "react-icons/ai";
-
-const CountOpt: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+import { BasketCon } from "./ProductCount";
+import ProductDescription from "./ProductDescription";
 
 const SingleProductSection = () => {
   const [ActiveCount, setActiveCount] = useState<boolean>(false);
@@ -173,77 +167,14 @@ const SingleProductSection = () => {
           </SingleProduct.BuyPanel>
         </SingleProduct.ProdProperty>
       </SingleProduct.Top>
-      <SingleProduct.Bottom></SingleProduct.Bottom>
+      <SingleProduct.Bottom>
+        <SingleProduct.Navigation>
+          <SingleProduct.NavBtn href="#">Opis</SingleProduct.NavBtn>
+          <SingleProduct.NavBtn href="#">Opinie</SingleProduct.NavBtn>
+        </SingleProduct.Navigation>
+        <ProductDescription image={ProductData?.img ? ProductData.img : ""} />
+      </SingleProduct.Bottom>
     </SingleProduct>
   );
 };
 export default SingleProductSection;
-
-const BasketCon = ({
-  ActiveCount,
-  ActiveCountInput,
-  CountInput,
-  HandleInputCount,
-  ProductCount,
-  setActiveCount,
-  HandleCount,
-  HandleActiveCountInput,
-}: BasketConPropsType) => {
-  return (
-    <Basket.ProdCount active2={ActiveCount}>
-      {ActiveCountInput ? (
-        <Basket.CountInput
-          type="number"
-          value={CountInput || ""}
-          id="count"
-          className="inputCount"
-          onChange={HandleInputCount}
-        />
-      ) : (
-        <Basket.CountInput
-          type="text"
-          id="count"
-          disabled={ActiveCount}
-          value={ProductCount}
-          readOnly
-        />
-      )}
-      {!ActiveCountInput ? (
-        ActiveCount ? (
-          <AiOutlineCaretUp />
-        ) : (
-          <AiOutlineCaretDown />
-        )
-      ) : null}
-      <Basket.CountActive
-        type="checkbox"
-        id="count"
-        checked={ActiveCount}
-        onChange={() => setActiveCount((prev: boolean) => !prev)}
-        style={{
-          display: `${ActiveCountInput ? "none" : "flex"}`,
-        }}
-      />
-      <Basket.CountList active2={ActiveCount}>
-        <Basket.CountEl>
-          {CountOpt.map((item, id) =>
-            item < 9 ? (
-              <Basket.Count
-                key={id}
-                click={() => HandleCount(item)}
-                item={item}
-                id="count"
-              >
-                {item}
-              </Basket.Count>
-            ) : (
-              <Basket.Count key={id} click={HandleActiveCountInput} item={item}>
-                {item + "+"}
-              </Basket.Count>
-            )
-          )}
-        </Basket.CountEl>
-      </Basket.CountList>
-    </Basket.ProdCount>
-  );
-};

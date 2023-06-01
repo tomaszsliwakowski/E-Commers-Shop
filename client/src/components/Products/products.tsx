@@ -158,11 +158,10 @@ const ProductsSection = () => {
               : category
             : search}
         </Products.H_Title>
-        <Products.H_Count>{`(${ProductsData.products.length} ${
-          ProductsData.products.length === 1
+        <Products.H_Count>{`(${ShowProducts.length} ${
+          ShowProducts.length === 1
             ? "wynik"
-            : ProductsData.products.length > 0 &&
-              ProductsData.products.length < 5
+            : ShowProducts.length > 0 && ShowProducts.length < 5
             ? "wyniki"
             : "wyników"
         })`}</Products.H_Count>

@@ -59,7 +59,7 @@ export default BestSellerSection;
 
 const Product = (item: ProductsType) => {
   return (
-    <Main.Product to={""}>
+    <Main.Product to={`/product/${item.id}`}>
       <Main.Image src={item.img} alt={item.category} />
       <Main.Name>{item.name}</Main.Name>
       <Main.BuyPanel>

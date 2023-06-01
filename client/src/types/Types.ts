@@ -199,3 +199,7 @@ export type FormErrorType = {
 export type AuthProviderType = {
   children: ReactNode;
 };
+
+export type ImageType = {
+  image: string;
+};

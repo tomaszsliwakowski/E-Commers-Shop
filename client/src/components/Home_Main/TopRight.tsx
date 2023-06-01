@@ -75,7 +75,7 @@ export default TopRightSection;
 
 const Product = (item: ProductsType) => {
   return (
-    <TopRight.Product to={""}>
+    <TopRight.Product to={`/product/${item.id}`}>
       <Main.Image src={item.img} alt={item.category} />
       <TopRight.Name>{item.name}</TopRight.Name>
       <TopRight.BuyPanel>
