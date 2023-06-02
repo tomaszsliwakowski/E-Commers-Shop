@@ -23,6 +23,9 @@ import {
   Nav,
   DescText,
   NavBtn,
+  OpinionCom,
+  OpinionHeader,
+  OpinionMain,
 } from "./style/SingleProductStyle.";
 
 export default function SingleProduct(props: JsxProps) {
@@ -110,4 +113,18 @@ SingleProduct.Description = function SingleProductDescription(props: JsxProps) {
 
 SingleProduct.DescText = function SingleProductDescText(props: JsxProps) {
   return <DescText>{props.children}</DescText>;
+};
+
+SingleProduct.OpinionCom = function SingleProductOpinionCom(props: JsxProps) {
+  return <OpinionCom>{props.children}</OpinionCom>;
+};
+
+SingleProduct.OpinionHeader = function SingleProductOpinionHeader(
+  props: JsxProps
+) {
+  return <OpinionHeader>{props.children}</OpinionHeader>;
+};
+
+SingleProduct.OpinionMain = function SingleProductMain(props: JsxProps) {
+  return <OpinionMain>{props.children}</OpinionMain>;
 };

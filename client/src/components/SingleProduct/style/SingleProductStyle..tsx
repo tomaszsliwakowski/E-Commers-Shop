@@ -142,7 +142,9 @@ export const SpecList = styled.ul`
   }
 `;
 export const SpecEl = styled.li`
-  padding-left: 1.5rem;
+  @media screen and (max-width: 768px) {
+    padding-left: 1.5rem;
+  }
   @media screen and (max-width: 350px) {
     font-size: 14px;
   }
@@ -212,8 +214,6 @@ export const BuyInfo = styled.span`
 export const Desc = styled.div`
   display: flex;
   align-items: center;
-  border-top: 1px solid rgb(221, 221, 221);
-  border-bottom: 1px solid rgb(221, 221, 221);
   margin: 5rem 0 5rem 0;
   padding: 1rem 0;
   @media screen and (max-width: 768px) {
@@ -252,4 +252,17 @@ export const NavBtn = styled.a`
   cursor: pointer;
   text-decoration: none;
   color: black;
+`;
+
+export const OpinionCom = styled.div`
+  border-top: 1px solid rgb(221, 221, 221);
+  margin: 4rem 0;
+`;
+export const OpinionHeader = styled.span`
+  border-top: 1px solid rgb(155, 147, 147);
+  font-size: 22px;
+  font-weight: 500;
+`;
+export const OpinionMain = styled.div`
+  height: 5rem;
 `;

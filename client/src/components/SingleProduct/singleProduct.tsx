@@ -14,6 +14,7 @@ import {
 import { CiDeliveryTruck } from "react-icons/ci";
 import { BasketCon } from "./ProductCount";
 import ProductDescription from "./ProductDescription";
+import OpnionComment from "./opinion";
 
 const SingleProductSection = () => {
   const [ActiveCount, setActiveCount] = useState<boolean>(false);
@@ -173,6 +174,7 @@ const SingleProductSection = () => {
           <SingleProduct.NavBtn href="#">Opinie</SingleProduct.NavBtn>
         </SingleProduct.Navigation>
         <ProductDescription image={ProductData?.img ? ProductData.img : ""} />
+        <OpnionComment />
       </SingleProduct.Bottom>
     </SingleProduct>
   );
