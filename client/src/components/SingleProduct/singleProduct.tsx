@@ -22,7 +22,15 @@ const SingleProductSection = () => {
   const [ProductCount, setProductCount] = useState<number>(1);
   const [CountInput, setCountInput] = useState<number>(1);
   let { width, height }: WindowSizeType = useWindowSize();
-  const [ProductData, setProductData] = useState<ProductsType>();
+  const [ProductData, setProductData] = useState<ProductsType>({
+    id: 0,
+    name: "",
+    img: "",
+    price: 0,
+    category: "",
+    producer: "",
+    opinion: 0,
+  });
   let { id } = useParams();
 
   useEffect(() => {
@@ -174,7 +182,7 @@ const SingleProductSection = () => {
           <SingleProduct.NavBtn href="#">Opinie</SingleProduct.NavBtn>
         </SingleProduct.Navigation>
         <ProductDescription image={ProductData?.img ? ProductData.img : ""} />
-        <OpnionComment />
+        <OpnionComment ProductData={ProductData} />
       </SingleProduct.Bottom>
     </SingleProduct>
   );

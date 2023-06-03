@@ -1,5 +1,5 @@
 import React from "react";
-import { JsxProps } from "../../types/Types";
+import { JsxProps, SortJSXProps } from "../../types/Types";
 import {
   Container,
   Top,
@@ -26,6 +26,24 @@ import {
   OpinionCom,
   OpinionHeader,
   OpinionMain,
+  OpinionMainTop,
+  OpinionMainBottom,
+  OpinionStars,
+  OpinionStarsCount,
+  OpinionAdd,
+  OpinionAddTitle,
+  OpinionAddText,
+  OpinionAddBtn,
+  OpinionInput,
+  OpinionAddCloseBtn,
+  OpinionShowTitle,
+  OpinionShowList,
+  OpinionShowEl,
+  OpinionShowUser,
+  OpinionShowUserName,
+  OpinionShowContent,
+  OpinionShowDate,
+  OpinionShowText,
 } from "./style/SingleProductStyle.";
 
 export default function SingleProduct(props: JsxProps) {
@@ -127,4 +145,125 @@ SingleProduct.OpinionHeader = function SingleProductOpinionHeader(
 
 SingleProduct.OpinionMain = function SingleProductMain(props: JsxProps) {
   return <OpinionMain>{props.children}</OpinionMain>;
+};
+
+SingleProduct.OpinionMainTop = function SingleProductMainTop(props: JsxProps) {
+  return <OpinionMainTop>{props.children}</OpinionMainTop>;
+};
+SingleProduct.OpinionMainBottom = function SingleProductMainBottom(
+  props: JsxProps
+) {
+  return <OpinionMainBottom>{props.children}</OpinionMainBottom>;
+};
+
+SingleProduct.OpinionStars = function SingleProductOpinionStars(
+  props: JsxProps
+) {
+  return <OpinionStars>{props.children}</OpinionStars>;
+};
+
+SingleProduct.OpinionStarsCount = function SingleProductMainStarsCount(
+  props: JsxProps
+) {
+  return <OpinionStarsCount>{props.children}</OpinionStarsCount>;
+};
+
+SingleProduct.OpinionAdd = function SingleProductOpinionAdd(props: JsxProps) {
+  return <OpinionAdd>{props.children}</OpinionAdd>;
+};
+
+SingleProduct.OpinionAddTitle = function SingleProductAddTitle(
+  props: JsxProps
+) {
+  return <OpinionAddTitle>{props.children}</OpinionAddTitle>;
+};
+
+SingleProduct.OpinionAddText = function SingleProductAddText(props: JsxProps) {
+  return <OpinionAddText>{props.children}</OpinionAddText>;
+};
+
+SingleProduct.OpinionAddBtn = function SingleProductAddBtn(
+  props: SortJSXProps
+) {
+  return (
+    <OpinionAddBtn onClick={() => props.click((prev) => !prev)}>
+      {props.children}
+    </OpinionAddBtn>
+  );
+};
+SingleProduct.OpinionAddBtn = function SingleProductAddBtn(
+  props: SortJSXProps
+) {
+  return (
+    <OpinionAddBtn
+      onClick={() =>
+        props.active
+          ? props.click((prev) => !prev)
+          : props.click((prev) => !prev)
+      }
+    >
+      {props.children}
+    </OpinionAddBtn>
+  );
+};
+
+SingleProduct.OpinionAddCloseBtn = function SingleProductAddCloseBtn(
+  props: SortJSXProps
+) {
+  return (
+    <OpinionAddCloseBtn onClick={() => props.click((prev) => !prev)}>
+      {props.children}
+    </OpinionAddCloseBtn>
+  );
+};
+
+SingleProduct.OpinionInput = function SingleProductOpinionInput({
+  ...restprops
+}) {
+  return <OpinionInput {...restprops} />;
+};
+
+SingleProduct.OpinionShowTitle = function SingleProductOpinionShowTitle(
+  props: JsxProps
+) {
+  return <OpinionShowTitle>{props.children}</OpinionShowTitle>;
+};
+
+SingleProduct.OpinionShowList = function SingleProductOpinionShowList(
+  props: JsxProps
+) {
+  return <OpinionShowList>{props.children}</OpinionShowList>;
+};
+
+SingleProduct.OpinionShowEl = function SingleProductOpinionShowEl(
+  props: JsxProps
+) {
+  return <OpinionShowEl>{props.children}</OpinionShowEl>;
+};
+SingleProduct.OpinionShowUser = function SingleProductOpinionShowUser(
+  props: JsxProps
+) {
+  return <OpinionShowUser>{props.children}</OpinionShowUser>;
+};
+SingleProduct.OpinionShowUserName = function SingleProductOpinionShowUserName(
+  props: JsxProps
+) {
+  return <OpinionShowUserName>{props.children}</OpinionShowUserName>;
+};
+SingleProduct.OpinionShowContent = function SingleProductOpinionShowContent(
+  props: JsxProps
+) {
+  return <OpinionShowContent>{props.children}</OpinionShowContent>;
+};
+
+SingleProduct.OpinionShowDate = function SingleProductOpinionShowDate(
+  props: JsxProps
+) {
+  return <OpinionShowDate>{props.children}</OpinionShowDate>;
+};
+
+SingleProduct.OpinionShowText = function SingleProductOpinionShowText(
+  props: JsxProps
+) {
+  return <OpinionShowText>{props.children}</OpinionShowText>;
 };
