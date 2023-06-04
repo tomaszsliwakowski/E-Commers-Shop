@@ -5,7 +5,7 @@ import { JsxProps } from "../types/Types";
 export const AuthContext = createContext(null);
 
 export const AuthProvider = (props: JsxProps) => {
-  const [User, setUser] = useState<any>(null);
+  const [User, setUser] = useState<any>({});
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {

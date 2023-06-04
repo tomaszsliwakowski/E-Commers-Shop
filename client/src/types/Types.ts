@@ -23,6 +23,12 @@ export type SortJSXProps = {
   click: React.Dispatch<React.SetStateAction<boolean>>;
   active?: boolean;
 };
+export type OpinionJSXProps = {
+  children?: ReactNode;
+  click: React.Dispatch<React.SetStateAction<boolean>>;
+  active?: boolean;
+  handle: Function;
+};
 
 export type FormProps = {
   submit: Function;
@@ -202,4 +208,17 @@ export type AuthProviderType = {
 
 export type ImageType = {
   image: string;
+};
+export type opinionType = {
+  uid: string;
+  email: String;
+  name: String;
+  content: String;
+  date: String;
+  prod_id: String;
+};
+export type GoToElmentType = {
+  goTo: Function;
+  children?: ReactNode;
+  to: string;
 };

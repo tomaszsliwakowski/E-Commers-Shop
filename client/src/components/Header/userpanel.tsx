@@ -3,7 +3,7 @@ import { Header } from ".";
 import { SlBasket } from "react-icons/sl";
 import { AiOutlineUser, AiOutlineClose } from "react-icons/ai";
 import { UserPanelProps } from "../../types/Types";
-import { BasketRoute, LoginRoute, RegisterRoute } from "../../routes";
+import { LoginRoute, RegisterRoute } from "../../routes";
 import DropOptMin from "./dropOptMin";
 import DropOptMax from "./dropOptMax";
 import { AuthContext } from "../../assets/auth";
@@ -46,7 +46,11 @@ const UserPanel = ({
             {logged ? (
               <>
                 <Header.DropOpt>
-                  <Header.UserName>{User.Name.split(" ")[0]}</Header.UserName>
+                  <Header.UserName>
+                    {User.Name !== "" && User.Name !== undefined
+                      ? User.Name.split(" ")[0]
+                      : null}
+                  </Header.UserName>
                   <Header.Orders>Zamówienia</Header.Orders>
                   <Header.AccountSet>Ustawiania</Header.AccountSet>
                 </Header.DropOpt>
@@ -133,7 +137,12 @@ const UserPanel = ({
             {logged ? (
               <>
                 <Header.DropOpt>
-                  <Header.UserName>{User.Name.split(" ")[0]}</Header.UserName>
+                  <Header.UserName>
+                    {User.Name !== "" && User.Name !== undefined
+                      ? User.Name.split(" ")[0]
+                      : null}
+                  </Header.UserName>
+
                   <Header.Orders>Zamówienia</Header.Orders>
                   <Header.AccountSet>Ustawiania</Header.AccountSet>
                 </Header.DropOpt>

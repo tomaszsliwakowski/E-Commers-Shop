@@ -263,7 +263,9 @@ export const OpinionHeader = styled.span`
   font-size: 22px;
   font-weight: 500;
 `;
-export const OpinionMain = styled.div``;
+export const OpinionMain = styled.div`
+  border-bottom: 1px solid rgb(221, 221, 221);
+`;
 
 export const OpinionMainTop = styled.div`
   display: flex;
@@ -308,7 +310,7 @@ export const OpinionStarsCount = styled.span`
   }
 `;
 export const OpinionAdd = styled.div`
-  border: 1px solid rgb(155, 147, 147);
+  border: 1px solid rgb(221, 221, 221);
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
@@ -382,9 +384,6 @@ export const OpinionShowEl = styled.li`
   height: 100%;
   display: flex;
   padding: 1rem 1rem;
-  &:last-of-type {
-    border-bottom: 1px solid rgb(221, 221, 221);
-  }
 `;
 export const OpinionShowUser = styled.div`
   width: 15%;
@@ -402,6 +401,7 @@ export const OpinionShowDate = styled.span`
   height: 30px;
   display: flex;
   align-items: center;
+  color: rgb(112, 112, 112);
 `;
 export const OpinionShowText = styled.span`
   margin: 1rem 0;
@@ -411,4 +411,20 @@ export const OpinionShowContent = styled.div`
   width: 85%;
   display: flex;
   flex-direction: column;
+`;
+
+export const ShowMore = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+export const ShowMoreBtn = styled.button`
+  width: 40%;
+  height: 35px;
+  border-radius: 1rem;
+  border: 1px solid black;
+  background-color: white;
+  color: rgb(112, 112, 112);
+  margin-top: 2rem;
+  cursor: pointer;
 `;

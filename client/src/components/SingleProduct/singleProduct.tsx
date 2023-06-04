@@ -98,6 +98,16 @@ const SingleProductSection = () => {
     }
   };
 
+  const NavGoTo = (id: string) => {
+    const el = document.querySelector(id)?.getBoundingClientRect().top;
+    if (el) {
+      window.scroll({
+        top: el ? el + window.scrollY - 80 : 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <SingleProduct>
       <SingleProduct.Top>
@@ -178,11 +188,15 @@ const SingleProductSection = () => {
       </SingleProduct.Top>
       <SingleProduct.Bottom>
         <SingleProduct.Navigation>
-          <SingleProduct.NavBtn href="#">Opis</SingleProduct.NavBtn>
-          <SingleProduct.NavBtn href="#">Opinie</SingleProduct.NavBtn>
+          <SingleProduct.NavBtn goTo={NavGoTo} to="#desc">
+            Opis
+          </SingleProduct.NavBtn>
+          <SingleProduct.NavBtn goTo={NavGoTo} to="#opinion">
+            Opinie
+          </SingleProduct.NavBtn>
         </SingleProduct.Navigation>
         <ProductDescription image={ProductData?.img ? ProductData.img : ""} />
-        <OpnionComment ProductData={ProductData} />
+        <OpnionComment ProductData={ProductData} prodId={id ? id : ""} />
       </SingleProduct.Bottom>
     </SingleProduct>
   );

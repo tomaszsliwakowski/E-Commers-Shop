@@ -37,19 +37,28 @@ export const Rating = (item: ProductsType) => {
   let value: Array<any> = [];
   for (let index = 0; index < Math.floor(item.opinion); index++) {
     value.push(
-      <Products.Image src="https://assets.x-kom.pl/public-spa/xkom/985a91ae09e6b303.svg" />
+      <Products.Image
+        key={index}
+        src="https://assets.x-kom.pl/public-spa/xkom/985a91ae09e6b303.svg"
+      />
     );
   }
 
   if (item.opinion.toString().split(".").length > 1) {
     value.push(
-      <Products.Image src="https://assets.x-kom.pl/public-spa/xkom/6dcb53b14cc23c9f.svg" />
+      <Products.Image
+        key={10}
+        src="https://assets.x-kom.pl/public-spa/xkom/6dcb53b14cc23c9f.svg"
+      />
     );
   }
   if (value.length < 5) {
     for (let index = value.length; index < 5; index++) {
       value.push(
-        <Products.Image src="https://assets.x-kom.pl/public-spa/xkom/d641261a2af6867e.svg" />
+        <Products.Image
+          key={index + 5}
+          src="https://assets.x-kom.pl/public-spa/xkom/d641261a2af6867e.svg"
+        />
       );
     }
   }

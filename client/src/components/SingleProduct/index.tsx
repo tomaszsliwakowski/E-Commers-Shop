@@ -1,5 +1,10 @@
-import React from "react";
-import { JsxProps, SortJSXProps } from "../../types/Types";
+import React, { ReactNode } from "react";
+import {
+  GoToElmentType,
+  JsxProps,
+  OpinionJSXProps,
+  SortJSXProps,
+} from "../../types/Types";
 import {
   Container,
   Top,
@@ -44,6 +49,8 @@ import {
   OpinionShowContent,
   OpinionShowDate,
   OpinionShowText,
+  ShowMore,
+  ShowMoreBtn,
 } from "./style/SingleProductStyle.";
 
 export default function SingleProduct(props: JsxProps) {
@@ -118,11 +125,11 @@ SingleProduct.BuyInfo = function SingleProductBuyInfo(props: JsxProps) {
 };
 
 SingleProduct.Navigation = function SingleProductNavigation(props: JsxProps) {
-  return <Nav>{props.children}</Nav>;
+  return <Nav id="desc">{props.children}</Nav>;
 };
 
-SingleProduct.NavBtn = function SingleProductNavBtn(props: JsxProps) {
-  return <NavBtn href={props.href}>{props.children}</NavBtn>;
+SingleProduct.NavBtn = function SingleProductNavBtn(props: GoToElmentType) {
+  return <NavBtn onClick={() => props.goTo(props.to)}>{props.children}</NavBtn>;
 };
 
 SingleProduct.Description = function SingleProductDescription(props: JsxProps) {
@@ -134,7 +141,7 @@ SingleProduct.DescText = function SingleProductDescText(props: JsxProps) {
 };
 
 SingleProduct.OpinionCom = function SingleProductOpinionCom(props: JsxProps) {
-  return <OpinionCom>{props.children}</OpinionCom>;
+  return <OpinionCom id="opinion">{props.children}</OpinionCom>;
 };
 
 SingleProduct.OpinionHeader = function SingleProductOpinionHeader(
@@ -183,23 +190,12 @@ SingleProduct.OpinionAddText = function SingleProductAddText(props: JsxProps) {
 };
 
 SingleProduct.OpinionAddBtn = function SingleProductAddBtn(
-  props: SortJSXProps
-) {
-  return (
-    <OpinionAddBtn onClick={() => props.click((prev) => !prev)}>
-      {props.children}
-    </OpinionAddBtn>
-  );
-};
-SingleProduct.OpinionAddBtn = function SingleProductAddBtn(
-  props: SortJSXProps
+  props: OpinionJSXProps
 ) {
   return (
     <OpinionAddBtn
-      onClick={() =>
-        props.active
-          ? props.click((prev) => !prev)
-          : props.click((prev) => !prev)
+      onClick={
+        props.active ? () => props.handle() : () => props.click((prev) => !prev)
       }
     >
       {props.children}
@@ -266,4 +262,16 @@ SingleProduct.OpinionShowText = function SingleProductOpinionShowText(
   props: JsxProps
 ) {
   return <OpinionShowText>{props.children}</OpinionShowText>;
+};
+
+SingleProduct.ShowMore = function SingleProductShowMore(props: JsxProps) {
+  return <ShowMore>{props.children}</ShowMore>;
+};
+SingleProduct.ShowMoreBtn = function SingleProductShowMoreBtn(props: {
+  handle: Function;
+  children: ReactNode;
+}) {
+  return (
+    <ShowMoreBtn onClick={() => props.handle()}>{props.children}</ShowMoreBtn>
+  );
 };
