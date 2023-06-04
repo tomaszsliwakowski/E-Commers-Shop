@@ -5,6 +5,7 @@ import { Rating } from "../Products/productList";
 import { BiUserCircle } from "react-icons/bi";
 import { AuthContext } from "../../assets/auth";
 import axios from "axios";
+import { AddOpinion, GetOpinion } from "../../routes";
 
 const OpnionComment = ({
   ProductData,
@@ -49,7 +50,7 @@ const OpnionComment = ({
         prod_id: prodId,
       };
       axios
-        .post("http://localhost:10000/api/add/opinion", FullOpinion, {
+        .post(AddOpinion, FullOpinion, {
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
@@ -63,7 +64,7 @@ const OpnionComment = ({
 
   useEffect(() => {
     axios
-      .get(`http://localhost:10000/api/get/opinion/${prodId}`)
+      .get(GetOpinion(prodId))
       .then((res) => {
         const data = res.data;
         setFirstOpinions(data.splice(0, 10));

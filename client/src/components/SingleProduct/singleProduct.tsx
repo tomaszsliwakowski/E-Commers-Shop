@@ -15,6 +15,7 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { BasketCon } from "./ProductCount";
 import ProductDescription from "./ProductDescription";
 import OpnionComment from "./opinion";
+import { GetProduct } from "../../routes";
 
 const SingleProductSection = () => {
   const [ActiveCount, setActiveCount] = useState<boolean>(false);
@@ -36,7 +37,7 @@ const SingleProductSection = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://localhost:10000/api/product/${id}`)
+        .get(GetProduct(id))
         .then((reasult) => {
           setProductData(reasult.data[0]);
         })

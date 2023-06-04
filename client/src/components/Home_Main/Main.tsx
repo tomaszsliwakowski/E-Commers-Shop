@@ -6,6 +6,7 @@ import TopLeftSection from "./TopLeft";
 import TopRightSection from "./TopRight";
 import BestSellerSection from "./BestSeller";
 import axios from "axios";
+import { GetAllProducts } from "../../routes";
 
 const HomeMainSection = () => {
   const { width, height }: WindowSizeType = useWindowSize();
@@ -14,7 +15,7 @@ const HomeMainSection = () => {
   });
   useEffect(() => {
     axios
-      .get("http://localhost:10000/api/products/All")
+      .get(GetAllProducts)
       .then((reasult) => {
         setProductsData(reasult.data[0]);
       })

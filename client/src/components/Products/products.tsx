@@ -18,6 +18,7 @@ import { BsFilter } from "react-icons/bs";
 import Filters from "./filters";
 import useWindowSize from "../../hooks/useWindowSize";
 import axios from "axios";
+import { GetAllProducts, GetProducts } from "../../routes";
 
 const ProductsSection = () => {
   const SortName = [
@@ -62,7 +63,7 @@ const ProductsSection = () => {
   useEffect(() => {
     if (category) {
       axios
-        .get(`http://localhost:10000/api/products/${category}`)
+        .get(GetProducts(category))
         .then((reasult) => {
           setProductsData(reasult.data[0]);
         })
@@ -71,7 +72,7 @@ const ProductsSection = () => {
         });
     } else {
       axios
-        .get(`http://localhost:10000/api/products/all`)
+        .get(GetAllProducts)
         .then((reasult) => {
           setProductsData(reasult.data[0]);
         })
