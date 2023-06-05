@@ -3,6 +3,7 @@ import {
   GoToElmentType,
   JsxProps,
   OpinionJSXProps,
+  OpinionOptionsType,
   SortJSXProps,
 } from "../../types/Types";
 import {
@@ -51,6 +52,9 @@ import {
   OpinionShowText,
   ShowMore,
   ShowMoreBtn,
+  OptionsOpinion,
+  OptionsListOpinion,
+  OptionsElOpinion,
 } from "./style/SingleProductStyle.";
 
 export default function SingleProduct(props: JsxProps) {
@@ -274,4 +278,39 @@ SingleProduct.ShowMoreBtn = function SingleProductShowMoreBtn(props: {
   return (
     <ShowMoreBtn onClick={() => props.handle()}>{props.children}</ShowMoreBtn>
   );
+};
+SingleProduct.OptionsOpinion = function SingleProductOptionsOpinion(
+  props: OpinionOptionsType
+) {
+  return (
+    <OptionsOpinion
+      id="options"
+      onClick={() =>
+        props.click((prev) =>
+          prev.active
+            ? {
+                active: false,
+                id: 0,
+              }
+            : {
+                active: true,
+                id: props.item,
+              }
+        )
+      }
+    >
+      {props.children}
+    </OptionsOpinion>
+  );
+};
+
+SingleProduct.OptionsListOpinion = function SingleProductOptionsListOpinion(
+  props: JsxProps
+) {
+  return <OptionsListOpinion>{props.children}</OptionsListOpinion>;
+};
+SingleProduct.OptionsElOpinion = function SingleProductOptionsElOpinion(
+  props: JsxProps
+) {
+  return <OptionsElOpinion id="options">{props.children}</OptionsElOpinion>;
 };

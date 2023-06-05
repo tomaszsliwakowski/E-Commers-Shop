@@ -402,6 +402,7 @@ export const OpinionShowDate = styled.span`
   display: flex;
   align-items: center;
   color: rgb(112, 112, 112);
+  position: relative;
 `;
 export const OpinionShowText = styled.span`
   margin: 1rem 0;
@@ -427,4 +428,38 @@ export const ShowMoreBtn = styled.button`
   color: rgb(112, 112, 112);
   margin-top: 2rem;
   cursor: pointer;
+`;
+export const OptionsOpinion = styled.span`
+  position: absolute;
+  right: 0;
+  color: black;
+  cursor: pointer;
+
+  & svg {
+    height: 100%;
+    width: 100%;
+  }
+`;
+export const OptionsListOpinion = styled.ul`
+  position: absolute;
+  right: 0.5rem;
+  top: 1.6rem;
+  list-style: none;
+  border: 1px solid silver;
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+  border-radius: 5px;
+  border-color: rgb(112, 112, 112);
+`;
+export const OptionsElOpinion = styled.li`
+  padding: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+
+  &:hover {
+    background-color: rgb(221, 221, 221);
+    border-radius: 5px;
+  }
 `;

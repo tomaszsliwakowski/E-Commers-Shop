@@ -22,6 +22,7 @@ let schemaOpinion = new mongoose.Schema({
     type: String,
     require: true,
   },
+  opinionId: Number,
 });
 
 const Add_Opinion = mongoose.model("Add_Opinion", schemaOpinion);

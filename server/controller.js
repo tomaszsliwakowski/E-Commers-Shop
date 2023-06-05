@@ -118,6 +118,7 @@ exports.AddOpinion = async (req, res) => {
       content: req.body.content,
       date: req.body.date,
       prod_id: req.body.prod_id,
+      opinionId: req.body.opinionId,
     });
     await com.save();
   } catch (error) {

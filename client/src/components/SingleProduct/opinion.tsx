@@ -6,6 +6,7 @@ import { BiUserCircle } from "react-icons/bi";
 import { AuthContext } from "../../assets/auth";
 import axios from "axios";
 import { AddOpinion, GetOpinion } from "../../routes";
+import { SlOptionsVertical } from "react-icons/sl";
 
 const OpnionComment = ({
   ProductData,
@@ -17,6 +18,13 @@ const OpnionComment = ({
   const [activeAddOpinion, setActiveAddOpinon] = useState<boolean>(false);
   const [opinionValue, setOpinionValue] = useState("");
   const [Opinions, setOpinions] = useState([]);
+  const [OpinionOptions, setOpinionOptions] = useState<{
+    active: boolean;
+    id: number;
+  }>({
+    active: false,
+    id: 0,
+  });
   const [FirstOpinions, setFirstOpinions] = useState<Array<opinionType>>([
     {
       uid: "",
@@ -25,6 +33,7 @@ const OpnionComment = ({
       content: "",
       date: "",
       prod_id: "",
+      opinionId: 0,
     },
   ]);
   const [User, setUser] = useState({ Name: "", Email: "", uid: "" });
@@ -48,6 +57,7 @@ const OpnionComment = ({
         content: opinionValue,
         date: new Date().toLocaleDateString(),
         prod_id: prodId,
+        opinionId: Math.random() * 1000 + new Date().getTime(),
       };
       axios
         .post(AddOpinion, FullOpinion, {
@@ -77,6 +87,21 @@ const OpnionComment = ({
     setFirstOpinions((prev) => prev.concat(Opinions.splice(0, 10)));
   };
 
+  useEffect(() => {
+    const close = (e: Event) => {
+      let target = e.target as HTMLElement;
+      if (target.id !== "options") {
+        setOpinionOptions({ active: false, id: 0 });
+      }
+    };
+
+    window.addEventListener("click", close);
+
+    return () => {
+      window.removeEventListener("click", close);
+    };
+  }, [OpinionOptions]);
+  console.log(OpinionOptions);
   return (
     <SingleProduct.OpinionCom>
       <SingleProduct.OpinionHeader>Opinie</SingleProduct.OpinionHeader>
@@ -149,6 +174,24 @@ const OpnionComment = ({
                           <SingleProduct.OpinionShowContent>
                             <SingleProduct.OpinionShowDate>
                               {item.date}
+                              {item.uid === User.uid ? (
+                                <>
+                                  <SingleProduct.OptionsOpinion
+                                   click={setOpinionOptions}
+                                   item={item.opinionId}
+                                  >
+                                    <SlOptionsVertical id="options" />
+                                  </SingleProduct.OptionsOpinion>
+                                  {OpinionOptions.active &&
+                                  OpinionOptions.id === item.opinionId ? (
+                                    <SingleProduct.OptionsListOpinion>
+                                      <SingleProduct.OptionsElOpinion>
+                                        Usuń opinie
+                                      </SingleProduct.OptionsElOpinion>
+                                    </SingleProduct.OptionsListOpinion>
+                                  ) : null}
+                                </>
+                              ) : null}
                             </SingleProduct.OpinionShowDate>
                             <SingleProduct.OpinionShowText>
                               {item.content}
