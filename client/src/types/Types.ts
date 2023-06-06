@@ -217,6 +217,7 @@ export type opinionType = {
   date: String;
   prod_id: String;
   opinionId: number;
+  _id: string;
 };
 export type GoToElmentType = {
   goTo: Function;
@@ -227,4 +228,9 @@ export type OpinionOptionsType = {
   children?: ReactNode;
   click: React.Dispatch<React.SetStateAction<{ active: boolean; id: number }>>;
   item: number;
+};
+export type OpinionDeleteType = {
+  children?: ReactNode;
+  click: Function;
+  item: string;
 };

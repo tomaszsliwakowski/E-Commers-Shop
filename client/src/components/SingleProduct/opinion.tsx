@@ -5,7 +5,7 @@ import { Rating } from "../Products/productList";
 import { BiUserCircle } from "react-icons/bi";
 import { AuthContext } from "../../assets/auth";
 import axios from "axios";
-import { AddOpinion, GetOpinion } from "../../routes";
+import { AddOpinion, DeleteOpnion, GetOpinion } from "../../routes";
 import { SlOptionsVertical } from "react-icons/sl";
 
 const OpnionComment = ({
@@ -34,9 +34,11 @@ const OpnionComment = ({
       date: "",
       prod_id: "",
       opinionId: 0,
+      _id: "",
     },
   ]);
   const [User, setUser] = useState({ Name: "", Email: "", uid: "" });
+  const [render, setRender] = useState<boolean>(false);
   const logged: any = useContext(AuthContext);
   useEffect(() => {
     if (logged) {
@@ -69,6 +71,7 @@ const OpnionComment = ({
         .catch((err) => console.log(err));
       setActiveAddOpinon(false);
       setOpinionValue("");
+      setRender((prev) => !prev);
     }
   };
 
@@ -81,7 +84,7 @@ const OpnionComment = ({
         setOpinions(data);
       })
       .catch((err) => console.log(err));
-  }, [prodId, activeAddOpinion]);
+  }, [prodId, render, activeAddOpinion]);
 
   const ShowMoreComments = () => {
     setFirstOpinions((prev) => prev.concat(Opinions.splice(0, 10)));
@@ -101,7 +104,17 @@ const OpnionComment = ({
       window.removeEventListener("click", close);
     };
   }, [OpinionOptions]);
-  console.log(OpinionOptions);
+
+  const handleDeleteOpinon = async (opinion_id: string) => {
+    await axios
+      .delete(DeleteOpnion(opinion_id), {
+        headers: { "Content-type": "application/json" },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+    setRender((prev) => !prev);
+  };
+
   return (
     <SingleProduct.OpinionCom>
       <SingleProduct.OpinionHeader>Opinie</SingleProduct.OpinionHeader>
@@ -177,15 +190,18 @@ const OpnionComment = ({
                               {item.uid === User.uid ? (
                                 <>
                                   <SingleProduct.OptionsOpinion
-                                   click={setOpinionOptions}
-                                   item={item.opinionId}
+                                    click={setOpinionOptions}
+                                    item={item.opinionId}
                                   >
                                     <SlOptionsVertical id="options" />
                                   </SingleProduct.OptionsOpinion>
                                   {OpinionOptions.active &&
                                   OpinionOptions.id === item.opinionId ? (
                                     <SingleProduct.OptionsListOpinion>
-                                      <SingleProduct.OptionsElOpinion>
+                                      <SingleProduct.OptionsElOpinion
+                                        click={handleDeleteOpinon}
+                                        item={item._id}
+                                      >
                                         Usuń opinie
                                       </SingleProduct.OptionsElOpinion>
                                     </SingleProduct.OptionsListOpinion>

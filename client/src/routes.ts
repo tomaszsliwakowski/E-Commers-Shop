@@ -22,3 +22,7 @@ export function GetProducts(category: string) {
 }
 
 export const GetAllProducts: string = `${ServerRoute}/api/products/all`;
+
+export function DeleteOpnion(id: string) {
+  return `${ServerRoute}/api/delete/opinion/${id}`;
+}

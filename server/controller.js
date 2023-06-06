@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const ProdPCCOM_DB = require("./model/Schema.Com");
 const ProdACC_DB = require("./model/Schema_Acc");
 const ProdAll_DB = require("./model/Schema_All");
@@ -137,5 +138,23 @@ exports.GetOpinion = async (req, res) => {
     .catch((err) => {
       res.status(500).send({ message: `Error get opinion` });
       console.log(err);
+    });
+};
+
+exports.DeleteOpinion = async (req, res) => {
+  const id = req.params.id;
+
+  await Add_Opinion.findByIdAndDelete(id)
+    .then((res) => {
+      if (!res) {
+        res.status(404).send({ message: "Not delete opinion" });
+      } else {
+        res.send({ message: "Opinion was deleted succesfully" });
+      }
+    })
+    .catch((err) => {
+      res
+        .status(500)
+        .send({ message: `Could not delete Opinion with id ${id}` });
     });
 };

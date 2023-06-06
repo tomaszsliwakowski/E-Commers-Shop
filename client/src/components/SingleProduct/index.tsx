@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import {
   GoToElmentType,
   JsxProps,
+  OpinionDeleteType,
   OpinionJSXProps,
   OpinionOptionsType,
   SortJSXProps,
@@ -310,7 +311,11 @@ SingleProduct.OptionsListOpinion = function SingleProductOptionsListOpinion(
   return <OptionsListOpinion>{props.children}</OptionsListOpinion>;
 };
 SingleProduct.OptionsElOpinion = function SingleProductOptionsElOpinion(
-  props: JsxProps
+  props: OpinionDeleteType
 ) {
-  return <OptionsElOpinion id="options">{props.children}</OptionsElOpinion>;
+  return (
+    <OptionsElOpinion onClick={() => props.click(props.item)} id="options">
+      {props.children}
+    </OptionsElOpinion>
+  );
 };
