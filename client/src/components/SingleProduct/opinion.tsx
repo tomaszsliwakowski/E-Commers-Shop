@@ -110,7 +110,6 @@ const OpnionComment = ({
       .delete(DeleteOpnion(opinion_id), {
         headers: { "Content-type": "application/json" },
       })
-      .then((res) => console.log(res))
       .catch((err) => console.log(err));
     setRender((prev) => !prev);
   };

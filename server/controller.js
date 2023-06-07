@@ -143,7 +143,6 @@ exports.GetOpinion = async (req, res) => {
 
 exports.DeleteOpinion = async (req, res) => {
   const id = req.params.id;
-
   await Add_Opinion.findByIdAndDelete(id)
     .then((res) => {
       if (!res) {
@@ -153,8 +152,6 @@ exports.DeleteOpinion = async (req, res) => {
       }
     })
     .catch((err) => {
-      res
-        .status(500)
-        .send({ message: `Could not delete Opinion with id ${id}` });
+      res.send({ message: `Could not delete Opinion with id ${id}` });
     });
 };
