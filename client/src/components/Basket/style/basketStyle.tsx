@@ -128,6 +128,9 @@ export const ClearBasket = styled.div`
 `;
 export const List = styled.div`
   margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 export const Product = styled.div`
   border: 1px solid rgb(221, 221, 221);

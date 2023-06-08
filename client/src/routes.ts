@@ -26,3 +26,7 @@ export const GetAllProducts: string = `${ServerRoute}/api/products/all`;
 export function DeleteOpnion(id: string) {
   return `${ServerRoute}/api/delete/opinion/${id}`;
 }
+
+export function GoToProduct(id: number) {
+  return `http://localhost:3000/product/${id}`;
+}

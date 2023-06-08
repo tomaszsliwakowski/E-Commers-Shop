@@ -1,5 +1,10 @@
 import React from "react";
-import { JsxProps, LinkProps, ProdCountPropsType } from "../../types/Types";
+import {
+  AddBasketBtnType,
+  JsxProps,
+  LinkProps,
+  ProdCountPropsType,
+} from "../../types/Types";
 import {
   Container,
   Items,
@@ -60,9 +65,12 @@ Basket.BuyPanelSum = function BasketBuyPanelSum(props: JsxProps) {
 Basket.BuyPanelPrice = function BasketBuyPanelPrice(props: JsxProps) {
   return <BuyPanelPrice>{props.children}</BuyPanelPrice>;
 };
-Basket.BuyPanelBtn = function BasketBuyPanelBtn(props: JsxProps) {
+Basket.BuyPanelBtn = function BasketBuyPanelBtn(props: AddBasketBtnType) {
   return (
-    <BuyPanelBtn to={props.href && props.href ? props.href : "#"}>
+    <BuyPanelBtn
+      to={props.href && props.href ? props.href : "#"}
+      onClick={() => props.click && props.click()}
+    >
       {props.children}
     </BuyPanelBtn>
   );

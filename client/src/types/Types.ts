@@ -141,6 +141,7 @@ export type ProductsType = {
   opinion: number;
   spec?: string[];
   destiny?: string;
+  count?: number;
 };
 
 export type FiltersType = {
@@ -233,4 +234,10 @@ export type OpinionDeleteType = {
   children?: ReactNode;
   click: Function;
   item: string;
+};
+
+export type AddBasketBtnType = {
+  children?: ReactNode;
+  click?: Function;
+  href?: string;
 };

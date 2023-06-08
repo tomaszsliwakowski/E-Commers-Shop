@@ -16,8 +16,11 @@ import { BasketCon } from "./ProductCount";
 import ProductDescription from "./ProductDescription";
 import OpnionComment from "./opinion";
 import { GetProduct } from "../../routes";
+import { useAppDispatch } from "../../store/store";
+import { AddToBasket } from "../../store/BasketSlice";
 
 const SingleProductSection = () => {
+  const dispatch = useAppDispatch();
   const [ActiveCount, setActiveCount] = useState<boolean>(false);
   const [ActiveCountInput, setActiveCountInput] = useState<boolean>(false);
   const [ProductCount, setProductCount] = useState<number>(1);
@@ -109,6 +112,23 @@ const SingleProductSection = () => {
     }
   };
 
+  const AddToBasketHandle = () => {
+    dispatch(
+      AddToBasket({
+        product: {
+          id: ProductData.id,
+          name: ProductData.name,
+          img: ProductData.img,
+          price: ProductData.price,
+          category: ProductData.category,
+          producer: ProductData.producer,
+          opinion: ProductData.opinion,
+          count: ProductCount,
+        },
+      })
+    );
+  };
+
   return (
     <SingleProduct>
       <SingleProduct.Top>
@@ -156,7 +176,9 @@ const SingleProductSection = () => {
                 CountInput={CountInput}
                 ProductCount={ProductCount}
               />
-              <Basket.BuyPanelBtn>Dodaj do koszyka</Basket.BuyPanelBtn>
+              <Basket.BuyPanelBtn click={AddToBasketHandle}>
+                Dodaj do koszyka
+              </Basket.BuyPanelBtn>
             </SingleProduct.Basket>
             <SingleProduct.BuyInfoList>
               <SingleProduct.BuyInfoEL>
