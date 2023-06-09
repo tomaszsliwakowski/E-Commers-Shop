@@ -46,6 +46,7 @@ export type ProdCountPropsType = {
   click: Function;
   item: number;
   id?: string;
+  prod?: number;
 };
 
 export type TsxPropsBoolean = {

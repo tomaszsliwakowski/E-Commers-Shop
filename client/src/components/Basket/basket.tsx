@@ -7,30 +7,34 @@ import { LogRegOut } from "../register&login";
 import { GoToProduct, HomeRoute } from "../../routes";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { AiOutlineCaretDown } from "react-icons/ai";
-import { useAppSelector } from "../../store/store";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 import { ProductsType } from "../../types/Types";
+import { Item } from "../Products/style/productStyle";
+import { UpdateBasket } from "../../store/BasketSlice";
 
 const CountOpt: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const BasketSection = () => {
-  const [ActiveCount, setActiveCount] = useState<boolean>(false);
-  const [ActiveCountInput, setActiveCountInput] = useState<boolean>(false);
-  const [ProductCount, setProductCount] = useState<number>(1);
-  const [CountInput, setCountInput] = useState<number>(1);
+  const dispatch = useAppDispatch();
+  const [ActiveCount, setActiveCount] = useState<{
+    prodId: number;
+    active: boolean;
+  }>({ prodId: 0, active: false });
+  const [ActiveCountInput, setActiveCountInput] = useState<{
+    prodId: number;
+    active: boolean;
+  }>({ prodId: 0, active: false });
 
   const BasketProducts: { basket: Array<{ product: ProductsType }> } =
     useAppSelector((state) => state.basket);
-  console.log(BasketProducts.basket);
 
-  const HandleCount = (count: number) => {
-    setProductCount(count);
-    setCountInput(count);
-    setActiveCount(false);
+  const HandleCount = (count: number, id: number) => {
+    setActiveCount({ prodId: id, active: false });
   };
 
-  const HandleActiveCountInput = () => {
-    setActiveCountInput(true);
-    setActiveCount(false);
+  const HandleActiveCountInput = (id: number) => {
+    setActiveCountInput({ prodId: id, active: true });
+    setActiveCount({ prodId: id, active: true });
     setTimeout(() => {
       const el: HTMLInputElement | null = document.querySelector(".inputCount");
       if (el && el !== null) {
@@ -39,24 +43,24 @@ const BasketSection = () => {
     }, 300);
   };
 
-  useEffect(() => {
-    if (!ActiveCountInput) {
-      setProductCount(() => {
-        if (CountInput === 0) {
-          return 1;
-        } else {
-          return CountInput;
-        }
-      });
-    }
-  }, [ActiveCountInput]);
+  //useEffect(() => {
+  //if (!ActiveCountInput.active) {
+  // setProductCount((prev) => {
+  //  if (CountInput.count === 0) {
+  //    return { prodId: prev.prodId, count: 1 };
+  // } else {
+  //   return CountInput;
+  //    }
+  //  });
+  //   }
+  // }, [ActiveCountInput]);
 
   useEffect(() => {
     const close = (e: Event) => {
       let target = e.target as HTMLElement;
       if (target.id !== "count") {
-        setActiveCount(false);
-        setActiveCountInput(false);
+        setActiveCount({ prodId: 0, active: false });
+        setActiveCountInput({ prodId: 0, active: false });
       }
     };
 
@@ -68,10 +72,47 @@ const BasketSection = () => {
 
   const HandleInputCount = (e: Event) => {
     let target = e.target as HTMLInputElement;
+    let id: string | undefined = target.dataset.prodId;
     const value: number = Number(target.value);
     if (Number.isInteger(value) && value >= 0 && value <= 999) {
-      setCountInput(value);
+      if (BasketProducts.basket) {
+        dispatch(
+          UpdateBasket(
+            id
+              ? {
+                  BasketUpdate: HandleUpdateBasket(parseInt(id), value),
+                }
+              : { BasketUpdate: [...BasketProducts.basket] }
+          )
+        );
+      }
     }
+  };
+
+  const HandleUpdateBasket = (id: number, value: number) => {
+    let data: Array<{ product: ProductsType }> = [];
+    const ProductUpdate = BasketProducts.basket.find(
+      (el) => el.product.id === id
+    );
+    if (ProductUpdate?.product) {
+      data = BasketProducts.basket.filter(
+        (item, id) => item.product.id !== ProductUpdate.product.id
+      );
+      data.push({
+        product: {
+          id: ProductUpdate.product.id,
+          name: ProductUpdate.product.name,
+          img: ProductUpdate.product.img,
+          opinion: ProductUpdate.product.opinion,
+          producer: ProductUpdate.product.producer,
+          price: ProductUpdate.product.price,
+          category: ProductUpdate.product.category,
+          count: value,
+        },
+      });
+    }
+    console.log(data);
+    return data;
   };
 
   return (
@@ -106,26 +147,29 @@ const BasketSection = () => {
                       </Basket.Goto>
                       <Basket.OtherProperty>
                         <span>{item.product.price.toFixed(2)} zł</span>
-                        <Basket.ProdCount active2={ActiveCount}>
-                          {ActiveCountInput ? (
+                        <Basket.ProdCount active2={ActiveCount.active}>
+                          {ActiveCountInput.active ? (
                             <Basket.CountInput
                               type="number"
-                              value={CountInput || ""}
+                              value={
+                                BasketProducts.basket[id].product.count || ""
+                              }
                               id="count"
                               className="inputCount"
+                              data-prod-id={item.product.id}
                               onChange={HandleInputCount}
                             />
                           ) : (
                             <Basket.CountInput
                               type="text"
                               id="count"
-                              disabled={ActiveCount}
-                              value={ProductCount}
+                              disabled={ActiveCount.active}
+                              value={BasketProducts.basket[id].product.count}
                               readOnly
                             />
                           )}
-                          {!ActiveCountInput ? (
-                            ActiveCount ? (
+                          {!ActiveCountInput.active ? (
+                            ActiveCount.active ? (
                               <AiOutlineCaretUp />
                             ) : (
                               <AiOutlineCaretDown />
@@ -134,31 +178,46 @@ const BasketSection = () => {
                           <Basket.CountActive
                             type="checkbox"
                             id="count"
-                            checked={ActiveCount}
-                            onChange={() => setActiveCount((prev) => !prev)}
+                            checked={
+                              ActiveCount.active &&
+                              ActiveCount.prodId === item.product.id
+                                ? true
+                                : false
+                            }
+                            onChange={() =>
+                              setActiveCount((prev) => ({
+                                prodId: prev.prodId,
+                                active: !prev.active,
+                              }))
+                            }
                             style={{
-                              display: `${ActiveCountInput ? "none" : "flex"}`,
+                              display: `${
+                                ActiveCountInput.active ? "none" : "flex"
+                              }`,
                             }}
                           />
-                          <Basket.CountList active2={ActiveCount}>
+                          <Basket.CountList active2={ActiveCount.active}>
                             <Basket.CountEl>
-                              {CountOpt.map((item, id) =>
-                                item < 9 ? (
+                              {CountOpt.map((it, id) =>
+                                it < 9 ? (
                                   <Basket.Count
                                     key={id}
-                                    click={() => HandleCount(item)}
-                                    item={item}
+                                    click={() =>
+                                      HandleCount(it, item.product.id)
+                                    }
+                                    item={it}
                                     id="count"
                                   >
-                                    {item}
+                                    {it}
                                   </Basket.Count>
                                 ) : (
                                   <Basket.Count
                                     key={id}
                                     click={HandleActiveCountInput}
-                                    item={item}
+                                    item={it}
+                                    prod={item.product.id}
                                   >
-                                    {item + "+"}
+                                    {it + "+"}
                                   </Basket.Count>
                                 )
                               )}

@@ -189,7 +189,7 @@ Basket.CountEl = function BasketCountEl(props: JsxProps) {
 };
 Basket.Count = function BasketCount(props: ProdCountPropsType) {
   return props.item && props.item < 9 ? (
-    <Count id={props.id} onClick={() => props.click()}>
+    <Count id={props.id} onClick={() => props.click(props.prod)}>
       {props.children}
     </Count>
   ) : (
