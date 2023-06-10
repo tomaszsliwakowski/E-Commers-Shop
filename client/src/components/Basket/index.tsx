@@ -39,6 +39,8 @@ import {
   DescSmall,
   BuyPanelFixed,
   BuyPanelRelative,
+  EmptyBasket,
+  EmptyBasketBtn,
 } from "./style/basketStyle";
 
 export default function Basket(props: JsxProps) {
@@ -84,8 +86,12 @@ Basket.Title = function BasketTitle(props: JsxProps) {
   return <Title>{props.children}</Title>;
 };
 
-Basket.ClearBasket = function BasketClearBasket(props: JsxProps) {
-  return <ClearBasket>{props.children}</ClearBasket>;
+Basket.ClearBasket = function BasketClearBasket(props: AddBasketBtnType) {
+  return (
+    <ClearBasket onClick={() => props.click && props.click()}>
+      {props.children}
+    </ClearBasket>
+  );
 };
 
 Basket.List = function BasketList(props: JsxProps) {
@@ -189,7 +195,7 @@ Basket.CountEl = function BasketCountEl(props: JsxProps) {
 };
 Basket.Count = function BasketCount(props: ProdCountPropsType) {
   return props.item && props.item < 9 ? (
-    <Count id={props.id} onClick={() => props.click(props.prod)}>
+    <Count id={props.id} onClick={() => props.click()}>
       {props.children}
     </Count>
   ) : (
@@ -197,4 +203,11 @@ Basket.Count = function BasketCount(props: ProdCountPropsType) {
       {props.children}
     </Count>
   );
+};
+
+Basket.EmptyBasket = function BasketEmptyBasket(props: JsxProps) {
+  return <EmptyBasket>{props.children}</EmptyBasket>;
+};
+Basket.EmptyBasketBtn = function BasketEmptyBasketBtn(props: JsxProps) {
+  return <EmptyBasketBtn to={"/"}>{props.children}</EmptyBasketBtn>;
 };

@@ -11,6 +11,7 @@ export const Container = styled.div`
   @media screen and (max-width: 768px) {
     margin-top: 8rem;
     padding: 0;
+    text-align: center;
   }
 
   @media screen and (max-width: 1200px) {
@@ -91,7 +92,11 @@ export const Title = styled.h1`
     letter-spacing: 2px;
   }
 `;
-export const BuyPanelPrice = styled.span``;
+export const BuyPanelPrice = styled.span`
+  &:last-of-type {
+    letter-spacing: 0.5px;
+  }
+`;
 export const BuyPanelBtn = styled(Link)`
   display: flex;
   justify-content: center;
@@ -198,7 +203,7 @@ export const OtherProperty = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 170px;
+  max-width: 180px;
   align-items: center;
   margin-right: 0;
   margin-left: auto;
@@ -355,5 +360,51 @@ export const Count = styled.span`
   &:last-of-type {
     border-radius: 0 0 0.5rem 0.5rem;
     padding-bottom: 5px;
+  }
+`;
+
+export const EmptyBasket = styled.span`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30%;
+  font-weight: 500;
+  font-size: 30px;
+  @media screen and (max-width: 768px) {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    font-size: 25px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 20px;
+  }
+`;
+
+export const EmptyBasketBtn = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 38%;
+  width: fit-content;
+  padding: 0 2rem;
+  height: 40px;
+  border-radius: 2rem;
+  background-color: rgb(0, 130, 250);
+  color: white;
+  border: none;
+  cursor: pointer;
+  @media screen and (max-width: 768px) {
+    position: relative;
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    margin: 1rem auto 2rem auto;
   }
 `;

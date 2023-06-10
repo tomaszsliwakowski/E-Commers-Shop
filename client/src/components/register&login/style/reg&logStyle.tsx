@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 
 export const Header = styled.div`
@@ -23,7 +24,7 @@ export const Out = styled.div`
   margin-left: auto;
   margin-right: auto;
 `;
-export const OutBtn = styled.a`
+export const OutBtn = styled(Link)`
   width: fit-content;
   text-decoration: none;
   display: flex;

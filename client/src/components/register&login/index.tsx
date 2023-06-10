@@ -32,7 +32,7 @@ export function LogRegOut(props: JsxProps) {
 }
 
 LogRegOut.OutBtn = function LogRegOutBtn(props: JsxProps) {
-  return <OutBtn href={props.href}>{props.children}</OutBtn>;
+  return <OutBtn to={props.href ? props.href : "/"}>{props.children}</OutBtn>;
 };
 
 export function LogRegBtn(props: SearchPropsFunction) {
