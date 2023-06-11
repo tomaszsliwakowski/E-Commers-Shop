@@ -389,10 +389,6 @@ export const DropOpt = styled.div`
   flex-direction: column;
   align-items: center;
 
-  & span {
-    text-align: left;
-  }
-
   @media screen and (max-width: 400px) {
     max-height: 28vh;
   }
@@ -646,6 +642,9 @@ export const RegBtn = styled(Link)`
 export const EmptyBasket = styled.span`
   width: 100%;
   text-align: center;
+  font-weight: 500;
+  position: relative;
+  margin-top: 0.5rem;
 `;
 
 export const LogOpt = styled.button`

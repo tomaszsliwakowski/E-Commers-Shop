@@ -2,26 +2,22 @@ import React, { useContext, useState, useEffect } from "react";
 import { Header } from ".";
 import { SlBasket } from "react-icons/sl";
 import { AiOutlineUser, AiOutlineClose } from "react-icons/ai";
-import { UserPanelProps } from "../../types/Types";
+import { ProductsType, UserPanelProps } from "../../types/Types";
 import { LoginRoute, RegisterRoute } from "../../routes";
 import DropOptMin from "./dropOptMin";
 import DropOptMax from "./dropOptMax";
 import { AuthContext } from "../../assets/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebase-config";
+import { useAppSelector } from "../../store/store";
 
-const prod: any = {
-  img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2021/7/pr_2021_7_1_8_25_10_978_06.jpg",
-  name: "Gigabyte GeForce RTX 3060 Ti EAGLE OC LHR 8GB GDDR6",
-  price: 1269.0,
-  link: "#",
-};
-const tab = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const UserPanel = ({
   width,
   activeRightMenu,
   setActiveRightMenu,
 }: UserPanelProps) => {
+  const BasketProducts: { basket: Array<{ product: ProductsType }> } =
+    useAppSelector((state) => state.basket);
   const [User, setUser] = useState({ Name: "", Email: "" });
   const logged: any = useContext(AuthContext);
   useEffect(() => {
@@ -87,21 +83,21 @@ const UserPanel = ({
             </Header.DropDown>
           ) : (
             <Header.DropDown>
-              {true ? (
+              {BasketProducts.basket.length > 1 ? (
                 <Header.CloseRightPanel style="full">
                   <Header.CloseRight>
-                    Koszyk<span>(1)</span>
+                    Koszyk<span>({BasketProducts.basket.length})</span>
                   </Header.CloseRight>
                 </Header.CloseRightPanel>
               ) : null}
-              {!true ? (
+              {BasketProducts.basket.length < 1 ? (
                 <Header.DropOpt>
                   <Header.EmptyBasket>
                     Twój koszyk jest pusty!
                   </Header.EmptyBasket>
                 </Header.DropOpt>
               ) : (
-                <DropOptMax />
+                <DropOptMax BasketProducts={BasketProducts} />
               )}
             </Header.DropDown>
           )}
@@ -175,15 +171,18 @@ const UserPanel = ({
                     setActiveRightMenu({ Account: false, Basket: false })
                   }
                 />
-                Koszyk<span>(1)</span>
+                Koszyk
+                {BasketProducts.basket.length > 0 ? (
+                  <span>({BasketProducts.basket.length})</span>
+                ) : null}
               </Header.CloseRight>
             </Header.CloseRightPanel>
-            {!true ? (
+            {BasketProducts.basket.length < 1 ? (
               <Header.DropOpt>
                 <Header.EmptyBasket>Twój koszyk jest pusty!</Header.EmptyBasket>
               </Header.DropOpt>
             ) : (
-              <DropOptMin />
+              <DropOptMin BasketProducts={BasketProducts} />
             )}
           </Header.DropDown>
         ) : null}

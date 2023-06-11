@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  AddBasketBtnType,
   ClearFiltrProps,
   JsxProps,
   SortChooseJSXProps,
@@ -156,11 +157,7 @@ Products.F_PriceCurrency = function ProductsFPriceCurrency(props: JsxProps) {
 };
 
 Products.Item = function ProductsItem(props: JsxProps) {
-  return (
-    <Item to={props.href && props.href ? props.href : ""}>
-      {props.children}
-    </Item>
-  );
+  return <Item>{props.children}</Item>;
 };
 
 Products.I_Img = function ProductsItemImg(props: JsxProps) {
@@ -198,8 +195,12 @@ Products.I_Price = function ProductsItemPrice(props: JsxProps) {
 Products.I_Basket = function ProductsItemBasket(props: JsxProps) {
   return <IBasket>{props.children}</IBasket>;
 };
-Products.AddToCart = function ProductsAddToCart(props: JsxProps) {
-  return <AddToCart>{props.children}</AddToCart>;
+Products.AddToCart = function ProductsAddToCart(props: AddBasketBtnType) {
+  return (
+    <AddToCart onClick={() => props.click && props.click()}>
+      {props.children}
+    </AddToCart>
+  );
 };
 
 Products.SP_Select = function ProductsSPSelect(props: JsxProps) {

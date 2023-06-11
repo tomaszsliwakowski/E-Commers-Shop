@@ -1,5 +1,5 @@
 import React from "react";
-import { JsxProps, LinkProps } from "../../types/Types";
+import { AddBasketBtnType, JsxProps, LinkProps } from "../../types/Types";
 import {
   Container,
   Baner,
@@ -144,8 +144,8 @@ TopRight.Hits = function TopRightHits(props: JsxProps) {
   return <Hits>{props.children}</Hits>;
 };
 
-TopRight.Product = function TopRightProduct(props: LinkProps) {
-  return <RightProduct to={props.to}>{props.children}</RightProduct>;
+TopRight.Product = function TopRightProduct(props: JsxProps) {
+  return <RightProduct>{props.children}</RightProduct>;
 };
 
 TopRight.Name = function TopRightName(props: JsxProps) {
@@ -157,12 +157,16 @@ TopRight.Price = function TopRightPrice(props: JsxProps) {
 TopRight.BuyPanel = function TopRightBuyPanel(props: JsxProps) {
   return <RightBuyPanel>{props.children}</RightBuyPanel>;
 };
-TopRight.AddToCart = function TopRightAddToCart(props: JsxProps) {
-  return <RightAddToCart>{props.children}</RightAddToCart>;
+TopRight.AddToCart = function TopRightAddToCart(props: AddBasketBtnType) {
+  return (
+    <RightAddToCart onClick={() => props.click && props.click()}>
+      {props.children}
+    </RightAddToCart>
+  );
 };
 
-Main.Product = function MainProduct(props: LinkProps) {
-  return <BestProduct to={props.to}>{props.children}</BestProduct>;
+Main.Product = function MainProduct(props: JsxProps) {
+  return <BestProduct>{props.children}</BestProduct>;
 };
 
 Main.Name = function MainName(props: JsxProps) {
@@ -174,8 +178,12 @@ Main.Price = function MainPrice(props: JsxProps) {
 Main.BuyPanel = function MainBuyPanel(props: JsxProps) {
   return <BestBuyPanel>{props.children}</BestBuyPanel>;
 };
-Main.AddToCart = function MainAddToCart(props: JsxProps) {
-  return <BestAddToCart>{props.children}</BestAddToCart>;
+Main.AddToCart = function MainAddToCart(props: AddBasketBtnType) {
+  return (
+    <BestAddToCart onClick={() => props.click && props.click()}>
+      {props.children}
+    </BestAddToCart>
+  );
 };
 
 Main.BottomA = function MainBottomA(props: JsxProps) {

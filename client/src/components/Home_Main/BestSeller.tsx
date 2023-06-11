@@ -5,6 +5,9 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "../../index.css";
 import { AllProductsType, ProductsType } from "../../types/Types";
+import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../store/store";
+import { AddToBasket } from "../../store/BasketSlice";
 
 const responsive = {
   superLargeDesktop: {
@@ -58,13 +61,33 @@ const BestSellerSection = (ProductsData: AllProductsType) => {
 export default BestSellerSection;
 
 const Product = (item: ProductsType) => {
+  const dispatch = useAppDispatch();
   return (
-    <Main.Product to={`/product/${item.id}`}>
-      <Main.Image src={item.img} alt={item.category} />
-      <Main.Name>{item.name}</Main.Name>
+    <Main.Product>
+      <Link to={`/product/${item.id}`}>
+        <Main.Image src={item.img} alt={item.category} />
+        <Main.Name>{item.name}</Main.Name>
+      </Link>
       <Main.BuyPanel>
         <Main.Price>{item.price}zł</Main.Price>
-        <Main.AddToCart>
+        <Main.AddToCart
+          click={() =>
+            dispatch(
+              AddToBasket({
+                product: {
+                  id: item.id,
+                  name: item.name,
+                  img: item.img,
+                  price: item.price,
+                  category: item.category,
+                  producer: item.producer,
+                  opinion: item.opinion,
+                  count: 1,
+                },
+              })
+            )
+          }
+        >
           <BsCartPlus />
         </Main.AddToCart>
       </Main.BuyPanel>

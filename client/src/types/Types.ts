@@ -242,3 +242,9 @@ export type AddBasketBtnType = {
   click?: Function;
   href?: string;
 };
+
+export type basketprops = {
+  BasketProducts: {
+    basket: Array<{ product: ProductsType }>;
+  };
+};

@@ -1,41 +1,40 @@
 import React from "react";
 import Basket from "../Basket";
 import { Header } from ".";
+import { ProductsType, basketprops } from "../../types/Types";
+import { useAppSelector } from "../../store/store";
 
-const prod: any = {
-  img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2021/7/pr_2021_7_1_8_25_10_978_06.jpg",
-  name: "Gigabyte GeForce RTX 3060 Ti EAGLE OC LHR 8GB GDDR6",
-  price: 1269.0,
-  link: "#",
-};
-const tab = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-const DropOptMin = () => {
+const DropOptMin = ({ BasketProducts }: basketprops) => {
   return (
     <>
       <Header.DropOpt style="min">
-        {tab.map((ite, id) => (
-          <Basket.Product style="small" key={id}>
-            <Basket.Property>
-              <Basket.Goto to={"/products/:category"}>
-                <Basket.Image src={prod.img} alt={prod.name} />
-              </Basket.Goto>
-              <Basket.PropertyOpt style="grid">
-                <Basket.Goto to={"/products/:category"}>
-                  <Basket.ProductDesc style="center">
-                    {prod.name}
-                  </Basket.ProductDesc>
-                </Basket.Goto>
-                <Basket.OtherProperty>
-                  <span style={{ fontSize: "16px" }}>
-                    {prod.price.toFixed(2)} zł
-                  </span>
-                  <span>1szt.</span>
-                </Basket.OtherProperty>
-              </Basket.PropertyOpt>
-            </Basket.Property>
-          </Basket.Product>
-        ))}
+        {BasketProducts.basket.length > 0
+          ? BasketProducts.basket.map((item, id) => (
+              <Basket.Product style="small" key={id}>
+                <Basket.Property>
+                  <Basket.Goto to={`/products/${item.product.id}`}>
+                    <Basket.Image
+                      src={item.product.img}
+                      alt={item.product.name}
+                    />
+                  </Basket.Goto>
+                  <Basket.PropertyOpt style="grid">
+                    <Basket.Goto to={`/products/${item.product.id}`}>
+                      <Basket.ProductDesc style="center">
+                        {item.product.name}
+                      </Basket.ProductDesc>
+                    </Basket.Goto>
+                    <Basket.OtherProperty>
+                      <span style={{ fontSize: "16px" }}>
+                        {item.product.price.toFixed(2)} zł
+                      </span>
+                      <span>{item.product.count}szt.</span>
+                    </Basket.OtherProperty>
+                  </Basket.PropertyOpt>
+                </Basket.Property>
+              </Basket.Product>
+            ))
+          : null}
       </Header.DropOpt>
       <Basket.BuyPanel style="fixed">
         <Basket.BuyPanelCon>

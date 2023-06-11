@@ -131,18 +131,21 @@ export const ClearBasket = styled.div`
     padding-right: 0;
   }
 `;
-export const List = styled.div`
+export const List = styled.ul`
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  max-height: 80vh;
+  padding-right: 5px;
   gap: 10px;
+  &:last-child {
+    margin-bottom: 2rem;
+  }
 `;
 export const Product = styled.div`
   border: 1px solid rgb(221, 221, 221);
   border-radius: 10px;
-  &:last-of-type {
-    margin-bottom: 2rem;
-  }
 `;
 export const ProductSmall = styled.div`
   border: 1px solid rgb(221, 221, 221);

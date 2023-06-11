@@ -188,6 +188,7 @@ export const RightAddToCart = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  z-index: 100;
   cursor: pointer;
   & svg {
     color: green;
@@ -200,9 +201,10 @@ export const RightAddToCart = styled.div`
   }
 `;
 
-export const RightProduct = styled(Link)`
+export const RightProduct = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   max-width: 230px;
   width: 100%;
   height: auto;
@@ -211,6 +213,11 @@ export const RightProduct = styled(Link)`
   transition: all 0.3s;
   text-decoration: none;
   color: black;
+  & a {
+    text-decoration: none;
+    color: black;
+  }
+
   @media screen and (max-width: 768px) {
     font-size: 1.2vw;
     min-width: 150px;
@@ -284,7 +291,7 @@ export const BestAddToCart = styled.div`
   }
 `;
 
-export const BestProduct = styled(Link)`
+export const BestProduct = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 230px;
@@ -298,6 +305,10 @@ export const BestProduct = styled(Link)`
   margin: 5px 2px 1rem 2px;
   text-decoration: none;
   color: black;
+  & a {
+    text-decoration: none;
+    color: black;
+  }
   @media screen and (max-width: 768px) {
     font-size: 1.2vw;
     min-width: 150px;

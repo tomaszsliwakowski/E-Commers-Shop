@@ -396,16 +396,19 @@ export const AddToCart = styled.div`
     }
   }
 `;
-export const Item = styled(Link)`
+export const Item = styled.div`
   text-decoration: none;
   width: 100%;
   max-width: 280px;
-  cursor: pointer;
   padding: 10px;
   transition: all 0.3s;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  & a {
+    text-decoration: none;
+    cursor: pointer;
+  }
   &:hover ${AddToCart} {
     visibility: visible;
   }

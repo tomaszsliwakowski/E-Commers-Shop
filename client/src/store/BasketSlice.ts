@@ -10,9 +10,30 @@ export const BasketSlice = createSlice({
   initialState,
   reducers: {
     AddToBasket: (state, action: PayloadAction<{ product: ProductsType }>) => {
-      state.basket.push({
-        product: action.payload.product,
-      });
+      const index = state.basket.findIndex(
+        (el) => el.product.id === action.payload.product.id
+      );
+      const Oneproduct = state.basket.find(
+        (el) => el.product.id === action.payload.product.id
+      );
+      if (index !== -1 && Oneproduct?.product.count) {
+        state.basket.splice(index, 1, {
+          product: {
+            id: Oneproduct.product.id,
+            name: Oneproduct.product.name,
+            img: Oneproduct.product.img,
+            price: Oneproduct.product.price,
+            category: Oneproduct.product.category,
+            producer: Oneproduct.product.producer,
+            opinion: Oneproduct.product.opinion,
+            count: Oneproduct.product.count + 1,
+          },
+        });
+      } else {
+        state.basket.push({
+          product: action.payload.product,
+        });
+      }
     },
     UpdateBasket: (
       state,
