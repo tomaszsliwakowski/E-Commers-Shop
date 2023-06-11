@@ -40,7 +40,15 @@ const DropOptMin = ({ BasketProducts }: basketprops) => {
         <Basket.BuyPanelCon>
           <Basket.BuyPanelSum>
             <Basket.BuyPanelPrice>Łączna kwota</Basket.BuyPanelPrice>
-            <Basket.BuyPanelPrice>1234.00 zł</Basket.BuyPanelPrice>
+            <Basket.BuyPanelPrice>
+              {BasketProducts.basket
+                .reduce(
+                  (sum, a) => sum + a.product.price * (a.product.count || 1),
+                  0
+                )
+                .toFixed(2)}
+              {" zł"}
+            </Basket.BuyPanelPrice>
           </Basket.BuyPanelSum>
           <Basket.BuyPanelBtn href="/basket">
             Przejdź do koszyka

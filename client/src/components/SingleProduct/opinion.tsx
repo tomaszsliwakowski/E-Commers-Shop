@@ -1,12 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import SingleProduct from ".";
-import { ProductsType, opinionType } from "../../types/Types";
+import { ProductsType, WindowSizeType, opinionType } from "../../types/Types";
 import { Rating } from "../Products/productList";
 import { BiUserCircle } from "react-icons/bi";
 import { AuthContext } from "../../assets/auth";
 import axios from "axios";
 import { AddOpinion, DeleteOpnion, GetOpinion } from "../../routes";
 import { SlOptionsVertical } from "react-icons/sl";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const OpnionComment = ({
   ProductData,
@@ -18,6 +19,7 @@ const OpnionComment = ({
   const [activeAddOpinion, setActiveAddOpinon] = useState<boolean>(false);
   const [opinionValue, setOpinionValue] = useState("");
   const [Opinions, setOpinions] = useState([]);
+  const { width, height }: WindowSizeType = useWindowSize();
   const [OpinionOptions, setOpinionOptions] = useState<{
     active: boolean;
     id: number;
@@ -184,32 +186,60 @@ const OpnionComment = ({
                               />
                               {item.name.split(" ")[0]}
                             </SingleProduct.OpinionShowUserName>
+                            {width && width < 768 ? (
+                              <SingleProduct.OpinionShowDate>
+                                <span>{item.date}</span>
+                                {item.uid === User.uid ? (
+                                  <>
+                                    <SingleProduct.OptionsOpinion
+                                      click={setOpinionOptions}
+                                      item={item.opinionId}
+                                    >
+                                      <SlOptionsVertical id="options" />
+                                    </SingleProduct.OptionsOpinion>
+                                    {OpinionOptions.active &&
+                                    OpinionOptions.id === item.opinionId ? (
+                                      <SingleProduct.OptionsListOpinion>
+                                        <SingleProduct.OptionsElOpinion
+                                          click={handleDeleteOpinon}
+                                          item={item._id}
+                                        >
+                                          Usuń opinie
+                                        </SingleProduct.OptionsElOpinion>
+                                      </SingleProduct.OptionsListOpinion>
+                                    ) : null}
+                                  </>
+                                ) : null}
+                              </SingleProduct.OpinionShowDate>
+                            ) : null}
                           </SingleProduct.OpinionShowUser>
                           <SingleProduct.OpinionShowContent>
-                            <SingleProduct.OpinionShowDate>
-                              {item.date}
-                              {item.uid === User.uid ? (
-                                <>
-                                  <SingleProduct.OptionsOpinion
-                                    click={setOpinionOptions}
-                                    item={item.opinionId}
-                                  >
-                                    <SlOptionsVertical id="options" />
-                                  </SingleProduct.OptionsOpinion>
-                                  {OpinionOptions.active &&
-                                  OpinionOptions.id === item.opinionId ? (
-                                    <SingleProduct.OptionsListOpinion>
-                                      <SingleProduct.OptionsElOpinion
-                                        click={handleDeleteOpinon}
-                                        item={item._id}
-                                      >
-                                        Usuń opinie
-                                      </SingleProduct.OptionsElOpinion>
-                                    </SingleProduct.OptionsListOpinion>
-                                  ) : null}
-                                </>
-                              ) : null}
-                            </SingleProduct.OpinionShowDate>
+                            {width && width >= 768 ? (
+                              <SingleProduct.OpinionShowDate>
+                                {item.date}
+                                {item.uid === User.uid ? (
+                                  <>
+                                    <SingleProduct.OptionsOpinion
+                                      click={setOpinionOptions}
+                                      item={item.opinionId}
+                                    >
+                                      <SlOptionsVertical id="options" />
+                                    </SingleProduct.OptionsOpinion>
+                                    {OpinionOptions.active &&
+                                    OpinionOptions.id === item.opinionId ? (
+                                      <SingleProduct.OptionsListOpinion>
+                                        <SingleProduct.OptionsElOpinion
+                                          click={handleDeleteOpinon}
+                                          item={item._id}
+                                        >
+                                          Usuń opinie
+                                        </SingleProduct.OptionsElOpinion>
+                                      </SingleProduct.OptionsListOpinion>
+                                    ) : null}
+                                  </>
+                                ) : null}
+                              </SingleProduct.OpinionShowDate>
+                            ) : null}
                             <SingleProduct.OpinionShowText>
                               {item.content}
                             </SingleProduct.OpinionShowText>

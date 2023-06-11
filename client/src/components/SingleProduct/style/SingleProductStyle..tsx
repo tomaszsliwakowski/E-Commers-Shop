@@ -272,6 +272,9 @@ export const OpinionMainTop = styled.div`
   align-items: center;
   justify-content: center;
   gap: 4rem;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 export const OpinionMainBottom = styled.div`
   margin-top: 3rem;
@@ -372,7 +375,12 @@ export const OpinionAddCloseBtn = styled.button`
   cursor: pointer;
 `;
 
-export const OpinionShowTitle = styled.h2``;
+export const OpinionShowTitle = styled.h2`
+  @media screen and (max-width: 500px) {
+    font-size: 18px;
+    text-align: center;
+  }
+`;
 export const OpinionShowList = styled.ul`
   width: 100%;
   height: 100%;
@@ -384,9 +392,17 @@ export const OpinionShowEl = styled.li`
   height: 100%;
   display: flex;
   padding: 1rem 1rem;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 export const OpinionShowUser = styled.div`
   width: 15%;
+  @media screen and (max-width: 768px) {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
 `;
 export const OpinionShowUserName = styled.span`
   display: flex;
@@ -403,6 +419,15 @@ export const OpinionShowDate = styled.span`
   align-items: center;
   color: rgb(112, 112, 112);
   position: relative;
+  @media screen and (max-width: 768px) {
+    & span:first-of-type {
+      margin-right: 2rem;
+    }
+    & span {
+      display: flex;
+      align-items: center;
+    }
+  }
 `;
 export const OpinionShowText = styled.span`
   margin: 1rem 0;
