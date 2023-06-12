@@ -13,6 +13,13 @@ import "../../index.css";
 import { useAppDispatch } from "../../store/store";
 import { AddToBasket } from "../../store/BasketSlice";
 import { Link } from "react-router-dom";
+import { BeatLoader } from "react-spinners";
+
+const override = {
+  display: "flex",
+  borderColor: "red",
+  margin: "5rem auto",
+};
 
 const responsive = {
   superLargeDesktop: {
@@ -43,33 +50,46 @@ const TopRightSection = (ProductsData: AllProductsType) => {
   return (
     <TopRight>
       <Main.Title>Hity tygodnia</Main.Title>
-      <TopRight.Hits>
-        {width && width > 768 ? (
-          <>
-            {ProductsShow.map((item, id) => (
-              <Product key={id} {...item} />
-            ))}
-          </>
-        ) : (
-          <Carousel
-            responsive={responsive}
-            swipeable={false}
-            draggable={false}
-            ssr={true}
-            infinite={true}
-            keyBoardControl={true}
-            customTransition="all .5"
-            transitionDuration={500}
-            containerClass="carousel-container"
-            dotListClass="custom-dot-list-style"
-            itemClass="carousel-item-padding-40-px"
-          >
-            {ProductsShow.map((item, id) => (
-              <Product key={id} {...item} />
-            ))}
-          </Carousel>
-        )}
-      </TopRight.Hits>
+      {ProductsShow.length > 0 ? (
+        <TopRight.Hits>
+          {width && width > 768 ? (
+            <>
+              {ProductsShow.map((item, id) => (
+                <Product key={id} {...item} />
+              ))}
+            </>
+          ) : (
+            <Carousel
+              responsive={responsive}
+              swipeable={false}
+              draggable={false}
+              ssr={true}
+              infinite={true}
+              keyBoardControl={true}
+              customTransition="all .5"
+              transitionDuration={500}
+              containerClass="carousel-container"
+              dotListClass="custom-dot-list-style"
+              itemClass="carousel-item-padding-40-px"
+            >
+              {ProductsShow.map((item, id) => (
+                <Product key={id} {...item} />
+              ))}
+            </Carousel>
+          )}
+        </TopRight.Hits>
+      ) : (
+        <div className="loader">
+          <BeatLoader
+            color={"#0082fa"}
+            loading={true}
+            cssOverride={override}
+            size={30}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      )}
     </TopRight>
   );
 };

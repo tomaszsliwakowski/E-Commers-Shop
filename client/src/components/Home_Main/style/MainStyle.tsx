@@ -61,7 +61,19 @@ export const Right = styled.div`
   width: 65%;
   padding-right: 2rem;
   border-top: 1px solid rgb(204, 204, 204);
-
+  & .loader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media screen and (min-width: 768px) {
+      & span {
+        position: relative;
+        top: -2rem;
+      }
+    }
+  }
   @media screen and (max-width: 768px) {
     overflow: hidden;
     margin: 0;

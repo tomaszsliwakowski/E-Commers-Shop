@@ -18,6 +18,7 @@ import { AuthProvider } from "./assets/auth";
 import SingleProductsPage from "./containers/SingleProductPage";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import NotFoundPage from "./containers/NotFoundPage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path={LoginRoute} element={<LoginPage />} />
           <Route path={RegisterRoute} element={<RegisterPage />} />
           <Route path={BasketRoute} element={<BasketPage />} />
+          <Route path={"*"} element={<NotFoundPage />} />
         </Routes>
       </AuthProvider>
     </Provider>

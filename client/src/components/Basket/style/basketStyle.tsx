@@ -264,6 +264,7 @@ export const Goto = styled(Link)`
   text-decoration: none;
   color: rgb(26, 26, 26);
   display: flex;
+  min-width: 30px;
   align-items: center;
 `;
 

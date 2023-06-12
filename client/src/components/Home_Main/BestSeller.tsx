@@ -8,6 +8,13 @@ import { AllProductsType, ProductsType } from "../../types/Types";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../store/store";
 import { AddToBasket } from "../../store/BasketSlice";
+import { BeatLoader } from "react-spinners";
+
+const override = {
+  display: "block",
+  borderColor: "red",
+  margin: "5rem 0",
+};
 
 const responsive = {
   superLargeDesktop: {
@@ -37,23 +44,34 @@ const BestSellerSection = (ProductsData: AllProductsType) => {
 
   return (
     <>
-      <Carousel
-        responsive={responsive}
-        swipeable={false}
-        draggable={false}
-        ssr={true}
-        infinite={true}
-        keyBoardControl={true}
-        customTransition="all .5"
-        transitionDuration={500}
-        containerClass="carousel-container"
-        dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
-      >
-        {ProductsShow.map((item, id) => (
-          <Product {...item} key={id} />
-        ))}
-      </Carousel>
+      {ProductsShow.length > 0 ? (
+        <Carousel
+          responsive={responsive}
+          swipeable={false}
+          draggable={false}
+          ssr={true}
+          infinite={true}
+          keyBoardControl={true}
+          customTransition="all .5"
+          transitionDuration={500}
+          containerClass="carousel-container"
+          dotListClass="custom-dot-list-style"
+          itemClass="carousel-item-padding-40-px"
+        >
+          {ProductsShow.map((item, id) => (
+            <Product {...item} key={id} />
+          ))}
+        </Carousel>
+      ) : (
+        <BeatLoader
+          color={"#0082fa"}
+          loading={true}
+          cssOverride={override}
+          size={30}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      )}
     </>
   );
 };

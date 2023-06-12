@@ -19,6 +19,13 @@ import Filters from "./filters";
 import useWindowSize from "../../hooks/useWindowSize";
 import axios from "axios";
 import { GetAllProducts, GetProducts } from "../../routes";
+import { BeatLoader } from "react-spinners";
+
+const override = {
+  display: "flex",
+  borderColor: "red",
+  margin: "5rem auto",
+};
 
 const ProductsSection = () => {
   const SortName = [
@@ -281,12 +288,27 @@ const ProductsSection = () => {
         <Products.All
           style={FinalFiltersProducts.length === 2 ? "flex" : "grid"}
         >
-          {ShowProducts.length > 0 ? (
+          {search !== undefined && search !== "" ? (
+            ShowProducts.length > 0 ? (
+              ShowProducts.map((item: ProductsType, id: number) => (
+                <Product item={item} key={id} />
+              ))
+            ) : (
+              <div>Nie znaleziono produktów</div>
+            )
+          ) : ShowProducts.length > 0 ? (
             ShowProducts.map((item: ProductsType, id: number) => (
               <Product item={item} key={id} />
             ))
           ) : (
-            <div>Nie znaleziono produktów</div>
+            <BeatLoader
+              color={"#0082fa"}
+              loading={true}
+              cssOverride={override}
+              size={30}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
           )}
         </Products.All>
       </Products.ProductsSec>

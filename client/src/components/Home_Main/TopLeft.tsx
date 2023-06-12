@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Main, TopLeft } from "./index";
-import { AllProductsType, ProductsType, TimerType } from "../../types/Types";
-import { useParams } from "react-router";
+import { ProductsType, TimerType } from "../../types/Types";
 import axios from "axios";
+import { BeatLoader } from "react-spinners";
+
+const override = {
+  display: "flex",
+  borderColor: "red",
+  margin: "5rem auto",
+};
 
 const TopLeftSection = () => {
   const [Timer, setTimer] = useState<TimerType | undefined>();
@@ -69,7 +75,18 @@ const TopLeftSection = () => {
     <TopLeft href={`/product/${ProductData?.id}`}>
       <TopLeft.ImageAndTitle>
         <Main.Title>Gorący strzał</Main.Title>
-        <Main.Image src={ProductData?.img} alt={ProductData?.category} />
+        {ProductData?.img ? (
+          <Main.Image src={ProductData?.img} alt={ProductData?.category} />
+        ) : (
+          <BeatLoader
+            color={"#0082fa"}
+            loading={true}
+            cssOverride={override}
+            size={30}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        )}
       </TopLeft.ImageAndTitle>
       <TopLeft.Name>{ProductData?.name}</TopLeft.Name>
       <TopLeft.PriceCon>
