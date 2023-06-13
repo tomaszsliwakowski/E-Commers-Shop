@@ -3,7 +3,7 @@ const mongo_url =
   "mongodb+srv://admin:admin123@shop.hst096m.mongodb.net/Shop?retryWrites=true&w=majorit";
 const connectDB = async () => {
   try {
-    const con = await mongoose.connect(process.env.MONGO_URI || mongo_url, {
+    const con = await mongoose.connect(mongo_url, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

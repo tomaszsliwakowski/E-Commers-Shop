@@ -17,7 +17,7 @@ const app = express();
 app.use(cors(corsOptions));
 
 dotenv.config({ path: "config.env" });
-const PORT = process.env.PORT || 10000;
+const PORT = 10000;
 
 app.use(morgan("tiny"));
 
