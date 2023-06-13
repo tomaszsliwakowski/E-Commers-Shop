@@ -13,7 +13,6 @@ import {
   AiFillCaretUp,
   AiOutlineCloseCircle,
 } from "react-icons/ai";
-
 import { BsFilter } from "react-icons/bs";
 import Filters from "./filters";
 import useWindowSize from "../../hooks/useWindowSize";
@@ -26,13 +25,13 @@ const override = {
   borderColor: "red",
   margin: "5rem auto",
 };
+const SortName = [
+  "Ocena klientów: od najlepszej",
+  "Cena: od najtańszych",
+  "Cena: od najdroższych",
+];
 
 const ProductsSection = () => {
-  const SortName = [
-    "Ocena klientów: od najlepszej",
-    "Cena: od najtańszych",
-    "Cena: od najdroższych",
-  ];
   const [SortOpt, setSortOpt] = useState("Ocena klientów: od najlepszej");
   const [activeSort, setActiveSort] = useState<boolean>(false);
   const [activeFilters, setActiveFilters] = useState<boolean>(false);

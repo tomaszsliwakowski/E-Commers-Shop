@@ -1,4 +1,3 @@
-const { ObjectId } = require("mongodb");
 const ProdPCCOM_DB = require("./model/Schema.Com");
 const ProdACC_DB = require("./model/Schema_Acc");
 const ProdAll_DB = require("./model/Schema_All");

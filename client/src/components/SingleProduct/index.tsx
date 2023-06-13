@@ -46,6 +46,7 @@ import {
   OpinionShowTitle,
   OpinionShowList,
   OpinionShowEl,
+  OpinionLoginBtn,
   OpinionShowUser,
   OpinionShowUserName,
   OpinionShowContent,
@@ -57,6 +58,7 @@ import {
   OptionsListOpinion,
   OptionsElOpinion,
 } from "./style/SingleProductStyle.";
+import { LocalRoute, LoginRoute } from "../../routes";
 
 export default function SingleProduct(props: JsxProps) {
   return <Container>{props.children}</Container>;
@@ -205,6 +207,15 @@ SingleProduct.OpinionAddBtn = function SingleProductAddBtn(
     >
       {props.children}
     </OpinionAddBtn>
+  );
+};
+SingleProduct.OpinionLoginBtn = function SingleProductOpinionLoginBtn(
+  props: JsxProps
+) {
+  return (
+    <OpinionLoginBtn to={LocalRoute + LoginRoute}>
+      {props.children}
+    </OpinionLoginBtn>
   );
 };
 

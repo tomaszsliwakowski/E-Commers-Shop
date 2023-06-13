@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 
 export const Container = styled.div`
@@ -487,4 +488,20 @@ export const OptionsElOpinion = styled.li`
     background-color: rgb(221, 221, 221);
     border-radius: 5px;
   }
+`;
+export const OpinionLoginBtn = styled(Link)`
+  font-size: 14px;
+  width: 100%;
+  height: 32px;
+  max-width: 200px;
+  background-color: rgb(0, 130, 250);
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 `;

@@ -71,9 +71,9 @@ const OpnionComment = ({
         })
         .then((reasult) => console.log(reasult))
         .catch((err) => console.log(err));
-      setActiveAddOpinon(false);
       setOpinionValue("");
       setRender((prev) => !prev);
+      setActiveAddOpinon(false);
     }
   };
 
@@ -157,13 +157,19 @@ const OpnionComment = ({
                 }}
               />
             )}
-            <SingleProduct.OpinionAddBtn
-              click={setActiveAddOpinon}
-              active={activeAddOpinion}
-              handle={HandleBuildOpinion}
-            >
-              Dodaj opinię
-            </SingleProduct.OpinionAddBtn>
+            {User.uid !== undefined && User.uid !== "" ? (
+              <SingleProduct.OpinionAddBtn
+                click={setActiveAddOpinon}
+                active={activeAddOpinion}
+                handle={HandleBuildOpinion}
+              >
+                Dodaj opinię
+              </SingleProduct.OpinionAddBtn>
+            ) : (
+              <SingleProduct.OpinionLoginBtn>
+                Dodaj opinię
+              </SingleProduct.OpinionLoginBtn>
+            )}
           </SingleProduct.OpinionAdd>
         </SingleProduct.OpinionMainTop>
         <SingleProduct.OpinionMainBottom>
