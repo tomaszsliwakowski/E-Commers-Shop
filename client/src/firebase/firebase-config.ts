@@ -3,7 +3,17 @@ import { getAnalytics } from "firebase/analytics";
 import "firebase/auth";
 import { getAuth } from "firebase/auth";
 
-const firebaseConfig: any = {
+type firetype = {
+  apiKey: string;
+  authDomain: string;
+  projectId: string;
+  storageBucket: string;
+  messagingSenderId: string;
+  appId: string;
+  measurementId: string;
+};
+
+const firebaseConfig: firetype = {
   apiKey: "AIzaSyCV64H2GYbRwFrQpczhwWk4BxEEtBUS4IA",
   authDomain: "e-commers-shop-d9ad0.firebaseapp.com",
   projectId: "e-commers-shop-d9ad0",
@@ -13,6 +23,6 @@ const firebaseConfig: any = {
   measurementId: "G-BNE6G5ZD95",
 };
 
-export const app: any = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const analytics = getAnalytics(app);
