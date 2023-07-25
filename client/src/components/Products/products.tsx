@@ -204,6 +204,8 @@ const ProductsSection = () => {
                   placeholder="od"
                   type="number"
                   name="from"
+                  min={0}
+                  max={9999}
                   value={
                     prodFilters.price.from === 0 ? "od" : prodFilters.price.from
                   }
@@ -227,6 +229,8 @@ const ProductsSection = () => {
                   placeholder="do"
                   type="number"
                   name="to"
+                  min={0}
+                  max={99999}
                   value={
                     prodFilters.price.to === 0 ? "do" : prodFilters.price.to
                   }

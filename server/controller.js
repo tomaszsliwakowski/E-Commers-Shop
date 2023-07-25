@@ -4,7 +4,8 @@ const ProdAll_DB = require("./model/Schema_All");
 const ProdDSK_DB = require("./model/Schema_DSK");
 const Add_Opinion = require("./model/Schema_Opinion");
 const ProdPHONE_DB = require("./model/Schema_Phone");
-let ProdNTB_DB = require("./model/schema_NTB");
+const ProdNTB_DB = require("./model/schema_NTB");
+const ProdQueue = require("./model/Schema_Sale");
 
 exports.prod_NTB = async (req, res) => {
   await ProdNTB_DB.find()
@@ -105,7 +106,7 @@ exports.Single_prod = async (req, res) => {
       }
     })
     .catch((err) => {
-      res.status(500).send({ message: `Error get NTB` });
+      res.status(500).send({ message: `Error get product` });
       console.log(err);
     });
 };
@@ -152,5 +153,20 @@ exports.DeleteOpinion = async (req, res) => {
     })
     .catch((err) => {
       res.send({ message: `Could not delete Opinion with id ${id}` });
+    });
+};
+
+exports.SaleProduct = async (req, res) => {
+  await ProdQueue.find()
+    .then((reasult) => {
+      if (!reasult) {
+        res.status(404).send({ message: `Not found any products` });
+      } else {
+        res.send(reasult.filter((item) => item.queue === 1)[0]);
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ message: `Error get Sale` });
+      console.log(err);
     });
 };

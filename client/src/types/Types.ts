@@ -143,6 +143,7 @@ export type ProductsType = {
   spec?: string[];
   destiny?: string;
   count?: number;
+  newPrice?: number;
 };
 
 export type FiltersType = {

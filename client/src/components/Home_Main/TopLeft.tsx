@@ -16,9 +16,9 @@ const TopLeftSection = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:10000/api/product/19`)
+      .get(`http://localhost:10000/api/sale/product`)
       .then((reasult) => {
-        setProductData(reasult.data[0]);
+        setProductData(reasult.data);
       })
       .catch((err) => {
         console.log("fail get data");
@@ -72,7 +72,7 @@ const TopLeftSection = () => {
   }, []);
 
   return (
-    <TopLeft href={`/product/${ProductData?.id}`}>
+    <TopLeft href={`/product/sale`}>
       <TopLeft.ImageAndTitle>
         <Main.Title>Gorący strzał</Main.Title>
         {ProductData?.img ? (
@@ -90,9 +90,11 @@ const TopLeftSection = () => {
       </TopLeft.ImageAndTitle>
       <TopLeft.Name>{ProductData?.name}</TopLeft.Name>
       <TopLeft.PriceCon>
-        <TopLeft.NewPrice>2199,00 zł</TopLeft.NewPrice>
+        <TopLeft.NewPrice>
+          {ProductData?.newPrice?.toFixed(2)} zł
+        </TopLeft.NewPrice>
         <TopLeft.OldPrice>
-          Cena regularna: {ProductData?.price} zł
+          Cena regularna: {ProductData?.price.toFixed(2)} zł
         </TopLeft.OldPrice>
       </TopLeft.PriceCon>
       <TopLeft.TimerCon>

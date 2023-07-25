@@ -15,7 +15,7 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { BasketCon } from "./ProductCount";
 import ProductDescription from "./ProductDescription";
 import OpnionComment from "./opinion";
-import { GetProduct } from "../../routes";
+import { GetProduct, GetSale } from "../../routes";
 import { useAppDispatch } from "../../store/store";
 import { AddToBasket } from "../../store/BasketSlice";
 
@@ -38,15 +38,22 @@ const SingleProductSection = () => {
   let { id } = useParams();
 
   useEffect(() => {
-    if (id) {
+    if (id === "sale") {
+      axios
+        .get(GetSale)
+        .then((res) => setProductData(res.data))
+        .catch((err) => console.log(err.message));
+    } else if (id) {
       axios
         .get(GetProduct(id))
         .then((reasult) => {
           setProductData(reasult.data[0]);
         })
         .catch((err) => {
-          console.log("fail get data");
+          console.log(err.message);
         });
+    } else {
+      return;
     }
   }, [id]);
 
@@ -119,7 +126,12 @@ const SingleProductSection = () => {
           id: ProductData.id,
           name: ProductData.name,
           img: ProductData.img,
-          price: ProductData.price,
+          price:
+            id === "sale"
+              ? ProductData.newPrice
+                ? ProductData.newPrice
+                : ProductData.price
+              : ProductData.price,
           category: ProductData.category,
           producer: ProductData.producer,
           opinion: ProductData.opinion,
@@ -163,7 +175,11 @@ const SingleProductSection = () => {
           </SingleProduct.Spec>
           <SingleProduct.BuyPanel>
             <SingleProduct.Price>
-              {ProductData?.price.toFixed(2) + " " + "zł"}
+              {id === "sale"
+                ? ProductData.newPrice
+                  ? ProductData?.newPrice.toFixed(2) + " " + "zł"
+                  : null
+                : ProductData?.price.toFixed(2) + " " + "zł"}
             </SingleProduct.Price>
             <SingleProduct.Basket>
               <BasketCon

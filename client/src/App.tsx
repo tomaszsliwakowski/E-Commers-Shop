@@ -8,6 +8,7 @@ import {
   ProductRoute,
   ProductsRoute,
   RegisterRoute,
+  SaleRoute,
   SearchRoute,
 } from "./routes";
 import ProductsPage from "./containers/ProductsPage";
