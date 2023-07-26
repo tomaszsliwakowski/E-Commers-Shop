@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../store/store";
 import { AddToBasket } from "../../store/BasketSlice";
 import { BeatLoader } from "react-spinners";
+import { toast } from "react-hot-toast";
 
 const override = {
   display: "block",
@@ -80,6 +81,27 @@ export default BestSellerSection;
 
 const Product = (item: ProductsType) => {
   const dispatch = useAppDispatch();
+  const AddProductToBasket = (Product: ProductsType) => {
+    try {
+      dispatch(
+        AddToBasket({
+          product: {
+            id: Product.id,
+            name: Product.name,
+            img: Product.img,
+            price: Product.price,
+            category: Product.category,
+            producer: Product.producer,
+            opinion: Product.opinion,
+            count: 1,
+          },
+        })
+      );
+      toast.success("Dodano do koszyka");
+    } catch (error) {
+      toast.error("Błąd");
+    }
+  };
   return (
     <Main.Product>
       <Link to={`/product/${item.id}`}>
@@ -88,24 +110,7 @@ const Product = (item: ProductsType) => {
       </Link>
       <Main.BuyPanel>
         <Main.Price>{item.price}zł</Main.Price>
-        <Main.AddToCart
-          click={() =>
-            dispatch(
-              AddToBasket({
-                product: {
-                  id: item.id,
-                  name: item.name,
-                  img: item.img,
-                  price: item.price,
-                  category: item.category,
-                  producer: item.producer,
-                  opinion: item.opinion,
-                  count: 1,
-                },
-              })
-            )
-          }
-        >
+        <Main.AddToCart click={() => AddProductToBasket(item)}>
           <BsCartPlus />
         </Main.AddToCart>
       </Main.BuyPanel>

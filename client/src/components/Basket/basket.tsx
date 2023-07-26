@@ -14,6 +14,7 @@ import {
   ClearProductBasket,
   UpdateBasket,
 } from "../../store/BasketSlice";
+import { toast } from "react-hot-toast";
 
 const CountOpt: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -108,7 +109,26 @@ const BasketSection = () => {
   }, [ActiveCountInput]);
 
   const ClearBasketFunc = () => {
-    dispatch(ClearBasket({ do: { remove: true } }));
+    try {
+      dispatch(ClearBasket({ do: { remove: true } }));
+      toast.success("Wyczyszczono koszyk");
+    } catch (error) {
+      toast.error("Błąd");
+    }
+  };
+  const RemoveFromBasket = (id: number) => {
+    try {
+      dispatch(
+        ClearProductBasket({
+          BasketRemoveItem: {
+            prodId: id,
+          },
+        })
+      );
+      toast.success("Usunięto z koszyka");
+    } catch (error) {
+      toast.error("Błąd");
+    }
   };
 
   return (
@@ -244,15 +264,7 @@ const BasketSection = () => {
                           </Basket.ProdCount>
                           <BsTrash
                             className="trash"
-                            onClick={() =>
-                              dispatch(
-                                ClearProductBasket({
-                                  BasketRemoveItem: {
-                                    prodId: item.product.id,
-                                  },
-                                })
-                              )
-                            }
+                            onClick={() => RemoveFromBasket(item.product.id)}
                           />
                         </Basket.OtherProperty>
                       </Basket.PropertyOpt>

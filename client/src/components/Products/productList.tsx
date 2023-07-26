@@ -5,9 +5,31 @@ import { ProductsItemType, ProductsType } from "../../types/Types";
 import { useAppDispatch } from "../../store/store";
 import { AddToBasket } from "../../store/BasketSlice";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const Product = ({ item }: ProductsItemType) => {
   const dispatch = useAppDispatch();
+  const AddProductToBasket = (Product: ProductsType) => {
+    try {
+      dispatch(
+        AddToBasket({
+          product: {
+            id: Product.id,
+            name: Product.name,
+            img: Product.img,
+            price: Product.price,
+            category: Product.category,
+            producer: Product.producer,
+            opinion: Product.opinion,
+            count: 1,
+          },
+        })
+      );
+      toast.success("Dodano do koszyka");
+    } catch (error) {
+      toast.error("Błąd");
+    }
+  };
   return (
     <Products.Item>
       <Link to={`/product/${item.id}`}>
@@ -29,24 +51,7 @@ const Product = ({ item }: ProductsItemType) => {
       <Products.I_BuyPanel>
         <Products.I_Price>{item.price.toFixed(2)}zł</Products.I_Price>
         <Products.I_Basket>
-          <Products.AddToCart
-            click={() =>
-              dispatch(
-                AddToBasket({
-                  product: {
-                    id: item.id,
-                    name: item.name,
-                    img: item.img,
-                    price: item.price,
-                    category: item.category,
-                    producer: item.producer,
-                    opinion: item.opinion,
-                    count: 1,
-                  },
-                })
-              )
-            }
-          >
+          <Products.AddToCart click={() => AddProductToBasket(item)}>
             <BsCartPlus />
           </Products.AddToCart>
         </Products.I_Basket>

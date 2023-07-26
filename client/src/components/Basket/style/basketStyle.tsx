@@ -135,10 +135,9 @@ export const List = styled.ul`
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  overflow: auto;
-  max-height: 80vh;
   padding-right: 5px;
   gap: 10px;
+  z-index: 100;
   &:last-child {
     margin-bottom: 2rem;
   }
@@ -295,7 +294,6 @@ export const ProdCount = styled.div`
   border: 1px solid rgb(204, 204, 204);
   padding: 6px 16px 6px 16px;
   border-radius: 2rem;
-
   & svg {
     font-size: 12px;
     position: absolute;
@@ -341,7 +339,7 @@ export const CountList = styled.ul`
   width: calc(100% + 2px);
   height: auto;
   border-radius: 0px 0px 10px 10px;
-  z-index: 100;
+  z-index: 200;
   background-color: white;
 `;
 export const CountEl = styled.li`

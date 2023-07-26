@@ -20,11 +20,17 @@ import SingleProductsPage from "./containers/SingleProductPage";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import NotFoundPage from "./containers/NotFoundPage";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <Provider store={store}>
       <AuthProvider>
+        <Toaster
+          position="top-right"
+          reverseOrder={false}
+          toastOptions={{ duration: 2000 }}
+        />
         <Routes>
           <Route path={HomeRoute} element={<HomePage />} />
           <Route path={ProductsRoute} element={<ProductsPage />} />

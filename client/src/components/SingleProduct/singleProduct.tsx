@@ -6,6 +6,7 @@ import { ProductsType, WindowSizeType } from "../../types/Types";
 import useWindowSize from "../../hooks/useWindowSize";
 import { Rating } from "../Products/productList";
 import Basket from "../Basket";
+import { toast } from "react-hot-toast";
 import {
   AiOutlineCheckCircle,
   AiOutlineClockCircle,
@@ -120,25 +121,30 @@ const SingleProductSection = () => {
   };
 
   const AddToBasketHandle = () => {
-    dispatch(
-      AddToBasket({
-        product: {
-          id: ProductData.id,
-          name: ProductData.name,
-          img: ProductData.img,
-          price:
-            id === "sale"
-              ? ProductData.newPrice
+    try {
+      dispatch(
+        AddToBasket({
+          product: {
+            id: ProductData.id,
+            name: ProductData.name,
+            img: ProductData.img,
+            price:
+              id === "sale"
                 ? ProductData.newPrice
-                : ProductData.price
-              : ProductData.price,
-          category: ProductData.category,
-          producer: ProductData.producer,
-          opinion: ProductData.opinion,
-          count: ProductCount,
-        },
-      })
-    );
+                  ? ProductData.newPrice
+                  : ProductData.price
+                : ProductData.price,
+            category: ProductData.category,
+            producer: ProductData.producer,
+            opinion: ProductData.opinion,
+            count: ProductCount,
+          },
+        })
+      );
+      toast.success("Dodano do koszyka");
+    } catch (error) {
+      toast.error("Błąd");
+    }
   };
 
   return (
