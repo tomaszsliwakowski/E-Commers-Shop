@@ -245,7 +245,7 @@ export const RightProduct = styled.div`
   }
 `;
 export const RightName = styled.div`
-  font-size: 12px;
+  font-size: 13px;
   width: 100%;
   overflow: hidden;
   @media screen and (max-width: 768px) {
@@ -270,7 +270,7 @@ export const RightPrice = styled.div`
 `;
 
 export const BestName = styled.div`
-  font-size: 12px;
+  font-size: 13px;
   width: 100%;
   overflow: hidden;
 `;

@@ -2,7 +2,7 @@ import React from "react";
 import LogRegHeader from ".";
 import { HomeRoute } from "../../routes";
 
-const HeaderLogReg = () => {
+const SecondHeader = () => {
   return (
     <LogRegHeader>
       <LogRegHeader.Logo href={HomeRoute}>Shop</LogRegHeader.Logo>
@@ -10,4 +10,4 @@ const HeaderLogReg = () => {
   );
 };
 
-export default HeaderLogReg;
+export default SecondHeader;

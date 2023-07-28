@@ -5,6 +5,7 @@ import {
   BasketRoute,
   HomeRoute,
   LoginRoute,
+  OrderRoute,
   ProductRoute,
   ProductsRoute,
   RegisterRoute,
@@ -21,6 +22,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import NotFoundPage from "./containers/NotFoundPage";
 import { Toaster } from "react-hot-toast";
+import OrderPage from "./containers/OrderPage";
 
 function App() {
   return (
@@ -37,6 +39,7 @@ function App() {
           <Route path={ProductRoute} element={<SingleProductsPage />} />
           <Route path={SearchRoute} element={<ProductsPage />} />
           <Route path={LoginRoute} element={<LoginPage />} />
+          <Route path={OrderRoute} element={<OrderPage />} />
           <Route path={RegisterRoute} element={<RegisterPage />} />
           <Route path={BasketRoute} element={<BasketPage />} />
           <Route path={"*"} element={<NotFoundPage />} />

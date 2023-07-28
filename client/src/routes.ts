@@ -5,6 +5,7 @@ export const SearchRoute = "/products/search/:search";
 export const LoginRoute = "/login";
 export const RegisterRoute = "/register";
 export const BasketRoute = "/basket";
+export const OrderRoute = "/order";
 export const ServerRoute = "http://localhost:10000";
 export const LocalRoute = "http://localhost:3000";
 export const SaleRoute = "http://localhost:3000/sale/product/:status";
