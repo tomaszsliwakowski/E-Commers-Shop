@@ -16,7 +16,7 @@ export const BasketCon = ({
   HandleActiveCountInput,
 }: BasketConPropsType) => {
   return (
-    <Basket.ProdCount active2={ActiveCount}>
+    <Basket.ProdCount active={ActiveCount}>
       {ActiveCountInput ? (
         <Basket.CountInput
           type="number"
@@ -50,7 +50,7 @@ export const BasketCon = ({
           display: `${ActiveCountInput ? "none" : "flex"}`,
         }}
       />
-      <Basket.CountList active2={ActiveCount}>
+      <Basket.CountList active={ActiveCount}>
         <Basket.CountEl>
           {CountOpt.map((item, id) =>
             item < 9 ? (

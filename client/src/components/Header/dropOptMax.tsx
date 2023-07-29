@@ -35,7 +35,7 @@ const DropOptMax = ({ BasketProducts }: basketprops) => {
             ))
           : null}
       </Header.DropOpt>
-      <Basket.BuyPanel style="relative">
+      <Basket.BuyPanel styleType="relative">
         <Basket.BuyPanelCon>
           <Basket.BuyPanelSum>
             <Basket.BuyPanelPrice>Łączna kwota</Basket.BuyPanelPrice>

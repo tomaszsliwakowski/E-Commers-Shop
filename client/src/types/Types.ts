@@ -1,5 +1,36 @@
-import { type } from "os";
-import { ReactNode } from "react";
+import React, { ComponentPropsWithoutRef, ReactNode } from "react";
+
+export interface DivProps extends ComponentPropsWithoutRef<"div"> {
+  children: ReactNode;
+}
+export interface SpanProps extends ComponentPropsWithoutRef<"span"> {
+  children: ReactNode;
+}
+export interface LabelProps extends ComponentPropsWithoutRef<"label"> {
+  children: ReactNode;
+}
+export interface HeadProps
+  extends ComponentPropsWithoutRef<"h1" | "h2" | "h3" | "h4"> {
+  children: ReactNode;
+}
+export interface ListProps extends ComponentPropsWithoutRef<"ul"> {
+  children: ReactNode;
+}
+
+export interface ElProps extends ComponentPropsWithoutRef<"li"> {
+  children: ReactNode;
+}
+export interface TextProps extends ComponentPropsWithoutRef<"p"> {
+  children: ReactNode;
+}
+export interface BtnProps extends ComponentPropsWithoutRef<"button"> {
+  children: ReactNode;
+}
+export interface HlinkProps extends ComponentPropsWithoutRef<"a"> {
+  children: ReactNode;
+}
+
+// REMAKE BELOW
 
 export type JsxProps = {
   children?: ReactNode;

@@ -165,7 +165,7 @@ const BasketSection = () => {
                         <Basket.OtherProperty>
                           <span>{item.product.price.toFixed(2)} zł</span>
                           <Basket.ProdCount
-                            active2={
+                            active={
                               ActiveCount.active &&
                               ActiveCount.prodId === item.product.id
                                 ? true
@@ -229,7 +229,7 @@ const BasketSection = () => {
                               }}
                             />
                             <Basket.CountList
-                              active2={
+                              active={
                                 ActiveCount.active &&
                                 ActiveCount.prodId === item.product.id
                                   ? true

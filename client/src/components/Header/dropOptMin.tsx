@@ -1,8 +1,7 @@
 import React from "react";
 import Basket from "../Basket";
 import { Header } from ".";
-import { ProductsType, basketprops } from "../../types/Types";
-import { useAppSelector } from "../../store/store";
+import { basketprops } from "../../types/Types";
 
 const DropOptMin = ({ BasketProducts }: basketprops) => {
   return (
@@ -36,7 +35,7 @@ const DropOptMin = ({ BasketProducts }: basketprops) => {
             ))
           : null}
       </Header.DropOpt>
-      <Basket.BuyPanel style="fixed">
+      <Basket.BuyPanel styleType="fixed">
         <Basket.BuyPanelCon>
           <Basket.BuyPanelSum>
             <Basket.BuyPanelPrice>Łączna kwota</Basket.BuyPanelPrice>
