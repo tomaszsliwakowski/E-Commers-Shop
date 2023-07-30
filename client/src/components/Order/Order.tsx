@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Order } from "./index";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { DeliveryMethod, PaymentMethod } from "../../assets";
@@ -7,17 +7,19 @@ import { BsBox, BsBank, BsCreditCard2Back, BsCash } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";
 import { BiTransfer } from "react-icons/bi";
 import { MdOutlinePayments } from "react-icons/md";
+import { ProductType } from "../../types/Types";
+import { useAppSelector } from "../../store/store";
 
 function DeliveryIcon(id: number) {
   switch (id) {
     case 0:
-      return <CiDeliveryTruck />;
+      return <CiDeliveryTruck size={30} style={{ marginRight: "0.5rem" }} />;
     case 1:
-      return <AiFillShop />;
+      return <AiFillShop size={30} style={{ marginRight: "0.5rem" }} />;
     case 2:
-      return <BsBox />;
+      return <BsBox size={30} style={{ marginRight: "0.5rem" }} />;
     case 3:
-      return <FiMapPin />;
+      return <FiMapPin size={30} style={{ marginRight: "0.5rem" }} />;
     default:
       break;
   }
@@ -25,23 +27,30 @@ function DeliveryIcon(id: number) {
 function PaymentIcon(id: number) {
   switch (id) {
     case 0:
-      return <BsCreditCard2Back />;
+      return <BsCreditCard2Back size={30} style={{ marginRight: "0.5rem" }} />;
     case 1:
-      return <BsCreditCard2Back />;
+      return <BsCreditCard2Back size={30} style={{ marginRight: "0.5rem" }} />;
     case 2:
-      return <MdOutlinePayments />;
+      return <MdOutlinePayments size={30} style={{ marginRight: "0.5rem" }} />;
     case 3:
-      return <BiTransfer />;
+      return <BiTransfer size={30} style={{ marginRight: "0.5rem" }} />;
     case 4:
-      return <BsCash />;
-    case 3:
-      return <BsBank />;
+      return <BsCash size={30} style={{ marginRight: "0.5rem" }} />;
+    case 5:
+      return <BsBank size={30} style={{ marginRight: "0.5rem" }} />;
     default:
       break;
   }
 }
 
+type xd = {};
+
 const OrderSection = () => {
+  const BasketProducts: { basket: Array<{ product: ProductType }> } =
+    useAppSelector((state) => state.basket);
+  useEffect(() => {
+    console.log(BasketProducts);
+  }, [BasketProducts]);
   return (
     <Order>
       <Order.Main>
@@ -54,7 +63,7 @@ const OrderSection = () => {
                 <Order.Select>
                   <Order.Radio>
                     <Order.Checkbox type="checkbox" />
-                    <Order.Checkmark>a</Order.Checkmark>
+                    <Order.Checkmark></Order.Checkmark>
                   </Order.Radio>
                   <Order.Name>{item.name}</Order.Name>
                   <Order.Price>{item.price}</Order.Price>
@@ -83,7 +92,7 @@ const OrderSection = () => {
                 <Order.Select>
                   <Order.Radio>
                     <Order.Checkbox type="checkbox" />
-                    <Order.Checkmark>a</Order.Checkmark>
+                    <Order.Checkmark></Order.Checkmark>
                   </Order.Radio>
                   <Order.Name>{item.name}</Order.Name>
                   <Order.Price>{item.price}</Order.Price>
@@ -97,18 +106,41 @@ const OrderSection = () => {
       <Order.Summary>
         <Order.SummaryPanel>
           <Order.BasketList>
-            <Order.BasketEl>a</Order.BasketEl>
+            {BasketProducts.basket.length > 0
+              ? BasketProducts.basket.map((item, id) => (
+                  <Order.BasketEl key={id}>
+                    <Order.ProductIcon>
+                      <img src={item.product.img} alt={item.product.name} />
+                    </Order.ProductIcon>
+                    <Order.Product>
+                      <Order.ProductName>{item.product.name}</Order.ProductName>
+                      <Order.ProductDetails>
+                        <Order.ProductInfo>
+                          {item.product.count}szt.
+                        </Order.ProductInfo>
+                        <Order.ProductInfo>
+                          {item.product.price}zł
+                        </Order.ProductInfo>
+                      </Order.ProductDetails>
+                    </Order.Product>
+                  </Order.BasketEl>
+                ))
+              : null}
           </Order.BasketList>
           <Order.Methods>
             <Order.SelectMethod>
-              <Order.MethodIcon>icon</Order.MethodIcon>
+              <Order.MethodIcon>
+                <AiFillShop size={30} />
+              </Order.MethodIcon>
               <Order.MethodContainer>
                 <Order.MethodName>Sposób dostawy:</Order.MethodName>
                 <Order.MethodName>Kurier</Order.MethodName>
               </Order.MethodContainer>
             </Order.SelectMethod>
             <Order.SelectMethod>
-              <Order.MethodIcon>icon</Order.MethodIcon>
+              <Order.MethodIcon>
+                <BsBox size={30} />
+              </Order.MethodIcon>
               <Order.MethodContainer>
                 <Order.MethodName>Sposób płatności:</Order.MethodName>
                 <Order.MethodName>Blik</Order.MethodName>

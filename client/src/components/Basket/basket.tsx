@@ -289,7 +289,7 @@ const BasketSection = () => {
                   {" zł"}
                 </Basket.BuyPanelPrice>
               </Basket.BuyPanelSum>
-              <Basket.BuyPanelBtn href="/">
+              <Basket.BuyPanelBtn href="/order">
                 Przejdź do dostawy
               </Basket.BuyPanelBtn>
             </Basket.BuyPanelCon>

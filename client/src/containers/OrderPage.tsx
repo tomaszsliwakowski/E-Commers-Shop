@@ -5,11 +5,11 @@ import OrderSection from "../components/Order/Order";
 
 const OrderPage = () => {
   return (
-    <>
+    <div style={{ maxWidth: "1050px", margin: "0 auto" }}>
       <SecondHeader />
       <OrderSection />
       <FooterSection />
-    </>
+    </div>
   );
 };
 

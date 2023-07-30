@@ -41,6 +41,11 @@ import {
   PayDetails,
   DataInput,
   DataPanel,
+  Product,
+  ProductDetails,
+  ProductIcon,
+  ProductInfo,
+  ProductName,
 } from "./style/orderStyle";
 
 export function Order({ children, ...restprops }: DivProps) {
@@ -198,4 +203,33 @@ Order.PayButton = function OrderPayButton({
   ...restprops
 }: BtnProps) {
   return <PayButton {...restprops}>{children}</PayButton>;
+};
+
+Order.ProductIcon = function OrderProductIcon({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ProductIcon {...restprops}>{children}</ProductIcon>;
+};
+Order.Product = function OrderProduct({ children, ...restprops }: DivProps) {
+  return <Product {...restprops}>{children}</Product>;
+};
+Order.ProductDetails = function OrderProductDetails({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ProductDetails {...restprops}>{children}</ProductDetails>;
+};
+
+Order.ProductName = function OrderProductName({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <ProductName {...restprops}>{children}</ProductName>;
+};
+Order.ProductInfo = function OrderProductInfo({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <ProductInfo {...restprops}>{children}</ProductInfo>;
 };

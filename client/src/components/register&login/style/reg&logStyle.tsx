@@ -4,12 +4,12 @@ import styled from "styled-components/macro";
 export const Header = styled.div`
   width: 100%;
   border-bottom: 1px solid rgb(221, 221, 221);
-  padding: 1rem 0;
   max-width: 1250px;
   margin-left: auto;
   margin-right: auto;
+  padding: 1rem 2rem;
 `;
-export const Logo = styled.a`
+export const Logo = styled(Link)`
   text-decoration: none;
   font-size: 35px;
   font-weight: bold;

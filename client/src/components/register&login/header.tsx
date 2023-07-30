@@ -5,7 +5,7 @@ import { HomeRoute } from "../../routes";
 const SecondHeader = () => {
   return (
     <LogRegHeader>
-      <LogRegHeader.Logo href={HomeRoute}>Shop</LogRegHeader.Logo>
+      <LogRegHeader.Logo to={HomeRoute}>Shop</LogRegHeader.Logo>
     </LogRegHeader>
   );
 };

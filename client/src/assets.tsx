@@ -19,8 +19,8 @@ interface MethodType {
 export const DeliveryMethod: MethodType[] = [
   { name: "Kurier - InPost,UPS,FedEx,DTS,PickPack", price: "(20.00zł)" },
   { name: "Odbiór w salonie", price: "(bezpłatnie)" },
-  { name: "InPost Paczkomat 24/7", price: "9.90zł" },
-  { name: "odbiór w punkcie - Żabka,Poczta Polska i inne", price: "(8.90zł)" },
+  { name: "InPost Paczkomat 24/7", price: "(9.90zł)" },
+  { name: "Odbiór w punkcie - Żabka,Poczta Polska i inne", price: "(8.90zł)" },
 ];
 
 export const PaymentMethod: MethodType[] = [

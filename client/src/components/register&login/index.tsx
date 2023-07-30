@@ -29,11 +29,11 @@ export default function LogRegHeader({ children, ...restprops }: DivProps) {
 
 LogRegHeader.Logo = function LogRegHeaderLogo({
   children,
-  href,
+  to,
   ...restprops
-}: HlinkProps & { href: string }) {
+}: HlinkProps & { to: string }) {
   return (
-    <Logo {...restprops} href={href}>
+    <Logo {...restprops} to={to}>
       {children}
     </Logo>
   );
