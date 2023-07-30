@@ -1,9 +1,9 @@
 import React from "react";
 import Basket from "../Basket";
 import { Header } from ".";
-import { basketprops } from "../../types/Types";
+import { BasketProductsProps } from "../../types/Types";
 
-const DropOptMax = ({ BasketProducts }: basketprops) => {
+const DropOptMax = ({ BasketProducts }: BasketProductsProps) => {
   return (
     <>
       <Header.DropOpt style="max">

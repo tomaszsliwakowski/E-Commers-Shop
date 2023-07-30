@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Header } from ".";
 import { SlBasket } from "react-icons/sl";
 import { AiOutlineUser, AiOutlineClose } from "react-icons/ai";
-import { ProductsType, UserPanelProps } from "../../types/Types";
+import { ProductType } from "../../types/Types";
 import { LoginRoute, RegisterRoute } from "../../routes";
 import DropOptMin from "./dropOptMin";
 import DropOptMax from "./dropOptMax";
@@ -11,12 +11,26 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebase-config";
 import { useAppSelector } from "../../store/store";
 
+type UserPanelProps = {
+  width?: number;
+  activeRightMenu: {
+    Account: boolean;
+    Basket: boolean;
+  };
+  setActiveRightMenu: React.Dispatch<
+    React.SetStateAction<{
+      Account: boolean;
+      Basket: boolean;
+    }>
+  >;
+};
+
 const UserPanel = ({
   width,
   activeRightMenu,
   setActiveRightMenu,
 }: UserPanelProps) => {
-  const BasketProducts: { basket: Array<{ product: ProductsType }> } =
+  const BasketProducts: { basket: Array<{ product: ProductType }> } =
     useAppSelector((state) => state.basket);
   const [User, setUser] = useState({ Name: "", Email: "" });
   const logged: any = useContext(AuthContext);

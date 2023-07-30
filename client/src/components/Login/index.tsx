@@ -1,5 +1,11 @@
 import React from "react";
-import { FormProps, JsxProps, TsxPropsBoolean } from "../../types/Types";
+import {
+  DivProps,
+  FormProps,
+  HeadProps,
+  HlinkProps,
+  SpanProps,
+} from "../../types/Types";
 import {
   Container,
   Panel,
@@ -15,51 +21,78 @@ import {
   RegBtn,
 } from "./style/loginStyle";
 
-export default function Login(props: JsxProps) {
-  return <Container>{props.children}</Container>;
+export default function Login({ children, ...restprops }: DivProps) {
+  return <Container {...restprops}>{children}</Container>;
 }
 
-Login.Panel = function LoginPanel(props: JsxProps) {
-  return <Panel>{props.children}</Panel>;
+Login.Panel = function LoginPanel({ children, ...restprops }: DivProps) {
+  return <Panel {...restprops}>{children}</Panel>;
 };
 
-Login.Info = function LoginInfo(props: JsxProps) {
-  return <Info>{props.children}</Info>;
+Login.Info = function LoginInfo({ children, ...restprops }: DivProps) {
+  return <Info {...restprops}>{children}</Info>;
 };
 
-Login.Title = function LoginTitle(props: JsxProps) {
-  return <Title>{props.children}</Title>;
+Login.Title = function LoginTitle({ children, ...restprops }: HeadProps) {
+  return <Title {...restprops}>{children}</Title>;
 };
-Login.Form = function LoginForm(props: FormProps) {
-  return <Form onSubmit={props.submit()}>{props.children}</Form>;
+Login.Form = function LoginForm({
+  children,
+  submit,
+  ...restprops
+}: FormProps & { submit: Function }) {
+  return (
+    <Form {...restprops} onSubmit={submit()}>
+      {children}
+    </Form>
+  );
 };
 
 Login.Input = function LoginInput({ ...restprops }) {
   return <Input {...restprops} />;
 };
-Login.InputCon = function LoginInputCon(props: JsxProps) {
-  return props.style === "reg" ? (
-    <InputReg>{props.children}</InputReg>
+Login.InputCon = function LoginInputCon({
+  children,
+  style,
+  ...restprops
+}: DivProps & { style?: string }) {
+  return style === "reg" ? (
+    <InputReg {...restprops}>{children}</InputReg>
   ) : (
-    <InputLog>{props.children}</InputLog>
+    <InputLog {...restprops}>{children}</InputLog>
   );
 };
 
-Login.InputName = function LoginInputName(props: JsxProps) {
-  return <InputName>{props.children}</InputName>;
+Login.InputName = function LoginInputName({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <InputName {...restprops}>{children}</InputName>;
 };
 
-Login.PassShow = function LoginPassShow(props: TsxPropsBoolean) {
+Login.PassShow = function LoginPassShow({
+  children,
+  click,
+  ...restprops
+}: SpanProps & { click: React.Dispatch<React.SetStateAction<boolean>> }) {
   return (
-    <PassShow onClick={() => props.click((prev) => !prev)}>
-      {props.children}
+    <PassShow {...restprops} onClick={() => click((prev) => !prev)}>
+      {children}
     </PassShow>
   );
 };
-Login.InfoReg = function LoginInfoReg(props: JsxProps) {
-  return <InfoReg>{props.children}</InfoReg>;
+Login.InfoReg = function LoginInfoReg({ children, ...restprops }: DivProps) {
+  return <InfoReg {...restprops}>{children}</InfoReg>;
 };
 
-Login.RegBtn = function LoginRegBtn(props: JsxProps) {
-  return <RegBtn href={props.href}>{props.children}</RegBtn>;
+Login.RegBtn = function LoginRegBtn({
+  children,
+  href,
+  ...restprops
+}: HlinkProps & { href?: string }) {
+  return (
+    <RegBtn {...restprops} href={href}>
+      {children}
+    </RegBtn>
+  );
 };

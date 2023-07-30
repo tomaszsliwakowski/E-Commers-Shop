@@ -4,26 +4,26 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
 import useWindowSize from "../../hooks/useWindowSize";
-import {
-  PanelActiveProps,
-  ScrollPositionType,
-  WindowSizeType,
-} from "../../types/Types";
+import { WindowSizeType } from "../../types/Types";
 import useScrollPosition from "../../hooks/ScrollPosition";
 import UserPanel from "./userpanel";
 import Menu from "./menu";
 
+type ActivePanel = {
+  Account: boolean;
+  Basket: boolean;
+};
+
 const HeaderSection = () => {
   const [activeLeftMenu, setActiveLeftMenu] = useState<boolean>(false);
-  const [activeRightMenu, setActiveRightMenu] = useState<PanelActiveProps>({
+  const [activeRightMenu, setActiveRightMenu] = useState<ActivePanel>({
     Account: false,
     Basket: false,
   });
   const [ScrollAction, setScrollAction] = useState<boolean>(true);
   const { width, height }: WindowSizeType = useWindowSize();
-  const { position }: ScrollPositionType = useScrollPosition();
+  const { position }: { position: number | undefined } = useScrollPosition();
   const [SearchInput, setSearchInput] = useState<string>("");
   const navigate = useNavigate();
 

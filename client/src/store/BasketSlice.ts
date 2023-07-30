@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ProductsType } from "../types/Types";
+import { ProductType } from "../types/Types";
 
-const initialState: { basket: Array<{ product: ProductsType }> } = {
+const initialState: { basket: Array<{ product: ProductType }> } = {
   basket: [],
 };
 
@@ -9,7 +9,7 @@ export const BasketSlice = createSlice({
   name: "basket",
   initialState,
   reducers: {
-    AddToBasket: (state, action: PayloadAction<{ product: ProductsType }>) => {
+    AddToBasket: (state, action: PayloadAction<{ product: ProductType }>) => {
       const index = state.basket.findIndex(
         (el) => el.product.id === action.payload.product.id
       );

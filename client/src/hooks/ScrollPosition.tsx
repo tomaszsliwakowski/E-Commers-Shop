@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { ScrollPositionType } from "../types/Types";
 
 const useScrollPosition = () => {
-  const [scrollPosition, setScrollPosition] = useState<ScrollPositionType>({
+  const [scrollPosition, setScrollPosition] = useState<{
+    position: number | undefined;
+  }>({
     position: undefined,
   });
 

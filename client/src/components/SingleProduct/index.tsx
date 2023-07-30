@@ -1,11 +1,12 @@
 import React, { ReactNode } from "react";
 import {
-  GoToElmentType,
-  JsxProps,
-  OpinionDeleteType,
-  OpinionJSXProps,
-  OpinionOptionsType,
-  SortJSXProps,
+  BtnProps,
+  DivProps,
+  ElProps,
+  HeadProps,
+  HlinkProps,
+  ListProps,
+  SpanProps,
 } from "../../types/Types";
 import {
   Container,
@@ -60,171 +61,273 @@ import {
 } from "./style/SingleProductStyle.";
 import { LocalRoute, LoginRoute } from "../../routes";
 
-export default function SingleProduct(props: JsxProps) {
-  return <Container>{props.children}</Container>;
+export default function SingleProduct({ children, ...restprops }: DivProps) {
+  return <Container {...restprops}>{children}</Container>;
 }
 
-SingleProduct.Top = function SingleProductTop(props: JsxProps) {
-  return <Top>{props.children}</Top>;
+SingleProduct.Top = function SingleProductTop({
+  children,
+  ...restprops
+}: DivProps) {
+  return <Top {...restprops}>{children}</Top>;
 };
 
-SingleProduct.Bottom = function SingleProductBottom(props: JsxProps) {
-  return <Bottom>{props.children}</Bottom>;
+SingleProduct.Bottom = function SingleProductBottom({
+  children,
+  ...restprops
+}: DivProps) {
+  return <Bottom {...restprops}>{children}</Bottom>;
 };
 
-SingleProduct.ProdImg = function SingleProductProdImg(props: JsxProps) {
-  return <ProdImg>{props.children}</ProdImg>;
+SingleProduct.ProdImg = function SingleProductProdImg({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ProdImg {...restprops}>{children}</ProdImg>;
 };
 SingleProduct.Image = function SingleProductImage({ ...restprops }) {
   return <Image {...restprops} />;
 };
 
-SingleProduct.ProdProperty = function SingleProductProdProperty(
-  props: JsxProps
-) {
-  return <ProdProperty>{props.children}</ProdProperty>;
+SingleProduct.ProdProperty = function SingleProductProdProperty({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ProdProperty {...restprops}>{children}</ProdProperty>;
 };
 
-SingleProduct.Header = function SingleProductHeader(props: JsxProps) {
-  return <Header>{props.children}</Header>;
+SingleProduct.Header = function SingleProductHeader({
+  children,
+  ...restprops
+}: DivProps) {
+  return <Header {...restprops}>{children}</Header>;
 };
 
-SingleProduct.Title = function SingleProductTitle(props: JsxProps) {
-  return <Title>{props.children}</Title>;
+SingleProduct.Title = function SingleProductTitle({
+  children,
+  ...restprops
+}: HeadProps) {
+  return <Title {...restprops}>{children}</Title>;
 };
 
-SingleProduct.Opinion = function SingleProductOpinion(props: JsxProps) {
-  return <Opinion>{props.children}</Opinion>;
+SingleProduct.Opinion = function SingleProductOpinion({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <Opinion {...restprops}>{children}</Opinion>;
 };
 
-SingleProduct.Spec = function SingleProductSpec(props: JsxProps) {
-  return <Spec>{props.children}</Spec>;
+SingleProduct.Spec = function SingleProductSpec({
+  children,
+  ...restprops
+}: DivProps) {
+  return <Spec {...restprops}>{children}</Spec>;
 };
-SingleProduct.BuyPanel = function SingleProductBuyPanel(props: JsxProps) {
-  return <BuyPanel>{props.children}</BuyPanel>;
-};
-
-SingleProduct.SpecList = function SingleProductSpecList(props: JsxProps) {
-  return <SpecList>{props.children}</SpecList>;
-};
-
-SingleProduct.SpecEl = function SingleProductSpecEl(props: JsxProps) {
-  return <SpecEl>{props.children}</SpecEl>;
+SingleProduct.BuyPanel = function SingleProductBuyPanel({
+  children,
+  ...restprops
+}: DivProps) {
+  return <BuyPanel {...restprops}>{children}</BuyPanel>;
 };
 
-SingleProduct.Price = function SingleProductPrice(props: JsxProps) {
-  return <Price>{props.children}</Price>;
-};
-SingleProduct.Basket = function SingleProductBasket(props: JsxProps) {
-  return <Basket>{props.children}</Basket>;
-};
-
-SingleProduct.BuyInfoList = function SingleProductBuyInfoList(props: JsxProps) {
-  return <BuyInfoList>{props.children}</BuyInfoList>;
+SingleProduct.SpecList = function SingleProductSpecList({
+  children,
+  ...restprops
+}: ListProps) {
+  return <SpecList {...restprops}>{children}</SpecList>;
 };
 
-SingleProduct.BuyInfoEL = function SingleProductBuyInfoEl(props: JsxProps) {
-  return <BuyInfoEl>{props.children}</BuyInfoEl>;
+SingleProduct.SpecEl = function SingleProductSpecEl({
+  children,
+  ...restprops
+}: ElProps) {
+  return <SpecEl {...restprops}>{children}</SpecEl>;
 };
 
-SingleProduct.BuyInfo = function SingleProductBuyInfo(props: JsxProps) {
-  return <BuyInfo>{props.children}</BuyInfo>;
+SingleProduct.Price = function SingleProductPrice({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <Price {...restprops}>{children}</Price>;
+};
+SingleProduct.Basket = function SingleProductBasket({
+  children,
+  ...restprops
+}: DivProps) {
+  return <Basket {...restprops}>{children}</Basket>;
 };
 
-SingleProduct.Navigation = function SingleProductNavigation(props: JsxProps) {
-  return <Nav id="desc">{props.children}</Nav>;
+SingleProduct.BuyInfoList = function SingleProductBuyInfoList({
+  children,
+  ...restprops
+}: ListProps) {
+  return <BuyInfoList {...restprops}>{children}</BuyInfoList>;
 };
 
-SingleProduct.NavBtn = function SingleProductNavBtn(props: GoToElmentType) {
-  return <NavBtn onClick={() => props.goTo(props.to)}>{props.children}</NavBtn>;
+SingleProduct.BuyInfoEL = function SingleProductBuyInfoEl({
+  children,
+  ...restprops
+}: ElProps) {
+  return <BuyInfoEl {...restprops}>{children}</BuyInfoEl>;
 };
 
-SingleProduct.Description = function SingleProductDescription(props: JsxProps) {
-  return <Desc>{props.children}</Desc>;
+SingleProduct.BuyInfo = function SingleProductBuyInfo({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <BuyInfo {...restprops}>{children}</BuyInfo>;
 };
 
-SingleProduct.DescText = function SingleProductDescText(props: JsxProps) {
-  return <DescText>{props.children}</DescText>;
+SingleProduct.Navigation = function SingleProductNavigation({
+  children,
+  ...restprops
+}: DivProps) {
+  return (
+    <Nav id="desc" {...restprops}>
+      {children}
+    </Nav>
+  );
 };
 
-SingleProduct.OpinionCom = function SingleProductOpinionCom(props: JsxProps) {
-  return <OpinionCom id="opinion">{props.children}</OpinionCom>;
+SingleProduct.NavBtn = function SingleProductNavBtn({
+  children,
+  goTo,
+  to,
+  ...restprops
+}: HlinkProps & { goTo: Function; to: string }) {
+  return (
+    <NavBtn {...restprops} onClick={() => goTo(to)}>
+      {children}
+    </NavBtn>
+  );
 };
 
-SingleProduct.OpinionHeader = function SingleProductOpinionHeader(
-  props: JsxProps
-) {
-  return <OpinionHeader>{props.children}</OpinionHeader>;
+SingleProduct.Description = function SingleProductDescription({
+  children,
+  ...restprops
+}: DivProps) {
+  return <Desc {...restprops}>{children}</Desc>;
 };
 
-SingleProduct.OpinionMain = function SingleProductMain(props: JsxProps) {
-  return <OpinionMain>{props.children}</OpinionMain>;
+SingleProduct.DescText = function SingleProductDescText({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <DescText {...restprops}>{children}</DescText>;
 };
 
-SingleProduct.OpinionMainTop = function SingleProductMainTop(props: JsxProps) {
-  return <OpinionMainTop>{props.children}</OpinionMainTop>;
-};
-SingleProduct.OpinionMainBottom = function SingleProductMainBottom(
-  props: JsxProps
-) {
-  return <OpinionMainBottom>{props.children}</OpinionMainBottom>;
-};
-
-SingleProduct.OpinionStars = function SingleProductOpinionStars(
-  props: JsxProps
-) {
-  return <OpinionStars>{props.children}</OpinionStars>;
+SingleProduct.OpinionCom = function SingleProductOpinionCom({
+  children,
+  ...restprops
+}: DivProps) {
+  return (
+    <OpinionCom id="opinion" {...restprops}>
+      {children}
+    </OpinionCom>
+  );
 };
 
-SingleProduct.OpinionStarsCount = function SingleProductMainStarsCount(
-  props: JsxProps
-) {
-  return <OpinionStarsCount>{props.children}</OpinionStarsCount>;
+SingleProduct.OpinionHeader = function SingleProductOpinionHeader({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <OpinionHeader {...restprops}>{children}</OpinionHeader>;
 };
 
-SingleProduct.OpinionAdd = function SingleProductOpinionAdd(props: JsxProps) {
-  return <OpinionAdd>{props.children}</OpinionAdd>;
+SingleProduct.OpinionMain = function SingleProductMain({
+  children,
+  ...restprops
+}: DivProps) {
+  return <OpinionMain {...restprops}>{children}</OpinionMain>;
 };
 
-SingleProduct.OpinionAddTitle = function SingleProductAddTitle(
-  props: JsxProps
-) {
-  return <OpinionAddTitle>{props.children}</OpinionAddTitle>;
+SingleProduct.OpinionMainTop = function SingleProductMainTop({
+  children,
+  ...restprops
+}: DivProps) {
+  return <OpinionMainTop {...restprops}>{children}</OpinionMainTop>;
+};
+SingleProduct.OpinionMainBottom = function SingleProductMainBottom({
+  children,
+  ...restprops
+}: DivProps) {
+  return <OpinionMainBottom {...restprops}>{children}</OpinionMainBottom>;
 };
 
-SingleProduct.OpinionAddText = function SingleProductAddText(props: JsxProps) {
-  return <OpinionAddText>{props.children}</OpinionAddText>;
+SingleProduct.OpinionStars = function SingleProductOpinionStars({
+  children,
+  ...restprops
+}: DivProps) {
+  return <OpinionStars {...restprops}>{children}</OpinionStars>;
 };
 
-SingleProduct.OpinionAddBtn = function SingleProductAddBtn(
-  props: OpinionJSXProps
-) {
+SingleProduct.OpinionStarsCount = function SingleProductMainStarsCount({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <OpinionStarsCount {...restprops}>{children}</OpinionStarsCount>;
+};
+
+SingleProduct.OpinionAdd = function SingleProductOpinionAdd({
+  children,
+  ...restprops
+}: DivProps) {
+  return <OpinionAdd {...restprops}>{children}</OpinionAdd>;
+};
+
+SingleProduct.OpinionAddTitle = function SingleProductAddTitle({
+  children,
+  ...restprops
+}: HeadProps) {
+  return <OpinionAddTitle {...restprops}>{children}</OpinionAddTitle>;
+};
+
+SingleProduct.OpinionAddText = function SingleProductAddText({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <OpinionAddText {...restprops}>{children}</OpinionAddText>;
+};
+
+SingleProduct.OpinionAddBtn = function SingleProductAddBtn({
+  children,
+  active,
+  handle,
+  click,
+  ...restprops
+}: BtnProps & {
+  active: boolean;
+  handle: Function;
+  click: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
     <OpinionAddBtn
-      onClick={
-        props.active ? () => props.handle() : () => props.click((prev) => !prev)
-      }
+      {...restprops}
+      onClick={active ? () => handle() : () => click((prev) => !prev)}
     >
-      {props.children}
+      {children}
     </OpinionAddBtn>
   );
 };
-SingleProduct.OpinionLoginBtn = function SingleProductOpinionLoginBtn(
-  props: JsxProps
-) {
+SingleProduct.OpinionLoginBtn = function SingleProductOpinionLoginBtn({
+  children,
+  ...restprops
+}: HlinkProps) {
   return (
-    <OpinionLoginBtn to={LocalRoute + LoginRoute}>
-      {props.children}
+    <OpinionLoginBtn {...restprops} to={LocalRoute + LoginRoute}>
+      {children}
     </OpinionLoginBtn>
   );
 };
 
-SingleProduct.OpinionAddCloseBtn = function SingleProductAddCloseBtn(
-  props: SortJSXProps
-) {
+SingleProduct.OpinionAddCloseBtn = function SingleProductAddCloseBtn({
+  children,
+  click,
+  ...restprops
+}: BtnProps & { click: React.Dispatch<React.SetStateAction<boolean>> }) {
   return (
-    <OpinionAddCloseBtn onClick={() => props.click((prev) => !prev)}>
-      {props.children}
+    <OpinionAddCloseBtn {...restprops} onClick={() => click((prev) => !prev)}>
+      {children}
     </OpinionAddCloseBtn>
   );
 };
@@ -235,70 +338,91 @@ SingleProduct.OpinionInput = function SingleProductOpinionInput({
   return <OpinionInput {...restprops} />;
 };
 
-SingleProduct.OpinionShowTitle = function SingleProductOpinionShowTitle(
-  props: JsxProps
-) {
-  return <OpinionShowTitle>{props.children}</OpinionShowTitle>;
+SingleProduct.OpinionShowTitle = function SingleProductOpinionShowTitle({
+  children,
+  ...restprops
+}: HeadProps) {
+  return <OpinionShowTitle {...restprops}>{children}</OpinionShowTitle>;
 };
 
-SingleProduct.OpinionShowList = function SingleProductOpinionShowList(
-  props: JsxProps
-) {
-  return <OpinionShowList>{props.children}</OpinionShowList>;
+SingleProduct.OpinionShowList = function SingleProductOpinionShowList({
+  children,
+  ...restprops
+}: ListProps) {
+  return <OpinionShowList {...restprops}>{children}</OpinionShowList>;
 };
 
-SingleProduct.OpinionShowEl = function SingleProductOpinionShowEl(
-  props: JsxProps
-) {
-  return <OpinionShowEl>{props.children}</OpinionShowEl>;
+SingleProduct.OpinionShowEl = function SingleProductOpinionShowEl({
+  children,
+  ...restprops
+}: ElProps) {
+  return <OpinionShowEl {...restprops}>{children}</OpinionShowEl>;
 };
-SingleProduct.OpinionShowUser = function SingleProductOpinionShowUser(
-  props: JsxProps
-) {
-  return <OpinionShowUser>{props.children}</OpinionShowUser>;
+SingleProduct.OpinionShowUser = function SingleProductOpinionShowUser({
+  children,
+  ...restprops
+}: DivProps) {
+  return <OpinionShowUser {...restprops}>{children}</OpinionShowUser>;
 };
-SingleProduct.OpinionShowUserName = function SingleProductOpinionShowUserName(
-  props: JsxProps
-) {
-  return <OpinionShowUserName>{props.children}</OpinionShowUserName>;
+SingleProduct.OpinionShowUserName = function SingleProductOpinionShowUserName({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <OpinionShowUserName {...restprops}>{children}</OpinionShowUserName>;
 };
-SingleProduct.OpinionShowContent = function SingleProductOpinionShowContent(
-  props: JsxProps
-) {
-  return <OpinionShowContent>{props.children}</OpinionShowContent>;
-};
-
-SingleProduct.OpinionShowDate = function SingleProductOpinionShowDate(
-  props: JsxProps
-) {
-  return <OpinionShowDate>{props.children}</OpinionShowDate>;
+SingleProduct.OpinionShowContent = function SingleProductOpinionShowContent({
+  children,
+  ...restprops
+}: DivProps) {
+  return <OpinionShowContent {...restprops}>{children}</OpinionShowContent>;
 };
 
-SingleProduct.OpinionShowText = function SingleProductOpinionShowText(
-  props: JsxProps
-) {
-  return <OpinionShowText>{props.children}</OpinionShowText>;
+SingleProduct.OpinionShowDate = function SingleProductOpinionShowDate({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <OpinionShowDate {...restprops}>{children}</OpinionShowDate>;
 };
 
-SingleProduct.ShowMore = function SingleProductShowMore(props: JsxProps) {
-  return <ShowMore>{props.children}</ShowMore>;
+SingleProduct.OpinionShowText = function SingleProductOpinionShowText({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <OpinionShowText {...restprops}>{children}</OpinionShowText>;
 };
-SingleProduct.ShowMoreBtn = function SingleProductShowMoreBtn(props: {
-  handle: Function;
-  children: ReactNode;
-}) {
+
+SingleProduct.ShowMore = function SingleProductShowMore({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ShowMore {...restprops}>{children}</ShowMore>;
+};
+SingleProduct.ShowMoreBtn = function SingleProductShowMoreBtn({
+  children,
+  handle,
+  ...restprops
+}: BtnProps & { handle: Function }) {
   return (
-    <ShowMoreBtn onClick={() => props.handle()}>{props.children}</ShowMoreBtn>
+    <ShowMoreBtn {...restprops} onClick={() => handle()}>
+      {children}
+    </ShowMoreBtn>
   );
 };
-SingleProduct.OptionsOpinion = function SingleProductOptionsOpinion(
-  props: OpinionOptionsType
-) {
+SingleProduct.OptionsOpinion = function SingleProductOptionsOpinion({
+  children,
+  click,
+  item,
+  ...restprops
+}: SpanProps & {
+  click: React.Dispatch<React.SetStateAction<{ active: boolean; id: number }>>;
+  item: number;
+}) {
   return (
     <OptionsOpinion
       id="options"
+      {...restprops}
       onClick={() =>
-        props.click((prev) =>
+        click((prev) =>
           prev.active
             ? {
                 active: false,
@@ -306,27 +430,31 @@ SingleProduct.OptionsOpinion = function SingleProductOptionsOpinion(
               }
             : {
                 active: true,
-                id: props.item,
+                id: item,
               }
         )
       }
     >
-      {props.children}
+      {children}
     </OptionsOpinion>
   );
 };
 
-SingleProduct.OptionsListOpinion = function SingleProductOptionsListOpinion(
-  props: JsxProps
-) {
-  return <OptionsListOpinion>{props.children}</OptionsListOpinion>;
+SingleProduct.OptionsListOpinion = function SingleProductOptionsListOpinion({
+  children,
+  ...restprops
+}: ListProps) {
+  return <OptionsListOpinion {...restprops}>{children}</OptionsListOpinion>;
 };
-SingleProduct.OptionsElOpinion = function SingleProductOptionsElOpinion(
-  props: OpinionDeleteType
-) {
+SingleProduct.OptionsElOpinion = function SingleProductOptionsElOpinion({
+  children,
+  click,
+  item,
+  ...restprops
+}: ElProps & { click: Function; item: string }) {
   return (
-    <OptionsElOpinion onClick={() => props.click(props.item)} id="options">
-      {props.children}
+    <OptionsElOpinion {...restprops} onClick={() => click(item)} id="options">
+      {children}
     </OptionsElOpinion>
   );
 };

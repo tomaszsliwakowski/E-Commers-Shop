@@ -1,153 +1,126 @@
 import React, { ComponentPropsWithoutRef, ReactNode } from "react";
 
 export interface DivProps extends ComponentPropsWithoutRef<"div"> {
-  children: ReactNode;
+  children?: ReactNode;
 }
 export interface SpanProps extends ComponentPropsWithoutRef<"span"> {
-  children: ReactNode;
+  children?: ReactNode;
 }
 export interface LabelProps extends ComponentPropsWithoutRef<"label"> {
-  children: ReactNode;
+  children?: ReactNode;
 }
 export interface HeadProps
   extends ComponentPropsWithoutRef<"h1" | "h2" | "h3" | "h4"> {
-  children: ReactNode;
+  children?: ReactNode;
 }
 export interface ListProps extends ComponentPropsWithoutRef<"ul"> {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 export interface ElProps extends ComponentPropsWithoutRef<"li"> {
-  children: ReactNode;
+  children?: ReactNode;
 }
 export interface TextProps extends ComponentPropsWithoutRef<"p"> {
-  children: ReactNode;
+  children?: ReactNode;
 }
 export interface BtnProps extends ComponentPropsWithoutRef<"button"> {
-  children: ReactNode;
+  children?: ReactNode;
 }
 export interface HlinkProps extends ComponentPropsWithoutRef<"a"> {
-  children: ReactNode;
+  children?: ReactNode;
+}
+export interface FormProps extends ComponentPropsWithoutRef<"form"> {
+  children?: ReactNode;
 }
 
-// REMAKE BELOW
-
-export type JsxProps = {
-  children?: ReactNode;
-  href?: string;
-  display?: string;
-  scroll?: boolean;
-  scrollDisplay?: string;
-  width?: number;
-  style?: string;
-  active?: PanelActiveProps;
-  active2?: boolean;
-};
-
-export type DropDownProps = {
-  children?: ReactNode;
-  href?: string;
-  click: React.Dispatch<React.SetStateAction<PanelActiveProps>>;
-};
-export type SortJSXProps = {
-  children?: ReactNode;
-  click: React.Dispatch<React.SetStateAction<boolean>>;
-  active?: boolean;
-};
-export type OpinionJSXProps = {
-  children?: ReactNode;
-  click: React.Dispatch<React.SetStateAction<boolean>>;
-  active?: boolean;
-  handle: Function;
-};
-
-export type FormProps = {
-  submit: Function;
-  children: ReactNode;
-};
-
-export type SortChooseJSXProps = {
-  children?: ReactNode;
-  active?: boolean;
-  click: React.Dispatch<React.SetStateAction<string>>;
-  el: string;
-};
-export type ProdCountPropsType = {
-  children?: ReactNode;
-  click: Function;
-  item: number;
-  id?: string;
-  prod?: number;
-};
-
-export type TsxPropsBoolean = {
-  children?: ReactNode;
-  click: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-export type SearchPropsFunction = {
-  children?: ReactNode;
-  click: Function;
-};
-
-export type PanelActiveProps = {
-  Account: boolean;
-  Basket: boolean;
-};
-
-export type LinkProps = {
-  children?: ReactNode;
-  to: string;
-};
-
-export type WindowSizeType = {
-  width: number | undefined;
-  height: number | undefined;
-};
-
-export type ScrollPositionType = {
-  position: number | undefined;
-};
-
-export type DateType = {
-  Year: number;
-  Month: number;
-  Day: number;
-  Hours: number;
-  Minutes: number;
-  Seconds: number;
-};
-
-export type TimerType = {
-  second: number;
-  minutes: number;
-  hour: number;
-};
-
-export type HomeProductType = {
+export interface ProductType {
+  id: number;
   name: string;
   img: string;
   price: number;
-  link: string;
-};
+  category: string;
+  producer: string;
+  components?: string;
+  accesories?: string;
+  opinion: number;
+  spec?: string[];
+  destiny?: string;
+  count?: number;
+  newPrice?: number;
+}
 
-export type UserPanelProps = {
-  width?: number;
-  activeRightMenu: PanelActiveProps;
-  setActiveRightMenu: React.Dispatch<React.SetStateAction<PanelActiveProps>>;
-};
+export interface BasketProductsProps {
+  BasketProducts: {
+    basket: Array<{ product: ProductType }>;
+  };
+}
+export interface WindowSizeType {
+  width: number | undefined;
+  height: number | undefined;
+}
 
-export type UserMenuProps = {
-  activeLeftMenu: boolean;
-  setActiveLeftMenu: React.Dispatch<React.SetStateAction<boolean>>;
-  ScrollAction: boolean;
-};
+export interface AllProductsType {
+  products: Array<ProductType>;
+}
 
-export type HeaderProps = {
-  children?: ReactNode;
-  Click: Function;
-  scroll?: boolean;
+export interface TimerType {
+  second: number;
+  minutes: number;
+  hour: number;
+}
+
+export interface FiltersProps {
+  product: GetProductsType;
+  setfilters: React.Dispatch<React.SetStateAction<filtr>>;
+  filters: filtr;
+  ShowProd: ProductType[];
+}
+export interface GetProductsType {
+  category?: string;
+  products: Array<ProductType>;
+  filters?: FiltersType;
+}
+type FiltersType = {
+  Producent?: string[];
+  Przeznaczenie?: string[];
+  Komponenty?: string[];
+  Akcesoria?: string[];
 };
+export interface filtr {
+  filtr_one: string[];
+  filtr_two: string[];
+  price: {
+    from: number;
+    to: number;
+  };
+}
+export interface FormErrorType {
+  email: boolean;
+  password: boolean;
+}
+export interface FormErrorTypeReg extends FormErrorType {
+  name: boolean;
+  lastname: boolean;
+}
+export interface LoginValueType {
+  email: string;
+  password: string;
+}
+export interface RegisterValueType extends LoginValueType {
+  name: string;
+  lastname: string;
+}
+
+export interface OpinionType {
+  uid: string;
+  email: String;
+  name: String;
+  content: String;
+  date: String;
+  prod_id: String;
+  opinionId: number;
+  _id: string;
+}
 
 export type BasketConPropsType = {
   ActiveCount: boolean;
@@ -158,125 +131,4 @@ export type BasketConPropsType = {
   setActiveCount: React.Dispatch<React.SetStateAction<boolean>>;
   HandleCount: Function;
   HandleActiveCountInput: Function;
-};
-
-export type ProductsType = {
-  id: number;
-  name: string;
-  img: string;
-  price: number;
-  link?: string;
-  category: string;
-  producer: string;
-  components?: string;
-  accesories?: string;
-  opinion: number;
-  spec?: string[];
-  destiny?: string;
-  count?: number;
-  newPrice?: number;
-};
-
-export type FiltersType = {
-  Producent?: string[];
-  Przeznaczenie?: string[];
-  Komponenty?: string[];
-  Akcesoria?: string[];
-};
-
-export type GetProductsType = {
-  category?: string;
-  products: Array<ProductsType>;
-  filters?: FiltersType;
-};
-export type AllProductsType = {
-  products: Array<ProductsType>;
-};
-export type ProductsItemType = {
-  item: ProductsType;
-};
-
-export type FiltersProps = {
-  product: GetProductsType;
-  setfilters: React.Dispatch<React.SetStateAction<filtr>>;
-  filters: filtr;
-  ShowProd: ProductsType[];
-};
-
-export type ClearFiltrProps = {
-  children: ReactNode;
-  setfilters: Function;
-};
-
-export type filtr = {
-  filtr_one: string[];
-  filtr_two: string[];
-  price: {
-    from: number;
-    to: number;
-  };
-};
-
-export type LoginValueType = {
-  email: string;
-  password: string;
-};
-
-export type RegisterValueType = {
-  name: string;
-  lastname: string;
-  email: string;
-  password: string;
-};
-
-export type FormErrorType = {
-  name?: boolean;
-  lastname?: boolean;
-  email: boolean;
-  password: boolean;
-};
-
-export type AuthProviderType = {
-  children: ReactNode;
-};
-
-export type ImageType = {
-  image: string;
-};
-export type opinionType = {
-  uid: string;
-  email: String;
-  name: String;
-  content: String;
-  date: String;
-  prod_id: String;
-  opinionId: number;
-  _id: string;
-};
-export type GoToElmentType = {
-  goTo: Function;
-  children?: ReactNode;
-  to: string;
-};
-export type OpinionOptionsType = {
-  children?: ReactNode;
-  click: React.Dispatch<React.SetStateAction<{ active: boolean; id: number }>>;
-  item: number;
-};
-export type OpinionDeleteType = {
-  children?: ReactNode;
-  click: Function;
-  item: string;
-};
-
-export type AddBasketBtnType = {
-  children?: ReactNode;
-  click?: Function;
-  href?: string;
-};
-
-export type basketprops = {
-  BasketProducts: {
-    basket: Array<{ product: ProductsType }>;
-  };
 };

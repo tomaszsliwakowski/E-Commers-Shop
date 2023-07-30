@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Product from "./productList";
 import {
   GetProductsType,
-  ProductsType,
+  ProductType,
   WindowSizeType,
   filtr,
 } from "../../types/Types";
@@ -102,7 +102,7 @@ const ProductsSection = () => {
     };
   }, []);
 
-  const FiltrOpt = (item: ProductsType) => {
+  const FiltrOpt = (item: ProductType) => {
     return item.destiny
       ? item.destiny
       : item.components
@@ -173,7 +173,7 @@ const ProductsSection = () => {
             : "wyników"
         })`}</Products.H_Count>
       </Products.Header>
-      <Products.Filters active2={activeFilters} width={width}>
+      <Products.Filters active={activeFilters} width={width}>
         <Products.F_Top>
           <Products.F_Title>Filtry</Products.F_Title>
           <Products.F_ClearBtn
@@ -268,7 +268,7 @@ const ProductsSection = () => {
               <BsFilter onClick={() => setActiveFilters(true)} />
             </Products.FiltrBtn>
           ) : null}
-          <Products.SP_Select active2={activeSort}>
+          <Products.SP_Select active={activeSort}>
             <Products.SP_Checkbox
               type="checkbox"
               checked={activeSort}
@@ -293,14 +293,14 @@ const ProductsSection = () => {
         >
           {search !== undefined && search !== "" ? (
             ShowProducts.length > 0 ? (
-              ShowProducts.map((item: ProductsType, id: number) => (
+              ShowProducts.map((item: ProductType, id: number) => (
                 <Product item={item} key={id} />
               ))
             ) : (
               <div>Nie znaleziono produktów</div>
             )
           ) : ShowProducts.length > 0 ? (
-            ShowProducts.map((item: ProductsType, id: number) => (
+            ShowProducts.map((item: ProductType, id: number) => (
               <Product item={item} key={id} />
             ))
           ) : (

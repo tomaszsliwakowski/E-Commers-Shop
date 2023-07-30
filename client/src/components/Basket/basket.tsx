@@ -8,13 +8,13 @@ import { GoToProduct, HomeRoute } from "../../routes";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { AiOutlineCaretDown } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { ProductsType } from "../../types/Types";
 import {
   ClearBasket,
   ClearProductBasket,
   UpdateBasket,
 } from "../../store/BasketSlice";
 import { toast } from "react-hot-toast";
+import { ProductType } from "../../types/Types";
 
 const CountOpt: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -32,7 +32,7 @@ const BasketSection = () => {
     { prodId: -1, value: 1 }
   );
 
-  const BasketProducts: { basket: Array<{ product: ProductsType }> } =
+  const BasketProducts: { basket: Array<{ product: ProductType }> } =
     useAppSelector((state) => state.basket);
 
   const HandleCount = (count: number, id: number) => {
@@ -147,7 +147,7 @@ const BasketSection = () => {
             </Basket.Header>
             <Basket.List>
               {BasketProducts.basket.map(
-                (item: { product: ProductsType }, id: number) => (
+                (item: { product: ProductType }, id: number) => (
                   <Basket.Product key={id}>
                     <Basket.Property>
                       <Basket.Goto to={GoToProduct(item.product.id)}>

@@ -4,7 +4,7 @@ import { LogRegBtn, LogRegError } from "../register&login";
 import { LoginRoute } from "../../routes";
 import InfoList from "../register&login/infolist";
 import RegisterConsens from ".";
-import { FormErrorType, RegisterValueType } from "../../types/Types";
+import { FormErrorTypeReg, RegisterValueType } from "../../types/Types";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/firebase-config";
 import { useNavigate } from "react-router";
@@ -19,7 +19,7 @@ const RegisterSection = () => {
     email: "",
     password: "",
   });
-  const [FormError, setFormError] = useState<FormErrorType>({
+  const [FormError, setFormError] = useState<FormErrorTypeReg>({
     name: false,
     lastname: false,
     email: false,

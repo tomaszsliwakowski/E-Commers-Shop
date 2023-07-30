@@ -1,5 +1,12 @@
 import React from "react";
-import { AddBasketBtnType, JsxProps, LinkProps } from "../../types/Types";
+import {
+  BtnProps,
+  DivProps,
+  HeadProps,
+  HlinkProps,
+  SpanProps,
+  TextProps,
+} from "../../types/Types";
 import {
   Container,
   Baner,
@@ -46,170 +53,234 @@ import {
   MobileAd,
 } from "./style/MainStyle";
 
-export function Main(props: JsxProps) {
-  const set =
-    props.width && props.width < 1250
-      ? props.width && props.width > 768
-        ? 62
-        : 110
-      : 101;
-  return (
-    <Container style={{ marginTop: `${set}px` }}>{props.children}</Container>
-  );
+export function Main({
+  children,
+  width,
+  ...restprops
+}: DivProps & { width?: number | undefined }) {
+  const set = width && width < 1250 ? (width && width > 768 ? 62 : 110) : 101;
+  return <Container style={{ marginTop: `${set}px` }}>{children}</Container>;
 }
 
-Main.Baner = function MainBaner(props: JsxProps) {
-  return <Baner>{props.children}</Baner>;
+Main.Baner = function MainBaner({ children, ...restprops }: DivProps) {
+  return <Baner {...restprops}>{children}</Baner>;
 };
 
-Main.Top = function MainTop(props: JsxProps) {
-  return <Top>{props.children}</Top>;
+Main.Top = function MainTop({ children, ...restprops }: DivProps) {
+  return <Top {...restprops}>{children}</Top>;
 };
-Main.Title = function MainTitle(props: JsxProps) {
-  return <Title>{props.children}</Title>;
+Main.Title = function MainTitle({ children, ...restprops }: HeadProps) {
+  return <Title {...restprops}>{children}</Title>;
 };
 Main.Image = function MainImage({ ...restprops }) {
   return <Image {...restprops} />;
 };
 
-Main.BestSellery = function MainBestSellery(props: JsxProps) {
-  return <BestSellery>{props.children}</BestSellery>;
+Main.BestSellery = function MainBestSellery({
+  children,
+  ...restprops
+}: DivProps) {
+  return <BestSellery {...restprops}>{children}</BestSellery>;
 };
 
-Main.BestSelleryTop = function MainBestSelleryTop(props: JsxProps) {
-  return <BestSelleryTop>{props.children}</BestSelleryTop>;
+Main.BestSelleryTop = function MainBestSelleryTop({
+  children,
+  ...restprops
+}: HeadProps) {
+  return <BestSelleryTop {...restprops}>{children}</BestSelleryTop>;
 };
-Main.BestSelleryBottom = function MainBestSelleryBotttom(props: JsxProps) {
-  return <BestSelleryBottom>{props.children}</BestSelleryBottom>;
+Main.BestSelleryBottom = function MainBestSelleryBotttom({
+  children,
+  ...restprops
+}: DivProps) {
+  return <BestSelleryBottom {...restprops}>{children}</BestSelleryBottom>;
 };
-Main.Bottom = function MainBotttom(props: JsxProps) {
-  return <Bottom>{props.children}</Bottom>;
-};
-
-Main.Newsletter = function MainNewsletter(props: JsxProps) {
-  return <Newsletter>{props.children}</Newsletter>;
-};
-
-export function TopLeft(props: JsxProps) {
-  return <Left href={props.href}>{props.children}</Left>;
-}
-
-export function TopRight(props: JsxProps) {
-  return <Right>{props.children}</Right>;
-}
-
-TopLeft.ImageAndTitle = function TopLeftImageAndTitle(props: JsxProps) {
-  return <LeftImageAndTitleCon>{props.children}</LeftImageAndTitleCon>;
-};
-TopLeft.Name = function TopLeftName(props: JsxProps) {
-  return <LeftName>{props.children}</LeftName>;
+Main.Bottom = function MainBotttom({ children, ...restprops }: DivProps) {
+  return <Bottom {...restprops}>{children}</Bottom>;
 };
 
-TopLeft.PriceCon = function TopLeftPriceCon(props: JsxProps) {
-  return <LeftPriceCon>{props.children}</LeftPriceCon>;
+Main.Newsletter = function MainNewsletter({
+  children,
+  ...restprops
+}: DivProps) {
+  return <Newsletter {...restprops}>{children}</Newsletter>;
 };
 
-TopLeft.TimerCon = function TopLeftTimerCon(props: JsxProps) {
-  return <LeftTimerCon>{props.children}</LeftTimerCon>;
-};
-
-TopLeft.NewPrice = function TopLeftNewPrice(props: JsxProps) {
-  return <LeftNewPrice>{props.children}</LeftNewPrice>;
-};
-
-TopLeft.OldPrice = function TopLeftOldPrice(props: JsxProps) {
-  return <LeftOldPrice>{props.children}</LeftOldPrice>;
-};
-TopLeft.NextShot = function TopLeftNextShot(props: JsxProps) {
-  return <NextShot>{props.children}</NextShot>;
-};
-TopLeft.OneTime = function TopLeftOneTime(props: JsxProps) {
-  return <OneTime>{props.children}</OneTime>;
-};
-TopLeft.TimeName = function TopLeftTimeName(props: JsxProps) {
-  return <TimeName>{props.children}</TimeName>;
-};
-
-TopLeft.RemTime = function TopLeftRemTime(props: JsxProps) {
-  return <RemTime>{props.children}</RemTime>;
-};
-TopLeft.Time = function TopLeftTime(props: JsxProps) {
-  return <Time>{props.children}</Time>;
-};
-TopLeft.Dot = function TopLeftDot(props: JsxProps) {
-  return <Dot>{props.children}</Dot>;
-};
-
-TopRight.Hits = function TopRightHits(props: JsxProps) {
-  return <Hits>{props.children}</Hits>;
-};
-
-TopRight.Product = function TopRightProduct(props: JsxProps) {
-  return <RightProduct>{props.children}</RightProduct>;
-};
-
-TopRight.Name = function TopRightName(props: JsxProps) {
-  return <RightName>{props.children}</RightName>;
-};
-TopRight.Price = function TopRightPrice(props: JsxProps) {
-  return <RightPrice>{props.children}</RightPrice>;
-};
-TopRight.BuyPanel = function TopRightBuyPanel(props: JsxProps) {
-  return <RightBuyPanel>{props.children}</RightBuyPanel>;
-};
-TopRight.AddToCart = function TopRightAddToCart(props: AddBasketBtnType) {
+export function TopLeft({
+  children,
+  href,
+  ...restprops
+}: HlinkProps & { href?: string }) {
   return (
-    <RightAddToCart onClick={() => props.click && props.click()}>
-      {props.children}
+    <Left {...restprops} href={href}>
+      {children}
+    </Left>
+  );
+}
+
+export function TopRight({ children, ...restprops }: DivProps) {
+  return <Right>{children}</Right>;
+}
+
+TopLeft.ImageAndTitle = function TopLeftImageAndTitle({
+  children,
+  ...restprops
+}: DivProps) {
+  return <LeftImageAndTitleCon {...restprops}>{children}</LeftImageAndTitleCon>;
+};
+TopLeft.Name = function TopLeftName({ children, ...restprops }: SpanProps) {
+  return <LeftName {...restprops}>{children}</LeftName>;
+};
+
+TopLeft.PriceCon = function TopLeftPriceCon({
+  children,
+  ...restprops
+}: DivProps) {
+  return <LeftPriceCon {...restprops}>{children}</LeftPriceCon>;
+};
+
+TopLeft.TimerCon = function TopLeftTimerCon({
+  children,
+  ...restprops
+}: DivProps) {
+  return <LeftTimerCon {...restprops}>{children}</LeftTimerCon>;
+};
+
+TopLeft.NewPrice = function TopLeftNewPrice({
+  children,
+  ...restprops
+}: TextProps) {
+  return <LeftNewPrice {...restprops}>{children}</LeftNewPrice>;
+};
+
+TopLeft.OldPrice = function TopLeftOldPrice({
+  children,
+  ...restprops
+}: TextProps) {
+  return <LeftOldPrice {...restprops}>{children}</LeftOldPrice>;
+};
+TopLeft.NextShot = function TopLeftNextShot({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <NextShot {...restprops}>{children}</NextShot>;
+};
+TopLeft.OneTime = function TopLeftOneTime({
+  children,
+  ...restprops
+}: DivProps) {
+  return <OneTime {...restprops}>{children}</OneTime>;
+};
+TopLeft.TimeName = function TopLeftTimeName({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <TimeName {...restprops}>{children}</TimeName>;
+};
+
+TopLeft.RemTime = function TopLeftRemTime({
+  children,
+  ...restprops
+}: DivProps) {
+  return <RemTime {...restprops}>{children}</RemTime>;
+};
+TopLeft.Time = function TopLeftTime({ children, ...restprops }: SpanProps) {
+  return <Time {...restprops}>{children}</Time>;
+};
+TopLeft.Dot = function TopLeftDot({ children, ...restprops }: DivProps) {
+  return <Dot {...restprops}>{children}</Dot>;
+};
+
+TopRight.Hits = function TopRightHits({ children, ...restprops }: DivProps) {
+  return <Hits {...restprops}>{children}</Hits>;
+};
+
+TopRight.Product = function TopRightProduct({
+  children,
+  ...restprops
+}: DivProps) {
+  return <RightProduct {...restprops}>{children}</RightProduct>;
+};
+
+TopRight.Name = function TopRightName({ children, ...restprops }: DivProps) {
+  return <RightName {...restprops}>{children}</RightName>;
+};
+TopRight.Price = function TopRightPrice({ children, ...restprops }: DivProps) {
+  return <RightPrice {...restprops}>{children}</RightPrice>;
+};
+TopRight.BuyPanel = function TopRightBuyPanel({
+  children,
+  ...restprops
+}: DivProps) {
+  return <RightBuyPanel {...restprops}>{children}</RightBuyPanel>;
+};
+TopRight.AddToCart = function TopRightAddToCart({
+  children,
+  click,
+  ...restprops
+}: DivProps & { click?: Function }) {
+  return (
+    <RightAddToCart {...restprops} onClick={() => click && click()}>
+      {children}
     </RightAddToCart>
   );
 };
 
-Main.Product = function MainProduct(props: JsxProps) {
-  return <BestProduct>{props.children}</BestProduct>;
+Main.Product = function MainProduct({ children, ...restprops }: DivProps) {
+  return <BestProduct {...restprops}>{children}</BestProduct>;
 };
 
-Main.Name = function MainName(props: JsxProps) {
-  return <BestName>{props.children}</BestName>;
+Main.Name = function MainName({ children, ...restprops }: DivProps) {
+  return <BestName {...restprops}>{children}</BestName>;
 };
-Main.Price = function MainPrice(props: JsxProps) {
-  return <BestPrice>{props.children}</BestPrice>;
+Main.Price = function MainPrice({ children, ...restprops }: DivProps) {
+  return <BestPrice {...restprops}>{children}</BestPrice>;
 };
-Main.BuyPanel = function MainBuyPanel(props: JsxProps) {
-  return <BestBuyPanel>{props.children}</BestBuyPanel>;
+Main.BuyPanel = function MainBuyPanel({ children, ...restprops }: DivProps) {
+  return <BestBuyPanel {...restprops}>{children}</BestBuyPanel>;
 };
-Main.AddToCart = function MainAddToCart(props: AddBasketBtnType) {
+Main.AddToCart = function MainAddToCart({
+  children,
+  click,
+  ...restprops
+}: DivProps & { click?: Function }) {
   return (
-    <BestAddToCart onClick={() => props.click && props.click()}>
-      {props.children}
+    <BestAddToCart {...restprops} onClick={() => click && click()}>
+      {children}
     </BestAddToCart>
   );
 };
 
-Main.BottomA = function MainBottomA(props: JsxProps) {
-  return <BottomA>{props.children}</BottomA>;
+Main.BottomA = function MainBottomA({ children, ...restprops }: DivProps) {
+  return <BottomA {...restprops}>{children}</BottomA>;
 };
-Main.BottomB = function MainBottomB(props: JsxProps) {
-  return <BottomB>{props.children}</BottomB>;
+Main.BottomB = function MainBottomB({ children, ...restprops }: DivProps) {
+  return <BottomB {...restprops}>{children}</BottomB>;
 };
 
-Main.BottomTitle = function MainBottomTitle(props: JsxProps) {
-  return <BottomTitle>{props.children}</BottomTitle>;
+Main.BottomTitle = function MainBottomTitle({
+  children,
+  ...restprops
+}: HeadProps) {
+  return <BottomTitle {...restprops}>{children}</BottomTitle>;
 };
-Main.BottomText = function MainBottomText(props: JsxProps) {
-  return <BottomText>{props.children}</BottomText>;
+Main.BottomText = function MainBottomText({
+  children,
+  ...restprops
+}: TextProps) {
+  return <BottomText {...restprops}>{children}</BottomText>;
 };
 Main.BottomInput = function MainBottomInput({ ...restprops }) {
   return <BottomInput {...restprops} />;
 };
 
-Main.BottomCon = function MainBottomCon(props: JsxProps) {
-  return <BottomCon>{props.children}</BottomCon>;
+Main.BottomCon = function MainBottomCon({ children, ...restprops }: DivProps) {
+  return <BottomCon {...restprops}>{children}</BottomCon>;
 };
-Main.BottomBtn = function MainBottomBtn(props: JsxProps) {
-  return <BottomBtn>{props.children}</BottomBtn>;
+Main.BottomBtn = function MainBottomBtn({ children, ...restprops }: BtnProps) {
+  return <BottomBtn {...restprops}>{children}</BottomBtn>;
 };
 
-Main.MobileAd = function MainMobileAd(props: JsxProps) {
-  return <MobileAd>{props.children}</MobileAd>;
+Main.MobileAd = function MainMobileAd({ children, ...restprops }: DivProps) {
+  return <MobileAd {...restprops}>{children}</MobileAd>;
 };

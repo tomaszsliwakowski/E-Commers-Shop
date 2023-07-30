@@ -1,10 +1,12 @@
 import React from "react";
 import {
-  AddBasketBtnType,
-  ClearFiltrProps,
-  JsxProps,
-  SortChooseJSXProps,
-  SortJSXProps,
+  BtnProps,
+  DivProps,
+  ElProps,
+  HeadProps,
+  LabelProps,
+  ListProps,
+  SpanProps,
 } from "../../types/Types";
 import {
   Container,
@@ -54,195 +56,342 @@ import {
   AcceptFiltrBtn,
 } from "./style/productStyle";
 
-export function Products(props: JsxProps) {
-  return <Container>{props.children}</Container>;
+export function Products({ children, ...restprops }: DivProps) {
+  return <Container {...restprops}>{children}</Container>;
 }
 
-Products.Filters = function ProductsFilters(props: JsxProps) {
+Products.Filters = function ProductsFilters({
+  children,
+  active,
+  width,
+  ...restprops
+}: DivProps & { active: boolean; width: number | undefined }) {
   return (
     <Filters
+      {...restprops}
       style={{
         display: `${
-          props.width && props.width <= 550 && props.active2
+          width && width <= 550 && active
             ? "flex"
-            : !props.active2 && props.width && props.width <= 550
+            : !active && width && width <= 550
             ? "none"
             : "flex"
         }`,
       }}
     >
-      {props.children}
+      {children}
     </Filters>
   );
 };
 
-Products.ProductsSec = function ProductsProductsSec(props: JsxProps) {
-  return <ProductsSec>{props.children}</ProductsSec>;
+Products.ProductsSec = function ProductsProductsSec({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ProductsSec {...restprops}>{children}</ProductsSec>;
 };
 
-Products.Header = function ProductsHeader(props: JsxProps) {
-  return <Header>{props.children}</Header>;
+Products.Header = function ProductsHeader({
+  children,
+  ...restprops
+}: DivProps) {
+  return <Header {...restprops}>{children}</Header>;
 };
 
-Products.H_Title = function ProductsHeaderTitle(props: JsxProps) {
-  return <HTitle>{props.children}</HTitle>;
+Products.H_Title = function ProductsHeaderTitle({
+  children,
+  ...restprops
+}: HeadProps) {
+  return <HTitle {...restprops}>{children}</HTitle>;
 };
-Products.H_Count = function ProductsHeaderCount(props: JsxProps) {
-  return <HCount>{props.children}</HCount>;
-};
-
-Products.SortPanel = function ProductsSortPanel(props: JsxProps) {
-  return <SortPanel>{props.children}</SortPanel>;
-};
-Products.All = function ProductsAll(props: JsxProps) {
-  return <All style={{ display: `${props.style}` }}>{props.children}</All>;
-};
-
-Products.F_Top = function ProductsFTop(props: JsxProps) {
-  return <FTop>{props.children}</FTop>;
-};
-Products.F_Bottom = function ProductsFBottom(props: JsxProps) {
-  return <FBottom>{props.children}</FBottom>;
+Products.H_Count = function ProductsHeaderCount({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <HCount {...restprops}>{children}</HCount>;
 };
 
-Products.F_Title = function ProductsFTitle(props: JsxProps) {
-  return <FTitle>{props.children}</FTitle>;
+Products.SortPanel = function ProductsSortPanel({
+  children,
+  ...restprops
+}: DivProps) {
+  return <SortPanel {...restprops}>{children}</SortPanel>;
 };
-
-Products.F_ClearBtn = function ProductsFClearBtn(props: ClearFiltrProps) {
+Products.All = function ProductsAll({
+  children,
+  style,
+  ...restprops
+}: DivProps & { style?: string }) {
   return (
-    <FClearBtn onClick={() => props.setfilters()}>{props.children}</FClearBtn>
+    <All {...restprops} style={{ display: `${style}` }}>
+      {children}
+    </All>
   );
 };
 
-Products.F_Section = function ProductsFSection(props: JsxProps) {
-  return <FSection>{props.children}</FSection>;
+Products.F_Top = function ProductsFTop({ children, ...restprops }: DivProps) {
+  return <FTop {...restprops}>{children}</FTop>;
+};
+Products.F_Bottom = function ProductsFBottom({
+  children,
+  ...restprops
+}: DivProps) {
+  return <FBottom {...restprops}>{children}</FBottom>;
 };
 
-Products.F_Name = function ProductsFName(props: JsxProps) {
-  return <FName>{props.children}</FName>;
+Products.F_Title = function ProductsFTitle({
+  children,
+  ...restprops
+}: HeadProps) {
+  return <FTitle {...restprops}>{children}</FTitle>;
 };
-Products.F_List = function ProductsFList(props: JsxProps) {
-  return <FList>{props.children}</FList>;
+
+Products.F_ClearBtn = function ProductsFClearBtn({
+  children,
+  setfilters,
+  ...restprops
+}: BtnProps & { setfilters: Function }) {
+  return (
+    <FClearBtn {...restprops} onClick={() => setfilters()}>
+      {children}
+    </FClearBtn>
+  );
 };
-Products.F_Element = function ProductsFElement(props: JsxProps) {
-  return <FElement>{props.children}</FElement>;
+
+Products.F_Section = function ProductsFSection({
+  children,
+  ...restprops
+}: DivProps) {
+  return <FSection {...restprops}>{children}</FSection>;
+};
+
+Products.F_Name = function ProductsFName({
+  children,
+  ...restprops
+}: HeadProps) {
+  return <FName {...restprops}>{children}</FName>;
+};
+Products.F_List = function ProductsFList({
+  children,
+  ...restprops
+}: ListProps) {
+  return <FList {...restprops}>{children}</FList>;
+};
+Products.F_Element = function ProductsFElement({
+  children,
+  ...restprops
+}: ElProps) {
+  return <FElement>{children}</FElement>;
 };
 Products.F_Checkbox = function ProductsFCheckbox({ ...restprops }) {
   return <FCheckbox {...restprops} />;
 };
 
-Products.F_Choose = function ProductsFChoose(props: JsxProps) {
-  return <FChoose>{props.children}</FChoose>;
+Products.F_Choose = function ProductsFChoose({
+  children,
+  ...restprops
+}: LabelProps) {
+  return <FChoose {...restprops}>{children}</FChoose>;
 };
 
-Products.F_Checkmark = function ProductsFCheckmark(props: JsxProps) {
-  return <FCheckmark>{props.children}</FCheckmark>;
+Products.F_Checkmark = function ProductsFCheckmark({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <FCheckmark {...restprops}>{children}</FCheckmark>;
 };
 
-Products.F_PriceCon = function ProductsFPriceCon(props: JsxProps) {
-  return <FPriceCon>{props.children}</FPriceCon>;
+Products.F_PriceCon = function ProductsFPriceCon({
+  children,
+  ...restprops
+}: DivProps) {
+  return <FPriceCon {...restprops}>{children}</FPriceCon>;
 };
-Products.F_Price = function ProductsFPrice(props: JsxProps) {
-  return <FPrice>{props.children}</FPrice>;
+Products.F_Price = function ProductsFPrice({
+  children,
+  ...restprops
+}: DivProps) {
+  return <FPrice {...restprops}>{children}</FPrice>;
 };
-Products.F_PriceFromTo = function ProductsFFromTo(props: JsxProps) {
-  return <FPriceFromTo>{props.children}</FPriceFromTo>;
+Products.F_PriceFromTo = function ProductsFFromTo({
+  children,
+  ...restprops
+}: DivProps) {
+  return <FPriceFromTo {...restprops}>{children}</FPriceFromTo>;
 };
 Products.F_PriceInput = function ProductsFPriceInput({ ...restprops }) {
   return <FPriceInput {...restprops} />;
 };
-Products.F_PriceCurrency = function ProductsFPriceCurrency(props: JsxProps) {
-  return <FPriceCurrensy>{props.children}</FPriceCurrensy>;
+Products.F_PriceCurrency = function ProductsFPriceCurrency({
+  children,
+  ...restprops
+}: DivProps) {
+  return <FPriceCurrensy {...restprops}>{children}</FPriceCurrensy>;
 };
 
-Products.Item = function ProductsItem(props: JsxProps) {
-  return <Item>{props.children}</Item>;
+Products.Item = function ProductsItem({ children, ...restprops }: DivProps) {
+  return <Item {...restprops}>{children}</Item>;
 };
 
-Products.I_Img = function ProductsItemImg(props: JsxProps) {
-  return <IImg>{props.children}</IImg>;
+Products.I_Img = function ProductsItemImg({
+  children,
+  ...restprops
+}: DivProps) {
+  return <IImg {...restprops}>{children}</IImg>;
 };
 Products.Image = function ProductsImage({ ...restprops }) {
   return <Image {...restprops} />;
 };
 
-Products.I_Desc = function ProductsItemDesc(props: JsxProps) {
-  return <IDesc>{props.children}</IDesc>;
+Products.I_Desc = function ProductsItemDesc({
+  children,
+  ...restprops
+}: DivProps) {
+  return <IDesc {...restprops}>{children}</IDesc>;
 };
 
-Products.I_Name = function ProductsItemName(props: JsxProps) {
-  return <IName>{props.children}</IName>;
+Products.I_Name = function ProductsItemName({
+  children,
+  ...restprops
+}: DivProps) {
+  return <IName {...restprops}>{children}</IName>;
 };
 
-Products.I_Opinion = function ProductsItemOpinion(props: JsxProps) {
-  return <IOpinion>{props.children}</IOpinion>;
+Products.I_Opinion = function ProductsItemOpinion({
+  children,
+  ...restprops
+}: DivProps) {
+  return <IOpinion {...restprops}>{children}</IOpinion>;
 };
 
-Products.I_SpecList = function ProductsItemSpecList(props: JsxProps) {
-  return <ISpecList>{props.children}</ISpecList>;
+Products.I_SpecList = function ProductsItemSpecList({
+  children,
+  ...restprops
+}: ListProps) {
+  return <ISpecList {...restprops}>{children}</ISpecList>;
 };
-Products.I_SpecEl = function ProductsItemSpecEl(props: JsxProps) {
-  return <ISpecEl>{props.children}</ISpecEl>;
+Products.I_SpecEl = function ProductsItemSpecEl({
+  children,
+  ...restprops
+}: ElProps) {
+  return <ISpecEl {...restprops}>{children}</ISpecEl>;
 };
-Products.I_BuyPanel = function ProductsItemBuyPanel(props: JsxProps) {
-  return <IBuyPanel>{props.children}</IBuyPanel>;
+Products.I_BuyPanel = function ProductsItemBuyPanel({
+  children,
+  ...restprops
+}: DivProps) {
+  return <IBuyPanel {...restprops}>{children}</IBuyPanel>;
 };
 
-Products.I_Price = function ProductsItemPrice(props: JsxProps) {
-  return <IPrice>{props.children}</IPrice>;
+Products.I_Price = function ProductsItemPrice({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <IPrice {...restprops}>{children}</IPrice>;
 };
-Products.I_Basket = function ProductsItemBasket(props: JsxProps) {
-  return <IBasket>{props.children}</IBasket>;
+Products.I_Basket = function ProductsItemBasket({
+  children,
+  ...restprops
+}: DivProps) {
+  return <IBasket {...restprops}>{children}</IBasket>;
 };
-Products.AddToCart = function ProductsAddToCart(props: AddBasketBtnType) {
+Products.AddToCart = function ProductsAddToCart({
+  children,
+  click,
+  ...restprops
+}: DivProps & { click?: Function }) {
   return (
-    <AddToCart onClick={() => props.click && props.click()}>
-      {props.children}
+    <AddToCart {...restprops} onClick={() => click && click()}>
+      {children}
     </AddToCart>
   );
 };
 
-Products.SP_Select = function ProductsSPSelect(props: JsxProps) {
+Products.SP_Select = function ProductsSPSelect({
+  children,
+  active,
+  ...restprops
+}: DivProps & { active: boolean }) {
   return (
     <SPSelect
+      {...restprops}
       id="sort"
       style={{
-        borderRadius: `${props.active2 ? "10px 10px 0px 0px" : "10px"}`,
+        borderRadius: `${active ? "10px 10px 0px 0px" : "10px"}`,
       }}
     >
-      {props.children}
+      {children}
     </SPSelect>
   );
 };
-Products.SP_Sort = function ProductsSPSort(props: JsxProps) {
-  return <SPSort id="sort">{props.children}</SPSort>;
+Products.SP_Sort = function ProductsSPSort({
+  children,
+  ...restprops
+}: SpanProps) {
+  return (
+    <SPSort {...restprops} id="sort">
+      {children}
+    </SPSort>
+  );
 };
-Products.SP_Show = function ProductsSPShow(props: JsxProps) {
-  return <SPShow id="sort">{props.children}</SPShow>;
+Products.SP_Show = function ProductsSPShow({
+  children,
+  ...restprops
+}: DivProps) {
+  return (
+    <SPShow {...restprops} id="sort">
+      {children}
+    </SPShow>
+  );
 };
-Products.SP_ShowOpt = function ProductsSPShowOpt(props: JsxProps) {
-  return <SPShowOpt id="sort">{props.children}</SPShowOpt>;
+Products.SP_ShowOpt = function ProductsSPShowOpt({
+  children,
+  ...restprops
+}: SpanProps) {
+  return (
+    <SPShowOpt {...restprops} id="sort">
+      {children}
+    </SPShowOpt>
+  );
 };
-Products.SP_List = function ProductsSList(props: SortJSXProps) {
+Products.SP_List = function ProductsSList({
+  children,
+  click,
+  active,
+  ...restprops
+}: ListProps & {
+  click: React.Dispatch<React.SetStateAction<boolean>>;
+  active: boolean;
+}) {
   return (
     <SPList
+      {...restprops}
       id="sort"
-      onClick={() => props.click((prev) => !prev)}
-      style={{ display: `${props.active ? "flex" : "none"}` }}
+      onClick={() => click((prev) => !prev)}
+      style={{ display: `${active ? "flex" : "none"}` }}
     >
-      {props.children}
+      {children}
     </SPList>
   );
 };
-Products.SP_ListEl = function ProductsSListEl(props: SortChooseJSXProps) {
+Products.SP_ListEl = function ProductsSListEl({
+  children,
+  click,
+  active,
+  el,
+  ...restprops
+}: ListProps & {
+  click: React.Dispatch<React.SetStateAction<string>>;
+  active?: boolean;
+  el: string;
+}) {
   return (
     <SPListEl
-      onClick={() => props.click(props.el)}
-      style={{ fontWeight: `${props.active ? "bold" : "400"}` }}
+      onClick={() => click(el)}
+      style={{ fontWeight: `${active ? "bold" : "400"}` }}
       id="sort"
     >
-      {props.children}
+      {children}
     </SPListEl>
   );
 };
@@ -251,10 +400,16 @@ Products.SP_Checkbox = function ProductsSPCheckbox({ ...restprops }) {
   return <SPCheckbox {...restprops} />;
 };
 
-Products.FiltrBtn = function ProductsFiltrBtn(props: JsxProps) {
-  return <FiltrBtn>{props.children}</FiltrBtn>;
+Products.FiltrBtn = function ProductsFiltrBtn({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <FiltrBtn {...restprops}>{children}</FiltrBtn>;
 };
 
-Products.AcceptFiltrBtn = function ProductsAcceptFiltrBtn(props: JsxProps) {
-  return <AcceptFiltrBtn>{props.children}</AcceptFiltrBtn>;
+Products.AcceptFiltrBtn = function ProductsAcceptFiltrBtn({
+  children,
+  ...restprops
+}: BtnProps) {
+  return <AcceptFiltrBtn {...restprops}>{children}</AcceptFiltrBtn>;
 };

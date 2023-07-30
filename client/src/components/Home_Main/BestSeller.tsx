@@ -4,7 +4,7 @@ import { BsCartPlus } from "react-icons/bs";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "../../index.css";
-import { AllProductsType, ProductsType } from "../../types/Types";
+import { AllProductsType, ProductType } from "../../types/Types";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../store/store";
 import { AddToBasket } from "../../store/BasketSlice";
@@ -79,9 +79,9 @@ const BestSellerSection = (ProductsData: AllProductsType) => {
 
 export default BestSellerSection;
 
-const Product = (item: ProductsType) => {
+const Product = (item: ProductType) => {
   const dispatch = useAppDispatch();
-  const AddProductToBasket = (Product: ProductsType) => {
+  const AddProductToBasket = (Product: ProductType) => {
     try {
       dispatch(
         AddToBasket({

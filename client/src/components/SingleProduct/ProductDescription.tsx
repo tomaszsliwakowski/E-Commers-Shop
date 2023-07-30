@@ -1,8 +1,7 @@
 import React from "react";
 import SingleProduct from ".";
-import { ImageType } from "../../types/Types";
 
-const ProductDescription = ({ image }: ImageType) => {
+const ProductDescription = ({ image }: { image: string }) => {
   return (
     <SingleProduct.Description>
       <SingleProduct.ProdImg>

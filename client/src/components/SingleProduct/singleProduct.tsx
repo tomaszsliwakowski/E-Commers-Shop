@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import SingleProduct from ".";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { ProductsType, WindowSizeType } from "../../types/Types";
+import { ProductType, WindowSizeType } from "../../types/Types";
 import useWindowSize from "../../hooks/useWindowSize";
 import { Rating } from "../Products/productList";
 import Basket from "../Basket";
@@ -27,7 +27,7 @@ const SingleProductSection = () => {
   const [ProductCount, setProductCount] = useState<number>(1);
   const [CountInput, setCountInput] = useState<number>(1);
   let { width, height }: WindowSizeType = useWindowSize();
-  const [ProductData, setProductData] = useState<ProductsType>({
+  const [ProductData, setProductData] = useState<ProductType>({
     id: 0,
     name: "",
     img: "",

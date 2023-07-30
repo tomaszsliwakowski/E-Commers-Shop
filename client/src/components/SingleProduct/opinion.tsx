@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import SingleProduct from ".";
-import { ProductsType, WindowSizeType, opinionType } from "../../types/Types";
+import { ProductType, WindowSizeType, OpinionType } from "../../types/Types";
 import { Rating } from "../Products/productList";
 import { BiUserCircle } from "react-icons/bi";
 import { AuthContext } from "../../assets/auth";
@@ -13,7 +13,7 @@ const OpnionComment = ({
   ProductData,
   prodId,
 }: {
-  ProductData: ProductsType;
+  ProductData: ProductType;
   prodId: string;
 }) => {
   const [activeAddOpinion, setActiveAddOpinon] = useState<boolean>(false);
@@ -27,7 +27,7 @@ const OpnionComment = ({
     active: false,
     id: 0,
   });
-  const [FirstOpinions, setFirstOpinions] = useState<Array<opinionType>>([
+  const [FirstOpinions, setFirstOpinions] = useState<Array<OpinionType>>([
     {
       uid: "",
       email: "",

@@ -4,7 +4,6 @@ import {
   ElProps,
   HeadProps,
   HlinkProps,
-  JsxProps,
   ListProps,
   SpanProps,
   TextProps,
@@ -24,47 +23,47 @@ import {
 } from "./style/footerStyle";
 
 export default function Footer({ children, ...restprops }: DivProps) {
-  return <Container>{children}</Container>;
+  return <Container {...restprops}>{children}</Container>;
 }
 
 Footer.Top = function FooterTop({ children, ...restprops }: DivProps) {
-  return <Top>{children}</Top>;
+  return <Top {...restprops}>{children}</Top>;
 };
 
 Footer.Bottom = function FooterBottom({ children, ...restprops }: DivProps) {
-  return <Bottom>{children}</Bottom>;
+  return <Bottom {...restprops}>{children}</Bottom>;
 };
 
 Footer.AboutUs = function FooterAboutsUs({ children, ...restprops }: DivProps) {
-  return <About>{children}</About>;
+  return <About {...restprops}>{children}</About>;
 };
 Footer.Contact = function FooterContact({ children, ...restprops }: DivProps) {
-  return <Contact>{children}</Contact>;
+  return <Contact {...restprops}>{children}</Contact>;
 };
 
 Footer.Copyright = function FooterCopyright({
   children,
   ...restprops
 }: SpanProps) {
-  return <Copyright>{children}</Copyright>;
+  return <Copyright {...restprops}>{children}</Copyright>;
 };
 
 Footer.List = function FooterList({ children, ...restprops }: ListProps) {
-  return <List>{children}</List>;
+  return <List {...restprops}>{children}</List>;
 };
 
 Footer.ContactOption = function FooterContactOption({
   children,
   ...restprops
 }: ElProps) {
-  return <ContactOption>{children}</ContactOption>;
+  return <ContactOption {...restprops}>{children}</ContactOption>;
 };
 
 Footer.Title = function FooterTitle({ children, ...restprops }: HeadProps) {
-  return <Title>{children}</Title>;
+  return <Title {...restprops}>{children}</Title>;
 };
 Footer.Text = function FooterText({ children, ...restprops }: TextProps) {
-  return <Text>{children}</Text>;
+  return <Text {...restprops}>{children}</Text>;
 };
 
 Footer.Link = function FooterLink({
@@ -74,7 +73,7 @@ Footer.Link = function FooterLink({
   ...restprops
 }: HlinkProps & { style?: string }) {
   return (
-    <Link href={href} color={style}>
+    <Link {...restprops} href={href} color={style}>
       {children}
     </Link>
   );

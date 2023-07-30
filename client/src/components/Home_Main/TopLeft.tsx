@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Main, TopLeft } from "./index";
-import { ProductsType, TimerType } from "../../types/Types";
+import { ProductType, TimerType } from "../../types/Types";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
 
@@ -12,7 +12,7 @@ const override = {
 
 const TopLeftSection = () => {
   const [Timer, setTimer] = useState<TimerType | undefined>();
-  const [ProductData, setProductData] = useState<ProductsType>();
+  const [ProductData, setProductData] = useState<ProductType>();
 
   useEffect(() => {
     axios

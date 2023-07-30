@@ -4,7 +4,7 @@ import { BsCartPlus } from "react-icons/bs";
 import useWindowSize from "../../hooks/useWindowSize";
 import {
   AllProductsType,
-  ProductsType,
+  ProductType,
   WindowSizeType,
 } from "../../types/Types";
 import Carousel from "react-multi-carousel";
@@ -97,9 +97,9 @@ const TopRightSection = (ProductsData: AllProductsType) => {
 
 export default TopRightSection;
 
-const Product = (item: ProductsType) => {
+const Product = (item: ProductType) => {
   const dispatch = useAppDispatch();
-  const AddProductToBasket = (Product: ProductsType) => {
+  const AddProductToBasket = (Product: ProductType) => {
     try {
       dispatch(
         AddToBasket({

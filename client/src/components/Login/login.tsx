@@ -3,10 +3,10 @@ import Login from ".";
 import { LogRegBtn, LogRegError } from "../register&login";
 import { RegisterRoute } from "../../routes";
 import InfoList from "../register&login/infolist";
-import { FormErrorType, LoginValueType } from "../../types/Types";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebase-config";
 import { useNavigate } from "react-router";
+import { FormErrorType, LoginValueType } from "../../types/Types";
 
 const LoginSection = () => {
   const [ShowPass, setShowPass] = useState<boolean>(false);

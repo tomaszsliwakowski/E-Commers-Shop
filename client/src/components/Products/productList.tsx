@@ -1,15 +1,15 @@
 import React from "react";
 import { Products } from ".";
 import { BsCartPlus } from "react-icons/bs";
-import { ProductsItemType, ProductsType } from "../../types/Types";
+import { ProductType } from "../../types/Types";
 import { useAppDispatch } from "../../store/store";
 import { AddToBasket } from "../../store/BasketSlice";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
-const Product = ({ item }: ProductsItemType) => {
+const Product = ({ item }: { item: ProductType }) => {
   const dispatch = useAppDispatch();
-  const AddProductToBasket = (Product: ProductsType) => {
+  const AddProductToBasket = (Product: ProductType) => {
     try {
       dispatch(
         AddToBasket({
@@ -61,7 +61,7 @@ const Product = ({ item }: ProductsItemType) => {
 };
 export default Product;
 
-export const Rating = (item: ProductsType) => {
+export const Rating = (item: ProductType) => {
   let value: Array<any> = [];
   for (let index = 0; index < Math.floor(item.opinion); index++) {
     value.push(

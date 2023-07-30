@@ -4,9 +4,14 @@ import { AiOutlineClose } from "react-icons/ai";
 import { RiComputerFill } from "react-icons/ri";
 import { BsLaptop, BsKeyboard } from "react-icons/bs";
 import { FiSmartphone } from "react-icons/fi";
-import { UserMenuProps } from "../../types/Types";
 import { NavLink } from "react-router-dom";
 import { GiComputerFan } from "react-icons/gi";
+
+type UserMenuProps = {
+  activeLeftMenu: boolean;
+  setActiveLeftMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  ScrollAction: boolean;
+};
 
 const Menu = ({
   activeLeftMenu,
