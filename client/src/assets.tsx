@@ -13,21 +13,21 @@ export const PayAcceptList: string[] = [
 
 interface MethodType {
   name: string;
-  price: string;
+  price: number;
 }
 
 export const DeliveryMethod: MethodType[] = [
-  { name: "Kurier - InPost,UPS,FedEx,DTS,PickPack", price: "(20.00zł)" },
-  { name: "Odbiór w salonie", price: "(bezpłatnie)" },
-  { name: "InPost Paczkomat 24/7", price: "(9.90zł)" },
-  { name: "Odbiór w punkcie - Żabka,Poczta Polska i inne", price: "(8.90zł)" },
+  { name: "Kurier - InPost,UPS,FedEx,DTS,PickPack", price: 20.0 },
+  { name: "Odbiór w salonie", price: 0 },
+  { name: "InPost Paczkomat 24/7", price: 9.9 },
+  { name: "Odbiór w punkcie - Żabka,Poczta Polska i inne", price: 8.9 },
 ];
 
 export const PaymentMethod: MethodType[] = [
-  { name: "Płatność online", price: "(bezpłatnie)" },
-  { name: "Karta płatnicza online", price: "(bezpłatnie)" },
-  { name: "Blik", price: "(bezpłatnie)" },
-  { name: "Przelew tradycyjny", price: "(bezpłatnie)" },
-  { name: "Przy odbiorze", price: "(5.00zł)" },
-  { name: "Raty", price: "(bezpłatnie)" },
+  { name: "Płatność online", price: 0 },
+  { name: "Karta płatnicza online", price: 0 },
+  { name: "Blik", price: 0 },
+  { name: "Przelew tradycyjny", price: 0 },
+  { name: "Przy odbiorze", price: 5.0 },
+  { name: "Raty", price: 0 },
 ];

@@ -56,6 +56,7 @@ export const DeliveryName = styled.span`
   font-size: 16px;
 `;
 export const DeliveryPrice = styled.span`
+  letter-spacing: 0.5px;
   margin-left: 0.3rem;
   color: rgb(184, 177, 177);
 `;
