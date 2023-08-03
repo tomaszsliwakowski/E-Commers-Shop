@@ -16,7 +16,6 @@ export interface HeadProps
 export interface ListProps extends ComponentPropsWithoutRef<"ul"> {
   children?: ReactNode;
 }
-
 export interface ElProps extends ComponentPropsWithoutRef<"li"> {
   children?: ReactNode;
 }

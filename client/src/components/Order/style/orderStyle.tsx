@@ -133,6 +133,7 @@ export const DataInput = styled.input`
   border-radius: 1rem;
   border: 1px solid rgb(221, 221, 221);
   padding: 0 1rem;
+
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;

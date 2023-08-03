@@ -46,6 +46,7 @@ function PaymentIcon(id: number) {
 
 const OrderSection = () => {
   const navigate = useNavigate();
+  const [failData, setFailData] = useState<string[]>([]);
   const [CustData, setCustData] = useState({
     name: "",
     lastName: "",
@@ -81,31 +82,33 @@ const OrderSection = () => {
 
   function CheckData(): number {
     let check: number = 0;
+    let fail = [];
     const basicRegEx = new RegExp("[a-z]");
     const addressRegEx = new RegExp("^[A-Za-z0-9 ]+$");
     const postRegEx = new RegExp("[0-9]+-[0-9]+");
     const phoneRegEx = new RegExp("[0-9]{9}");
 
     if (Options.Delivery.Num < 0 && Options.Payment.Num < 0) return 0;
+
     if (CustData.name !== "" && basicRegEx.test(CustData.name)) {
       check += 1;
-    }
+    } else fail.push("name");
     if (CustData.lastName !== "" && basicRegEx.test(CustData.lastName)) {
       check += 1;
-    }
+    } else fail.push("lastname");
     if (CustData.address !== "" && addressRegEx.test(CustData.address)) {
       check += 1;
-    }
+    } else fail.push("address");
     if (CustData.city !== "" && basicRegEx.test(CustData.city)) {
       check += 1;
-    }
+    } else fail.push("city");
     if (CustData.postCode !== "" && postRegEx.test(CustData.postCode)) {
       check += 1;
-    }
+    } else fail.push("postCode");
     if (CustData.phone !== "" && phoneRegEx.test(CustData.phone)) {
       check += 1;
-    }
-
+    } else fail.push("phone");
+    setFailData(fail);
     return check;
   }
 
@@ -166,8 +169,10 @@ const OrderSection = () => {
             <Order.DataInput
               type="text"
               title="Imię"
+              name="name"
               max="100"
               placeholder="Imię"
+              fail={failData.includes("name") ? true : false}
               value={CustData.name}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setCustData((prev) => ({ ...prev, name: e.target.value }))
@@ -176,9 +181,11 @@ const OrderSection = () => {
             <Order.DataInput
               type="text"
               max="100"
+              name="lastname"
               title="Nazwisko"
               placeholder="Nazwisko"
               value={CustData.lastName}
+              fail={failData.includes("lastname") ? true : false}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setCustData((prev) => ({ ...prev, lastName: e.target.value }))
               }
@@ -189,6 +196,7 @@ const OrderSection = () => {
               title="Ulica i numer"
               placeholder="Ulica i numer"
               value={CustData.address}
+              fail={failData.includes("address") ? true : false}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setCustData((prev) => ({ ...prev, address: e.target.value }))
               }
@@ -199,6 +207,7 @@ const OrderSection = () => {
               titel="Miejscowość"
               placeholder="Miejscowosc"
               value={CustData.city}
+              fail={failData.includes("city") ? true : false}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setCustData((prev) => ({ ...prev, city: e.target.value }))
               }
@@ -209,6 +218,7 @@ const OrderSection = () => {
               title="Kod pocztowy"
               placeholder="Kod pocztowy"
               value={CustData.postCode}
+              fail={failData.includes("postCode") ? true : false}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setCustData((prev) => ({ ...prev, postCode: e.target.value }))
               }
@@ -219,6 +229,7 @@ const OrderSection = () => {
               max="9"
               placeholder="Numer telefonu"
               value={CustData.phone}
+              fail={failData.includes("phone") ? true : false}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setCustData((prev) => ({ ...prev, phone: e.target.value }))
               }

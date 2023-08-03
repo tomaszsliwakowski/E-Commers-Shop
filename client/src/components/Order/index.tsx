@@ -118,7 +118,14 @@ Order.DataPanel = function OrderDataPanel({
   return <DataPanel {...restprops}>{children}</DataPanel>;
 };
 Order.DataInput = function OrderDataInput({ ...restprops }) {
-  return <DataInput {...restprops} />;
+  const { fail } = restprops;
+  return (
+    <DataInput
+      {...restprops}
+      style={{ borderColor: `${fail ? "red" : "rgb(221, 221, 221)"}` }}
+      autoComplete="off"
+    />
+  );
 };
 
 Order.Payment = function OrderPayment({ children, ...restprops }: DivProps) {
