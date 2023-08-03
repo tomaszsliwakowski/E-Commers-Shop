@@ -78,6 +78,42 @@ const OrderSection = () => {
   useEffect(() => {
     if (BasketProducts.basket.length === 0) navigate("/");
   }, [BasketProducts]);
+
+  function CheckData(): number {
+    let check: number = 0;
+    const basicRegEx = new RegExp("[a-z]");
+    const addressRegEx = new RegExp("^[A-Za-z0-9 ]+$");
+    const postRegEx = new RegExp("[0-9]+-[0-9]+");
+    const phoneRegEx = new RegExp("[0-9]{9}");
+
+    if (Options.Delivery.Num < 0 && Options.Payment.Num < 0) return 0;
+    if (CustData.name !== "" && basicRegEx.test(CustData.name)) {
+      check += 1;
+    }
+    if (CustData.lastName !== "" && basicRegEx.test(CustData.lastName)) {
+      check += 1;
+    }
+    if (CustData.address !== "" && addressRegEx.test(CustData.address)) {
+      check += 1;
+    }
+    if (CustData.city !== "" && basicRegEx.test(CustData.city)) {
+      check += 1;
+    }
+    if (CustData.postCode !== "" && postRegEx.test(CustData.postCode)) {
+      check += 1;
+    }
+    if (CustData.phone !== "" && phoneRegEx.test(CustData.phone)) {
+      check += 1;
+    }
+
+    return check;
+  }
+
+  const SubmitOrder = () => {
+    if (CheckData() !== 6) return;
+    console.log("Correct");
+  };
+
   return (
     <Order>
       <Order.Main>
@@ -129,43 +165,63 @@ const OrderSection = () => {
           <Order.DataPanel>
             <Order.DataInput
               type="text"
+              title="Imię"
               max="100"
               placeholder="Imię"
               value={CustData.name}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setCustData((prev) => ({ ...prev, name: e.target.value }))
+              }
             />
             <Order.DataInput
               type="text"
               max="100"
+              title="Nazwisko"
               placeholder="Nazwisko"
               value={CustData.lastName}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setCustData((prev) => ({ ...prev, lastName: e.target.value }))
+              }
             />
             <Order.DataInput
               type="text"
               max="100"
+              title="Ulica i numer"
               placeholder="Ulica i numer"
               value={CustData.address}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setCustData((prev) => ({ ...prev, address: e.target.value }))
+              }
             />
             <Order.DataInput
               type="text"
               max="100"
+              titel="Miejscowość"
               placeholder="Miejscowosc"
               value={CustData.city}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setCustData((prev) => ({ ...prev, city: e.target.value }))
+              }
             />
             <Order.DataInput
               type="text"
               max="7"
+              title="Kod pocztowy"
               placeholder="Kod pocztowy"
-              pattern="[0-9][-]"
               value={CustData.postCode}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setCustData((prev) => ({ ...prev, postCode: e.target.value }))
               }
             />
             <Order.DataInput
-              type="text"
+              type="number"
+              title="Numer telefonu"
               max="9"
               placeholder="Numer telefonu"
               value={CustData.phone}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setCustData((prev) => ({ ...prev, phone: e.target.value }))
+              }
             />
           </Order.DataPanel>
         </Order.Data>
@@ -309,7 +365,9 @@ const OrderSection = () => {
               <Order.PaySumContent>Do zapłaty</Order.PaySumContent>
               <Order.PaySumContent>{Sum().toFixed(2)}zł</Order.PaySumContent>
             </Order.PaySum>
-            <Order.PayButton>Zamów i zapłać</Order.PayButton>
+            <Order.PayButton onClick={() => SubmitOrder()}>
+              Zamów i zapłać
+            </Order.PayButton>
           </Order.PaySumCon>
         </Order.SummaryPanel>
       </Order.Summary>
