@@ -32,7 +32,7 @@ const Product = ({ item }: { item: ProductType }) => {
   };
   return (
     <Products.Item>
-      <Link to={`/product/${item.id}`}>
+      <Link to={`/E-Commers-Shop/product/${item.id}`}>
         <Products.I_Img>
           <Products.Image src={item.img} alt={item.name} />
         </Products.I_Img>
