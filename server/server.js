@@ -5,7 +5,7 @@ const cors = require("cors");
 const connectDB = require("./database/connectDB");
 
 const corsOptions = {
-  origin: "https://tomaszsliwakowski.github.io/E-Commers-Shop/",
+  origin: "https://tomaszsliwakowski.github.io",
   credentials: true,
   optionSuccessStatus: 200,
 };
