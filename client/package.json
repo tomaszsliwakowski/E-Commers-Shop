@@ -1,5 +1,6 @@
 {
   "name": "client",
+  "homepage": "https://tomaszsliwakowski.github.io/E-Commers-Shop",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,6 +16,7 @@
     "@types/styled-components": "^5.1.26",
     "axios": "^1.4.0",
     "firebase": "^9.22.0",
+    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
@@ -32,6 +34,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
