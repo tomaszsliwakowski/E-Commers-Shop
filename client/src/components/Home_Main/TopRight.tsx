@@ -122,7 +122,7 @@ const Product = (item: ProductType) => {
   };
   return (
     <TopRight.Product>
-      <Link to={`/product/${item.id}`}>
+      <Link to={`/E-Commers-Shop/product/${item.id}`}>
         <Main.Image src={item.img} alt={item.category} />
         <TopRight.Name>{item.name}</TopRight.Name>
       </Link>

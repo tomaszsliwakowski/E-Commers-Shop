@@ -3,6 +3,7 @@ import { Main, TopLeft } from "./index";
 import { ProductType, TimerType } from "../../types/Types";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
+import { ServerRoute } from "../../routes";
 
 const override = {
   display: "flex",
@@ -16,7 +17,7 @@ const TopLeftSection = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:10000/api/sale/product`)
+      .get(`${ServerRoute}/api/sale/product`)
       .then((reasult) => {
         setProductData(reasult.data);
       })
@@ -72,7 +73,7 @@ const TopLeftSection = () => {
   }, []);
 
   return (
-    <TopLeft href={`/product/sale`}>
+    <TopLeft href={`/E-Commers-Shop/product/sale`}>
       <TopLeft.ImageAndTitle>
         <Main.Title>Gorący strzał</Main.Title>
         {ProductData?.img ? (
