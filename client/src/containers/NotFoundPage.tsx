@@ -2,15 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
+import { HomeRoute } from "../routes";
 
 const NotFoundPage = () => {
   return (
     <>
       <Loader>
         <span>Nie znaleziono strony!</span>
-        <Goto to={"https://tomaszsliwakowski.github.io/E-Commers-Shop/"}>
-          Strona główna
-        </Goto>
+        <Goto to={HomeRoute}>Strona główna</Goto>
       </Loader>
     </>
   );
