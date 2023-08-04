@@ -1,22 +1,14 @@
-export const HomeRoute = "https://tomaszsliwakowski.github.io/E-Commers-Shop/";
-export const ProductsRoute =
-  "https://tomaszsliwakowski.github.io/E-Commers-Shop/products/:category";
-export const ProductRoute =
-  "https://tomaszsliwakowski.github.io/E-Commers-Shop/product/:id";
-export const SearchRoute =
-  "https://tomaszsliwakowski.github.io/E-Commers-Shop/products/search/:search";
-export const LoginRoute =
-  "https://tomaszsliwakowski.github.io/E-Commers-Shop/login";
-export const RegisterRoute =
-  "https://tomaszsliwakowski.github.io/E-Commers-Shop/register";
-export const BasketRoute =
-  "https://tomaszsliwakowski.github.io/E-Commers-Shop/basket";
-export const OrderRoute =
-  "https://tomaszsliwakowski.github.io/E-Commers-Shop/order";
+export const HomeRoute = "/E-Commers-Shop/";
+export const ProductsRoute = "/E-Commers-Shop/products/:category";
+export const ProductRoute = "/E-Commers-Shop/product/:id";
+export const SearchRoute = "/E-Commers-Shop/products/search/:search";
+export const LoginRoute = "/E-Commers-Shop/login";
+export const RegisterRoute = "/E-Commers-Shop/register";
+export const BasketRoute = "/E-Commers-Shop/basket";
+export const OrderRoute = "/E-Commers-Shop/order";
 export const ServerRoute = "http://localhost:10000";
-export const LocalRoute = "https://tomaszsliwakowski.github.io/E-Commers-Shop/";
-export const SaleRoute =
-  "https://tomaszsliwakowski.github.io/E-Commers-Shop//sale/product/:status";
+export const LocalRoute = "/E-Commers-Shop/";
+export const SaleRoute = "/E-Commers-Shop//sale/product/:status";
 export function GetOpinion(id: string) {
   return `${ServerRoute}/api/get/opinion/${id}`;
 }
@@ -39,5 +31,5 @@ export function DeleteOpnion(id: string) {
 }
 
 export function GoToProduct(id: number) {
-  return `https://tomaszsliwakowski.github.io/E-Commers-Shop/product/${id}`;
+  return `/E-Commers-Shop/product/${id}`;
 }
