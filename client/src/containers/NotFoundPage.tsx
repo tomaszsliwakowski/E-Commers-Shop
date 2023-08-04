@@ -8,7 +8,9 @@ const NotFoundPage = () => {
     <>
       <Loader>
         <span>Nie znaleziono strony!</span>
-        <Goto to={"http://localhost:3000"}>Strona główna</Goto>
+        <Goto to={"https://tomaszsliwakowski.github.io/E-Commers-Shop/"}>
+          Strona główna
+        </Goto>
       </Loader>
     </>
   );
