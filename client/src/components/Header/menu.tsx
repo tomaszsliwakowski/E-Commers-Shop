@@ -32,28 +32,28 @@ const Menu = ({
       ) : null}
       <Header.MenuList scroll={ScrollAction}>
         <Header.MenuListEl scroll={ScrollAction} Click={setActiveLeftMenu}>
-          <NavLink to="/products/Smartphony">
+          <NavLink to="/E-Commers-Shop/products/Smartphony">
             <FiSmartphone /> Smartphony
           </NavLink>
         </Header.MenuListEl>
         <Header.MenuListEl scroll={ScrollAction} Click={setActiveLeftMenu}>
-          <NavLink to="/products/Laptopy">
+          <NavLink to="/E-Commers-Shop/products/Laptopy">
             <BsLaptop />
             Laptopy
           </NavLink>
         </Header.MenuListEl>
         <Header.MenuListEl scroll={ScrollAction} Click={setActiveLeftMenu}>
-          <NavLink to="/products/Komputery">
+          <NavLink to="/E-Commers-Shop/products/Komputery">
             <RiComputerFill /> Komputery
           </NavLink>
         </Header.MenuListEl>
         <Header.MenuListEl scroll={ScrollAction} Click={setActiveLeftMenu}>
-          <NavLink to="/products/Podzespoly-komputerowe">
+          <NavLink to="/E-Commers-Shop/products/Podzespoly-komputerowe">
             <GiComputerFan /> Podzespoły komputerowe
           </NavLink>
         </Header.MenuListEl>
         <Header.MenuListEl scroll={ScrollAction} Click={setActiveLeftMenu}>
-          <NavLink to="/products/Akcesoria">
+          <NavLink to="/E-Commers-Shop/products/Akcesoria">
             <BsKeyboard /> Akcesoria
           </NavLink>
         </Header.MenuListEl>

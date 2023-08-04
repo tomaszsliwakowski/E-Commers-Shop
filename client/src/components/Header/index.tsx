@@ -261,7 +261,9 @@ Header.UserPanelBasket = function HeaderUserPanelBasket({
   return style === "true" ? (
     <PanelBasket>{children}</PanelBasket>
   ) : (
-    <PanelBasketEmpty to={"/basket"}>{children}</PanelBasketEmpty>
+    <PanelBasketEmpty to={"/E-Commers-Shop/basket"}>
+      {children}
+    </PanelBasketEmpty>
   );
 };
 

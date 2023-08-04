@@ -54,7 +54,7 @@ const HeaderSection = () => {
 
   const searchproducts = () => {
     if (SearchInput !== "") {
-      navigate(`/products/search/${SearchInput}`);
+      navigate(`/E-Commers-Shop/products/search/${SearchInput}`);
     }
   };
 
