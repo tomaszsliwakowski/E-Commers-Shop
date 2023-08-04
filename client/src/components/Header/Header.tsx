@@ -69,7 +69,7 @@ const HeaderSection = () => {
           </Header.HamburgerContainer>
         </Header.Hamburger>
         <Header.Logo>
-          <NavLink to="/">Shop</NavLink>
+          <NavLink to="/E-Commers-Shop/">Shop</NavLink>
         </Header.Logo>
         <Header.Search>
           <Header.SearchBar>

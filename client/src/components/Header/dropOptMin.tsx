@@ -11,14 +11,18 @@ const DropOptMin = ({ BasketProducts }: BasketProductsProps) => {
           ? BasketProducts.basket.map((item, id) => (
               <Basket.Product style="small" key={id}>
                 <Basket.Property>
-                  <Basket.Goto to={`/products/${item.product.id}`}>
+                  <Basket.Goto
+                    to={`//E-Commers-Shopproducts/${item.product.id}`}
+                  >
                     <Basket.Image
                       src={item.product.img}
                       alt={item.product.name}
                     />
                   </Basket.Goto>
                   <Basket.PropertyOpt style="grid">
-                    <Basket.Goto to={`/products/${item.product.id}`}>
+                    <Basket.Goto
+                      to={`/E-Commers-Shop/products/${item.product.id}`}
+                    >
                       <Basket.ProductDesc style="center">
                         {item.product.name}
                       </Basket.ProductDesc>
@@ -49,7 +53,7 @@ const DropOptMin = ({ BasketProducts }: BasketProductsProps) => {
               {" zł"}
             </Basket.BuyPanelPrice>
           </Basket.BuyPanelSum>
-          <Basket.BuyPanelBtn href="/basket">
+          <Basket.BuyPanelBtn href="/E-Commers-Shop/basket">
             Przejdź do koszyka
           </Basket.BuyPanelBtn>
         </Basket.BuyPanelCon>
