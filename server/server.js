@@ -14,7 +14,7 @@ const app = express();
 
 app.use(cors(corsOptions));
 
-const PORT = 10000;
+const PORT = 10000; // This information should be in the env file
 
 app.use(morgan("tiny"));
 
