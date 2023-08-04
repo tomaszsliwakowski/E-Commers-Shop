@@ -1,14 +1,22 @@
-export const HomeRoute = "/";
-export const ProductsRoute = "/products/:category";
-export const ProductRoute = "/product/:id";
-export const SearchRoute = "/products/search/:search";
-export const LoginRoute = "/login";
-export const RegisterRoute = "/register";
-export const BasketRoute = "/basket";
-export const OrderRoute = "/order";
+export const HomeRoute = "https://tomaszsliwakowski.github.io/E-Commers-Shop/";
+export const ProductsRoute =
+  "https://tomaszsliwakowski.github.io/E-Commers-Shop/products/:category";
+export const ProductRoute =
+  "https://tomaszsliwakowski.github.io/E-Commers-Shop/product/:id";
+export const SearchRoute =
+  "https://tomaszsliwakowski.github.io/E-Commers-Shop/products/search/:search";
+export const LoginRoute =
+  "https://tomaszsliwakowski.github.io/E-Commers-Shop/login";
+export const RegisterRoute =
+  "https://tomaszsliwakowski.github.io/E-Commers-Shop/register";
+export const BasketRoute =
+  "https://tomaszsliwakowski.github.io/E-Commers-Shop/basket";
+export const OrderRoute =
+  "https://tomaszsliwakowski.github.io/E-Commers-Shop/order";
 export const ServerRoute = "http://localhost:10000";
-export const LocalRoute = "http://localhost:3000";
-export const SaleRoute = "http://localhost:3000/sale/product/:status";
+export const LocalRoute = "https://tomaszsliwakowski.github.io/E-Commers-Shop/";
+export const SaleRoute =
+  "https://tomaszsliwakowski.github.io/E-Commers-Shop//sale/product/:status";
 export function GetOpinion(id: string) {
   return `${ServerRoute}/api/get/opinion/${id}`;
 }
@@ -31,5 +39,5 @@ export function DeleteOpnion(id: string) {
 }
 
 export function GoToProduct(id: number) {
-  return `http://localhost:3000/product/${id}`;
+  return `https://tomaszsliwakowski.github.io/E-Commers-Shop/product/${id}`;
 }
