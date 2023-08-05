@@ -12,8 +12,10 @@ const override = {
 };
 
 const TopLeftSection = () => {
-  const [Timer, setTimer] = useState<TimerType | undefined>();
-  const [ProductData, setProductData] = useState<ProductType>();
+  const [Timer, setTimer] = useState<TimerType | undefined>(undefined);
+  const [ProductData, setProductData] = useState<ProductType | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     axios
@@ -77,7 +79,7 @@ const TopLeftSection = () => {
 
   return (
     <TopLeft href={`/E-Commers-Shop/product/sale`}>
-      {ProductData?.img ? (
+      {ProductData ? (
         <>
           <TopLeft.ImageAndTitle>
             <Main.Title>Gorący strzał</Main.Title>
