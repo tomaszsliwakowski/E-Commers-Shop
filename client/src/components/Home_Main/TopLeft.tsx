@@ -7,7 +7,7 @@ import { ServerRoute } from "../../routes";
 
 const override = {
   display: "flex",
-  borderColor: "red",
+  alignItems: "center",
   margin: "5rem auto",
 };
 
@@ -67,74 +67,79 @@ const TopLeftSection = () => {
     }
   };
   useEffect(() => {
-    setInterval(() => {
+    const intervalId = setInterval(() => {
       TimeToExpire();
     }, 1000);
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
 
   return (
     <TopLeft href={`/E-Commers-Shop/product/sale`}>
-      <TopLeft.ImageAndTitle>
-        <Main.Title>Gorący strzał</Main.Title>
-        {ProductData?.img ? (
-          <Main.Image src={ProductData?.img} alt={ProductData?.category} />
-        ) : (
-          <BeatLoader
-            color={"#0082fa"}
-            loading={true}
-            cssOverride={override}
-            size={30}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-        )}
-      </TopLeft.ImageAndTitle>
-      <TopLeft.Name>{ProductData?.name}</TopLeft.Name>
-      <TopLeft.PriceCon>
-        <TopLeft.NewPrice>
-          {ProductData?.newPrice?.toFixed(2)} zł
-        </TopLeft.NewPrice>
-        <TopLeft.OldPrice>
-          Cena regularna: {ProductData?.price.toFixed(2)} zł
-        </TopLeft.OldPrice>
-      </TopLeft.PriceCon>
-      <TopLeft.TimerCon>
-        <TopLeft.NextShot>Następny gorący strzał:</TopLeft.NextShot>
-        <TopLeft.RemTime>
-          <TopLeft.OneTime>
-            <TopLeft.Time>
-              {Timer !== undefined
-                ? Timer.hour > 9
-                  ? Timer?.hour
-                  : `0${Timer?.hour}`
-                : `00`}
-            </TopLeft.Time>
-            <TopLeft.TimeName>godz.</TopLeft.TimeName>
-          </TopLeft.OneTime>
-          <TopLeft.Dot>:</TopLeft.Dot>
-          <TopLeft.OneTime>
-            <TopLeft.Time>
-              {Timer !== undefined
-                ? Timer.minutes > 9
-                  ? Timer?.minutes
-                  : `0${Timer?.minutes}`
-                : `00`}
-            </TopLeft.Time>
-            <TopLeft.TimeName>min.</TopLeft.TimeName>
-          </TopLeft.OneTime>
-          <TopLeft.Dot>:</TopLeft.Dot>
-          <TopLeft.OneTime>
-            <TopLeft.Time>
-              {Timer !== undefined
-                ? Timer.second > 9
-                  ? Timer?.second
-                  : `0${Timer?.second}`
-                : `00`}
-            </TopLeft.Time>
-            <TopLeft.TimeName>sek.</TopLeft.TimeName>
-          </TopLeft.OneTime>
-        </TopLeft.RemTime>
-      </TopLeft.TimerCon>
+      {!ProductData?.img ? (
+        <>
+          <TopLeft.ImageAndTitle>
+            <Main.Title>Gorący strzał</Main.Title>
+            <Main.Image src={ProductData?.img} alt={ProductData?.category} />
+          </TopLeft.ImageAndTitle>
+          <TopLeft.Name>{ProductData?.name}</TopLeft.Name>
+          <TopLeft.PriceCon>
+            <TopLeft.NewPrice>
+              {ProductData?.newPrice?.toFixed(2)} zł
+            </TopLeft.NewPrice>
+            <TopLeft.OldPrice>
+              Cena regularna: {ProductData?.price.toFixed(2)} zł
+            </TopLeft.OldPrice>
+          </TopLeft.PriceCon>
+          <TopLeft.TimerCon>
+            <TopLeft.NextShot>Następny gorący strzał:</TopLeft.NextShot>
+            <TopLeft.RemTime>
+              <TopLeft.OneTime>
+                <TopLeft.Time>
+                  {Timer !== undefined
+                    ? Timer.hour > 9
+                      ? Timer?.hour
+                      : `0${Timer?.hour}`
+                    : `00`}
+                </TopLeft.Time>
+                <TopLeft.TimeName>godz.</TopLeft.TimeName>
+              </TopLeft.OneTime>
+              <TopLeft.Dot>:</TopLeft.Dot>
+              <TopLeft.OneTime>
+                <TopLeft.Time>
+                  {Timer !== undefined
+                    ? Timer.minutes > 9
+                      ? Timer?.minutes
+                      : `0${Timer?.minutes}`
+                    : `00`}
+                </TopLeft.Time>
+                <TopLeft.TimeName>min.</TopLeft.TimeName>
+              </TopLeft.OneTime>
+              <TopLeft.Dot>:</TopLeft.Dot>
+              <TopLeft.OneTime>
+                <TopLeft.Time>
+                  {Timer !== undefined
+                    ? Timer.second > 9
+                      ? Timer?.second
+                      : `0${Timer?.second}`
+                    : `00`}
+                </TopLeft.Time>
+                <TopLeft.TimeName>sek.</TopLeft.TimeName>
+              </TopLeft.OneTime>
+            </TopLeft.RemTime>
+          </TopLeft.TimerCon>{" "}
+        </>
+      ) : (
+        <BeatLoader
+          color={"#0082fa"}
+          loading={true}
+          cssOverride={override}
+          size={30}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      )}
     </TopLeft>
   );
 };

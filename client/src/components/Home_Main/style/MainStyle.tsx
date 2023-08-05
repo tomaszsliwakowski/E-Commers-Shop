@@ -33,6 +33,7 @@ export const Top = styled.div`
   height: 100%;
   margin-top: 1rem;
   gap: 0.4rem;
+  position: relative;
 
   @media screen and (max-width: 768px) {
     gap: 2rem;
