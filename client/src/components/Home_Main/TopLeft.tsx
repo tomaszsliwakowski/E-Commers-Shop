@@ -77,7 +77,7 @@ const TopLeftSection = () => {
 
   return (
     <TopLeft href={`/E-Commers-Shop/product/sale`}>
-      {!ProductData?.img ? (
+      {ProductData?.img ? (
         <>
           <TopLeft.ImageAndTitle>
             <Main.Title>Gorący strzał</Main.Title>
