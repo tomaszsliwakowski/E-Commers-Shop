@@ -77,7 +77,7 @@ const OrderSection = () => {
   }
 
   useEffect(() => {
-    if (BasketProducts.basket.length === 0) navigate("/");
+    if (BasketProducts.basket.length === 0) navigate("/E-Commers-Shop/");
   }, [BasketProducts]);
 
   function CheckData(): number {
