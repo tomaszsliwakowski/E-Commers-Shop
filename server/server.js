@@ -5,11 +5,11 @@ const cors = require("cors");
 const connectDB = require("./database/connectDB");
 
 const corsOptions = {
-  origin: "https://tomaszsliwakowski.github.io" || "http://localhost:3000",
+  origin: "http://localhost:3000",
   credentials: true,
   optionSuccessStatus: 200,
 };
-
+//"https://tomaszsliwakowski.github.io"
 const app = express();
 
 app.use(cors(corsOptions));
