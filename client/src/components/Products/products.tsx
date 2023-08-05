@@ -103,28 +103,32 @@ const ProductsSection = () => {
   }, []);
 
   const FiltrOpt = (item: ProductType) => {
-    return item.destiny
-      ? item.destiny
-      : item.components
-      ? item.components
-      : item.accesories
-      ? item.accesories
-      : "";
+    let value = "";
+    if (item.destiny) value = item.destiny;
+    if (item.components) value = item.components;
+    if (item.accesories) value = item.accesories;
+    return value;
   };
 
-  const ProductsFiltrOne =
-    prodFilters.filtr_one.length > 0
-      ? ProductsData.products.filter((item) =>
-          prodFilters.filtr_one.includes(item.producer)
-        )
-      : ProductsData.products;
-  const ProductsFiltrTwo =
-    prodFilters.filtr_two.length > 0
-      ? ProductsFiltrOne.filter((item) =>
-          prodFilters.filtr_two.includes(FiltrOpt(item))
-        )
-      : ProductsFiltrOne;
-  const FinalFiltersProducts = ProductsFiltrTwo.filter(
+  const ProductsFiltrOne = (): ProductType[] => {
+    let returnValue: ProductType[] = [];
+    if (prodFilters.filtr_one.length > 0) returnValue = ProductsData.products;
+    returnValue = ProductsData.products.filter((item) =>
+      prodFilters.filtr_one.includes(item.producer)
+    );
+    return returnValue;
+  };
+
+  const ProductsFiltrTwo = (): ProductType[] => {
+    let returnValue: ProductType[] = [];
+    if (prodFilters.filtr_two.length > 0) returnValue = ProductsFiltrOne();
+    returnValue = ProductsFiltrOne().filter((item) =>
+      prodFilters.filtr_two.includes(FiltrOpt(item))
+    );
+    return returnValue;
+  };
+
+  const FinalFiltersProducts = ProductsFiltrTwo().filter(
     (item) =>
       item.price > prodFilters.price.from &&
       item.price < (prodFilters.price.to !== 0 ? prodFilters.price.to : 100000)
@@ -149,12 +153,16 @@ const ProductsSection = () => {
         return FinalFiltersProducts;
     }
   };
-  let ShowProducts = HandleSort();
-  if (search) {
-    ShowProducts = ShowProducts.filter((item) =>
-      item.name.toLowerCase().includes(search ? search.toLowerCase() : "")
-    );
-  }
+  let ShowProducts = (): ProductType[] => {
+    let returnValue = HandleSort();
+    if (search) {
+      returnValue = returnValue.filter((item) =>
+        item.name.toLowerCase().includes(search ? search.toLowerCase() : "")
+      );
+    }
+    return returnValue;
+  };
+
   return (
     <Products>
       <Products.Header>
@@ -165,10 +173,10 @@ const ProductsSection = () => {
               : category
             : search}
         </Products.H_Title>
-        <Products.H_Count>{`(${ShowProducts.length} ${
-          ShowProducts.length === 1
+        <Products.H_Count>{`(${ShowProducts().length} ${
+          ShowProducts().length === 1
             ? "wynik"
-            : ShowProducts.length > 0 && ShowProducts.length < 5
+            : ShowProducts().length > 0 && ShowProducts().length < 5
             ? "wyniki"
             : "wyników"
         })`}</Products.H_Count>
@@ -254,7 +262,7 @@ const ProductsSection = () => {
             product={ProductsData}
             setfilters={setprodFilters}
             filters={prodFilters}
-            ShowProd={ShowProducts}
+            ShowProd={ShowProducts()}
           />
           {activeFilters ? (
             <Products.AcceptFiltrBtn>Zastosuj</Products.AcceptFiltrBtn>
@@ -292,15 +300,15 @@ const ProductsSection = () => {
           style={FinalFiltersProducts.length === 2 ? "flex" : "grid"}
         >
           {search !== undefined && search !== "" ? (
-            ShowProducts.length > 0 ? (
-              ShowProducts.map((item: ProductType, id: number) => (
+            ShowProducts().length > 0 ? (
+              ShowProducts().map((item: ProductType, id: number) => (
                 <Product item={item} key={id} />
               ))
             ) : (
               <div>Nie znaleziono produktów</div>
             )
           ) : ShowProducts.length > 0 ? (
-            ShowProducts.map((item: ProductType, id: number) => (
+            ShowProducts().map((item: ProductType, id: number) => (
               <Product item={item} key={id} />
             ))
           ) : (
