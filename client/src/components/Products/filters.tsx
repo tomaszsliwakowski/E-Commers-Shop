@@ -6,24 +6,31 @@ import { useParams } from "react-router-dom";
 const Filters = ({ product, setfilters, filters, ShowProd }: FiltersProps) => {
   let { category } = useParams();
   let { search } = useParams();
+  let filtrCount: string[] = FiltrCountHandle();
+  let filtrData: Array<string[]> = SearchFilter();
 
-  let filtrCount: string[] = category
-    ? product.filters
-      ? Object.keys(product.filters)
-      : []
-    : ["Producent"];
+  function FiltrCountHandle() {
+    if (!category) return ["Producent"];
+    if (!product.filters) return [];
+    return Object.keys(product.filters);
+  }
 
-  let filtrData: Array<string[]> = category
-    ? product.filters
-      ? Object.values(product.filters)
-      : []
-    : [Object.values(ShowProd.map((item) => item.producer))];
+  function FiltrDataHandle() {
+    if (!category)
+      return [Object.values(ShowProd.map((item) => item.producer))];
+    if (!product.filters) return [];
+    return Object.values(product.filters);
+  }
 
-  if (search) {
-    let filters = filtrData[0].filter(
-      (el, index) => filtrData[0].indexOf(el) === index
-    );
-    filtrData[0] = filters;
+  function SearchFilter() {
+    let data = FiltrDataHandle();
+    if (search) {
+      let filters = filtrData[0].filter(
+        (el, index) => filtrData[0].indexOf(el) === index
+      );
+      data[0] = filters;
+    }
+    return data;
   }
 
   useEffect(() => {

@@ -6,8 +6,8 @@ export const LoginRoute = "/E-Commers-Shop/login";
 export const RegisterRoute = "/E-Commers-Shop/register";
 export const BasketRoute = "/E-Commers-Shop/basket";
 export const OrderRoute = "/E-Commers-Shop/order";
-export const ServerRoute = "https://e-commers-shop.onrender.com";
-//export const ServerRoute = "http://localhost:10000";
+//export const ServerRoute = "https://e-commers-shop.onrender.com";
+export const ServerRoute = "http://localhost:10000";
 export const LocalRoute = "/E-Commers-Shop/";
 export const SaleRoute = "/E-Commers-Shop//sale/product/:status";
 export function GetOpinion(id: string) {

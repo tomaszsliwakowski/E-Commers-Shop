@@ -112,19 +112,21 @@ const ProductsSection = () => {
 
   const ProductsFiltrOne = (): ProductType[] => {
     let returnValue: ProductType[] = [];
-    if (prodFilters.filtr_one.length > 0) returnValue = ProductsData.products;
-    returnValue = ProductsData.products.filter((item) =>
-      prodFilters.filtr_one.includes(item.producer)
-    );
+    if (prodFilters.filtr_one.length > 0)
+      returnValue = ProductsData.products.filter((item) =>
+        prodFilters.filtr_one.includes(item.producer)
+      );
+    if (prodFilters.filtr_one.length <= 0) returnValue = ProductsData.products;
     return returnValue;
   };
 
   const ProductsFiltrTwo = (): ProductType[] => {
     let returnValue: ProductType[] = [];
-    if (prodFilters.filtr_two.length > 0) returnValue = ProductsFiltrOne();
-    returnValue = ProductsFiltrOne().filter((item) =>
-      prodFilters.filtr_two.includes(FiltrOpt(item))
-    );
+    if (prodFilters.filtr_two.length > 0)
+      returnValue = ProductsFiltrOne().filter((item) =>
+        prodFilters.filtr_two.includes(FiltrOpt(item))
+      );
+    if (prodFilters.filtr_two.length <= 0) returnValue = ProductsFiltrOne();
     return returnValue;
   };
 
@@ -307,7 +309,7 @@ const ProductsSection = () => {
             ) : (
               <div>Nie znaleziono produktów</div>
             )
-          ) : ShowProducts.length > 0 ? (
+          ) : ShowProducts().length > 0 ? (
             ShowProducts().map((item: ProductType, id: number) => (
               <Product item={item} key={id} />
             ))
