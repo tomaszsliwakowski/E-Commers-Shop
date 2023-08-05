@@ -5,7 +5,7 @@ const cors = require("cors");
 const connectDB = require("./database/connectDB");
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "http://localhost:3000/E-Commers-Shop",
   credentials: true,
   optionSuccessStatus: 200,
 };
