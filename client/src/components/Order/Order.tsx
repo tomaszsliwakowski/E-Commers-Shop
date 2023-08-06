@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { Order } from "./index";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { DeliveryMethod, PaymentMethod } from "../../assets";
@@ -10,6 +10,9 @@ import { MdOutlinePayments } from "react-icons/md";
 import { ProductType } from "../../types/Types";
 import { useAppSelector } from "../../store/store";
 import { useNavigate } from "react-router";
+import axios from "axios";
+import { ServerRoute } from "../../routes";
+import { AuthContext } from "../../assets/auth";
 
 function DeliveryIcon(id: number) {
   switch (id) {
@@ -56,22 +59,30 @@ const OrderSection = () => {
     phone: "",
   });
   const [Options, setOptions] = useState({
-    Delivery: { Num: -1, Price: 0 },
-    Payment: { Num: -1, Price: 0 },
+    delivery: { method: -1, price: 0 },
+    payment: { method: -1, price: 0 },
   });
+
   const BasketProducts: { basket: Array<{ product: ProductType }> } =
     useAppSelector((state) => state.basket);
+  const [User, setUser] = useState({ Email: "" });
+  const logged: any = useContext(AuthContext);
+  useEffect(() => {
+    if (logged.email) {
+      setUser({ Email: logged.email });
+    }
+  }, [logged]);
 
   function Sum() {
     let BasketValue = BasketProducts.basket.reduce(
       (sum, a) => sum + a.product.price * (a.product.count || 1),
       0
     );
-    if (Options.Delivery.Price > 0) {
-      BasketValue += Options.Delivery.Price;
+    if (Options.delivery.price > 0) {
+      BasketValue += Options.delivery.price;
     }
-    if (Options.Payment.Price > 0) {
-      BasketValue += Options.Payment.Price;
+    if (Options.payment.price > 0) {
+      BasketValue += Options.payment.price;
     }
     return BasketValue;
   }
@@ -88,7 +99,7 @@ const OrderSection = () => {
     const postRegEx = new RegExp("[0-9]+-[0-9]+");
     const phoneRegEx = new RegExp("[0-9]{9}");
 
-    if (Options.Delivery.Num < 0 && Options.Payment.Num < 0) return 0;
+    if (Options.delivery.method < 0 && Options.payment.method < 0) return 0;
 
     if (CustData.name !== "" && basicRegEx.test(CustData.name)) {
       check += 1;
@@ -114,7 +125,34 @@ const OrderSection = () => {
 
   const SubmitOrder = () => {
     if (CheckData() !== 6) return;
-    console.log("Correct");
+    if (BasketProducts.basket.length === 0) return;
+    try {
+      const orderProducts = BasketProducts.basket.map((item) => item.product);
+      const orderOptions = {
+        payment: {
+          method: PaymentMethod[Options.payment.method].name,
+          price: Options.payment.price,
+        },
+        delivery: {
+          method: DeliveryMethod[Options.delivery.method].name,
+          price: Options.delivery.price,
+        },
+      };
+      axios.post(
+        `${ServerRoute}/api/order/add`,
+        {
+          Products: orderProducts,
+          Data: Object.assign(CustData, { email: User.Email }, orderOptions),
+        },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+    } catch (error) {
+      throw new Error("Add order fail");
+    }
   };
 
   return (
@@ -130,7 +168,7 @@ const OrderSection = () => {
                 onClick={() =>
                   setOptions((prev) => ({
                     ...prev,
-                    Delivery: { Num: id, Price: item.price },
+                    delivery: { method: id, price: item.price },
                   }))
                 }
               >
@@ -138,7 +176,7 @@ const OrderSection = () => {
                   <Order.Radio>
                     <Order.Checkbox
                       type="checkbox"
-                      checked={Options.Delivery.Num === id ? true : false}
+                      checked={Options.delivery.method === id ? true : false}
                       onChange={() =>
                         setOptions((prev) => ({
                           ...prev,
@@ -245,7 +283,7 @@ const OrderSection = () => {
                 onClick={() =>
                   setOptions((prev) => ({
                     ...prev,
-                    Payment: { Num: id, Price: item.price },
+                    payment: { method: id, price: item.price },
                   }))
                 }
               >
@@ -253,7 +291,7 @@ const OrderSection = () => {
                   <Order.Radio>
                     <Order.Checkbox
                       type="checkbox"
-                      checked={Options.Payment.Num === id ? true : false}
+                      checked={Options.payment.method === id ? true : false}
                       onChange={() =>
                         setOptions((prev) => ({
                           ...prev,
@@ -306,8 +344,8 @@ const OrderSection = () => {
           <Order.Methods>
             <Order.SelectMethod>
               <Order.MethodIcon>
-                {Options.Delivery.Num >= 0 ? (
-                  DeliveryIcon(Options.Delivery.Num)
+                {Options.delivery.method >= 0 ? (
+                  DeliveryIcon(Options.delivery.method)
                 ) : (
                   <CiDeliveryTruck size={30} />
                 )}
@@ -315,16 +353,16 @@ const OrderSection = () => {
               <Order.MethodContainer>
                 <Order.MethodName>Sposób dostawy:</Order.MethodName>
                 <Order.MethodName>
-                  {Options.Delivery.Num >= 0
-                    ? DeliveryMethod[Options.Delivery.Num].name
+                  {Options.delivery.method >= 0
+                    ? DeliveryMethod[Options.delivery.method].name
                     : "Wybierz sposób dostawy"}
                 </Order.MethodName>
               </Order.MethodContainer>
             </Order.SelectMethod>
             <Order.SelectMethod>
               <Order.MethodIcon>
-                {Options.Payment.Num >= 0 ? (
-                  PaymentIcon(Options.Payment.Num)
+                {Options.payment.method >= 0 ? (
+                  PaymentIcon(Options.payment.method)
                 ) : (
                   <BsCash size={30} />
                 )}
@@ -332,8 +370,8 @@ const OrderSection = () => {
               <Order.MethodContainer>
                 <Order.MethodName>Sposób płatności:</Order.MethodName>
                 <Order.MethodName>
-                  {Options.Payment.Num > 0
-                    ? PaymentMethod[Options.Payment.Num].name
+                  {Options.payment.method > 0
+                    ? PaymentMethod[Options.payment.method].name
                     : "Wybierz sposób płatności"}
                 </Order.MethodName>
               </Order.MethodContainer>
@@ -355,8 +393,8 @@ const OrderSection = () => {
             <Order.PayEl>
               <Order.PayDetails>Dostawa</Order.PayDetails>
               <Order.PayDetails>
-                {Options.Delivery.Price > 0
-                  ? Options.Delivery.Price.toFixed(2)
+                {Options.delivery.price > 0
+                  ? Options.delivery.price.toFixed(2)
                   : (0).toFixed(2)}
                 zł
               </Order.PayDetails>
@@ -364,8 +402,8 @@ const OrderSection = () => {
             <Order.PayEl>
               <Order.PayDetails>Płatność</Order.PayDetails>
               <Order.PayDetails>
-                {Options.Payment.Price > 0
-                  ? Options.Payment.Price.toFixed(2)
+                {Options.payment.price > 0
+                  ? Options.payment.price.toFixed(2)
                   : (0).toFixed(2)}
                 zł
               </Order.PayDetails>

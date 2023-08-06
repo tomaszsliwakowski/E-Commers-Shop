@@ -7,7 +7,7 @@ import { LoginRoute, RegisterRoute } from "../../routes";
 import DropOptMin from "./dropOptMin";
 import DropOptMax from "./dropOptMax";
 import { AuthContext } from "../../assets/auth";
-import { signOut } from "firebase/auth";
+import { User, signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebase-config";
 import { useAppSelector } from "../../store/store";
 

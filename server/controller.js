@@ -6,6 +6,7 @@ const Add_Opinion = require("./model/Schema_Opinion");
 const ProdPHONE_DB = require("./model/Schema_Phone");
 const ProdNTB_DB = require("./model/schema_NTB");
 const ProdQueue = require("./model/Schema_Sale");
+const Order_DB = require("./model/Schema_Order");
 
 exports.prod_NTB = async (req, res) => {
   await ProdNTB_DB.find()
@@ -18,7 +19,7 @@ exports.prod_NTB = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get NTB` });
-      console.log(err);
+      throw err.message;
     });
 };
 exports.prod_PHONE = async (req, res) => {
@@ -32,7 +33,7 @@ exports.prod_PHONE = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get NTB` });
-      console.log(err);
+      throw err.message;
     });
 };
 exports.prod_DSK = async (req, res) => {
@@ -46,7 +47,7 @@ exports.prod_DSK = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get NTB` });
-      console.log(err);
+      throw err.message;
     });
 };
 exports.prod_COM = async (req, res) => {
@@ -60,7 +61,7 @@ exports.prod_COM = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get NTB` });
-      console.log(err);
+      throw err.message;
     });
 };
 exports.prod_ACC = async (req, res) => {
@@ -74,7 +75,7 @@ exports.prod_ACC = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get NTB` });
-      console.log(err);
+      throw err.message;
     });
 };
 exports.prod_All = async (req, res) => {
@@ -88,7 +89,7 @@ exports.prod_All = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get NTB` });
-      console.log(err);
+      throw err.message;
     });
 };
 
@@ -107,7 +108,7 @@ exports.Single_prod = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get product` });
-      console.log(err);
+      throw err.message;
     });
 };
 exports.AddOpinion = async (req, res) => {
@@ -123,7 +124,7 @@ exports.AddOpinion = async (req, res) => {
     });
     await com.save();
   } catch (error) {
-    console.log(error.message);
+    throw error.message;
   }
 };
 exports.GetOpinion = async (req, res) => {
@@ -137,7 +138,7 @@ exports.GetOpinion = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get opinion` });
-      console.log(err);
+      throw err.message;
     });
 };
 
@@ -153,6 +154,7 @@ exports.DeleteOpinion = async (req, res) => {
     })
     .catch((err) => {
       res.send({ message: `Could not delete Opinion with id ${id}` });
+      throw err.message;
     });
 };
 
@@ -167,6 +169,17 @@ exports.SaleProduct = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get Sale` });
-      console.log(err);
+      throw err.message;
     });
+};
+
+exports.AddOrder = async (req, res) => {
+  try {
+    const order = await Order_DB.create(req.body);
+    await order.save();
+    res.status(200).send({ message: "Order complete" });
+  } catch (error) {
+    res.status(500).send({ message: "Order fail" });
+    throw error.message;
+  }
 };

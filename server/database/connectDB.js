@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
-const mongo_url =
-  "mongodb+srv://admin:admin123@shop.hst096m.mongodb.net/Shop?retryWrites=true&w=majorit";
+const URI = `mongodb+srv://admin:admin123@shop.hst096m.mongodb.net/Shop?retryWrites=true`;
 // This information should be in the env file
 
 const connectDB = async () => {
   try {
-    const con = await mongoose.connect(mongo_url, {
+    const con = await mongoose.connect(URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
