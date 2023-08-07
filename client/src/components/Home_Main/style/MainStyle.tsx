@@ -44,7 +44,7 @@ export const Top = styled.div`
     padding: 0;
   }
 `;
-export const Left = styled.a`
+export const Left = styled(Link)`
   text-decoration: none;
   color: black;
   width: 100%;
