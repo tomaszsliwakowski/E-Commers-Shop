@@ -18,7 +18,6 @@ const LoginSection = () => {
     email: false,
     password: false,
   });
-  const [LoginStatus, setLoginStatus] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
@@ -31,7 +30,7 @@ const LoginSection = () => {
   const login = async (email: string, password: string) => {
     try {
       const user = await signInWithEmailAndPassword(auth, email, password);
-      navigate("/");
+      navigate("/E-Commers-Shop/");
     } catch (error) {
       console.log((error as Error).message);
     }

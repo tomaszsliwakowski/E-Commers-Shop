@@ -12,7 +12,7 @@ const DropOptMin = ({ BasketProducts }: BasketProductsProps) => {
               <Basket.Product style="small" key={id}>
                 <Basket.Property>
                   <Basket.Goto
-                    to={`//E-Commers-Shopproducts/${item.product.id}`}
+                    to={`/E-Commers-Shopproducts/${item.product.id}`}
                   >
                     <Basket.Image
                       src={item.product.img}
