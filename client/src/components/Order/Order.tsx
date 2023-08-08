@@ -68,7 +68,7 @@ const OrderSection = () => {
   const [User, setUser] = useState({ Email: "" });
   const logged: any = useContext(AuthContext);
   useEffect(() => {
-    if (logged.email) {
+    if (logged) {
       setUser({ Email: logged.email });
     }
   }, [logged]);

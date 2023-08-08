@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Basket from ".";
 import { BsTrash } from "react-icons/bs";
 import { PayAcceptList } from "../../assets";
@@ -15,11 +15,14 @@ import {
 } from "../../store/BasketSlice";
 import { toast } from "react-hot-toast";
 import { ProductType } from "../../types/Types";
+import { AuthContext } from "../../assets/auth";
 
 const CountOpt: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const BasketSection = () => {
   const dispatch = useAppDispatch();
+  const [User, setUser] = useState({ Email: "" });
+  const logged: any = useContext(AuthContext);
   const [ActiveCount, setActiveCount] = useState<{
     prodId: number;
     active: boolean;
@@ -34,6 +37,12 @@ const BasketSection = () => {
 
   const BasketProducts: { basket: Array<{ product: ProductType }> } =
     useAppSelector((state) => state.basket);
+
+  useEffect(() => {
+    if (logged) {
+      setUser({ Email: logged.email });
+    }
+  }, [logged]);
 
   const HandleCount = (count: number, id: number) => {
     dispatch(UpdateBasket({ BasketUpdate: { prodId: id, value: count } }));
@@ -289,9 +298,15 @@ const BasketSection = () => {
                   {" zł"}
                 </Basket.BuyPanelPrice>
               </Basket.BuyPanelSum>
-              <Basket.BuyPanelBtn href="/E-Commers-Shop/order">
-                Przejdź do dostawy
-              </Basket.BuyPanelBtn>
+              {User.Email ? (
+                <Basket.BuyPanelBtn href="/E-Commers-Shop/order">
+                  Przejdź do dostawy
+                </Basket.BuyPanelBtn>
+              ) : (
+                <Basket.BuyPanelBtn href="/E-Commers-Shop/login">
+                  Przejdź do dostawy
+                </Basket.BuyPanelBtn>
+              )}
             </Basket.BuyPanelCon>
             <Basket.Info>
               <AiOutlineInfoCircle />

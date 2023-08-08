@@ -298,7 +298,7 @@ Basket.EmptyBasketBtn = function BasketEmptyBasketBtn({
   ...restprops
 }: HlinkProps) {
   return (
-    <EmptyBasketBtn {...restprops} to={"/"}>
+    <EmptyBasketBtn {...restprops} to={"/E-Commers-Shop/"}>
       {children}
     </EmptyBasketBtn>
   );
