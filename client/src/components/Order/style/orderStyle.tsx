@@ -10,9 +10,21 @@ export const Container = styled.div`
   margin-bottom: 5rem;
   padding: 0 2rem;
   position: relative;
+  @media screen and (max-width: 1000px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 export const Main = styled.div`
   width: 65%;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    margin: 0 auto 2rem auto;
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    margin: 0 auto 2rem auto;
+  }
 `;
 export const Header = styled.h1`
   margin: 0.5rem 0 2rem 0;
@@ -25,6 +37,14 @@ export const SecondHeader = styled.h2`
 export const Delivery = styled.div`
   width: 90%;
   height: auto;
+  @media screen and (max-width: 1000px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    margin: 0 auto;
+  }
 `;
 export const DeliveryList = styled.ul`
   border: 1px solid rgb(221, 221, 221);
@@ -54,6 +74,15 @@ export const DeliverySelect = styled.div`
 `;
 export const DeliveryName = styled.span`
   font-size: 16px;
+  @media screen and (max-width: 1000px) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    margin: 0 auto 0 auto;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 export const DeliveryPrice = styled.span`
   letter-spacing: 0.5px;
@@ -111,12 +140,19 @@ export const DeliveryRadio = styled.label`
     border-radius: 50%;
     background: white;
   }
+  @media screen and (max-width: 768px) {
+    margin-bottom: 0;
+  }
 `;
 
 //
 
 export const Data = styled.div`
   width: 90%;
+  @media screen and (max-width: 1000px) {
+    width: 90%;
+    margin: 0 auto;
+  }
 `;
 export const DataPanel = styled.div`
   width: 100%;
@@ -145,18 +181,38 @@ export const DataInput = styled.input`
 //
 export const Payment = styled.div`
   width: 90%;
+  @media screen and (max-width: 1000px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    margin: 0 auto;
+  }
 `;
 //
 export const Summary = styled.div`
   width: 35%;
   height: auto;
   position: relative;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    margin: 0 auto;
+  }
 `;
 export const SummaryPanel = styled.div`
   width: 100%;
   margin-top: 1rem;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 0.5rem;
+  @media screen and (max-width: 1000px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    margin: 0 auto;
+  }
 `;
 
 export const Methods = styled.div`
@@ -186,6 +242,16 @@ export const MethodContainer = styled.div`
   gap: 0.5rem;
 `;
 export const MethodName = styled.span`
+  &:last-of-type {
+    @media screen and (max-width: 1000px) {
+      display: flex;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      max-height: 1.25rem;
+      line-height: 1.2rem;
+    }
+  }
   &:first-of-type {
     color: rgb(153, 148, 148);
   }
@@ -262,6 +328,11 @@ export const BasketEl = styled.li`
 export const ProductIcon = styled.div`
   display: flex;
   width: 20%;
+  @media screen and (max-width: 1000px) {
+    justify-content: center;
+    align-items: center;
+    min-width: 60px;
+  }
   & img {
     width: auto;
     height: 50px;
@@ -272,6 +343,9 @@ export const Product = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   width: 80%;
+  @media screen and (max-width: 1000px) {
+    padding-left: 5px;
+  }
 `;
 export const ProductName = styled.span`
   font-size: 16px;
