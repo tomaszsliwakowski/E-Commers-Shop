@@ -17,10 +17,10 @@ interface MethodType {
 }
 
 export const DeliveryMethod: MethodType[] = [
-  { name: "Kurier - InPost,UPS,FedEx,DTS,PickPack", price: 20.0 },
+  { name: "Kurier", price: 20.0 },
   { name: "Odbiór w salonie", price: 0 },
   { name: "InPost Paczkomat 24/7", price: 9.9 },
-  { name: "Odbiór w punkcie - Żabka,Poczta Polska i inne", price: 8.9 },
+  { name: "Odbiór w punkcie ", price: 8.9 },
 ];
 
 export const PaymentMethod: MethodType[] = [

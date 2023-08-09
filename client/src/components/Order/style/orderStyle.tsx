@@ -63,6 +63,7 @@ export const DeliveryEl = styled.li`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0.5rem;
+  gap: 0.5rem;
   cursor: pointer;
   border-bottom: 1px solid rgb(221, 221, 221);
   &:last-of-type {
@@ -78,16 +79,21 @@ export const DeliveryName = styled.span`
     overflow: hidden;
     text-overflow: ellipsis;
     word-wrap: break-word;
-    margin: 0 auto 0 auto;
   }
   @media screen and (max-width: 768px) {
     font-size: 14px;
+    width: fit-content;
   }
 `;
 export const DeliveryPrice = styled.span`
   letter-spacing: 0.5px;
   margin-left: 0.3rem;
   color: rgb(184, 177, 177);
+  display: flex;
+  align-items: center;
+  @media screen and (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 export const DeliveryCheckbox = styled.input`
   position: absolute;
@@ -353,7 +359,7 @@ export const ProductName = styled.span`
   word-wrap: break-word;
   overflow: hidden;
   max-height: 1.15em;
-  line-height: 1em;
+  line-height: 1.1em;
   max-width: 100%;
 `;
 export const ProductDetails = styled.div`

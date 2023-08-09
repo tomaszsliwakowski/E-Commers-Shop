@@ -7,12 +7,13 @@ import { BsBox, BsBank, BsCreditCard2Back, BsCash } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";
 import { BiTransfer } from "react-icons/bi";
 import { MdOutlinePayments } from "react-icons/md";
-import { ProductType } from "../../types/Types";
+import { ProductType, WindowSizeType } from "../../types/Types";
 import { useAppSelector } from "../../store/store";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { ServerRoute } from "../../routes";
 import { AuthContext } from "../../assets/auth";
+import useWindowSize from "../../hooks/useWindowSize";
 
 function DeliveryIcon(id: number) {
   switch (id) {
@@ -49,6 +50,7 @@ function PaymentIcon(id: number) {
 
 const OrderSection = () => {
   const navigate = useNavigate();
+  const { width, height }: WindowSizeType = useWindowSize();
   const [failData, setFailData] = useState<string[]>([]);
   const [CustData, setCustData] = useState({
     name: "",
