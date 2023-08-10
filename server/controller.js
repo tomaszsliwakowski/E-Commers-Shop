@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const ProdPCCOM_DB = require("./model/Schema.Com");
 const ProdACC_DB = require("./model/Schema_Acc");
 const ProdAll_DB = require("./model/Schema_All");
@@ -7,6 +8,8 @@ const ProdPHONE_DB = require("./model/Schema_Phone");
 const ProdNTB_DB = require("./model/schema_NTB");
 const ProdQueue = require("./model/Schema_Sale");
 const Order_DB = require("./model/Schema_Order");
+const User_DB = require("./model/Schema_User");
+const helpers = require("./helpers/index");
 
 exports.prod_NTB = async (req, res) => {
   await ProdNTB_DB.find()
@@ -181,5 +184,41 @@ exports.AddOrder = async (req, res) => {
   } catch (error) {
     res.status(500).send({ message: "Order fail" });
     throw error.message;
+  }
+};
+
+// USER
+const getUsers = () => User_DB.find();
+const getUserByEmail = (email) => User_DB.findOne({ email });
+const getUserBySessionToken = (sessionToken) =>
+  User_DB.findOne({ "authentication.sessionToken": sessionToken });
+const getUserById = (id) => User_DB.findById(id);
+const createUser = (values) =>
+  new User_DB(values).save().then((user) => user.toObject());
+const deleteUserById = (id) => User_DB.findOneAndDelete({ _id: id });
+const updateUserById = (id, values) => User_DB.findByIdAndUpdate(id, values);
+//
+
+exports.Register = async (req, res) => {
+  try {
+    const { email, password, username } = req.body;
+
+    if (!email || !password || !username)
+      return res.status(400).send({ message: "No data" });
+    const existingUser = await getUserByEmail(email);
+    if (existingUser) return res.status(400).send({ message: "User exist" });
+    const salt = helpers.random();
+    const user = await createUser({
+      email,
+      username,
+      authentication: {
+        salt,
+        password: helpers.authentication(salt, password),
+      },
+    });
+    return res.status(200).json(user).end();
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Register fail" });
   }
 };

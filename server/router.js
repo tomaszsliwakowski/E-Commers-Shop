@@ -14,4 +14,5 @@ route.get("/api/get/opinion/:id", controller.GetOpinion);
 route.delete("/api/delete/opinion/:id", controller.DeleteOpinion);
 route.get("/api/sale/product", controller.SaleProduct);
 route.post("/api/order/add", controller.AddOrder);
+route.post("/register", controller.Register);
 module.exports = route;

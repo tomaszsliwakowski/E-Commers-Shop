@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import Login from "../Login/index";
 import { LogRegBtn, LogRegError } from "../register&login";
-import { LoginRoute } from "../../routes";
+import { LoginRoute, ServerRoute } from "../../routes";
 import InfoList from "../register&login/infolist";
 import RegisterConsens from ".";
 import { FormErrorTypeReg, RegisterValueType } from "../../types/Types";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/firebase-config";
 import { useNavigate } from "react-router";
+import axios from "axios";
 
 const RegisterSection = () => {
   const [ShowPass, setShowPass] = useState<boolean>(false);
@@ -66,18 +67,30 @@ const RegisterSection = () => {
     lastname: string
   ) => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      if (auth.currentUser === null) return;
-      await updateProfile(auth.currentUser, {
-        displayName: `${name + " " + lastname}`,
-      });
-      setRegisterValues({
-        name: "",
-        lastname: "",
-        email: "",
-        password: "",
-      });
-      navigate("/E-Commers-Shop/");
+      await axios
+        .post(
+          `${ServerRoute}/register`,
+          {
+            email,
+            password,
+            username: `${name} ${lastname}`,
+          },
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        )
+        .then((res) => {
+          setRegisterValues({
+            name: "",
+            lastname: "",
+            email: "",
+            password: "",
+          });
+          navigate("/E-Commers-Shop/");
+        })
+        .catch((err) => console.log(err.message));
     } catch (error) {
       console.log((error as Error).message);
     }
