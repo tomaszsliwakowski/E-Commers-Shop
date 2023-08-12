@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Login from ".";
 import { LogRegBtn, LogRegError } from "../register&login";
-import { RegisterRoute } from "../../routes";
+import { RegisterRoute, ServerRoute } from "../../routes";
 import InfoList from "../register&login/infolist";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase/firebase-config";
 import { useNavigate } from "react-router";
 import { FormErrorType, LoginValueType } from "../../types/Types";
+import axios from "axios";
 
 const LoginSection = () => {
   const [ShowPass, setShowPass] = useState<boolean>(false);
@@ -29,8 +28,20 @@ const LoginSection = () => {
 
   const login = async (email: string, password: string) => {
     try {
-      const user = await signInWithEmailAndPassword(auth, email, password);
-      navigate("/E-Commers-Shop/");
+      await axios
+        .post(
+          `${ServerRoute}/login`,
+          { email, password },
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          navigate("/E-Commers-Shop/");
+        });
     } catch (error) {
       console.log((error as Error).message);
     }

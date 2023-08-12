@@ -6,9 +6,6 @@ import { ProductType } from "../../types/Types";
 import { LoginRoute, RegisterRoute } from "../../routes";
 import DropOptMin from "./dropOptMin";
 import DropOptMax from "./dropOptMax";
-import { AuthContext } from "../../assets/auth";
-import { User, signOut } from "firebase/auth";
-import { auth } from "../../firebase/firebase-config";
 import { useAppSelector } from "../../store/store";
 
 type UserPanelProps = {
@@ -33,16 +30,8 @@ const UserPanel = ({
   const BasketProducts: { basket: Array<{ product: ProductType }> } =
     useAppSelector((state) => state.basket);
   const [User, setUser] = useState({ Name: "", Email: "" });
-  const logged: any = useContext(AuthContext);
-  useEffect(() => {
-    if (logged) {
-      setUser({ Name: logged.displayName, Email: logged.email });
-    }
-  }, [logged]);
-
-  const logout = async () => {
-    await signOut(auth);
-  };
+  const logged = false;
+  const logout = async () => {};
 
   return width !== undefined ? (
     width >= 1250 ? (

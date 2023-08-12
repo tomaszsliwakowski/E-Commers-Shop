@@ -10,6 +10,7 @@ const ProdQueue = require("./model/Schema_Sale");
 const Order_DB = require("./model/Schema_Order");
 const User_DB = require("./model/Schema_User");
 const helpers = require("./helpers/index");
+const crypto = require("crypto");
 
 exports.prod_NTB = async (req, res) => {
   await ProdNTB_DB.find()
@@ -190,14 +191,47 @@ exports.AddOrder = async (req, res) => {
 // USER
 const getUsers = () => User_DB.find();
 const getUserByEmail = (email) => User_DB.findOne({ email });
-const getUserBySessionToken = (sessionToken) =>
-  User_DB.findOne({ "authentication.sessionToken": sessionToken });
 const getUserById = (id) => User_DB.findById(id);
 const createUser = (values) =>
   new User_DB(values).save().then((user) => user.toObject());
 const deleteUserById = (id) => User_DB.findOneAndDelete({ _id: id });
 const updateUserById = (id, values) => User_DB.findByIdAndUpdate(id, values);
+const getUserBySessionToken = (sessionToken) =>
+  User_DB.findOne({ "authentication.sessionToken": sessionToken });
 //
+
+exports.Login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password)
+      return res.status(400).send({ message: "No data" });
+    const user = await getUserByEmail(email).select(
+      "+authentication.salt +authentication.password"
+    );
+    if (!user) return res.status(400).send({ message: "User not exist" });
+    const expectedHash = helpers.authentication(
+      user.authentication.salt,
+      password
+    );
+    if (user.authentication.password !== expectedHash) return res.status(403);
+    const salt = helpers.random();
+    user.authentication.sessionToken = helpers.authentication(
+      salt,
+      user._id.toString()
+    );
+    await user.save();
+
+    res.cookie("SHOP_AUTH", user.authentication.sessionToken, {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+    });
+    return res.status(200).json(user).end();
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Login fail" });
+  }
+};
 
 exports.Register = async (req, res) => {
   try {
@@ -220,5 +254,53 @@ exports.Register = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.status(400).send({ message: "Register fail" });
+  }
+};
+
+exports.GetAllUsers = async (req, res) => {
+  try {
+    const users = await getUsers();
+    return res.status(200).json(users);
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Fail get users" });
+  }
+};
+
+exports.DeleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteUser = await deleteUserById(id);
+    return res.json(deleteUser);
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Fail delete user" });
+  }
+};
+
+exports.UpdateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { username } = req.body;
+    if (!username) return res.status(400);
+    const user = await getUserById(id);
+    user.username = username;
+    await updateUserById(id, user);
+    return res.status(200).json(user).end();
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Fail update user" });
+  }
+};
+
+exports.Profile = async (req, res) => {
+  try {
+    const { SHOP_AUTH } = req.cookies;
+    res.send(SHOP_AUTH);
+    // if (!SHOP_AUTH) return res.json(null);
+    // const user = await getUserBySessionToken(SHOP_AUTH);
+    // res.send(user);
+  } catch (error) {
+    res.json(error);
   }
 };

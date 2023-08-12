@@ -13,4 +13,5 @@ const authentication = (salt, password) => {
 module.exports = {
   random,
   authentication,
+  SECRET,
 };

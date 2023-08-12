@@ -1,6 +1,7 @@
 const express = require("express");
 const route = express.Router();
 const controller = require("./controller");
+const { isAuthenticated, isOwner } = require("./middlewares/index");
 
 route.get("/api/products/Laptopy", controller.prod_NTB);
 route.get("/api/products/Komputery", controller.prod_DSK);
@@ -15,4 +16,9 @@ route.delete("/api/delete/opinion/:id", controller.DeleteOpinion);
 route.get("/api/sale/product", controller.SaleProduct);
 route.post("/api/order/add", controller.AddOrder);
 route.post("/register", controller.Register);
+route.post("/login", controller.Login);
+route.get("/users/all", isAuthenticated, controller.GetAllUsers);
+route.delete("/users/del/:id", isAuthenticated, isOwner, controller.DeleteUser);
+route.put("/users/upd/:id", isAuthenticated, isOwner, controller.UpdateUser);
+route.get("/profile", controller.Profile);
 module.exports = route;

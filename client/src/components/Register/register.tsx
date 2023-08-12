@@ -5,8 +5,6 @@ import { LoginRoute, ServerRoute } from "../../routes";
 import InfoList from "../register&login/infolist";
 import RegisterConsens from ".";
 import { FormErrorTypeReg, RegisterValueType } from "../../types/Types";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../../firebase/firebase-config";
 import { useNavigate } from "react-router";
 import axios from "axios";
 

@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const bodyparser = require("body-parser");
 const cors = require("cors");
 const connectDB = require("./database/connectDB");
+const cookieParser = require("cookie-parser");
 
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -13,6 +14,7 @@ const corsOptions = {
 const app = express();
 
 app.use(cors(corsOptions));
+app.use(cookieParser());
 
 const PORT = 10000; // This information should be in the env file
 

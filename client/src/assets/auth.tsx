@@ -1,17 +1,25 @@
-import { onAuthStateChanged } from "firebase/auth";
 import React, { createContext, useState, useEffect, ReactNode } from "react";
-import { auth } from "../firebase/firebase-config";
 
-export const AuthContext = createContext(null);
+import axios from "axios";
+import { ServerRoute } from "../routes";
+
+export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [User, setUser] = useState<any>(null);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
+    if (!User) {
+      axios.get(`${ServerRoute}/profile`).then((res) => {
+        setUser(res.data);
+        console.log(res.data);
+      });
+    }
   }, []);
 
-  return <AuthContext.Provider value={User}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ User, setUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
