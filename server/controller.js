@@ -296,10 +296,9 @@ exports.UpdateUser = async (req, res) => {
 exports.Profile = async (req, res) => {
   try {
     const { SHOP_AUTH } = req.cookies;
-    res.send(SHOP_AUTH);
-    // if (!SHOP_AUTH) return res.json(null);
-    // const user = await getUserBySessionToken(SHOP_AUTH);
-    // res.send(user);
+    if (!SHOP_AUTH) return res.json(null);
+    const user = await getUserBySessionToken(SHOP_AUTH);
+    return res.status(200).json(user).end();
   } catch (error) {
     res.json(error);
   }

@@ -7,6 +7,7 @@ import { LoginRoute, RegisterRoute } from "../../routes";
 import DropOptMin from "./dropOptMin";
 import DropOptMax from "./dropOptMax";
 import { useAppSelector } from "../../store/store";
+import { AuthContext, UserType } from "../../assets/auth";
 
 type UserPanelProps = {
   width?: number;
@@ -29,10 +30,11 @@ const UserPanel = ({
 }: UserPanelProps) => {
   const BasketProducts: { basket: Array<{ product: ProductType }> } =
     useAppSelector((state) => state.basket);
-  const [User, setUser] = useState({ Name: "", Email: "" });
+  const Userr: UserType = useContext(AuthContext);
+  const [User, setUserr] = useState({ Name: "", Email: "" });
   const logged = false;
   const logout = async () => {};
-
+  console.log(Userr);
   return width !== undefined ? (
     width >= 1250 ? (
       <>
