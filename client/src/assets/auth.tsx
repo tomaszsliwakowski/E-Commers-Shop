@@ -8,8 +8,14 @@ export interface UserType {
   username: string;
   _id: string;
 }
-
-export const AuthContext = createContext({ email: "", username: "", _id: "" });
+export interface UserAuth {
+  User: UserType;
+  setUser: React.Dispatch<React.SetStateAction<UserType>>;
+}
+export const AuthContext = createContext<UserAuth>({
+  User: { email: "", username: "", _id: "" },
+  setUser: () => {},
+});
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [User, setUser] = useState<UserType>({
@@ -22,10 +28,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       axios
         .get(`${ServerRoute}/profile`, { withCredentials: true })
         .then((res) => {
-          setUser(res.data);
+          if (res.data) {
+            setUser(res.data);
+          }
         });
     }
-  }, []);
+  }, [User]);
 
-  return <AuthContext.Provider value={User}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ User, setUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };

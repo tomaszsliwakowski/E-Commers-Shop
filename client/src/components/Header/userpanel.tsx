@@ -7,7 +7,7 @@ import { LoginRoute, RegisterRoute } from "../../routes";
 import DropOptMin from "./dropOptMin";
 import DropOptMax from "./dropOptMax";
 import { useAppSelector } from "../../store/store";
-import { AuthContext, UserType } from "../../assets/auth";
+import { AuthContext, UserAuth } from "../../assets/auth";
 
 type UserPanelProps = {
   width?: number;
@@ -30,11 +30,27 @@ const UserPanel = ({
 }: UserPanelProps) => {
   const BasketProducts: { basket: Array<{ product: ProductType }> } =
     useAppSelector((state) => state.basket);
-  const Userr: UserType = useContext(AuthContext);
-  const [User, setUserr] = useState({ Name: "", Email: "" });
-  const logged = false;
-  const logout = async () => {};
-  console.log(Userr);
+  const { User, setUser }: UserAuth = useContext(AuthContext);
+
+  const getCookie = (name: string) => {
+    return document.cookie.split(";").some((c) => {
+      return c.trim().startsWith(name + "=");
+    });
+  };
+  const deleteCookie = (name: string, path: string, domain: string) => {
+    if (getCookie(name)) {
+      document.cookie =
+        name +
+        "=" +
+        (path ? ";path=" + path : "") +
+        (domain ? ";domain=" + domain : "") +
+        ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+    }
+  };
+  const logout = () => {
+    deleteCookie("SHOP_AUTH", "/", "localhost");
+  };
+
   return width !== undefined ? (
     width >= 1250 ? (
       <>
@@ -44,12 +60,12 @@ const UserPanel = ({
             Konto
           </Header.DropBtn>
           <Header.DropDown>
-            {logged ? (
+            {User._id !== "" ? (
               <>
                 <Header.DropOpt>
                   <Header.UserName>
-                    {User.Name !== "" && User.Name !== undefined
-                      ? User.Name.split(" ")[0]
+                    {User.username !== "" && User.username !== undefined
+                      ? User.username.split(" ")[0]
                       : null}
                   </Header.UserName>
                   <Header.Orders>Zamówienia</Header.Orders>
@@ -80,7 +96,7 @@ const UserPanel = ({
             <SlBasket />
             Koszyk
           </Header.DropBtn>
-          {!true ? (
+          {BasketProducts.basket.length === 0 ? (
             <Header.DropDown>
               <Header.DropOpt>
                 <Header.PanelName>Twój koszyk jest pusty!</Header.PanelName>
@@ -135,12 +151,12 @@ const UserPanel = ({
                 Konto
               </Header.CloseRight>
             </Header.CloseRightPanel>
-            {logged ? (
+            {User._id !== "" ? (
               <>
                 <Header.DropOpt>
                   <Header.UserName>
-                    {User.Name !== "" && User.Name !== undefined
-                      ? User.Name.split(" ")[0]
+                    {User.username !== "" && User.username !== undefined
+                      ? User.username.split(" ")[0]
                       : null}
                   </Header.UserName>
 

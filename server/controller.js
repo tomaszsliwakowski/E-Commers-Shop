@@ -222,7 +222,6 @@ exports.Login = async (req, res) => {
     await user.save();
 
     res.cookie("SHOP_AUTH", user.authentication.sessionToken, {
-      httpOnly: true,
       sameSite: "None",
       secure: true,
     });

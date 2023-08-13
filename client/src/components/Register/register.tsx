@@ -86,7 +86,7 @@ const RegisterSection = () => {
             email: "",
             password: "",
           });
-          navigate("/E-Commers-Shop/");
+          navigate("/E-Commers-Shop/login");
         })
         .catch((err) => console.log(err.message));
     } catch (error) {

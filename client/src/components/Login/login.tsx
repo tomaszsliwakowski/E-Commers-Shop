@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import Login from ".";
 import { LogRegBtn, LogRegError } from "../register&login";
 import { RegisterRoute, ServerRoute } from "../../routes";
@@ -6,6 +6,7 @@ import InfoList from "../register&login/infolist";
 import { useNavigate } from "react-router";
 import { FormErrorType, LoginValueType } from "../../types/Types";
 import axios from "axios";
+import { AuthContext, UserAuth } from "../../assets/auth";
 
 const LoginSection = () => {
   const [ShowPass, setShowPass] = useState<boolean>(false);
@@ -18,6 +19,7 @@ const LoginSection = () => {
     password: false,
   });
   const navigate = useNavigate();
+  const { setUser }: UserAuth = useContext(AuthContext);
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,6 +42,12 @@ const LoginSection = () => {
           }
         )
         .then((res) => {
+          let user = res.data;
+          setUser({
+            username: user.username,
+            email: user.email,
+            _id: user._id,
+          });
           navigate("/E-Commers-Shop/");
         });
     } catch (error) {
