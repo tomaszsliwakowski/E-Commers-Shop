@@ -314,7 +314,7 @@ SingleProduct.OpinionLoginBtn = function SingleProductOpinionLoginBtn({
   ...restprops
 }: HlinkProps) {
   return (
-    <OpinionLoginBtn {...restprops} to={LocalRoute + LoginRoute}>
+    <OpinionLoginBtn {...restprops} to={LoginRoute}>
       {children}
     </OpinionLoginBtn>
   );

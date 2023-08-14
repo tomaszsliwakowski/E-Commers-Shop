@@ -10,7 +10,6 @@ const ProdQueue = require("./model/Schema_Sale");
 const Order_DB = require("./model/Schema_Order");
 const User_DB = require("./model/Schema_User");
 const helpers = require("./helpers/index");
-const crypto = require("crypto");
 
 exports.prod_NTB = async (req, res) => {
   await ProdNTB_DB.find()
@@ -23,7 +22,7 @@ exports.prod_NTB = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get NTB` });
-      throw err.message;
+      console.log(err.message);
     });
 };
 exports.prod_PHONE = async (req, res) => {
@@ -37,7 +36,7 @@ exports.prod_PHONE = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get NTB` });
-      throw err.message;
+      console.log(err.message);
     });
 };
 exports.prod_DSK = async (req, res) => {
@@ -51,7 +50,7 @@ exports.prod_DSK = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get NTB` });
-      throw err.message;
+      console.log(err.message);
     });
 };
 exports.prod_COM = async (req, res) => {
@@ -65,7 +64,7 @@ exports.prod_COM = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get NTB` });
-      throw err.message;
+      console.log(err.message);
     });
 };
 exports.prod_ACC = async (req, res) => {
@@ -79,7 +78,7 @@ exports.prod_ACC = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get NTB` });
-      throw err.message;
+      console.log(err.message);
     });
 };
 exports.prod_All = async (req, res) => {
@@ -93,7 +92,7 @@ exports.prod_All = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get NTB` });
-      throw err.message;
+      console.log(err.message);
     });
 };
 
@@ -112,7 +111,7 @@ exports.Single_prod = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get product` });
-      throw err.message;
+      console.log(err.message);
     });
 };
 exports.AddOpinion = async (req, res) => {
@@ -128,7 +127,7 @@ exports.AddOpinion = async (req, res) => {
     });
     await com.save();
   } catch (error) {
-    throw error.message;
+    console.log(err.message);
   }
 };
 exports.GetOpinion = async (req, res) => {
@@ -142,7 +141,7 @@ exports.GetOpinion = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get opinion` });
-      throw err.message;
+      console.log(err.message);
     });
 };
 
@@ -158,7 +157,7 @@ exports.DeleteOpinion = async (req, res) => {
     })
     .catch((err) => {
       res.send({ message: `Could not delete Opinion with id ${id}` });
-      throw err.message;
+      console.log(err.message);
     });
 };
 
@@ -189,7 +188,6 @@ exports.AddOrder = async (req, res) => {
 };
 
 // USER
-const getUsers = () => User_DB.find();
 const getUserByEmail = (email) => User_DB.findOne({ email });
 const getUserById = (id) => User_DB.findById(id);
 const createUser = (values) =>
@@ -253,16 +251,6 @@ exports.Register = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.status(400).send({ message: "Register fail" });
-  }
-};
-
-exports.GetAllUsers = async (req, res) => {
-  try {
-    const users = await getUsers();
-    return res.status(200).json(users);
-  } catch (error) {
-    console.log(error);
-    return res.status(400).send({ message: "Fail get users" });
   }
 };
 

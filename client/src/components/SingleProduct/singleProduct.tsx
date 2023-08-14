@@ -241,7 +241,10 @@ const SingleProductSection = () => {
           </SingleProduct.NavBtn>
         </SingleProduct.Navigation>
         <ProductDescription image={ProductData?.img ? ProductData.img : ""} />
-        <OpnionComment ProductData={ProductData} prodId={id ? id : ""} />
+        <OpnionComment
+          ProductData={ProductData}
+          prodId={id !== "sale" && id ? id : ProductData.id.toString()}
+        />
       </SingleProduct.Bottom>
     </SingleProduct>
   );

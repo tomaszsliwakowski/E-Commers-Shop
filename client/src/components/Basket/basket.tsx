@@ -15,14 +15,13 @@ import {
 } from "../../store/BasketSlice";
 import { toast } from "react-hot-toast";
 import { ProductType } from "../../types/Types";
-import { AuthContext } from "../../assets/auth";
+import { AuthContext, UserAuth } from "../../assets/auth";
 
 const CountOpt: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const BasketSection = () => {
   const dispatch = useAppDispatch();
-  const [User, setUser] = useState({ Email: "" });
-  const logged: any = useContext(AuthContext);
+  const { User }: UserAuth = useContext(AuthContext);
   const [ActiveCount, setActiveCount] = useState<{
     prodId: number;
     active: boolean;
@@ -37,12 +36,6 @@ const BasketSection = () => {
 
   const BasketProducts: { basket: Array<{ product: ProductType }> } =
     useAppSelector((state) => state.basket);
-
-  useEffect(() => {
-    if (logged) {
-      setUser({ Email: logged.email });
-    }
-  }, [logged]);
 
   const HandleCount = (count: number, id: number) => {
     dispatch(UpdateBasket({ BasketUpdate: { prodId: id, value: count } }));
@@ -298,7 +291,7 @@ const BasketSection = () => {
                   {" zł"}
                 </Basket.BuyPanelPrice>
               </Basket.BuyPanelSum>
-              {User.Email ? (
+              {User.email !== "" ? (
                 <Basket.BuyPanelBtn href="/E-Commers-Shop/order">
                   Przejdź do dostawy
                 </Basket.BuyPanelBtn>

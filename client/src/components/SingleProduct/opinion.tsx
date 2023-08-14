@@ -2,8 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import SingleProduct from ".";
 import { ProductType, WindowSizeType, OpinionType } from "../../types/Types";
 import { Rating } from "../Products/productList";
-import { BiUserCircle } from "react-icons/bi";
-import { AuthContext } from "../../assets/auth";
+import { AuthContext, UserAuth } from "../../assets/auth";
 import axios from "axios";
 import { AddOpinion, DeleteOpnion, GetOpinion } from "../../routes";
 import { SlOptionsVertical } from "react-icons/sl";
@@ -39,25 +38,16 @@ const OpnionComment = ({
       _id: "",
     },
   ]);
-  const [User, setUser] = useState({ Name: "", Email: "", uid: "" });
+
   const [render, setRender] = useState<boolean>(false);
-  const logged: any = useContext(AuthContext);
-  useEffect(() => {
-    if (logged) {
-      setUser({
-        Name: logged.displayName,
-        Email: logged.email,
-        uid: logged.uid,
-      });
-    }
-  }, [logged]);
+  const { User }: UserAuth = useContext(AuthContext);
 
   const HandleBuildOpinion = () => {
-    if (User.uid !== "" && opinionValue !== "") {
+    if (User._id !== "" && opinionValue !== "") {
       const FullOpinion = {
-        uid: User.uid,
-        email: User.Email,
-        name: User.Name,
+        uid: User._id,
+        email: User.email,
+        name: User.username,
         content: opinionValue,
         date: new Date().toLocaleDateString(),
         prod_id: prodId,
@@ -157,7 +147,7 @@ const OpnionComment = ({
                 }}
               />
             )}
-            {User.uid !== undefined && User.uid !== "" ? (
+            {User._id !== undefined && User._id !== "" ? (
               <SingleProduct.OpinionAddBtn
                 click={setActiveAddOpinon}
                 active={activeAddOpinion}
@@ -195,7 +185,7 @@ const OpnionComment = ({
                             {width && width < 768 ? (
                               <SingleProduct.OpinionShowDate>
                                 <span>{item.date}</span>
-                                {item.uid === User.uid ? (
+                                {item.uid === User._id ? (
                                   <>
                                     <SingleProduct.OptionsOpinion
                                       click={setOpinionOptions}
@@ -223,7 +213,7 @@ const OpnionComment = ({
                             {width && width >= 768 ? (
                               <SingleProduct.OpinionShowDate>
                                 {item.date}
-                                {item.uid === User.uid ? (
+                                {item.uid === User._id ? (
                                   <>
                                     <SingleProduct.OptionsOpinion
                                       click={setOpinionOptions}

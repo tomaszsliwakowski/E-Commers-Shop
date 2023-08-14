@@ -30,7 +30,7 @@ const UserPanel = ({
 }: UserPanelProps) => {
   const BasketProducts: { basket: Array<{ product: ProductType }> } =
     useAppSelector((state) => state.basket);
-  const { User, setUser }: UserAuth = useContext(AuthContext);
+  const { User }: UserAuth = useContext(AuthContext);
 
   const getCookie = (name: string) => {
     return document.cookie.split(";").some((c) => {
@@ -49,6 +49,7 @@ const UserPanel = ({
   };
   const logout = () => {
     deleteCookie("SHOP_AUTH", "/", "localhost");
+    window.location.reload();
   };
 
   return width !== undefined ? (
