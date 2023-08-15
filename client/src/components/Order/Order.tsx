@@ -8,12 +8,13 @@ import { FiMapPin } from "react-icons/fi";
 import { BiTransfer } from "react-icons/bi";
 import { MdOutlinePayments } from "react-icons/md";
 import { ProductType, WindowSizeType } from "../../types/Types";
-import { useAppSelector } from "../../store/store";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { ServerRoute } from "../../routes";
-import { AuthContext } from "../../assets/auth";
+import { AuthContext, UserAuth } from "../../assets/auth";
 import useWindowSize from "../../hooks/useWindowSize";
+import { ClearBasket } from "../../store/BasketSlice";
 
 function DeliveryIcon(id: number) {
   switch (id) {
@@ -49,6 +50,7 @@ function PaymentIcon(id: number) {
 }
 
 const OrderSection = () => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { width, height }: WindowSizeType = useWindowSize();
   const [failData, setFailData] = useState<string[]>([]);
@@ -67,14 +69,7 @@ const OrderSection = () => {
 
   const BasketProducts: { basket: Array<{ product: ProductType }> } =
     useAppSelector((state) => state.basket);
-  const [User, setUser] = useState({ Email: "" });
-  const logged: any = useContext(AuthContext);
-  useEffect(() => {
-    if (logged) {
-      setUser({ Email: logged.email });
-    }
-  }, [logged]);
-
+  const { User }: UserAuth = useContext(AuthContext);
   function Sum() {
     let BasketValue = BasketProducts.basket.reduce(
       (sum, a) => sum + a.product.price * (a.product.count || 1),
@@ -140,18 +135,23 @@ const OrderSection = () => {
           price: Options.delivery.price,
         },
       };
-      axios.post(
-        `${ServerRoute}/api/order/add`,
-        {
-          Products: orderProducts,
-          Data: Object.assign(CustData, { email: User.Email }, orderOptions),
-        },
-        {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+      axios
+        .post(
+          `${ServerRoute}/api/order/add`,
+          {
+            Products: orderProducts,
+            Data: Object.assign(CustData, { email: User.email }, orderOptions),
           },
-        }
-      );
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        )
+        .then(() => {
+          dispatch(ClearBasket({ do: { remove: true } }));
+          navigate("/E-Commers-Shop/");
+        });
     } catch (error) {
       throw new Error("Add order fail");
     }

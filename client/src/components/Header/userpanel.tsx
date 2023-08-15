@@ -69,8 +69,12 @@ const UserPanel = ({
                       ? User.username.split(" ")[0]
                       : null}
                   </Header.UserName>
-                  <Header.Orders>Zamówienia</Header.Orders>
-                  <Header.AccountSet>Ustawiania</Header.AccountSet>
+                  <Header.Orders href="/E-Commers-Shop/user/orders">
+                    Zamówienia
+                  </Header.Orders>
+                  <Header.AccountSet href="/E-Commers-Shop/user/setting">
+                    Ustawiania
+                  </Header.AccountSet>
                 </Header.DropOpt>
                 <Header.DropOpt>
                   <Header.LogOutBtn click={logout}>
@@ -161,8 +165,12 @@ const UserPanel = ({
                       : null}
                   </Header.UserName>
 
-                  <Header.Orders>Zamówienia</Header.Orders>
-                  <Header.AccountSet>Ustawiania</Header.AccountSet>
+                  <Header.Orders href="/E-Commers-Shop/user/orders">
+                    Zamówienia
+                  </Header.Orders>
+                  <Header.AccountSet href="/E-Commers-Shop/user/setting">
+                    Ustawiania
+                  </Header.AccountSet>
                 </Header.DropOpt>
                 <Header.DropOpt>
                   <Header.LogOutBtn click={logout}>

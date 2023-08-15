@@ -11,6 +11,8 @@ import {
   RegisterRoute,
   SaleRoute,
   SearchRoute,
+  UserOrderRoute,
+  UserSettingRoute,
 } from "./routes";
 import ProductsPage from "./containers/ProductsPage";
 import LoginPage from "./containers/LoginPage";
@@ -23,6 +25,8 @@ import { store } from "./store/store";
 import NotFoundPage from "./containers/NotFoundPage";
 import { Toaster } from "react-hot-toast";
 import OrderPage from "./containers/OrderPage";
+import UserOrdersPage from "./containers/UserOrdersPage";
+import UserSettingPage from "./containers/UserSettingPage";
 
 function App() {
   return (
@@ -39,6 +43,8 @@ function App() {
           <Route path={ProductRoute} element={<SingleProductsPage />} />
           <Route path={SearchRoute} element={<ProductsPage />} />
           <Route path={LoginRoute} element={<LoginPage />} />
+          <Route path={UserOrderRoute} element={<UserOrdersPage />} />
+          <Route path={UserSettingRoute} element={<UserSettingPage />} />
           <Route path={OrderRoute} element={<OrderPage />} />
           <Route path={RegisterRoute} element={<RegisterPage />} />
           <Route path={BasketRoute} element={<BasketPage />} />
