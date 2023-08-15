@@ -8,9 +8,9 @@ export const BasketRoute = "/E-Commers-Shop/basket";
 export const OrderRoute = "/E-Commers-Shop/order";
 export const UserOrderRoute = "/E-Commers-Shop/user/orders";
 export const UserSettingRoute = "/E-Commers-Shop/user/setting";
-export const ServerRoute = "https://e-commers-shop.onrender.com";
-//export const ServerRoute = "http://localhost:10000";
-export const LocalRoute = "/E-Commers-Shop/";
+//export const ServerRoute = "https://e-commers-shop.onrender.com";
+export const ServerRoute = "http://localhost:10000";
+export const LocalRoute = "http://localhost:3000"; //"https://tomaszsliwakowski.github.io"
 export const SaleRoute = "/E-Commers-Shop//sale/product/:status";
 export function GetOpinion(id: string) {
   return `${ServerRoute}/api/get/opinion/${id}`;

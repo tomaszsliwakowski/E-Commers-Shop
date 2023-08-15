@@ -3,11 +3,12 @@ import { Header } from ".";
 import { SlBasket } from "react-icons/sl";
 import { AiOutlineUser, AiOutlineClose } from "react-icons/ai";
 import { ProductType } from "../../types/Types";
-import { LoginRoute, RegisterRoute } from "../../routes";
+import { HomeRoute, LocalRoute, LoginRoute, RegisterRoute } from "../../routes";
 import DropOptMin from "./dropOptMin";
 import DropOptMax from "./dropOptMax";
 import { useAppSelector } from "../../store/store";
 import { AuthContext, UserAuth } from "../../assets/auth";
+import { useNavigate } from "react-router";
 
 type UserPanelProps = {
   width?: number;
@@ -28,6 +29,7 @@ const UserPanel = ({
   activeRightMenu,
   setActiveRightMenu,
 }: UserPanelProps) => {
+  const navigate = useNavigate();
   const BasketProducts: { basket: Array<{ product: ProductType }> } =
     useAppSelector((state) => state.basket);
   const { User }: UserAuth = useContext(AuthContext);
@@ -49,7 +51,9 @@ const UserPanel = ({
   };
   const logout = () => {
     deleteCookie("SHOP_AUTH", "/", "localhost");
-    window.location.reload();
+    if (window.location.pathname !== HomeRoute) {
+      window.location.assign(`${LocalRoute}${HomeRoute}`);
+    } else window.location.reload();
   };
 
   return width !== undefined ? (
