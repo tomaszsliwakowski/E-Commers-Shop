@@ -29,7 +29,6 @@ const UserPanel = ({
   activeRightMenu,
   setActiveRightMenu,
 }: UserPanelProps) => {
-  const navigate = useNavigate();
   const BasketProducts: { basket: Array<{ product: ProductType }> } =
     useAppSelector((state) => state.basket);
   const { User }: UserAuth = useContext(AuthContext);
