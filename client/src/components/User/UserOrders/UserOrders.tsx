@@ -2,6 +2,7 @@ import React from "react";
 import { Orders } from ".";
 import UserPanel from "../Panel/Panel";
 import styled from "styled-components";
+import SortOrders from "./SortOrders";
 
 const UserOrders = () => {
   return (
@@ -9,6 +10,7 @@ const UserOrders = () => {
       <UserPanel />
       <Orders>
         <Orders.Title>Zamówienia</Orders.Title>
+        <SortOrders />
       </Orders>
     </Layout>
   );

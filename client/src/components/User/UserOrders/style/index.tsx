@@ -11,3 +11,7 @@ export const Title = styled.h2`
   font-size: 31px;
   padding-left: 1rem;
 `;
+export const SortPanel = styled.div``;
+export const SortCon = styled.div``;
+export const SortTitle = styled.h4``;
+export const SortSelect = styled.div``;
