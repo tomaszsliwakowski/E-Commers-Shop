@@ -6,8 +6,17 @@ import {
   SortCon,
   SortTitle,
   SortSelect,
+  SortCheckbox,
+  SortShow,
+  SortShowOpt,
+  SortList,
 } from "./style/index";
-import { DivProps, HeadProps } from "../../../types/Types";
+import {
+  DivProps,
+  HeadProps,
+  ListProps,
+  SpanProps,
+} from "../../../types/Types";
 
 export function Orders({ children, ...restprops }: DivProps) {
   return <Container {...restprops}>{children}</Container>;
@@ -37,4 +46,20 @@ Orders.SortSelect = function OrdersSortSelect({
   ...restprops
 }: DivProps) {
   return <SortSelect {...restprops}>{children}</SortSelect>;
+};
+
+Orders.SP_Checkbox = function OrdersSP_Checkbox({ ...restprops }) {
+  return <SortCheckbox {...restprops} />;
+};
+Orders.SP_Show = function OrdersSP_Show({ children, ...restprops }: DivProps) {
+  return <SortShow {...restprops}>{children}</SortShow>;
+};
+Orders.SP_ShowOpt = function OrdersSP_ShowOpt({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <SortShowOpt {...restprops}>{children}</SortShowOpt>;
+};
+Orders.SP_List = function OrdersSP_List({ children, ...restprops }: ListProps) {
+  return <SortList {...restprops}>{children}</SortList>;
 };

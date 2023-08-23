@@ -15,3 +15,7 @@ export const SortPanel = styled.div``;
 export const SortCon = styled.div``;
 export const SortTitle = styled.h4``;
 export const SortSelect = styled.div``;
+export const SortCheckbox = styled.input``;
+export const SortShow = styled.div``;
+export const SortShowOpt = styled.span``;
+export const SortList = styled.ul``;
