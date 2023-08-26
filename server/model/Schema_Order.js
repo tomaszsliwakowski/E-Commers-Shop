@@ -13,6 +13,7 @@ let schemaOrder = new mongoose.Schema({
       producer: String,
     },
   ],
+  UserId: String,
   Data: {
     name: String,
     lastName: String,
@@ -20,7 +21,6 @@ let schemaOrder = new mongoose.Schema({
     city: String,
     postCode: String,
     phone: String,
-    email: String,
     payment: {
       price: Number,
       method: String,

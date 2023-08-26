@@ -20,4 +20,5 @@ route.post("/login", controller.Login);
 route.delete("/users/del/:id", isAuthenticated, isOwner, controller.DeleteUser);
 route.put("/users/upd/:id", isAuthenticated, isOwner, controller.UpdateUser);
 route.get("/profile", controller.Profile);
+route.get("/api/orders/get/:id", controller.GetOrders);
 module.exports = route;

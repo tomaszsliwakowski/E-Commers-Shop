@@ -140,7 +140,8 @@ const OrderSection = () => {
           `${ServerRoute}/api/order/add`,
           {
             Products: orderProducts,
-            Data: Object.assign(CustData, { email: User.email }, orderOptions),
+            UserId: User._id,
+            Data: Object.assign(CustData, orderOptions),
           },
           {
             headers: {

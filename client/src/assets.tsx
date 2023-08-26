@@ -1,3 +1,5 @@
+import { sortOrdersType } from "./types/Types";
+
 export const PayAcceptList: string[] = [
   "https://assets.x-kom.pl/public-spa/xkom/c500d59374fe7d7d.png",
   "https://assets.x-kom.pl/public-spa/xkom/e51fb0a6ab97d090.png",
@@ -30,4 +32,11 @@ export const PaymentMethod: MethodType[] = [
   { name: "Przelew tradycyjny", price: 0 },
   { name: "Przy odbiorze", price: 5.0 },
   { name: "Raty", price: 0 },
+];
+
+export const sortLib: sortOrdersType[] = [
+  { id: 0, name: "Od najnowszych" },
+  { id: 1, name: "Od najstarszych" },
+  { id: 2, name: "Od najtańszych" },
+  { id: 3, name: "Od najdroższych" },
 ];

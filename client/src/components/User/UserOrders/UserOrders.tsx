@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Orders } from ".";
 import UserPanel from "../Panel/Panel";
 import styled from "styled-components";
 import SortOrders from "./SortOrders";
+import { sortOrdersType } from "../../../types/Types";
+import { sortLib } from "../../../assets";
+import OrderList from "./OrderList";
 
 const UserOrders = () => {
+  const [selectSort, setSelectSort] = useState<sortOrdersType>(sortLib[0]);
+
   return (
     <Layout>
       <UserPanel />
       <Orders>
         <Orders.Title>Zamówienia</Orders.Title>
-        <SortOrders />
+        <SortOrders setSort={setSelectSort} />
+        <OrderList selectSort={selectSort} />
       </Orders>
     </Layout>
   );
@@ -22,6 +28,7 @@ const Layout = styled.div`
   display: flex;
   margin-top: 9rem;
   width: 100%;
+  min-height: 52vh;
   height: fit-content;
   max-width: 1050px;
   margin-left: auto;

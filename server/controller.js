@@ -172,7 +172,6 @@ exports.SaleProduct = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: `Error get Sale` });
-      throw err.message;
     });
 };
 
@@ -185,6 +184,20 @@ exports.AddOrder = async (req, res) => {
     res.status(500).send({ message: "Order fail" });
     throw error.message;
   }
+};
+exports.GetOrders = async (req, res) => {
+  const { id } = req.params;
+  await Order_DB.find({ UserId: id })
+    .then((reasult) => {
+      if (!reasult) {
+        res.status(404).send({ message: `Not found any orders` });
+      } else {
+        res.send(reasult);
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ message: `Error get Orders` });
+    });
 };
 
 // USER

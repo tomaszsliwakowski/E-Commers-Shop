@@ -131,3 +131,29 @@ export type BasketConPropsType = {
   HandleCount: Function;
   HandleActiveCountInput: Function;
 };
+
+export type sortOrdersType = {
+  id: number;
+  name: string;
+};
+
+export interface OrderType {
+  Products: ProductType[];
+  Data: {
+    name: string;
+    lastname: string;
+    address: string;
+    city: string;
+    postCode: string;
+    phone: string;
+    delivery: {
+      method: string;
+      price: number;
+    };
+    payment: {
+      method: string;
+      price: number;
+    };
+  };
+  UserId: string;
+}

@@ -10,6 +10,7 @@ import {
   SortShow,
   SortShowOpt,
   SortList,
+  List,
 } from "./style/index";
 import {
   DivProps,
@@ -56,10 +57,15 @@ Orders.SP_Show = function OrdersSP_Show({ children, ...restprops }: DivProps) {
 };
 Orders.SP_ShowOpt = function OrdersSP_ShowOpt({
   children,
+
   ...restprops
 }: SpanProps) {
   return <SortShowOpt {...restprops}>{children}</SortShowOpt>;
 };
 Orders.SP_List = function OrdersSP_List({ children, ...restprops }: ListProps) {
   return <SortList {...restprops}>{children}</SortList>;
+};
+
+Orders.List = function OrdersList({ children, ...restprops }: ListProps) {
+  return <List {...restprops}>{children}</List>;
 };
