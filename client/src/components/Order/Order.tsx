@@ -69,7 +69,9 @@ const OrderSection = () => {
 
   const BasketProducts: { basket: Array<{ product: ProductType }> } =
     useAppSelector((state) => state.basket);
+
   const { User }: UserAuth = useContext(AuthContext);
+
   function Sum() {
     let BasketValue = BasketProducts.basket.reduce(
       (sum, a) => sum + a.product.price * (a.product.count || 1),
@@ -141,6 +143,8 @@ const OrderSection = () => {
           {
             Products: orderProducts,
             UserId: User._id,
+            Price: Sum(),
+            OrderData: new Date(),
             Data: Object.assign(CustData, orderOptions),
           },
           {

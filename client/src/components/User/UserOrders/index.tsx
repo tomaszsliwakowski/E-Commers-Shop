@@ -11,10 +11,18 @@ import {
   SortShowOpt,
   SortList,
   List,
+  OrderContent,
+  OrderDetails,
+  OrderInfo,
+  OrderInfoCon,
+  OrderPrice,
+  OrderStatus,
+  Image,
 } from "./style/index";
 import {
   DivProps,
   HeadProps,
+  ImgProps,
   ListProps,
   SpanProps,
 } from "../../../types/Types";
@@ -68,4 +76,39 @@ Orders.SP_List = function OrdersSP_List({ children, ...restprops }: ListProps) {
 
 Orders.List = function OrdersList({ children, ...restprops }: ListProps) {
   return <List {...restprops}>{children}</List>;
+};
+Orders.OrderDetails = function OrdersOrderDetails({
+  children,
+  ...restprops
+}: DivProps) {
+  return <OrderDetails {...restprops}>{children}</OrderDetails>;
+};
+Orders.OrderContent = function OrdersOrderContent({
+  children,
+  ...restprops
+}: DivProps) {
+  return <OrderContent {...restprops}>{children}</OrderContent>;
+};
+
+Orders.OrderStatus = function OrdersList({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <OrderStatus {...restprops}>{children}</OrderStatus>;
+};
+Orders.OrderInfo = function OrdersList({ children, ...restprops }: SpanProps) {
+  return <OrderInfo {...restprops}>{children}</OrderInfo>;
+};
+Orders.OrderInfoCon = function OrdersList({
+  children,
+  ...restprops
+}: DivProps) {
+  return <OrderInfoCon {...restprops}>{children}</OrderInfoCon>;
+};
+Orders.OrderPrice = function OrdersList({ children, ...restprops }: SpanProps) {
+  return <OrderPrice {...restprops}>{children}</OrderPrice>;
+};
+
+Orders.Image = function OrdersImage({ children, ...restprops }: ImgProps) {
+  return <Image {...restprops} />;
 };

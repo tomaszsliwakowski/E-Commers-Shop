@@ -54,6 +54,8 @@ export const SortList = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
+  background-color: white;
+  z-index: 1000;
   & li {
     padding: 0.5rem 0.5rem;
   }
@@ -71,6 +73,70 @@ export const SortList = styled.ul`
 export const List = styled.ul`
   width: 100%;
   height: auto;
-  background-color: silver;
+  background-color: white;
   margin-top: 1rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: auto;
+  max-height: 920px;
+  padding: 0.2rem 1rem 1rem 1rem;
+  & li {
+    display: flex;
+    padding: 1.5rem 1rem 1.5rem 1.5rem;
+    box-shadow: 0px 1px 8px rgb(204, 204, 204);
+    cursor: pointer;
+    border-radius: 1rem;
+    max-height: 178px;
+    overflow: hidden;
+    min-height: 168px;
+    &:hover {
+      box-shadow: 0px 2px 10px rgb(179, 177, 177);
+    }
+  }
+`;
+export const OrderDetails = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 200px;
+`;
+export const OrderContent = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  overflow: hidden;
+  padding-left: 1rem;
+`;
+export const OrderStatus = styled.span`
+  font-weight: 500;
+  font-size: 16px;
+`;
+export const OrderInfoCon = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+export const OrderInfo = styled.span`
+  &:first-of-type {
+    font-size: 16px;
+  }
+  &:last-of-type {
+    font-size: 13px;
+  }
+`;
+export const OrderPrice = styled.span`
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  font-size: 16px;
+`;
+export const Image = styled.img`
+  width: fit-content;
+  height: 100%;
+  max-height: 64px;
 `;

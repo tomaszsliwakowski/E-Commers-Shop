@@ -428,6 +428,7 @@ export const DropBtn = styled.span`
   align-items: center;
   justify-content: center;
   gap: 5px;
+  position: relative;
 `;
 
 export const PanelAccount = styled.div`
@@ -707,4 +708,17 @@ export const Orders = styled(Link)`
 export const AccountSet = styled(Link)`
   text-decoration: none;
   color: black;
+`;
+
+export const BasketCount = styled.span`
+  position: absolute;
+  right: -16px;
+  top: -2px;
+  background-color: rgb(0, 130, 250);
+  color: white;
+  width: fit-content;
+  height: min-content;
+  padding: 0px 4px;
+  border-radius: 8px;
+  font-size: 12px;
 `;

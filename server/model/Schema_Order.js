@@ -14,6 +14,8 @@ let schemaOrder = new mongoose.Schema({
     },
   ],
   UserId: String,
+  Price: Number,
+  OrderData: Date,
   Data: {
     name: String,
     lastName: String,

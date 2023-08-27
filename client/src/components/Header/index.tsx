@@ -37,6 +37,7 @@ import {
   PanelBasketEmpty,
   UserName,
   Orders,
+  BasketCount,
   AccountSet,
 } from "./styles/HeaderStyle";
 import {
@@ -402,4 +403,11 @@ Header.AccountSet = function HeaderAccountSet({
       {children}
     </AccountSet>
   );
+};
+
+Header.BasketCount = function HeaderBasketCount({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <BasketCount {...restprops}>{children}</BasketCount>;
 };

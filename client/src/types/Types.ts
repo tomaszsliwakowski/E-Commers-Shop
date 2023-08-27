@@ -31,6 +31,9 @@ export interface HlinkProps extends ComponentPropsWithoutRef<"a"> {
 export interface FormProps extends ComponentPropsWithoutRef<"form"> {
   children?: ReactNode;
 }
+export interface ImgProps extends ComponentPropsWithoutRef<"img"> {
+  children?: ReactNode;
+}
 
 export interface ProductType {
   id: number;
@@ -139,6 +142,9 @@ export type sortOrdersType = {
 
 export interface OrderType {
   Products: ProductType[];
+  Price: number;
+  OrderData: Date;
+  _id: string;
   Data: {
     name: string;
     lastname: string;

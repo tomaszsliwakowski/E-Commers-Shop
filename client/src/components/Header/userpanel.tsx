@@ -103,6 +103,11 @@ const UserPanel = ({
           <Header.DropBtn>
             <SlBasket />
             Koszyk
+            {BasketProducts.basket.length > 0 ? (
+              <Header.BasketCount>
+                {BasketProducts.basket.length}
+              </Header.BasketCount>
+            ) : null}
           </Header.DropBtn>
           {BasketProducts.basket.length === 0 ? (
             <Header.DropDown>
@@ -144,6 +149,11 @@ const UserPanel = ({
           <Header.DropBtn>
             <SlBasket />
             Koszyk
+            {BasketProducts.basket.length > 0 ? (
+              <Header.BasketCount>
+                {BasketProducts.basket.length}
+              </Header.BasketCount>
+            ) : null}
           </Header.DropBtn>
         </Header.UserPanelBasketMin>
 
