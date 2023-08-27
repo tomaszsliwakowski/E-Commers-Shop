@@ -3,3 +3,7 @@
 
 CLIENT: https://tomaszsliwakowski.github.io/E-Commers-Shop/
 SERVER : https://e-commers-shop.onrender.com/
+
+Login:
+email: test@gmail.com
+password: test123
