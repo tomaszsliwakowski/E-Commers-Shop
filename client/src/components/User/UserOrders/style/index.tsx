@@ -110,7 +110,7 @@ export const OrderContent = styled.div`
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
-  overflow: hidden;
+  overflow: auto;
   padding-left: 1rem;
 `;
 export const OrderStatus = styled.span`
