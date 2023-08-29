@@ -7,6 +7,14 @@ export interface UserType {
   email: string;
   username: string;
   _id: string;
+  orderData?: {
+    name: string;
+    lastname: string;
+    street: string;
+    city: string;
+    postCode: string;
+    phone: string;
+  };
 }
 export interface UserAuth {
   User: UserType;

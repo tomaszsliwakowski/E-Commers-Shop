@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components/macro";
 import UserPanel from "../Panel/Panel";
 import { Settings } from ".";
+import { AuthContext, UserAuth } from "../../../assets/auth";
 
 const UserSetting = () => {
+  const { User }: UserAuth = useContext(AuthContext);
+
   return (
     <Layout>
       <UserPanel />
@@ -37,13 +40,26 @@ const UserSetting = () => {
         <Settings.DataContainer>
           <Settings.SingleDataContainer>
             <Settings.SingleData className="order">
-              <Settings.DataValue>test</Settings.DataValue>
-              <Settings.DataValue>test123</Settings.DataValue>
-              <Settings.DataValue>testowa 21</Settings.DataValue>
-              <Settings.DataValue>testowo</Settings.DataValue>
-              <Settings.DataValue>42-340</Settings.DataValue>
-              <Settings.DataValue>333333333</Settings.DataValue>
-              <Settings.DataBtn className="order">Zmień</Settings.DataBtn>
+              {User.orderData
+                ? Object.values(User.orderData).map((item, id) =>
+                    item !== "" ? (
+                      <Settings.DataValue key={id}>{item}</Settings.DataValue>
+                    ) : null
+                  )
+                : null}
+              {User.orderData ? (
+                Object.values(User.orderData).filter((item) => item !== "")
+                  .length === 0 ? (
+                  <>
+                    <Settings.DataValue>Brak danych</Settings.DataValue>
+                    <Settings.DataBtn className="order">
+                      Dodaj dane
+                    </Settings.DataBtn>
+                  </>
+                ) : (
+                  <Settings.DataBtn className="order">Zmień</Settings.DataBtn>
+                )
+              ) : null}
             </Settings.SingleData>
           </Settings.SingleDataContainer>
         </Settings.DataContainer>

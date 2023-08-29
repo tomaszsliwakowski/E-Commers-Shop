@@ -7,6 +7,7 @@ import RegisterConsens from ".";
 import { FormErrorTypeReg, RegisterValueType } from "../../types/Types";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { ORDERDATA } from "../../assets";
 
 const RegisterSection = () => {
   const [ShowPass, setShowPass] = useState<boolean>(false);
@@ -72,6 +73,7 @@ const RegisterSection = () => {
             email,
             password,
             username: `${name} ${lastname}`,
+            orderData: ORDERDATA,
           },
           {
             headers: {

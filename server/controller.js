@@ -245,7 +245,7 @@ exports.Login = async (req, res) => {
 
 exports.Register = async (req, res) => {
   try {
-    const { email, password, username } = req.body;
+    const { email, password, username, orderData } = req.body;
 
     if (!email || !password || !username)
       return res.status(400).send({ message: "No data" });
@@ -255,6 +255,7 @@ exports.Register = async (req, res) => {
     const user = await createUser({
       email,
       username,
+      orderData,
       authentication: {
         salt,
         password: helpers.authentication(salt, password),

@@ -40,3 +40,12 @@ export const sortLib: sortOrdersType[] = [
   { id: 2, name: "Od najtańszych" },
   { id: 3, name: "Od najdroższych" },
 ];
+
+export const ORDERDATA = {
+  name: "",
+  lastname: "",
+  street: "",
+  city: "",
+  postCode: "",
+  phone: "",
+};

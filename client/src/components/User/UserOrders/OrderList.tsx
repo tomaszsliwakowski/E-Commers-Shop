@@ -5,7 +5,6 @@ import { AuthContext, UserAuth } from "../../../assets/auth";
 import axios from "axios";
 import { ServerRoute } from "../../../routes";
 import { sortLib } from "../../../assets";
-import { useNavigate } from "react-router";
 
 interface Props {
   selectSort: sortOrdersType;
@@ -14,7 +13,6 @@ interface Props {
 const OrderList = (props: Props) => {
   const [orders, setOrders] = useState<OrderType[] | undefined>(undefined);
   const { User }: UserAuth = useContext(AuthContext);
-  const navigate = useNavigate();
 
   function SortData(data: OrderType[]) {
     switch (props.selectSort.id) {
@@ -73,10 +71,7 @@ const OrderList = (props: Props) => {
     <Orders.List>
       {orders
         ? orders.map((item, id) => (
-            <li
-              key={id}
-              onClick={() => navigate(`/E-Commers-Shop/user/order/${item._id}`)}
-            >
+            <li key={id}>
               <Orders.OrderDetails>
                 <Orders.OrderStatus>Dostarczone</Orders.OrderStatus>
                 <Orders.OrderInfoCon>
