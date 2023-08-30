@@ -47,6 +47,14 @@ const LoginSection = () => {
             username: user.username,
             email: user.email,
             _id: user._id,
+            orderData: {
+              name: user.orderData.name,
+              lastname: user.orderData.lastname,
+              street: user.orderData.street,
+              city: user.orderData.city,
+              postCode: user.orderData.postCode,
+              phone: user.orderData.phone,
+            },
           });
           navigate("/E-Commers-Shop/");
         });

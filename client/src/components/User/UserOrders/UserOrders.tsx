@@ -24,7 +24,7 @@ const UserOrders = () => {
 
 export default UserOrders;
 
-const Layout = styled.div`
+export const Layout = styled.div`
   display: flex;
   margin-top: 9rem;
   width: 100%;
