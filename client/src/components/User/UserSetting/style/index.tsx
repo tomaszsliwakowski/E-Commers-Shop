@@ -63,3 +63,12 @@ export const DataBtn = styled.button`
     margin-top: 0.5rem;
   }
 `;
+export const Modal = styled.div`
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.7);
+`;

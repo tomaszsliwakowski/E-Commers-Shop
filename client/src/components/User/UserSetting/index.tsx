@@ -9,6 +9,7 @@ import {
   DataBtn,
   DataValue,
   SingleData,
+  Modal,
 } from "./style/index";
 
 export function Settings({ children, ...restprops }: DivProps) {
@@ -56,4 +57,8 @@ Settings.DataBtn = function SettingsDataBtn({
   ...restprops
 }: BtnProps) {
   return <DataBtn {...restprops}>{children}</DataBtn>;
+};
+
+Settings.Modal = function SettingsModal({ children, ...restprops }: DivProps) {
+  return <Modal {...restprops}>{children}</Modal>;
 };

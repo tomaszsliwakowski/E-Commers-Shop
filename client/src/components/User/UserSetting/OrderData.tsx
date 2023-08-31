@@ -1,13 +1,15 @@
 import React from "react";
 import { Settings } from ".";
 import { UserAuth, UserType } from "../../../assets/auth";
+import { ModalType } from "./UserSetting";
 
 type Props = {
   User: UserType;
+  setOpenModal: React.Dispatch<React.SetStateAction<ModalType>>;
 };
 
 const OrderData = (props: Props) => {
-  const { User } = props;
+  const { User, setOpenModal } = props;
   return (
     <Settings.DataContainer>
       <Settings.SingleDataContainer>
@@ -24,12 +26,20 @@ const OrderData = (props: Props) => {
               .length === 0 ? (
               <>
                 <Settings.DataValue>Brak danych</Settings.DataValue>
-                <Settings.DataBtn className="order">
+                <Settings.DataBtn
+                  className="order"
+                  onClick={() => setOpenModal({ id: "orderdata", state: true })}
+                >
                   Dodaj dane
                 </Settings.DataBtn>
               </>
             ) : (
-              <Settings.DataBtn className="order">Zmień</Settings.DataBtn>
+              <Settings.DataBtn
+                className="order"
+                onClick={() => setOpenModal({ id: "orderdata", state: true })}
+              >
+                Zmień
+              </Settings.DataBtn>
             )
           ) : null}
         </Settings.SingleData>
