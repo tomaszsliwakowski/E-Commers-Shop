@@ -10,6 +10,11 @@ import {
   DataValue,
   SingleData,
   Modal,
+  ModalBody,
+  ModalTopPanel,
+  ModalSaveBtn,
+  ModalTitle,
+  ModalContent,
 } from "./style/index";
 
 export function Settings({ children, ...restprops }: DivProps) {
@@ -61,4 +66,37 @@ Settings.DataBtn = function SettingsDataBtn({
 
 Settings.Modal = function SettingsModal({ children, ...restprops }: DivProps) {
   return <Modal {...restprops}>{children}</Modal>;
+};
+
+Settings.ModalBody = function SettingsModalBody({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ModalBody {...restprops}>{children}</ModalBody>;
+};
+
+Settings.ModalTopPanel = function SettingsModalTopPanel({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ModalTopPanel {...restprops}>{children}</ModalTopPanel>;
+};
+Settings.ModalSaveBtn = function SettingsModalSaveBtn({
+  children,
+  ...restprops
+}: BtnProps) {
+  return <ModalSaveBtn {...restprops}>{children}</ModalSaveBtn>;
+};
+Settings.ModalTitle = function SettingsModalTitle({
+  children,
+  ...restprops
+}: HeadProps) {
+  return <ModalTitle {...restprops}>{children}</ModalTitle>;
+};
+
+Settings.ModalContent = function SettingsModalContent({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ModalContent {...restprops}>{children}</ModalContent>;
 };

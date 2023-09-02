@@ -28,6 +28,13 @@ const UserSetting = () => {
     };
   }, [openModal]);
 
+  const CloseModal = (e: React.MouseEvent) => {
+    let target = e.target as HTMLElement;
+    if (target.id === "activeModal") {
+      setOpenModal({ id: "", state: false });
+    }
+  };
+
   return (
     <Layout>
       <UserPanel />
@@ -39,7 +46,7 @@ const UserSetting = () => {
         <OrderData User={User} setOpenModal={setOpenModal} />
       </Settings>
       {openModal.state ? (
-        <Settings.Modal onClick={() => setOpenModal({ id: "", state: false })}>
+        <Settings.Modal onClick={(e) => CloseModal(e)} id="activeModal">
           <ModalSettings
             setOpenModal={setOpenModal}
             User={User}

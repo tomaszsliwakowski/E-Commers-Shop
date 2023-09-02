@@ -1,6 +1,8 @@
 import React from "react";
 import { ModalType } from "./UserSetting";
 import { UserType } from "../../../assets/auth";
+import { Settings } from ".";
+import { GrClose } from "react-icons/gr";
 
 interface Props {
   User: UserType;
@@ -17,9 +19,14 @@ const MODAL_LIB = {
 const ModalSettings = (props: Props) => {
   const { setOpenModal, User, type } = props;
   return (
-    <div>
-      <div></div>
-    </div>
+    <Settings.ModalBody>
+      <Settings.ModalTopPanel>
+        <Settings.ModalTitle>title</Settings.ModalTitle>
+        <GrClose size={35} />
+      </Settings.ModalTopPanel>
+      <Settings.ModalContent></Settings.ModalContent>
+      <Settings.ModalSaveBtn>Zapisz</Settings.ModalSaveBtn>
+    </Settings.ModalBody>
   );
 };
 
