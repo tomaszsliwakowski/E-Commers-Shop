@@ -102,7 +102,7 @@ export const ModalTopPanel = styled.div`
   }
 `;
 export const ModalSaveBtn = styled.button`
-  margin-top: 1rem;
+  margin-top: 2rem;
   color: white;
   height: 40px;
   border-radius: 2rem;
@@ -111,9 +111,8 @@ export const ModalSaveBtn = styled.button`
   font-weight: normal;
   text-decoration: none;
   height: 40px;
-  width: calc(100% - 4rem);
-  margin: 0 auto;
-  margin-bottom: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
   border: none;
   cursor: pointer;
   background-color: rgb(0, 130, 250);
@@ -129,5 +128,55 @@ export const ModalTitle = styled.h3`
   text-decoration: none;
 `;
 export const ModalContent = styled.div`
-  min-height: 400px;
+  padding: 0 2rem;
+`;
+export const Form = styled.form`
+  width: 100%;
+  height: 100%;
+`;
+export const InputCon = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin-top: 1.5rem;
+`;
+export const InputName = styled.span`
+  position: absolute;
+  top: 12px;
+  left: 1.5rem;
+  height: fit-content;
+  pointer-events: none;
+  transition: all 0.1s ease 0s;
+  color: rgb(148, 148, 148);
+  font-family: Lato, sans-serif;
+  font-size: 15px;
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  height: 40px;
+  border-radius: 2rem;
+  border: 1px solid rgb(221, 221, 221);
+  padding: 0px 1.5rem;
+  font-size: 14px;
+  outline: none;
+  &:focus ~ ${InputName}, &:not(:focus):valid ~ ${InputName} {
+    top: -8px;
+    left: 1.1rem;
+    background-color: white;
+    padding: 0 8px;
+    font-size: 14px;
+  }
+  &:disabled ~ ${InputName} {
+    top: -8px;
+    left: 1.1rem;
+    background-color: white;
+    padding: 0 8px;
+    font-size: 13px;
+  }
+  &.invalid{
+   border: 1px solid red;
+  }
 `;

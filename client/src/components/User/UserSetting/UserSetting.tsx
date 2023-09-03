@@ -7,9 +7,10 @@ import AccountData from "./AccountData";
 import OrderData from "./OrderData";
 import { Layout } from "../UserOrders/UserOrders";
 import ModalSettings from "./ModalAccount";
+import { Modalkeys } from "../../../assets";
 
 export type ModalType = {
-  id: "username" | "email" | "password" | "orderdata" | "";
+  id: Modalkeys | string;
   state: boolean;
 };
 

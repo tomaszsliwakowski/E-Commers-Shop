@@ -1,7 +1,8 @@
 import React from "react";
 import { Settings } from ".";
-import { UserAuth, UserType } from "../../../assets/auth";
+import { UserType } from "../../../assets/auth";
 import { ModalType } from "./UserSetting";
+import { MODAL_Type } from "../../../assets";
 
 type Props = {
   User: UserType;
@@ -28,7 +29,9 @@ const OrderData = (props: Props) => {
                 <Settings.DataValue>Brak danych</Settings.DataValue>
                 <Settings.DataBtn
                   className="order"
-                  onClick={() => setOpenModal({ id: "orderdata", state: true })}
+                  onClick={() =>
+                    setOpenModal({ id: MODAL_Type.orderdata, state: true })
+                  }
                 >
                   Dodaj dane
                 </Settings.DataBtn>
@@ -36,7 +39,9 @@ const OrderData = (props: Props) => {
             ) : (
               <Settings.DataBtn
                 className="order"
-                onClick={() => setOpenModal({ id: "orderdata", state: true })}
+                onClick={() =>
+                  setOpenModal({ id: MODAL_Type.orderdata, state: true })
+                }
               >
                 Zmień
               </Settings.DataBtn>

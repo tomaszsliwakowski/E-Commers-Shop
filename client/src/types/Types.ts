@@ -163,3 +163,12 @@ export interface OrderType {
   };
   UserId: string;
 }
+
+export interface OrderDataType {
+  name: string;
+  lastName: string;
+  address: string;
+  city: string;
+  postCode: string;
+  phone: string;
+}

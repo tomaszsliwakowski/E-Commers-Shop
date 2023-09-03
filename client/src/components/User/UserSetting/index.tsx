@@ -1,5 +1,11 @@
 import React from "react";
-import { BtnProps, DivProps, HeadProps, SpanProps } from "../../../types/Types";
+import {
+  BtnProps,
+  DivProps,
+  FormProps,
+  HeadProps,
+  SpanProps,
+} from "../../../types/Types";
 import {
   Container,
   Title,
@@ -15,6 +21,10 @@ import {
   ModalSaveBtn,
   ModalTitle,
   ModalContent,
+  Form,
+  Input,
+  InputCon,
+  InputName,
 } from "./style/index";
 
 export function Settings({ children, ...restprops }: DivProps) {
@@ -99,4 +109,23 @@ Settings.ModalContent = function SettingsModalContent({
   ...restprops
 }: DivProps) {
   return <ModalContent {...restprops}>{children}</ModalContent>;
+};
+
+Settings.Form = function SettingsForm({ children, ...restprops }: FormProps) {
+  return <Form {...restprops}>{children}</Form>;
+};
+Settings.InputCon = function SettingsInputCon({
+  children,
+  ...restprops
+}: DivProps) {
+  return <InputCon {...restprops}>{children}</InputCon>;
+};
+Settings.Input = function SettingsInput({ ...restprops }) {
+  return <Input {...restprops} />;
+};
+Settings.InputName = function SettingsInputName({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <InputName {...restprops}>{children}</InputName>;
 };

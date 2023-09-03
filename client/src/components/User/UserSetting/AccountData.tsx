@@ -2,6 +2,7 @@ import React from "react";
 import { Settings } from ".";
 import { UserType } from "../../../assets/auth";
 import { ModalType } from "./UserSetting";
+import { MODAL_Type } from "../../../assets";
 
 type Props = {
   User: UserType;
@@ -17,7 +18,9 @@ const AccountData = (props: Props) => {
         <Settings.SingleData>
           <Settings.DataValue>{User.username}</Settings.DataValue>
           <Settings.DataBtn
-            onClick={() => setOpenModal({ id: "username", state: true })}
+            onClick={() =>
+              setOpenModal({ id: MODAL_Type.username, state: true })
+            }
           >
             Zmień
           </Settings.DataBtn>
@@ -28,7 +31,7 @@ const AccountData = (props: Props) => {
         <Settings.SingleData>
           <Settings.DataValue>{User.email}</Settings.DataValue>
           <Settings.DataBtn
-            onClick={() => setOpenModal({ id: "email", state: true })}
+            onClick={() => setOpenModal({ id: MODAL_Type.email, state: true })}
           >
             Zmień
           </Settings.DataBtn>
@@ -39,7 +42,9 @@ const AccountData = (props: Props) => {
         <Settings.SingleData>
           <Settings.DataValue>******</Settings.DataValue>
           <Settings.DataBtn
-            onClick={() => setOpenModal({ id: "password", state: true })}
+            onClick={() =>
+              setOpenModal({ id: MODAL_Type.password, state: true })
+            }
           >
             Zmień
           </Settings.DataBtn>

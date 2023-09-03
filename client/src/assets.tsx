@@ -49,3 +49,24 @@ export const ORDERDATA = {
   postCode: "",
   phone: "",
 };
+
+export type ModalLib = {
+  username: string;
+  email: string;
+  password: string;
+  orderdata: string;
+};
+
+export const MODAL_LIB: ModalLib = {
+  username: "nazwy konta",
+  email: "e-mail",
+  password: "hasła",
+  orderdata: "danych",
+};
+export const MODAL_Type: ModalLib = {
+  username: "username",
+  email: "email",
+  password: "password",
+  orderdata: "orderdata",
+};
+export type Modalkeys = keyof typeof MODAL_Type;
