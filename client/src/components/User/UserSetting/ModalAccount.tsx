@@ -3,12 +3,10 @@ import { ModalType } from "./UserSetting";
 import { UserType } from "../../../assets/auth";
 import { Settings } from ".";
 import { GrClose } from "react-icons/gr";
-import SetUsername from "./SetUsername";
 import { MODAL_Type, ModalLib } from "../../../assets";
 import { MODAL_LIB } from "../../../assets";
-import SetEmail from "./SetEmail";
-import SetPassword from "./SetPassword";
 import SetOrderData from "./SetOrderData";
+import SetUserData from "./SetUserData";
 
 interface Props {
   User: UserType;
@@ -30,15 +28,10 @@ const ModalSettings = (props: Props) => {
         />
       </Settings.ModalTopPanel>
       <Settings.ModalContent>
-        {type === MODAL_Type.username ? (
-          <SetUsername User={User} setOpenModal={setOpenModal} type={type} />
+        {type !== MODAL_Type.orderdata ? (
+          <SetUserData User={User} setOpenModal={setOpenModal} type={type} />
         ) : null}
-        {type === MODAL_Type.email ? (
-          <SetEmail User={User} setOpenModal={setOpenModal} type={type} />
-        ) : null}
-        {type === MODAL_Type.password ? (
-          <SetPassword User={User} setOpenModal={setOpenModal} type={type} />
-        ) : null}
+
         {type === MODAL_Type.orderdata ? (
           <SetOrderData User={User} setOpenModal={setOpenModal} type={type} />
         ) : null}

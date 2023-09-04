@@ -41,6 +41,34 @@ export const sortLib: sortOrdersType[] = [
   { id: 3, name: "Od najdroższych" },
 ];
 
+interface SetLibType {
+  name: string;
+  regex: string;
+  before: string;
+  after: string;
+}
+
+export const SettingsLib: SetLibType[] = [
+  {
+    name: "username",
+    regex: "^[a-zA-Z]+ [a-zA-Z]+$",
+    before: "Obecna nazwa",
+    after: "Nowa nazwa",
+  },
+  {
+    name: "email",
+    regex: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+    before: "Obecny e-mail",
+    after: "Nowy e-mail",
+  },
+  {
+    name: "password",
+    regex: "^[A-Z][a-zA-Z0-9!@#$%^&*]{7,19}$",
+    before: "Obecne hasło",
+    after: "Nowe hasło",
+  },
+];
+
 export const ORDERDATA = {
   name: "",
   lastname: "",
