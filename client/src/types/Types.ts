@@ -1,3 +1,4 @@
+import { type } from "os";
 import React, { ComponentPropsWithoutRef, ReactNode } from "react";
 
 export interface DivProps extends ComponentPropsWithoutRef<"div"> {

@@ -11,8 +11,23 @@ interface Props {
 
 const SetUsername = (props: Props) => {
   const { setOpenModal, User, type } = props;
+  const [newUsername, setNewUserName] = useState("");
+  const [failData, setFailData] = useState<string[]>([]);
+
+  const SubmitOrderData = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (newUsername === "") return;
+    if (new RegExp("^[a-zA-Z]+ [a-zA-Z]+$").test(newUsername)) {
+      //send to api
+      setOpenModal({ id: "", state: false });
+      setFailData([]);
+    } else {
+      setFailData(["username"]);
+    }
+  };
+
   return (
-    <Settings.Form>
+    <Settings.Form onSubmit={SubmitOrderData}>
       <Settings.InputCon>
         <Settings.Input
           type="text"
@@ -24,10 +39,19 @@ const SetUsername = (props: Props) => {
         <Settings.InputName>Obecna nazwa</Settings.InputName>
       </Settings.InputCon>
       <Settings.InputCon>
-        <Settings.Input type="text" autocomplete="off" required />
+        <Settings.Input
+          type="text"
+          autocomplete="off"
+          required
+          className={failData.includes("username") ? "invalid" : ""}
+          value={newUsername}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setNewUserName(e.target.value)
+          }
+        />
         <Settings.InputName>Nowa nazwa</Settings.InputName>
       </Settings.InputCon>
-      <Settings.ModalSaveBtn>Zapisz</Settings.ModalSaveBtn>
+      <Settings.ModalSaveBtn type="submit">Zapisz</Settings.ModalSaveBtn>
     </Settings.Form>
   );
 };

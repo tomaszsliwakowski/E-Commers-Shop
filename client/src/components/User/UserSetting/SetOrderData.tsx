@@ -51,6 +51,7 @@ const SetOrderData = (props: Props) => {
       return;
     if (CheckData().length === 0) {
       console.log("save");
+      //send to api
       setOpenModal({ id: "", state: false });
     }
   };
