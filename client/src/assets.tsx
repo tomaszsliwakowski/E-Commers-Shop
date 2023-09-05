@@ -1,4 +1,4 @@
-import { sortOrdersType } from "./types/Types";
+import { ModalLib, SetLibType, sortOrdersType } from "./types/Types";
 
 export const PayAcceptList: string[] = [
   "https://assets.x-kom.pl/public-spa/xkom/c500d59374fe7d7d.png",
@@ -41,31 +41,27 @@ export const sortLib: sortOrdersType[] = [
   { id: 3, name: "Od najdroższych" },
 ];
 
-interface SetLibType {
-  name: string;
-  regex: string;
-  before: string;
-  after: string;
-}
-
 export const SettingsLib: SetLibType[] = [
   {
     name: "username",
-    regex: "^[a-zA-Z]+ [a-zA-Z]+$",
+    regex: "[a-zA-Z]{4,}$",
     before: "Obecna nazwa",
     after: "Nowa nazwa",
+    route: "/users/update/username/",
   },
   {
     name: "email",
     regex: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
     before: "Obecny e-mail",
     after: "Nowy e-mail",
+    route: "/users/update/email/",
   },
   {
     name: "password",
-    regex: "^[A-Z][a-zA-Z0-9!@#$%^&*]{7,19}$",
+    regex: "^[A-Z][a-zA-Z0-9!@#$%^&*]{6,19}$",
     before: "Obecne hasło",
     after: "Nowe hasło",
+    route: "/users/update/password/",
   },
 ];
 
@@ -76,13 +72,6 @@ export const ORDERDATA = {
   city: "",
   postCode: "",
   phone: "",
-};
-
-export type ModalLib = {
-  username: string;
-  email: string;
-  password: string;
-  orderdata: string;
 };
 
 export const MODAL_LIB: ModalLib = {

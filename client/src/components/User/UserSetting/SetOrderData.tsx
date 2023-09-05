@@ -37,8 +37,8 @@ const SetOrderData = (props: Props) => {
   const { setOpenModal, User, type } = props;
   const [failData, setFailData] = useState<string[]>([]);
   const [userData, setUserData] = useState<OrderDataType>({
-    name: User.username.split(" ")[0] || "",
-    lastName: User.username.split(" ")[1] || "",
+    name: User.orderData?.name || "",
+    lastName: User.orderData?.lastname || "",
     address: User.orderData?.street || "",
     city: User.orderData?.city || "",
     postCode: User.orderData?.postCode || "",

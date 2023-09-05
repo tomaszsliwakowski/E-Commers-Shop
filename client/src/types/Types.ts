@@ -173,3 +173,18 @@ export interface OrderDataType {
   postCode: string;
   phone: string;
 }
+
+export interface SetLibType {
+  name: string;
+  regex: string;
+  before: string;
+  after: string;
+  route: string;
+}
+
+export type ModalLib = {
+  username: string;
+  email: string;
+  password: string;
+  orderdata: string;
+};

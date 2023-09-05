@@ -3,7 +3,8 @@ import { ModalType } from "./UserSetting";
 import { UserType } from "../../../assets/auth";
 import { Settings } from ".";
 import { GrClose } from "react-icons/gr";
-import { MODAL_Type, ModalLib } from "../../../assets";
+import { MODAL_Type } from "../../../assets";
+import { ModalLib } from "../../../types/Types";
 import { MODAL_LIB } from "../../../assets";
 import SetOrderData from "./SetOrderData";
 import SetUserData from "./SetUserData";
@@ -12,10 +13,11 @@ interface Props {
   User: UserType;
   setOpenModal: React.Dispatch<React.SetStateAction<ModalType>>;
   type: string;
+  setUser: React.Dispatch<React.SetStateAction<UserType>>;
 }
 
 const ModalSettings = (props: Props) => {
-  const { setOpenModal, User, type } = props;
+  const { setOpenModal, User, type, setUser } = props;
   return (
     <Settings.ModalBody>
       <Settings.ModalTopPanel>
@@ -29,7 +31,12 @@ const ModalSettings = (props: Props) => {
       </Settings.ModalTopPanel>
       <Settings.ModalContent>
         {type !== MODAL_Type.orderdata ? (
-          <SetUserData User={User} setOpenModal={setOpenModal} type={type} />
+          <SetUserData
+            User={User}
+            setUser={setUser}
+            setOpenModal={setOpenModal}
+            type={type}
+          />
         ) : null}
 
         {type === MODAL_Type.orderdata ? (

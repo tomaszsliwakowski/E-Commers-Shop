@@ -3,28 +3,49 @@ import { Settings } from ".";
 import { UserType } from "../../../assets/auth";
 import { ModalType } from "./UserSetting";
 import { SettingsLib } from "../../../assets";
+import axios from "axios";
+import { ServerRoute } from "../../../routes";
 
 interface Props {
   User: UserType;
   setOpenModal: React.Dispatch<React.SetStateAction<ModalType>>;
   type: string;
+  setUser: React.Dispatch<React.SetStateAction<UserType>>;
 }
 
 const SetUserData = (props: Props) => {
-  const { setOpenModal, User, type } = props;
+  const { setOpenModal, User, type, setUser } = props;
   const [newData, setNewData] = useState("");
   const [failData, setFailData] = useState<string[]>([]);
+  const typeContent = SettingsLib.filter((item) => item.name === type)[0];
 
   const SubmitOrderData = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (newData === "") return;
-    if (
-      new RegExp(
-        SettingsLib.filter((item) => item.name === type)[0].regex
-      ).test(newData)
-    ) {
-      //send to api
-      setOpenModal({ id: "", state: false });
+    if (new RegExp(typeContent.regex).test(newData)) {
+      if (!User) return;
+      if (!typeContent) return;
+      axios
+        .put(
+          `${ServerRoute}${typeContent.route}${User._id}`,
+          {
+            data: newData,
+          },
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          setUser(res.data);
+          setOpenModal({ id: "", state: false });
+          setNewData("");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       setFailData([]);
     } else {
       setFailData([type]);
@@ -41,9 +62,7 @@ const SetUserData = (props: Props) => {
           disabled
           value={User[type as keyof UserType] || "******"}
         />
-        <Settings.InputName>
-          {SettingsLib.filter((item) => item.name === type)[0].before}
-        </Settings.InputName>
+        <Settings.InputName>{typeContent.before}</Settings.InputName>
       </Settings.InputCon>
       <Settings.InputCon>
         <Settings.Input
@@ -56,9 +75,7 @@ const SetUserData = (props: Props) => {
             setNewData(e.target.value)
           }
         />
-        <Settings.InputName>
-          {SettingsLib.filter((item) => item.name === type)[0].after}
-        </Settings.InputName>
+        <Settings.InputName>{typeContent.after}</Settings.InputName>
       </Settings.InputCon>
       <Settings.ModalSaveBtn type="submit">Zapisz</Settings.ModalSaveBtn>
     </Settings.Form>

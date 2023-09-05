@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import styled from "styled-components/macro";
 import UserPanel from "../Panel/Panel";
 import { Settings } from ".";
 import { AuthContext, UserAuth } from "../../../assets/auth";
@@ -15,7 +14,7 @@ export type ModalType = {
 };
 
 const UserSetting = () => {
-  const { User }: UserAuth = useContext(AuthContext);
+  const { User, setUser }: UserAuth = useContext(AuthContext);
   const [openModal, setOpenModal] = useState<ModalType>({
     id: "",
     state: false,
@@ -51,6 +50,7 @@ const UserSetting = () => {
           <ModalSettings
             setOpenModal={setOpenModal}
             User={User}
+            setUser={setUser}
             type={openModal.id}
           />
         </Settings.Modal>

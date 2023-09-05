@@ -279,6 +279,69 @@ exports.DeleteUser = async (req, res) => {
   }
 };
 
+exports.UpdateUsername = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { data } = req.body;
+    console.log(data);
+    console.log(id);
+    if (!data) return res.status(400);
+    const user = await getUserById(id);
+    user.username = data;
+    await updateUserById(id, user);
+    return res.status(200).json(user).end();
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Fail update username" });
+  }
+};
+exports.UpdateEmail = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { data } = req.body;
+    if (!data) return res.status(400);
+    const user = await getUserById(id);
+    user.email = data;
+    await updateUserById(id, user);
+    return res.status(200).json(user).end();
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Fail update email" });
+  }
+};
+exports.UpdatePassword = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { data } = req.body;
+    if (!data) return res.status(400);
+    const salt = helpers.random();
+    const newAuth = {
+      salt,
+      password: helpers.authentication(salt, data),
+    };
+    const user = await getUserById(id);
+    user.authentication = newAuth;
+    await updateUserById(id, user);
+    return res.status(200).json(user).end();
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Fail update user" });
+  }
+};
+exports.UpdateOrderData = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { username } = req.body;
+    if (!username) return res.status(400);
+    const user = await getUserById(id);
+    user.username = username;
+    await updateUserById(id, user);
+    return res.status(200).json(user).end();
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Fail update user" });
+  }
+};
 exports.UpdateUser = async (req, res) => {
   try {
     const { id } = req.params;
