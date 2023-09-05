@@ -6,4 +6,4 @@ SERVER : https://e-commers-shop.onrender.com/
 
 Login:
 email: test@gmail.com
-password: test123
+password: Test123
