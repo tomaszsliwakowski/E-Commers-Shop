@@ -331,10 +331,11 @@ exports.UpdatePassword = async (req, res) => {
 exports.UpdateOrderData = async (req, res) => {
   try {
     const { id } = req.params;
-    const { username } = req.body;
-    if (!username) return res.status(400);
+    const { data } = req.body;
+    console.log(data);
+    if (!data) return res.status(400);
     const user = await getUserById(id);
-    user.username = username;
+    user.orderData = data;
     await updateUserById(id, user);
     return res.status(200).json(user).end();
   } catch (error) {

@@ -5,8 +5,8 @@ let schemaUser = new mongoose.Schema({
   email: { type: String, required: true },
   orderData: {
     name: String,
-    lastname: String,
-    street: String,
+    lastName: String,
+    address: String,
     city: String,
     postCode: String,
     phone: String,

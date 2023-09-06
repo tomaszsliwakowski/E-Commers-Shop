@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: fit-content;
   border-left: 1px solid rgb(221, 221, 221);
   padding: 0 0.5rem;
+  margin-bottom: 2rem;
 `;
 export const Title = styled.h2`
   padding-left: 1rem;
@@ -176,7 +177,19 @@ export const Input = styled.input`
     padding: 0 8px;
     font-size: 13px;
   }
-  &.invalid{
-   border: 1px solid red;
+  &.invalid {
+    border: 1px solid red;
   }
+`;
+export const DeleteUserBtn = styled.button`
+  width: 100%;
+  max-width: 100px;
+  height: 35px;
+  border-radius: 1rem;
+  border: none;
+  background-color: red;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  color: white;
+  cursor: pointer;
 `;

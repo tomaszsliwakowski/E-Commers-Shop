@@ -8,7 +8,6 @@ import DropOptMin from "./dropOptMin";
 import DropOptMax from "./dropOptMax";
 import { useAppSelector } from "../../store/store";
 import { AuthContext, UserAuth } from "../../assets/auth";
-import { useNavigate } from "react-router";
 
 type UserPanelProps = {
   width?: number;
@@ -24,6 +23,22 @@ type UserPanelProps = {
   >;
 };
 
+export const getCookie = (name: string) => {
+  return document.cookie.split(";").some((c) => {
+    return c.trim().startsWith(name + "=");
+  });
+};
+export const deleteCookie = (name: string, path: string, domain: string) => {
+  if (getCookie(name)) {
+    document.cookie =
+      name +
+      "=" +
+      (path ? ";path=" + path : "") +
+      (domain ? ";domain=" + domain : "") +
+      ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+  }
+};
+
 const UserPanel = ({
   width,
   activeRightMenu,
@@ -33,21 +48,6 @@ const UserPanel = ({
     useAppSelector((state) => state.basket);
   const { User }: UserAuth = useContext(AuthContext);
 
-  const getCookie = (name: string) => {
-    return document.cookie.split(";").some((c) => {
-      return c.trim().startsWith(name + "=");
-    });
-  };
-  const deleteCookie = (name: string, path: string, domain: string) => {
-    if (getCookie(name)) {
-      document.cookie =
-        name +
-        "=" +
-        (path ? ";path=" + path : "") +
-        (domain ? ";domain=" + domain : "") +
-        ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
-    }
-  };
   const logout = () => {
     deleteCookie("SHOP_AUTH", "/", "localhost");
     if (window.location.pathname !== HomeRoute) {

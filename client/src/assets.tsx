@@ -67,8 +67,8 @@ export const SettingsLib: SetLibType[] = [
 
 export const ORDERDATA = {
   name: "",
-  lastname: "",
-  street: "",
+  lastName: "",
+  address: "",
   city: "",
   postCode: "",
   phone: "",

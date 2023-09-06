@@ -25,6 +25,7 @@ import {
   Input,
   InputCon,
   InputName,
+  DeleteUserBtn,
 } from "./style/index";
 
 export function Settings({ children, ...restprops }: DivProps) {
@@ -128,4 +129,10 @@ Settings.InputName = function SettingsInputName({
   ...restprops
 }: SpanProps) {
   return <InputName {...restprops}>{children}</InputName>;
+};
+Settings.DeleteUserBtn = function SettingsDeleteUserBtn({
+  children,
+  ...restprops
+}: BtnProps) {
+  return <DeleteUserBtn {...restprops}>{children}</DeleteUserBtn>;
 };

@@ -40,7 +40,12 @@ const ModalSettings = (props: Props) => {
         ) : null}
 
         {type === MODAL_Type.orderdata ? (
-          <SetOrderData User={User} setOpenModal={setOpenModal} type={type} />
+          <SetOrderData
+            User={User}
+            setUser={setUser}
+            setOpenModal={setOpenModal}
+            type={type}
+          />
         ) : null}
       </Settings.ModalContent>
     </Settings.ModalBody>

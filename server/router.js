@@ -16,7 +16,7 @@ route.get("/api/sale/product", controller.SaleProduct);
 route.post("/api/order/add", controller.AddOrder);
 route.post("/register", controller.Register);
 route.post("/login", controller.Login);
-route.delete("/users/del/:id", controller.DeleteUser);
+route.delete("/users/delete/:id", controller.DeleteUser);
 route.put("/users/update/username/:id", controller.UpdateUsername);
 route.put("/users/update/email/:id", controller.UpdateEmail);
 route.put("/users/update/password/:id", controller.UpdatePassword);

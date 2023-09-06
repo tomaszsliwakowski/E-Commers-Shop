@@ -7,6 +7,9 @@ import OrderData from "./OrderData";
 import { Layout } from "../UserOrders/UserOrders";
 import ModalSettings from "./ModalAccount";
 import { Modalkeys } from "../../../assets";
+import axios from "axios";
+import { HomeRoute, LocalRoute, ServerRoute } from "../../../routes";
+import { deleteCookie } from "../../Header/userpanel";
 
 export type ModalType = {
   id: Modalkeys | string;
@@ -34,6 +37,20 @@ const UserSetting = () => {
       setOpenModal({ id: "", state: false });
     }
   };
+  const DeleteUserAccount = () => {
+    if (window.confirm("Czy chcesz usunąć konto?")) {
+      if (!User) return;
+      axios
+        .delete(`${ServerRoute}/users/delete/${User._id}`)
+        .then(() => {
+          deleteCookie("SHOP_AUTH", "/", "localhost");
+          if (window.location.pathname !== HomeRoute) {
+            window.location.assign(`${LocalRoute}${HomeRoute}`);
+          } else window.location.reload();
+        })
+        .catch((res) => console.log(res));
+    }
+  };
 
   return (
     <Layout>
@@ -44,6 +61,10 @@ const UserSetting = () => {
         <AccountData User={User} setOpenModal={setOpenModal} />
         <Settings.Title>Dane do zamówienia</Settings.Title>
         <OrderData User={User} setOpenModal={setOpenModal} />
+        <Settings.Title>Usuwanie konta</Settings.Title>
+        <Settings.DeleteUserBtn onClick={() => DeleteUserAccount()}>
+          Usuń konto
+        </Settings.DeleteUserBtn>
       </Settings>
       {openModal.state ? (
         <Settings.Modal onClick={(e) => CloseModal(e)} id="activeModal">

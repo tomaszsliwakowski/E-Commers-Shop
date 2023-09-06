@@ -11,6 +11,7 @@ type Props = {
 
 const OrderData = (props: Props) => {
   const { User, setOpenModal } = props;
+  console.log(User);
   return (
     <Settings.DataContainer>
       <Settings.SingleDataContainer>

@@ -3,11 +3,14 @@ import { Settings } from ".";
 import { UserType } from "../../../assets/auth";
 import { ModalType } from "./UserSetting";
 import { OrderDataType } from "../../../types/Types";
+import axios from "axios";
+import { ServerRoute } from "../../../routes";
 
 interface Props {
   User: UserType;
   setOpenModal: React.Dispatch<React.SetStateAction<ModalType>>;
   type: string;
+  setUser: React.Dispatch<React.SetStateAction<UserType>>;
 }
 interface InputProps {
   value: string;
@@ -34,12 +37,12 @@ const DataName = {
 };
 
 const SetOrderData = (props: Props) => {
-  const { setOpenModal, User, type } = props;
+  const { setOpenModal, User, type, setUser } = props;
   const [failData, setFailData] = useState<string[]>([]);
   const [userData, setUserData] = useState<OrderDataType>({
     name: User.orderData?.name || "",
-    lastName: User.orderData?.lastname || "",
-    address: User.orderData?.street || "",
+    lastName: User.orderData?.lastName || "",
+    address: User.orderData?.address || "",
     city: User.orderData?.city || "",
     postCode: User.orderData?.postCode || "",
     phone: User.orderData?.phone || "",
@@ -49,13 +52,31 @@ const SetOrderData = (props: Props) => {
     e.preventDefault();
     if (Object.values(userData).filter((item) => item !== "").length < 6)
       return;
+    if (!User) return;
     if (CheckData().length === 0) {
-      console.log("save");
-      //send to api
-      setOpenModal({ id: "", state: false });
+      axios
+        .put(
+          `${ServerRoute}/users/update/orderdata/${User._id}`,
+          {
+            data: userData,
+          },
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          setUser(res.data);
+          console.log(res.data);
+          setOpenModal({ id: "", state: false });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
-
   function CheckData(): Array<string> {
     let fail = [];
     if (!RegExLib.basic.test(userData.name)) fail.push(DataName.name);

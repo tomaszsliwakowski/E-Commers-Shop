@@ -9,8 +9,8 @@ export interface UserType {
   _id: string;
   orderData?: {
     name: string;
-    lastname: string;
-    street: string;
+    lastName: string;
+    address: string;
     city: string;
     postCode: string;
     phone: string;
