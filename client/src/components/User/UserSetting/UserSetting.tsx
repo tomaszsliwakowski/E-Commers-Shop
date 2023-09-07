@@ -10,6 +10,7 @@ import { Modalkeys } from "../../../assets";
 import axios from "axios";
 import { HomeRoute, LocalRoute, ServerRoute } from "../../../routes";
 import { deleteCookie } from "../../Header/userpanel";
+import { toast } from "react-hot-toast";
 
 export type ModalType = {
   id: Modalkeys | string;
@@ -44,11 +45,15 @@ const UserSetting = () => {
         .delete(`${ServerRoute}/users/delete/${User._id}`)
         .then(() => {
           deleteCookie("SHOP_AUTH", "/", "localhost");
+          toast.success("Konto zostało usunięte");
           if (window.location.pathname !== HomeRoute) {
             window.location.assign(`${LocalRoute}${HomeRoute}`);
           } else window.location.reload();
         })
-        .catch((res) => console.log(res));
+        .catch((res) => {
+          toast.error("Nie udało się usunąć konta");
+          console.log(res);
+        });
     }
   };
 

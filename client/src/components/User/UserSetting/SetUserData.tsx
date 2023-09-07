@@ -5,6 +5,7 @@ import { ModalType } from "./UserSetting";
 import { SettingsLib } from "../../../assets";
 import axios from "axios";
 import { ServerRoute } from "../../../routes";
+import { toast } from "react-hot-toast";
 
 interface Props {
   User: UserType;
@@ -42,9 +43,11 @@ const SetUserData = (props: Props) => {
           setUser(res.data);
           setOpenModal({ id: "", state: false });
           setNewData("");
+          toast.success("Zaktualizowano dane");
         })
         .catch((err) => {
           console.log(err);
+          toast.error("Nie udało się zaktualizować danych");
         });
       setFailData([]);
     } else {

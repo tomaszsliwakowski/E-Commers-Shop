@@ -52,15 +52,15 @@ function PaymentIcon(id: number) {
 const OrderSection = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { width, height }: WindowSizeType = useWindowSize();
+  const { User, setUser }: UserAuth = useContext(AuthContext);
   const [failData, setFailData] = useState<string[]>([]);
   const [CustData, setCustData] = useState({
-    name: "",
-    lastName: "",
-    address: "",
-    city: "",
-    postCode: "",
-    phone: "",
+    name: User.orderData?.name || "",
+    lastName: User.orderData?.lastName || "",
+    address: User.orderData?.address || "",
+    city: User.orderData?.city || "",
+    postCode: User.orderData?.postCode || "",
+    phone: User.orderData?.phone || "",
   });
   const [Options, setOptions] = useState({
     delivery: { method: -1, price: 0 },
@@ -69,8 +69,6 @@ const OrderSection = () => {
 
   const BasketProducts: { basket: Array<{ product: ProductType }> } =
     useAppSelector((state) => state.basket);
-
-  const { User }: UserAuth = useContext(AuthContext);
 
   function Sum() {
     let BasketValue = BasketProducts.basket.reduce(

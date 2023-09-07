@@ -5,6 +5,7 @@ import { ModalType } from "./UserSetting";
 import { OrderDataType } from "../../../types/Types";
 import axios from "axios";
 import { ServerRoute } from "../../../routes";
+import { toast } from "react-hot-toast";
 
 interface Props {
   User: UserType;
@@ -69,11 +70,12 @@ const SetOrderData = (props: Props) => {
         )
         .then((res) => {
           setUser(res.data);
-          console.log(res.data);
           setOpenModal({ id: "", state: false });
+          toast.success("Zaktualizowano dane");
         })
         .catch((err) => {
           console.log(err);
+          toast.error("Nie udało się zaktualizować danych");
         });
     }
   };

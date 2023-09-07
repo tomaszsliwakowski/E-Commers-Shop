@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import { FormErrorType, LoginValueType } from "../../types/Types";
 import axios from "axios";
 import { AuthContext, UserAuth } from "../../assets/auth";
+import toast from "react-hot-toast";
 
 const LoginSection = () => {
   const [ShowPass, setShowPass] = useState<boolean>(false);
@@ -29,38 +30,38 @@ const LoginSection = () => {
   };
 
   const login = async (email: string, password: string) => {
-    try {
-      await axios
-        .post(
-          `${ServerRoute}/login`,
-          { email, password },
-          {
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-            withCredentials: true,
-          }
-        )
-        .then((res) => {
-          let user = res.data;
-          setUser({
-            username: user.username,
-            email: user.email,
-            _id: user._id,
-            orderData: {
-              name: user.orderData.name,
-              lastName: user.orderData.lastname,
-              address: user.orderData.street,
-              city: user.orderData.city,
-              postCode: user.orderData.postCode,
-              phone: user.orderData.phone,
-            },
-          });
-          navigate("/E-Commers-Shop/");
+    await axios
+      .post(
+        `${ServerRoute}/login`,
+        { email, password },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        let user = res.data;
+        setUser({
+          username: user.username,
+          email: user.email,
+          _id: user._id,
+          orderData: {
+            name: user.orderData.name,
+            lastName: user.orderData.lastname,
+            address: user.orderData.street,
+            city: user.orderData.city,
+            postCode: user.orderData.postCode,
+            phone: user.orderData.phone,
+          },
         });
-    } catch (error) {
-      console.log((error as Error).message);
-    }
+        navigate("/E-Commers-Shop/");
+        toast.success("Zalogowano");
+      })
+      .catch((res) => {
+        toast.error(res.response.data);
+      });
   };
 
   const HandleForm = (e: React.ChangeEvent<HTMLInputElement>) => {

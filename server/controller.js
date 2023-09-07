@@ -215,16 +215,18 @@ exports.Login = async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password)
-      return res.status(400).send({ message: "No data" });
+      return res.status(400).send({ message: "Brak danych" });
     const user = await getUserByEmail(email).select(
       "+authentication.salt +authentication.password"
     );
-    if (!user) return res.status(400).send({ message: "User not exist" });
+    if (!user) return res.status(400).json("Użytkownik nie istnieje");
+
     const expectedHash = helpers.authentication(
       user.authentication.salt,
       password
     );
-    if (user.authentication.password !== expectedHash) return res.status(403);
+    if (user.authentication.password !== expectedHash)
+      return res.status(403).json("Niepoprawne hasło");
     const salt = helpers.random();
     user.authentication.sessionToken = helpers.authentication(
       salt,
@@ -239,7 +241,7 @@ exports.Login = async (req, res) => {
     return res.status(200).json(user).end();
   } catch (error) {
     console.log(error);
-    return res.status(400).send({ message: "Login fail" });
+    return res.status(400).json("Błąd logowania");
   }
 };
 
@@ -248,9 +250,10 @@ exports.Register = async (req, res) => {
     const { email, password, username, orderData } = req.body;
 
     if (!email || !password || !username)
-      return res.status(400).send({ message: "No data" });
+      return res.status(400).json("Brak danych");
     const existingUser = await getUserByEmail(email);
-    if (existingUser) return res.status(400).send({ message: "User exist" });
+    if (existingUser)
+      return res.status(400).json("Podany użytkownik już istnieje");
     const salt = helpers.random();
     const user = await createUser({
       email,
@@ -264,7 +267,7 @@ exports.Register = async (req, res) => {
     return res.status(200).json(user).end();
   } catch (error) {
     console.log(error);
-    return res.status(400).send({ message: "Register fail" });
+    return res.status(400).json("Błąd rejestracji");
   }
 };
 
@@ -283,8 +286,6 @@ exports.UpdateUsername = async (req, res) => {
   try {
     const { id } = req.params;
     const { data } = req.body;
-    console.log(data);
-    console.log(id);
     if (!data) return res.status(400);
     const user = await getUserById(id);
     user.username = data;

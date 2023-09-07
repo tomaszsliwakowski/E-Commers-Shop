@@ -50,6 +50,7 @@ const UserPanel = ({
 
   const logout = () => {
     deleteCookie("SHOP_AUTH", "/", "localhost");
+
     if (window.location.pathname !== HomeRoute) {
       window.location.assign(`${LocalRoute}${HomeRoute}`);
     } else window.location.reload();

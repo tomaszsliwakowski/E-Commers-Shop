@@ -8,6 +8,7 @@ import { FormErrorTypeReg, RegisterValueType } from "../../types/Types";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { ORDERDATA } from "../../assets";
+import toast from "react-hot-toast";
 
 const RegisterSection = () => {
   const [ShowPass, setShowPass] = useState<boolean>(false);
@@ -65,35 +66,34 @@ const RegisterSection = () => {
     name: string,
     lastname: string
   ) => {
-    try {
-      await axios
-        .post(
-          `${ServerRoute}/register`,
-          {
-            email,
-            password,
-            username: `${name} ${lastname}`,
-            orderData: ORDERDATA,
+    await axios
+      .post(
+        `${ServerRoute}/register`,
+        {
+          email,
+          password,
+          username: `${name} ${lastname}`,
+          orderData: ORDERDATA,
+        },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
           },
-          {
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-          }
-        )
-        .then((res) => {
-          setRegisterValues({
-            name: "",
-            lastname: "",
-            email: "",
-            password: "",
-          });
-          navigate("/E-Commers-Shop/login");
-        })
-        .catch((err) => console.log(err.message));
-    } catch (error) {
-      console.log((error as Error).message);
-    }
+        }
+      )
+      .then((res) => {
+        setRegisterValues({
+          name: "",
+          lastname: "",
+          email: "",
+          password: "",
+        });
+        navigate("/E-Commers-Shop/login");
+        toast.success("Zarejestrowano");
+      })
+      .catch((res) => {
+        toast.error(res.response.data);
+      });
   };
 
   return (
