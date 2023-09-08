@@ -188,3 +188,7 @@ export type ModalLib = {
   password: string;
   orderdata: string;
 };
+
+export type BasketProductsType = {
+  basket: Array<{ product: ProductType }>;
+};
