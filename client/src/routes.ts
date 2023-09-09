@@ -8,6 +8,7 @@ export const BasketRoute = "/E-Commers-Shop/basket";
 export const OrderRoute = "/E-Commers-Shop/order";
 export const UserSingleOrderRoute = "/E-Commers-Shop/user/order/:id";
 export const UserOrderRoute = "/E-Commers-Shop/user/orders";
+export const ConfiguratorRoute = "/E-Commers-Shop/configurator";
 export const UserSettingRoute = "/E-Commers-Shop/user/setting";
 //export const ServerRoute = "https://e-commers-shop.onrender.com";
 export const ServerRoute = "http://localhost:10000";

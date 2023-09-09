@@ -3,6 +3,7 @@ import HomePage from "./containers/HomePage";
 import { Route, Routes } from "react-router";
 import {
   BasketRoute,
+  ConfiguratorRoute,
   HomeRoute,
   LoginRoute,
   OrderRoute,
@@ -27,6 +28,7 @@ import { Toaster } from "react-hot-toast";
 import OrderPage from "./containers/OrderPage";
 import UserOrdersPage from "./containers/UserOrdersPage";
 import UserSettingPage from "./containers/UserSettingPage";
+import ConfiguratorPage from "./containers/ConfiguratorPage";
 
 function App() {
   return (
@@ -48,6 +50,7 @@ function App() {
           <Route path={OrderRoute} element={<OrderPage />} />
           <Route path={RegisterRoute} element={<RegisterPage />} />
           <Route path={BasketRoute} element={<BasketPage />} />
+          <Route path={ConfiguratorRoute} element={<ConfiguratorPage />} />
           <Route path={"*"} element={<NotFoundPage />} />
         </Routes>
       </AuthProvider>

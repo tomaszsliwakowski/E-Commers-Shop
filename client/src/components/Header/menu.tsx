@@ -1,6 +1,6 @@
 import React from "react";
 import { Header } from ".";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineSetting } from "react-icons/ai";
 import { RiComputerFill } from "react-icons/ri";
 import { BsLaptop, BsKeyboard } from "react-icons/bs";
 import { FiSmartphone } from "react-icons/fi";
@@ -55,6 +55,11 @@ const Menu = ({
         <Header.MenuListEl scroll={ScrollAction} Click={setActiveLeftMenu}>
           <NavLink to="/E-Commers-Shop/products/Akcesoria">
             <BsKeyboard /> Akcesoria
+          </NavLink>
+        </Header.MenuListEl>
+        <Header.MenuListEl scroll={ScrollAction} Click={setActiveLeftMenu}>
+          <NavLink to="/E-Commers-Shop/configurator">
+            <AiOutlineSetting /> Konfigurator PC
           </NavLink>
         </Header.MenuListEl>
       </Header.MenuList>
