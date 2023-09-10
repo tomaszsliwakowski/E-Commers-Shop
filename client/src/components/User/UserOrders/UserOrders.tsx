@@ -41,14 +41,18 @@ export const Layout = styled.div`
     margin-top: 6rem;
     padding: 0 0.5rem;
   }
-  @media screen and (max-width: 768px) {
-    margin-top: 8rem;
-    padding: 0;
-    text-align: center;
-  }
 
   @media screen and (max-width: 1200px) {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+  }
+  @media screen and (max-width: 768px) {
+    margin-top: 8rem;
+    padding: 0;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    margin-right: 0;
   }
 `;

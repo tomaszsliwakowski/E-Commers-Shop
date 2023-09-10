@@ -4,7 +4,7 @@ import { Configurator } from ".";
 const ConfiguratorSection = () => {
   return (
     <Configurator>
-      <div>PC</div>
+      <Configurator.Title>Konfigurator komputera PC</Configurator.Title>
     </Configurator>
   );
 };

@@ -5,6 +5,9 @@ export const Container = styled.div`
   height: fit-content;
   border-left: 1px solid rgb(221, 221, 221);
   padding: 0 0.5rem;
+  @media screen and (max-width: 768px) {
+    border: none;
+  }
 `;
 export const Title = styled.h2`
   font-weight: 400;
@@ -82,6 +85,8 @@ export const List = styled.ul`
   overflow: auto;
   max-height: 920px;
   padding: 0.2rem 1rem 1rem 1rem;
+  @media screen and (max-width: 768px) {
+  }
   & li {
     display: flex;
     padding: 1.5rem 1rem 1.5rem 1.5rem;
@@ -91,6 +96,12 @@ export const List = styled.ul`
     max-height: 178px;
     overflow: hidden;
     min-height: 168px;
+    @media screen and (max-width: 400px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      max-height: 250px;
+    }
     &:hover {
       box-shadow: 0px 2px 10px rgb(179, 177, 177);
     }

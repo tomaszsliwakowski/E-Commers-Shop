@@ -6,6 +6,12 @@ export const Container = styled.div`
   border-left: 1px solid rgb(221, 221, 221);
   padding: 0 0.5rem;
   margin-bottom: 2rem;
+  @media screen and (max-width: 768px) {
+    border: none;
+    width: 95%;
+    margin: 0 auto;
+    padding: 0;
+  }
 `;
 export const Title = styled.h2`
   padding-left: 1rem;
@@ -24,11 +30,17 @@ export const DataContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  @media screen and (max-width: 768px) {
+    padding-left: 0;
+  }
 `;
 export const SingleDataContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  @media screen and (max-width: 768px) {
+    align-items: center;
+  }
 `;
 export const DataName = styled.span`
   font-size: 16px;
@@ -42,6 +54,9 @@ export const SingleData = styled.div`
   align-items: center;
   padding: 1.2rem 1rem;
   border-radius: 0.5rem;
+  @media screen and (max-width: 768px) {
+    max-width: 350px;
+  }
   &.order {
     flex-direction: column;
     align-items: flex-start;
@@ -127,6 +142,9 @@ export const ModalTitle = styled.h3`
   color: rgb(68, 68, 68);
   font-weight: bold;
   text-decoration: none;
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 export const ModalContent = styled.div`
   padding: 0 2rem;

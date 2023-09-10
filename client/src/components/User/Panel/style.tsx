@@ -7,6 +7,12 @@ export const Container = styled.div`
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
+  @media screen and (max-width: 1200px) {
+    max-width: 200px;
+  }
 `;
 
 export const User = styled.div`
@@ -29,6 +35,9 @@ export const LinkList = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 768px) {
+    align-items: center;
+  }
 `;
 export const LinkName = styled.span`
   font-weight: 400;
@@ -43,6 +52,9 @@ export const LinkEl = styled(Link)`
   color: rgb(26, 26, 26);
   &.active ${LinkName} {
     font-weight: 600;
+  }
+  @media screen and (max-width: 768px) {
+    max-width: 150px;
   }
 `;
 export const Icon = styled.div``;
