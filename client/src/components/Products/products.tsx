@@ -32,6 +32,9 @@ const SortName = [
 ];
 
 const ProductsSection = () => {
+  let { width, height }: WindowSizeType = useWindowSize();
+  let { category } = useParams();
+  let { search } = useParams();
   const [SortOpt, setSortOpt] = useState("Ocena klientów: od najlepszej");
   const [activeSort, setActiveSort] = useState<boolean>(false);
   const [activeFilters, setActiveFilters] = useState<boolean>(false);
@@ -43,6 +46,7 @@ const ProductsSection = () => {
       Przeznaczenie: [],
     },
   });
+
   const [prodFilters, setprodFilters] = useState<filtr>({
     filtr_one: [],
     filtr_two: [],
@@ -51,9 +55,6 @@ const ProductsSection = () => {
       to: 0,
     },
   });
-  let { width, height }: WindowSizeType = useWindowSize();
-  let { category } = useParams();
-  let { search } = useParams();
 
   useEffect(() => {
     setprodFilters({
