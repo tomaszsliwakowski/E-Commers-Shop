@@ -19,7 +19,7 @@ import ProductsPage from "./containers/ProductsPage";
 import LoginPage from "./containers/LoginPage";
 import RegisterPage from "./containers/RegisterPage";
 import BasketPage from "./containers/BasketPage";
-import { AuthProvider } from "./assets/auth";
+import { AuthProvider } from "./assetsCon/auth";
 import SingleProductsPage from "./containers/SingleProductPage";
 import { Provider } from "react-redux";
 import { store } from "./store/store";

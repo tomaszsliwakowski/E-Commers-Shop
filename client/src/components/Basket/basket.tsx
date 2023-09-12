@@ -15,7 +15,7 @@ import {
 } from "../../store/BasketSlice";
 import { toast } from "react-hot-toast";
 import { ProductType } from "../../types/Types";
-import { AuthContext, UserAuth } from "../../assets/auth";
+import { AuthContext, UserAuth } from "../../assetsCon/auth";
 
 const CountOpt: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 

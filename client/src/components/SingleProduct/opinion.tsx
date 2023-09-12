@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import SingleProduct from ".";
 import { ProductType, WindowSizeType, OpinionType } from "../../types/Types";
 import { Rating } from "../Products/productList";
-import { AuthContext, UserAuth } from "../../assets/auth";
+import { AuthContext, UserAuth } from "../../assetsCon/auth";
 import axios from "axios";
 import { AddOpinion, DeleteOpnion, GetOpinion } from "../../routes";
 import { SlOptionsVertical } from "react-icons/sl";

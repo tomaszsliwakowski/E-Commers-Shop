@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { BasketProductsType } from "../../types/Types";
 import { HomeRoute, LocalRoute } from "../../routes";
 import { useAppSelector } from "../../store/store";
-import { AuthContext, UserAuth } from "../../assets/auth";
+import { AuthContext, UserAuth } from "../../assetsCon/auth";
 import DesktopPanel from "./desktopPanel";
 import MobilePanel from "./mobilePanel";
 

@@ -3,7 +3,7 @@ import { Panel } from ".";
 import { HiClipboardList, HiOutlineClipboardList } from "react-icons/hi";
 import { AiFillSetting, AiOutlineSetting } from "react-icons/ai";
 import { UserOrderRoute, UserSettingRoute } from "../../../routes";
-import { AuthContext, UserAuth } from "../../../assets/auth";
+import { AuthContext, UserAuth } from "../../../assetsCon/auth";
 
 const UserPanel = () => {
   const { User }: UserAuth = useContext(AuthContext);

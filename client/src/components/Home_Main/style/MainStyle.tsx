@@ -244,6 +244,11 @@ export const RightProduct = styled.div`
   &:hover ${RightAddToCart} {
     visibility: visible;
   }
+  @media screen and (max-width: 768px) {
+    & ${RightAddToCart} {
+      visibility: visible;
+    }
+  }
 `;
 export const RightName = styled.div`
   font-size: 13px;
@@ -334,6 +339,11 @@ export const BestProduct = styled.div`
   }
   &:hover ${BestAddToCart} {
     visibility: visible;
+  }
+  @media screen and (max-width: 768px) {
+    & ${BestAddToCart} {
+      visibility: visible;
+    }
   }
 `;
 

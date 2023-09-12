@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Settings } from ".";
-import { UserType } from "../../../assets/auth";
+import { UserType } from "../../../assetsCon/auth";
 import { ModalType } from "./UserSetting";
 import { OrderDataType } from "../../../types/Types";
 import axios from "axios";

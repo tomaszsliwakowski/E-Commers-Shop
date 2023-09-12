@@ -6,7 +6,7 @@ import InfoList from "../register&login/infolist";
 import { useNavigate } from "react-router";
 import { FormErrorType, LoginValueType } from "../../types/Types";
 import axios from "axios";
-import { AuthContext, UserAuth } from "../../assets/auth";
+import { AuthContext, UserAuth } from "../../assetsCon/auth";
 import toast from "react-hot-toast";
 
 const LoginSection = () => {

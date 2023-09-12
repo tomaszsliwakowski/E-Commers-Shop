@@ -1,6 +1,6 @@
 import React from "react";
 import { Settings } from ".";
-import { UserType } from "../../../assets/auth";
+import { UserType } from "../../../assetsCon/auth";
 import { ModalType } from "./UserSetting";
 import { MODAL_Type } from "../../../assets";
 

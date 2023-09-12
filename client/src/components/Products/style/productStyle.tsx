@@ -412,6 +412,11 @@ export const Item = styled.div`
   &:hover ${AddToCart} {
     visibility: visible;
   }
+  @media screen and (max-width: 768px) {
+    & ${AddToCart} {
+      visibility: visible;
+    }
+  }
   &:hover {
     box-shadow: 0 0 8px silver;
     border-radius: 10px;

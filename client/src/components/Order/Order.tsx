@@ -12,7 +12,7 @@ import { useAppDispatch, useAppSelector } from "../../store/store";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { ServerRoute } from "../../routes";
-import { AuthContext, UserAuth } from "../../assets/auth";
+import { AuthContext, UserAuth } from "../../assetsCon/auth";
 import useWindowSize from "../../hooks/useWindowSize";
 import { ClearBasket } from "../../store/BasketSlice";
 

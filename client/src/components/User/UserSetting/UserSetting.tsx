@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserPanel from "../Panel/Panel";
 import { Settings } from ".";
-import { AuthContext, UserAuth } from "../../../assets/auth";
+import { AuthContext, UserAuth } from "../../../assetsCon/auth";
 import AccountData from "./AccountData";
 import OrderData from "./OrderData";
 import { Layout } from "../UserOrders/UserOrders";

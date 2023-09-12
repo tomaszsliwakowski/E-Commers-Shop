@@ -1,6 +1,6 @@
 import React from "react";
 import { Header } from ".";
-import { UserType } from "../../assets/auth";
+import { UserType } from "../../assetsCon/auth";
 
 type Props = {
   User: UserType;

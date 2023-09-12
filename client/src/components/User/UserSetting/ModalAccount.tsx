@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ModalType } from "./UserSetting";
-import { UserType } from "../../../assets/auth";
+import { UserType } from "../../../assetsCon/auth";
 import { Settings } from ".";
 import { GrClose } from "react-icons/gr";
 import { MODAL_Type } from "../../../assets";

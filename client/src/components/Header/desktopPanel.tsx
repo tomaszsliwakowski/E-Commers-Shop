@@ -1,5 +1,5 @@
 import React from "react";
-import { UserType } from "../../assets/auth";
+import { UserType } from "../../assetsCon/auth";
 import { Header } from ".";
 import { AiOutlineUser, AiOutlineClose } from "react-icons/ai";
 import LoggedPanel from "./loggedPanel";

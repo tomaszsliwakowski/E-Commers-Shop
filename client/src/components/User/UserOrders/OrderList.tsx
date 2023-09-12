@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Orders } from ".";
 import { OrderType, sortOrdersType } from "../../../types/Types";
-import { AuthContext, UserAuth } from "../../../assets/auth";
+import { AuthContext, UserAuth } from "../../../assetsCon/auth";
 import axios from "axios";
 import { ServerRoute } from "../../../routes";
 import { sortLib } from "../../../assets";
