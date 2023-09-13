@@ -1,14 +1,21 @@
 import React from "react";
 import { Configurator } from ".";
 import { AiOutlinePlus } from "react-icons/ai";
-import gpu from "../../assetsCon/img/gpu.png";
 
-const Component = () => {
+type PROPS = {
+  item: {
+    name: string;
+    image: any;
+  };
+};
+
+const Component = (props: PROPS) => {
+  const { name, image } = props.item;
   return (
     <Configurator.Component>
       <Configurator.LeftPart>
-        <Configurator.Name>Karta Graficzna</Configurator.Name>
-        <Configurator.Image src={gpu} alt="GPU" />
+        <Configurator.Name>{name}</Configurator.Name>
+        <Configurator.Image src={image} alt={name} />
       </Configurator.LeftPart>
       <Configurator.RightPart>
         <AiOutlinePlus />

@@ -1,4 +1,12 @@
 import { ModalLib, SetLibType, sortOrdersType } from "./types/Types";
+import gpu from "./assetsCon/img/gpu.png";
+import cpu from "./assetsCon/img/cpu.png";
+import motherboard from "./assetsCon/img/motherboard.png";
+import ram from "./assetsCon/img/ram.png";
+import ssd from "./assetsCon/img/solid-state-drive.png";
+import power from "./assetsCon/img/power-supply.png";
+import caseTower from "./assetsCon/img/computer-case.png";
+import cooling from "./assetsCon/img/exhaust-fan.png";
 
 export const PayAcceptList: string[] = [
   "https://assets.x-kom.pl/public-spa/xkom/c500d59374fe7d7d.png",
@@ -87,3 +95,38 @@ export const MODAL_Type: ModalLib = {
   orderdata: "orderdata",
 };
 export type Modalkeys = keyof typeof MODAL_Type;
+
+export const ComponentsAssets = [
+  {
+    name: "Procesor",
+    image: cpu,
+  },
+  {
+    name: "Karta graficzna",
+    image: gpu,
+  },
+  {
+    name: "Płyta główna",
+    image: motherboard,
+  },
+  {
+    name: "Pamięć DRAM",
+    image: ram,
+  },
+  {
+    name: "Dysk twardy",
+    image: ssd,
+  },
+  {
+    name: "Zasilacz",
+    image: power,
+  },
+  {
+    name: "Obudowa",
+    image: caseTower,
+  },
+  {
+    name: "Chłodzenie",
+    image: cooling,
+  },
+];

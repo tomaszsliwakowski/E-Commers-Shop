@@ -8,8 +8,20 @@ import {
   RightPart,
   Name,
   Image,
+  Summary,
+  SumPanel,
+  SumBtn,
+  SumField,
+  SumValue,
+  SumCon,
 } from "./style/index";
-import { DivProps, HeadProps, ImgProps } from "../../types/Types";
+import {
+  BtnProps,
+  DivProps,
+  HeadProps,
+  ImgProps,
+  SpanProps,
+} from "../../types/Types";
 
 export function Configurator({ children, ...restprops }: DivProps) {
   return <Container {...restprops}>{children}</Container>;
@@ -56,4 +68,40 @@ Configurator.Image = function ConfiguratorImage({
   ...restprops
 }: ImgProps) {
   return <Image {...restprops} />;
+};
+Configurator.Summary = function ConfiguratorSummary({
+  children,
+  ...restprops
+}: DivProps) {
+  return <Summary {...restprops}>{children}</Summary>;
+};
+Configurator.SumPanel = function ConfiguratorSumPanel({
+  children,
+  ...restprops
+}: DivProps) {
+  return <SumPanel {...restprops}>{children}</SumPanel>;
+};
+Configurator.SumCon = function ConfiguratorSumCon({
+  children,
+  ...restprops
+}: DivProps) {
+  return <SumCon {...restprops}>{children}</SumCon>;
+};
+Configurator.SumField = function ConfiguratorSumField({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <SumField {...restprops}>{children}</SumField>;
+};
+Configurator.SumValue = function ConfiguratorSumValue({
+  children,
+  ...restprops
+}: SpanProps) {
+  return <SumValue {...restprops}>{children}</SumValue>;
+};
+Configurator.SumBtn = function ConfiguratorSumBtn({
+  children,
+  ...restprops
+}: BtnProps) {
+  return <SumBtn {...restprops}>{children}</SumBtn>;
 };
