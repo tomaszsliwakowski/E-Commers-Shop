@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 export const Container = styled.div`
   width: 100%;
   height: fit-content;
-  max-width: 1250px;
+  max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
   padding: 0 2rem 0 2rem;
@@ -18,7 +18,7 @@ export const Container = styled.div`
 `;
 export const Title = styled.h2`
   font-weight: 600;
-  font-size: 30px;
+  font-size: 28px;
 `;
 export const Components = styled.div`
   margin-top: 3rem;
@@ -64,6 +64,10 @@ export const LeftPart = styled.div`
   flex-direction: column;
   padding: 0.5rem;
   border-right: 1px solid rgb(221, 221, 221);
+  & img {
+    max-height: 130px;
+    margin: 1rem 0;
+  }
   @media screen and (max-width: 500px) {
     border: none;
     border-bottom: 1px solid rgb(221, 221, 221);
@@ -97,9 +101,7 @@ export const Name = styled.h4`
 `;
 export const Image = styled.img`
   height: 100%;
-  max-height: 130px;
   width: auto;
-  margin: 1rem 0;
 `;
 
 export const Summary = styled.div`
@@ -166,5 +168,118 @@ export const SumBtn = styled.button`
   cursor: pointer;
   &:hover {
     background-color: rgb(0, 112, 204);
+  }
+`;
+export const Modal = styled.div`
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+`;
+export const ModalBody = styled.div`
+  background-color: white;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  border-radius: 1rem;
+  @media screen and (max-width: 900px) {
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+  }
+`;
+export const ModalTopPanel = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  & svg {
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 2rem;
+    &:hover {
+      background-color: rgb(221, 221, 221);
+      padding: 4px;
+      border-radius: 2rem;
+    }
+  }
+`;
+export const ModalTitle = styled.span`
+  font-size: 22px;
+  line-height: 28px;
+  color: rgb(68, 68, 68);
+  font-weight: bold;
+  text-decoration: none;
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+  }
+`;
+export const ModalContent = styled.div`
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: auto;
+  gap: 1rem;
+`;
+export const Product = styled.div`
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+export const ProductTop = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0.5rem;
+  & img {
+    max-width: 100%;
+    max-height: 120px;
+  }
+`;
+export const ProductBottom = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+`;
+export const ProductName = styled.span`
+  font-weight: 500;
+  margin: 10px 0;
+  font-size: 16px;
+  overflow: hidden;
+  text-align: center;
+`;
+export const ProductPrice = styled.span`
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+`;
+export const ProductAdd = styled.div`
+  & svg {
+    color: lightgreen;
+    cursor: pointer;
+    border-radius: 2rem;
+    border: 1px solid lightgreen;
+    &:hover {
+      background-color: lightgreen;
+      color: white;
+    }
   }
 `;

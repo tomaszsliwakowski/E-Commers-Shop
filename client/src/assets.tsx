@@ -130,3 +130,14 @@ export const ComponentsAssets = [
     image: cooling,
   },
 ];
+
+export const ComponentsName = [
+  { name: "Procesory" },
+  { name: "Karty graficzne" },
+  { name: "Płyty główne" },
+  { name: "Pamięci RAM" },
+  { name: "Dyski" },
+  { name: "Zasilacze" },
+  { name: "Obudowy komputerowe" },
+  { name: "Chłodzenia" },
+];

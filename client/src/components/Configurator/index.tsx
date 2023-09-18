@@ -14,6 +14,17 @@ import {
   SumField,
   SumValue,
   SumCon,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalTitle,
+  ModalTopPanel,
+  Product,
+  ProductAdd,
+  ProductBottom,
+  ProductName,
+  ProductPrice,
+  ProductTop,
 } from "./style/index";
 import {
   BtnProps,
@@ -104,4 +115,76 @@ Configurator.SumBtn = function ConfiguratorSumBtn({
   ...restprops
 }: BtnProps) {
   return <SumBtn {...restprops}>{children}</SumBtn>;
+};
+
+Configurator.Modal = function ConfiguratorModal({
+  children,
+  ...restprops
+}: DivProps) {
+  return <Modal {...restprops}>{children}</Modal>;
+};
+
+Configurator.ModalBody = function ConfiguratorModalBody({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ModalBody {...restprops}>{children}</ModalBody>;
+};
+
+Configurator.ModalTopPanel = function ConfiguratorModalTopPanel({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ModalTopPanel {...restprops}>{children}</ModalTopPanel>;
+};
+Configurator.ModalTitle = function ConfiguratorModalTitle({
+  children,
+  ...restprops
+}: HeadProps) {
+  return <ModalTitle {...restprops}>{children}</ModalTitle>;
+};
+
+Configurator.ModalContent = function ConfiguratorModalContent({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ModalContent {...restprops}>{children}</ModalContent>;
+};
+
+Configurator.Product = function ConfiguratorProduct({
+  children,
+  ...restprops
+}: DivProps) {
+  return <Product {...restprops}>{children}</Product>;
+};
+Configurator.ProductTop = function ConfiguratorProductTop({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ProductTop {...restprops}>{children}</ProductTop>;
+};
+Configurator.ProductBottom = function ConfiguratorProductBottom({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ProductBottom {...restprops}>{children}</ProductBottom>;
+};
+
+Configurator.ProductName = function ConfiguratorProductName({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ProductName {...restprops}>{children}</ProductName>;
+};
+Configurator.ProductPrice = function ConfiguratorProductPrice({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ProductPrice {...restprops}>{children}</ProductPrice>;
+};
+Configurator.ProductAdd = function ConfiguratorProductAdd({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ProductAdd {...restprops}>{children}</ProductAdd>;
 };
