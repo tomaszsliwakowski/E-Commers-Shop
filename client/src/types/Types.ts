@@ -148,7 +148,7 @@ export interface OrderType {
   _id: string;
   Data: {
     name: string;
-    lastname: string;
+    lastName: string;
     address: string;
     city: string;
     postCode: string;
