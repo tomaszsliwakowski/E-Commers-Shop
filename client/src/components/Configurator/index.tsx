@@ -25,6 +25,8 @@ import {
   ProductName,
   ProductPrice,
   ProductTop,
+  Button,
+  ConButton,
 } from "./style/index";
 import {
   BtnProps,
@@ -187,4 +189,16 @@ Configurator.ProductAdd = function ConfiguratorProductAdd({
   ...restprops
 }: DivProps) {
   return <ProductAdd {...restprops}>{children}</ProductAdd>;
+};
+Configurator.Button = function ConfiguratorButton({
+  children,
+  ...restprops
+}: BtnProps) {
+  return <Button {...restprops}>{children}</Button>;
+};
+Configurator.ConButton = function ConfiguratorConButton({
+  children,
+  ...restprops
+}: DivProps) {
+  return <ConButton {...restprops}>{children}</ConButton>;
 };

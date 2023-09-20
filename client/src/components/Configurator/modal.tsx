@@ -13,19 +13,42 @@ interface Props {
   setConfiguratorData: React.Dispatch<
     React.SetStateAction<ConfiguratorDataType[]>
   >;
+  configuratorData: ConfiguratorDataType[];
 }
 
 const ConfiguratorModal = (props: Props) => {
-  const { setOpenModal, openModal, productsData, setConfiguratorData } = props;
+  const {
+    setOpenModal,
+    openModal,
+    productsData,
+    setConfiguratorData,
+    configuratorData,
+  } = props;
 
   function AddProduct(item: ProductType) {
-    setConfiguratorData((prev) => [
-      ...prev,
-      {
-        id: item.id,
-        name: ComponentsAssets[openModal.id].name,
-      },
-    ]);
+    if (
+      configuratorData.filter(
+        (it) => it.name === ComponentsAssets[openModal.id].name
+      ).length === 1
+    ) {
+      setConfiguratorData((prev) => [
+        ...prev
+          .filter((item) => item.name !== ComponentsAssets[openModal.id].name)
+          .concat({
+            id: item.id,
+            name: ComponentsAssets[openModal.id].name,
+          }),
+      ]);
+    } else {
+      setConfiguratorData((prev) => [
+        ...prev,
+        {
+          id: item.id,
+          name: ComponentsAssets[openModal.id].name,
+        },
+      ]);
+    }
+
     setOpenModal({ id: 0, state: false });
   }
 

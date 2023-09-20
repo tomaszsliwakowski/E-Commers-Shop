@@ -55,6 +55,51 @@ export const Component = styled.div`
     flex-direction: column;
   }
 `;
+
+export const Name = styled.h4`
+  font-size: 20px;
+  margin-top: 5px;
+`;
+export const RightPart = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: none;
+  flex-direction: column;
+  padding: 0.5rem;
+
+  @media screen and (max-width: 500px) {
+    min-height: 200px;
+  }
+
+  & svg.plus {
+    min-height: 80px;
+    min-width: 80px;
+    height: 25%;
+    width: 25%;
+    color: lightgreen;
+    cursor: pointer;
+    padding: 1rem;
+  }
+  & img {
+    max-width: 100%;
+    margin: 0.5rem 0 0.6rem 0;
+    max-height: 105px;
+  }
+  & ${Name} {
+    font-size: 16px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    max-height: 2em;
+    line-height: 2em;
+    text-align: center;
+    padding: 0 5px;
+  }
+`;
 export const LeftPart = styled.div`
   width: 100%;
   height: 100%;
@@ -66,38 +111,13 @@ export const LeftPart = styled.div`
   border-right: 1px solid rgb(221, 221, 221);
   & img {
     max-height: 130px;
-    margin: 1rem 0;
+    margin: 1rem 0 1rem 0;
   }
+
   @media screen and (max-width: 500px) {
     border: none;
     border-bottom: 1px solid rgb(221, 221, 221);
   }
-`;
-export const RightPart = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-left: none;
-  padding: 0.5rem;
-  @media screen and (max-width: 500px) {
-    min-height: 200px;
-  }
-
-  & svg {
-    min-height: 80px;
-    min-width: 80px;
-    height: 25%;
-    width: 25%;
-    color: lightgreen;
-    cursor: pointer;
-    padding: 1rem;
-  }
-`;
-export const Name = styled.h4`
-  font-size: 20px;
-  margin-top: 5px;
 `;
 export const Image = styled.img`
   height: 100%;
@@ -207,6 +227,7 @@ export const ModalTopPanel = styled.div`
     cursor: pointer;
     padding: 4px;
     border-radius: 2rem;
+    transition: all 0.3s;
     &:hover {
       background-color: rgb(221, 221, 221);
       padding: 4px;
@@ -263,6 +284,14 @@ export const ProductName = styled.span`
   font-size: 16px;
   overflow: hidden;
   text-align: center;
+  &.price {
+    margin: 0;
+    letter-spacing: 1px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 export const ProductPrice = styled.span`
   font-size: 17px;
@@ -273,13 +302,45 @@ export const ProductPrice = styled.span`
 `;
 export const ProductAdd = styled.div`
   & svg {
-    color: lightgreen;
+    color: green;
     cursor: pointer;
     border-radius: 2rem;
-    border: 1px solid lightgreen;
+    border: 1px solid green;
+    transition: 0.3s;
     &:hover {
-      background-color: lightgreen;
+      background-color: green;
       color: white;
     }
+  }
+`;
+
+export const ConButton = styled.div`
+  &.options {
+    display: flex;
+    justify-content: center;
+    padding: 5px 1rem 5px 10px;
+    gap: 1.5rem;
+    width: fit-content;
+  }
+  &.container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0px 0px 0px 1rem;
+    gap: 1.5rem;
+  }
+`;
+export const Button = styled.button`
+  width: fit-content;
+  border-radius: 2rem;
+  height: 25px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  gap: 2px;
+  & svg {
+    font-size: 20px;
   }
 `;

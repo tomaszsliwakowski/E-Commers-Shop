@@ -27,6 +27,10 @@ const ConfiguratorSection = () => {
   const [configuratorData, setConfiguratorData] = useState<
     ConfiguratorDataType[]
   >([]);
+  const productsId: number[] = configuratorData.map((item) => item.id);
+  const configuratorProducts: ProductType[] = productsData.filter((it) =>
+    productsId.includes(it.id)
+  );
   useEffect(() => {
     axios
       .get(GetProducts("Podzespoly-komputerowe"))
@@ -62,14 +66,16 @@ const ConfiguratorSection = () => {
             id={id}
             productsData={productsData}
             configuratorData={configuratorData}
+            setConfiguratorData={setConfiguratorData}
             setOpenModal={setOpenModal}
           />
         ))}
       </Configurator.Components>
-      <Summary />
+      <Summary configuratorProducts={configuratorProducts} />
       {openModal.state ? (
         <Configurator.Modal onClick={(e) => CloseModal(e)} id="activeModal">
           <ConfiguratorModal
+            configuratorData={configuratorData}
             setOpenModal={setOpenModal}
             openModal={openModal}
             setConfiguratorData={setConfiguratorData}

@@ -49,7 +49,7 @@ const LoginSection = () => {
           _id: user._id,
           orderData: {
             name: user.orderData.name,
-            lastName: user.orderData.lastname,
+            lastName: user.orderData.lastName,
             address: user.orderData.address,
             city: user.orderData.city,
             postCode: user.orderData.postCode,
