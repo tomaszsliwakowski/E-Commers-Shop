@@ -37,6 +37,7 @@ const Component = (props: PROPS) => {
     const product = productsData.filter((item) => item.id === data[0].id);
     if (product) setProduct(product[0]);
   }, [configuratorData, productsData, data]);
+
   return (
     <Configurator.Component>
       <Configurator.LeftPart>

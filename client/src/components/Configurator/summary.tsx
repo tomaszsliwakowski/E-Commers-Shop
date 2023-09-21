@@ -10,6 +10,10 @@ type Props = {
 const Summary = (props: Props) => {
   const { configuratorProducts } = props;
 
+  function AddPcToBasket() {
+    //add
+  }
+
   return (
     <Configurator.Summary>
       <Configurator.SumPanel>
@@ -32,7 +36,9 @@ const Summary = (props: Props) => {
             </Configurator.SumValue>
           </Configurator.SumField>
         </Configurator.SumCon>
-        <Configurator.SumBtn>Dodaj do koszyka</Configurator.SumBtn>
+        <Configurator.SumBtn onClick={() => AddPcToBasket()}>
+          Dodaj do koszyka
+        </Configurator.SumBtn>
       </Configurator.SumPanel>
     </Configurator.Summary>
   );

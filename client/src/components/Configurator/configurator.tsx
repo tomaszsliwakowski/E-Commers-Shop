@@ -7,6 +7,8 @@ import ConfiguratorModal from "./modal";
 import axios from "axios";
 import { GetProducts } from "../../routes";
 import { ProductType } from "../../types/Types";
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import { AddToBasket } from "../../store/BuilderSlice";
 
 export type ModalType = {
   id: number;
@@ -19,6 +21,7 @@ export type ConfiguratorDataType = {
 };
 
 const ConfiguratorSection = () => {
+  const dispatch = useAppDispatch();
   const [openModal, setOpenModal] = useState({
     id: 0,
     state: false,
@@ -26,11 +29,16 @@ const ConfiguratorSection = () => {
   const [productsData, setProductsData] = useState<ProductType[]>([]);
   const [configuratorData, setConfiguratorData] = useState<
     ConfiguratorDataType[]
-  >([]);
+  >(useAppSelector((state) => state.builder).builder);
   const productsId: number[] = configuratorData.map((item) => item.id);
   const configuratorProducts: ProductType[] = productsData.filter((it) =>
     productsId.includes(it.id)
   );
+
+  useEffect(() => {
+    dispatch(AddToBasket(configuratorData));
+  }, [configuratorData]);
+
   useEffect(() => {
     axios
       .get(GetProducts("Podzespoly-komputerowe"))
