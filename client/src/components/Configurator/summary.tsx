@@ -2,16 +2,24 @@ import React from "react";
 import { Configurator } from ".";
 import { ConfiguratorDataType } from "./configurator";
 import { ProductType } from "../../types/Types";
+import { useAppDispatch } from "../../store/store";
+import { AddToBasketPc } from "../../store/BasketSlice";
+import { AiOutlineDelete } from "react-icons/ai";
 
 type Props = {
   configuratorProducts: ProductType[];
+  setConfiguratorData: React.Dispatch<
+    React.SetStateAction<ConfiguratorDataType[]>
+  >;
 };
 
 const Summary = (props: Props) => {
-  const { configuratorProducts } = props;
+  const dispatch = useAppDispatch();
+  const { configuratorProducts, setConfiguratorData } = props;
 
   function AddPcToBasket() {
-    //add
+    if (configuratorProducts.length < 1) return;
+    dispatch(AddToBasketPc(configuratorProducts));
   }
 
   return (
@@ -35,6 +43,7 @@ const Summary = (props: Props) => {
               zł
             </Configurator.SumValue>
           </Configurator.SumField>
+          <AiOutlineDelete size={28} onClick={() => setConfiguratorData([])} />
         </Configurator.SumCon>
         <Configurator.SumBtn onClick={() => AddPcToBasket()}>
           Dodaj do koszyka

@@ -150,6 +150,10 @@ export const SumPanel = styled.div`
 export const SumCon = styled.div`
   display: flex;
   gap: 2rem;
+  align-items: center;
+  & svg {
+    cursor: pointer;
+  }
   @media screen and (max-width: 600px) {
     flex-direction: column;
     gap: 0.5rem;

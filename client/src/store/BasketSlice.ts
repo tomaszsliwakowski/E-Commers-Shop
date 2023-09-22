@@ -35,6 +35,22 @@ export const BasketSlice = createSlice({
         });
       }
     },
+    AddToBasketPc: (state, action: PayloadAction<ProductType[]>) => {
+      action.payload.map((item) =>
+        state.basket.push({
+          product: {
+            id: item.id,
+            name: item.name,
+            img: item.img,
+            price: item.price,
+            category: item.category,
+            producer: item.producer,
+            opinion: item.opinion,
+            count: 1,
+          },
+        })
+      );
+    },
     UpdateBasket: (
       state,
       action: PayloadAction<{ BasketUpdate: { prodId: number; value: number } }>
@@ -79,5 +95,10 @@ export const BasketSlice = createSlice({
 });
 
 export default BasketSlice.reducer;
-export const { AddToBasket, UpdateBasket, ClearBasket, ClearProductBasket } =
-  BasketSlice.actions;
+export const {
+  AddToBasket,
+  UpdateBasket,
+  ClearBasket,
+  ClearProductBasket,
+  AddToBasketPc,
+} = BasketSlice.actions;

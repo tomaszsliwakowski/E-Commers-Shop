@@ -79,7 +79,10 @@ const ConfiguratorSection = () => {
           />
         ))}
       </Configurator.Components>
-      <Summary configuratorProducts={configuratorProducts} />
+      <Summary
+        configuratorProducts={configuratorProducts}
+        setConfiguratorData={setConfiguratorData}
+      />
       {openModal.state ? (
         <Configurator.Modal onClick={(e) => CloseModal(e)} id="activeModal">
           <ConfiguratorModal
