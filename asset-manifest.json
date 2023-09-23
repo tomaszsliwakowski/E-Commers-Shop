@@ -1,16 +1,24 @@
 {
   "files": {
     "main.css": "/E-Commers-Shop/static/css/main.93f68457.css",
-    "main.js": "/E-Commers-Shop/static/js/main.99b6f562.js",
+    "main.js": "/E-Commers-Shop/static/js/main.b50aba5b.js",
+    "static/media/power-supply.png": "/E-Commers-Shop/static/media/power-supply.828a9440c499cdd2ce02.png",
+    "static/media/gpu.png": "/E-Commers-Shop/static/media/gpu.a5053c5193b00767335c.png",
+    "static/media/exhaust-fan.png": "/E-Commers-Shop/static/media/exhaust-fan.2cd0dabcb24e6c9c824e.png",
+    "static/media/cpu.png": "/E-Commers-Shop/static/media/cpu.0829b3acaa8b677f0940.png",
+    "static/media/motherboard.png": "/E-Commers-Shop/static/media/motherboard.9409792287a3fc7316d2.png",
+    "static/media/solid-state-drive.png": "/E-Commers-Shop/static/media/solid-state-drive.e8a353cd643b1b21dc2e.png",
+    "static/media/computer-case.png": "/E-Commers-Shop/static/media/computer-case.86923a30b03aaa68c981.png",
+    "static/media/ram.png": "/E-Commers-Shop/static/media/ram.f11d739670ca8c8987f5.png",
     "static/media/revicons.eot": "/E-Commers-Shop/static/media/revicons.a77de540a38981833f9e.eot",
     "static/media/revicons.ttf": "/E-Commers-Shop/static/media/revicons.57fd05d4ae650374c8de.ttf",
     "static/media/revicons.woff": "/E-Commers-Shop/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/E-Commers-Shop/index.html",
     "main.93f68457.css.map": "/E-Commers-Shop/static/css/main.93f68457.css.map",
-    "main.99b6f562.js.map": "/E-Commers-Shop/static/js/main.99b6f562.js.map"
+    "main.b50aba5b.js.map": "/E-Commers-Shop/static/js/main.b50aba5b.js.map"
   },
   "entrypoints": [
     "static/css/main.93f68457.css",
-    "static/js/main.99b6f562.js"
+    "static/js/main.b50aba5b.js"
   ]
 }
