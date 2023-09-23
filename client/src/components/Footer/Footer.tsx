@@ -27,7 +27,7 @@ const FooterSection = () => {
             </Footer.ContactOption>
             <Footer.ContactOption>
               <MdEmail />
-              <Footer.Link href="mailto:Shop@gmail.com">
+              <Footer.Link href="mailto:Shop@gmail.com" target="_blank">
                 Shop@gmail.com
               </Footer.Link>
             </Footer.ContactOption>
@@ -35,19 +35,29 @@ const FooterSection = () => {
               <Footer.Link
                 href="https://www.facebook.com/"
                 style="rgb(0, 130, 250)"
+                target="_blank"
               >
                 <BsFacebook />
               </Footer.Link>
               <Footer.Link
                 href="https://www.instagram.com/"
                 style="rgb(193,53,132)"
+                target="_blank"
               >
                 <AiFillInstagram />
               </Footer.Link>
-              <Footer.Link href="https://www.youtube.com/" style="red">
+              <Footer.Link
+                href="https://www.youtube.com/"
+                style="red"
+                target="_blank"
+              >
                 <BsYoutube />
               </Footer.Link>
-              <Footer.Link href="https://twitter.com/" style="rgb(0, 130, 250)">
+              <Footer.Link
+                href="https://twitter.com/"
+                style="rgb(0, 130, 250)"
+                target="_blank"
+              >
                 <BsTwitter />
               </Footer.Link>
             </Footer.ContactOption>

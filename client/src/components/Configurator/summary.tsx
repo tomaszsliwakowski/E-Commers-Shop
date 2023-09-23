@@ -5,6 +5,7 @@ import { ProductType } from "../../types/Types";
 import { useAppDispatch } from "../../store/store";
 import { AddToBasketPc } from "../../store/BasketSlice";
 import { AiOutlineDelete } from "react-icons/ai";
+import { toast } from "react-hot-toast";
 
 type Props = {
   configuratorProducts: ProductType[];
@@ -43,9 +44,20 @@ const Summary = (props: Props) => {
               zł
             </Configurator.SumValue>
           </Configurator.SumField>
-          <AiOutlineDelete size={28} onClick={() => setConfiguratorData([])} />
+          <AiOutlineDelete
+            size={28}
+            onClick={() => {
+              setConfiguratorData([]);
+              toast.success("Wyczyszczono konfigurator");
+            }}
+          />
         </Configurator.SumCon>
-        <Configurator.SumBtn onClick={() => AddPcToBasket()}>
+        <Configurator.SumBtn
+          onClick={() => {
+            AddPcToBasket();
+            toast.success("Dodano do koszyka");
+          }}
+        >
           Dodaj do koszyka
         </Configurator.SumBtn>
       </Configurator.SumPanel>

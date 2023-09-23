@@ -6,7 +6,7 @@ const connectDB = require("./database/connectDB");
 const cookieParser = require("cookie-parser");
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://tomaszsliwakowski.github.io",
   credentials: true,
   optionSuccessStatus: 200,
 };

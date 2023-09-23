@@ -125,10 +125,10 @@ export const Image = styled.img`
 `;
 
 export const Summary = styled.div`
-  background-color: rgb(221, 221, 221);
   padding: 3rem 3rem;
   border-radius: 1rem;
   margin-top: 5rem;
+  box-shadow: 0 0 10px silver;
   @media screen and (max-width: 768px) {
     padding: 2rem 1rem;
   }
