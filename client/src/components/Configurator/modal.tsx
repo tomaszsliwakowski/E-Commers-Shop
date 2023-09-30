@@ -5,6 +5,13 @@ import { GrClose } from "react-icons/gr";
 import { ComponentsAssets } from "../../assets";
 import { ProductType } from "../../types/Types";
 import { AiOutlinePlus } from "react-icons/ai";
+import { BeatLoader } from "react-spinners";
+
+const override = {
+  display: "flex",
+  alignItems: "center",
+  margin: "5rem auto",
+};
 
 interface Props {
   setOpenModal: React.Dispatch<React.SetStateAction<ModalType>>;
@@ -80,6 +87,16 @@ const ConfiguratorModal = (props: Props) => {
             </Configurator.ProductBottom>
           </Configurator.Product>
         ))}
+        {productsData.length === 0 ? (
+          <BeatLoader
+            color={"#0082fa"}
+            loading={true}
+            cssOverride={override}
+            size={30}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        ) : null}
       </Configurator.ModalContent>
     </Configurator.ModalBody>
   );

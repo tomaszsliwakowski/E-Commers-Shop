@@ -7,6 +7,14 @@ import TopRightSection from "./TopRight";
 import BestSellerSection from "./BestSeller";
 import axios from "axios";
 import { GetAllProducts } from "../../routes";
+import { BeatLoader } from "react-spinners";
+
+const override = {
+  display: "flex",
+  alignItems: "center",
+  margin: "5rem auto",
+  height: "75vh",
+};
 
 const HomeMainSection = () => {
   const { width, height }: WindowSizeType = useWindowSize();
@@ -24,77 +32,92 @@ const HomeMainSection = () => {
 
   return (
     <Main width={width}>
-      <Main.Baner>
-        {width && width > 550 ? (
-          <Main.Image
-            src="https://cdn.x-kom.pl/i/img/banners/normal,,229b75e02d70451ba3ba95bb375a1ec0.jpg?filters=trim"
-            alt="baner"
-          />
-        ) : (
-          <Main.Image
-            src="https://cdn.x-kom.pl/i/img/banners/normal,,ec68270904714efeb90221110433f301.jpg?filters=trim"
-            alt="baner"
-          />
-        )}
-      </Main.Baner>
-      <Main.Top>
-        <TopLeftSection />
-        <TopRightSection {...ProductsData} />
-      </Main.Top>
-      <Main.BestSellery>
-        <Main.BestSelleryTop>Bestsellery</Main.BestSelleryTop>
-        <Main.BestSelleryBottom>
-          <BestSellerSection {...ProductsData} />
-        </Main.BestSelleryBottom>
-      </Main.BestSellery>
-      <Main.Bottom>
-        <Main.Newsletter>
-          <Main.BottomA>
-            <Main.BottomTitle>Odbierz bon 20 zł w prezencie</Main.BottomTitle>
-            <Main.BottomText>
-              Zapisz się do newslettera i bądź na bieżąco.
-            </Main.BottomText>
-            <Main.BottomCon>
-              <Main.BottomInput type="email" placeholder="Twój e-mail" />
-              <Main.BottomBtn>Zapisz się</Main.BottomBtn>
-            </Main.BottomCon>
-          </Main.BottomA>
-          <Main.BottomB>
-            <Main.Image
-              src="https://ma.stati.pl/is/kampanie/NL20_1apr2023/footer.png"
-              alt="gift"
-            />
-          </Main.BottomB>
-        </Main.Newsletter>
-        <Main.MobileAd>
-          <Main.BottomA>
-            <Main.BottomTitle>Aplikacja mobilna</Main.BottomTitle>
-            <Main.BottomText>
-              Sprawdzaj promocje, które dostępne są tylko w aplikacji.
-            </Main.BottomText>
-            <Main.BottomCon>
+      {ProductsData.products.length !== 0 ? (
+        <>
+          <Main.Baner>
+            {width && width > 550 ? (
               <Main.Image
-                src="https://assets.x-kom.pl/public-spa/xkom/0f6ff6eee36d1bb3.svg"
-                alt="AppStore"
+                src="https://cdn.x-kom.pl/i/img/banners/normal,,229b75e02d70451ba3ba95bb375a1ec0.jpg?filters=trim"
+                alt="baner"
               />
+            ) : (
               <Main.Image
-                src="https://assets.x-kom.pl/public-spa/xkom/32fe7e427a8819cc.svg"
-                alt="GooglePlay"
+                src="https://cdn.x-kom.pl/i/img/banners/normal,,ec68270904714efeb90221110433f301.jpg?filters=trim"
+                alt="baner"
               />
-              <Main.Image
-                src="https://assets.x-kom.pl/public-spa/xkom/de8bbc5c651b4ad9.svg"
-                alt="AppGallery"
-              />
-            </Main.BottomCon>
-          </Main.BottomA>
-          <Main.BottomB>
-            <Main.Image
-              src="https://assets.x-kom.pl/public-spa/xkom/dc932e41baa41f9d.png"
-              alt="mobile"
-            />
-          </Main.BottomB>
-        </Main.MobileAd>
-      </Main.Bottom>
+            )}
+          </Main.Baner>
+          <Main.Top>
+            <TopLeftSection />
+            <TopRightSection {...ProductsData} />
+          </Main.Top>
+          <Main.BestSellery>
+            <Main.BestSelleryTop>Bestsellery</Main.BestSelleryTop>
+            <Main.BestSelleryBottom>
+              <BestSellerSection {...ProductsData} />
+            </Main.BestSelleryBottom>
+          </Main.BestSellery>
+          <Main.Bottom>
+            <Main.Newsletter>
+              <Main.BottomA>
+                <Main.BottomTitle>
+                  Odbierz bon 20 zł w prezencie
+                </Main.BottomTitle>
+                <Main.BottomText>
+                  Zapisz się do newslettera i bądź na bieżąco.
+                </Main.BottomText>
+                <Main.BottomCon>
+                  <Main.BottomInput type="email" placeholder="Twój e-mail" />
+                  <Main.BottomBtn>Zapisz się</Main.BottomBtn>
+                </Main.BottomCon>
+              </Main.BottomA>
+              <Main.BottomB>
+                <Main.Image
+                  src="https://ma.stati.pl/is/kampanie/NL20_1apr2023/footer.png"
+                  alt="gift"
+                />
+              </Main.BottomB>
+            </Main.Newsletter>
+            <Main.MobileAd>
+              <Main.BottomA>
+                <Main.BottomTitle>Aplikacja mobilna</Main.BottomTitle>
+                <Main.BottomText>
+                  Sprawdzaj promocje, które dostępne są tylko w aplikacji.
+                </Main.BottomText>
+                <Main.BottomCon>
+                  <Main.Image
+                    src="https://assets.x-kom.pl/public-spa/xkom/0f6ff6eee36d1bb3.svg"
+                    alt="AppStore"
+                  />
+                  <Main.Image
+                    src="https://assets.x-kom.pl/public-spa/xkom/32fe7e427a8819cc.svg"
+                    alt="GooglePlay"
+                  />
+                  <Main.Image
+                    src="https://assets.x-kom.pl/public-spa/xkom/de8bbc5c651b4ad9.svg"
+                    alt="AppGallery"
+                  />
+                </Main.BottomCon>
+              </Main.BottomA>
+              <Main.BottomB>
+                <Main.Image
+                  src="https://assets.x-kom.pl/public-spa/xkom/dc932e41baa41f9d.png"
+                  alt="mobile"
+                />
+              </Main.BottomB>
+            </Main.MobileAd>
+          </Main.Bottom>
+        </>
+      ) : (
+        <BeatLoader
+          color={"#0082fa"}
+          loading={true}
+          cssOverride={override}
+          size={30}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      )}
     </Main>
   );
 };

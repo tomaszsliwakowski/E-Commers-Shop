@@ -5,7 +5,7 @@ import axios from "axios";
 import { BeatLoader } from "react-spinners";
 import { ServerRoute } from "../../routes";
 
-const override = {
+export const override = {
   display: "flex",
   alignItems: "center",
   margin: "5rem auto",

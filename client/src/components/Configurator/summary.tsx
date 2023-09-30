@@ -21,6 +21,14 @@ const Summary = (props: Props) => {
   function AddPcToBasket() {
     if (configuratorProducts.length < 1) return;
     dispatch(AddToBasketPc(configuratorProducts));
+    toast.success("Dodano do koszyka");
+  }
+
+  function ClearConfigurator() {
+    if (configuratorProducts.length > 0) {
+      setConfiguratorData([]);
+      toast.success("Wyczyszczono konfigurator");
+    }
   }
 
   return (
@@ -44,18 +52,11 @@ const Summary = (props: Props) => {
               zł
             </Configurator.SumValue>
           </Configurator.SumField>
-          <AiOutlineDelete
-            size={28}
-            onClick={() => {
-              setConfiguratorData([]);
-              toast.success("Wyczyszczono konfigurator");
-            }}
-          />
+          <AiOutlineDelete size={28} onClick={() => ClearConfigurator} />
         </Configurator.SumCon>
         <Configurator.SumBtn
           onClick={() => {
             AddPcToBasket();
-            toast.success("Dodano do koszyka");
           }}
         >
           Dodaj do koszyka
