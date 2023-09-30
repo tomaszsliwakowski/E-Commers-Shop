@@ -10,7 +10,6 @@ import {
   ProductRoute,
   ProductsRoute,
   RegisterRoute,
-  SaleRoute,
   SearchRoute,
   UserOrderRoute,
   UserSettingRoute,

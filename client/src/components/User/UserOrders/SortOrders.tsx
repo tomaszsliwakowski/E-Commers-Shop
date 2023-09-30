@@ -35,7 +35,7 @@ const SortOrders = (props: Props) => {
   return (
     <Orders.SortPanel>
       <Orders.SortCon>
-        <Orders.SortTitle>Sortuj</Orders.SortTitle>
+        <Orders.SortTitle data-testid="title">Sortuj</Orders.SortTitle>
         <Orders.SortSelect>
           <Orders.SP_Checkbox
             type="checkbox"
@@ -43,7 +43,9 @@ const SortOrders = (props: Props) => {
             onChange={() => setActiveSort((prev) => !prev)}
           />
           <Orders.SP_Show>
-            <Orders.SP_ShowOpt>{selectSort.name}</Orders.SP_ShowOpt>
+            <Orders.SP_ShowOpt data-testid="name">
+              {selectSort.name}
+            </Orders.SP_ShowOpt>
             {activeSort ? <AiFillCaretUp /> : <AiOutlineCaretDown />}
           </Orders.SP_Show>
           {activeSort ? (
@@ -52,6 +54,7 @@ const SortOrders = (props: Props) => {
                 <li
                   key={id}
                   id="sort"
+                  data-testid="element"
                   onClick={() => handleChangeSelectSort(item)}
                 >
                   {item.name}

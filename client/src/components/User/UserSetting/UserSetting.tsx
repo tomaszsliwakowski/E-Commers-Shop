@@ -61,18 +61,25 @@ const UserSetting = () => {
     <Layout>
       <UserPanel />
       <Settings>
-        <Settings.Title>Ustawienia</Settings.Title>
-        <Settings.Title>Dane konta</Settings.Title>
+        <Settings.Title data-testid="title">Ustawienia</Settings.Title>
+        <Settings.Title data-testid="title">Dane konta</Settings.Title>
         <AccountData User={User} setOpenModal={setOpenModal} />
-        <Settings.Title>Dane do zamówienia</Settings.Title>
+        <Settings.Title data-testid="title">Dane do zamówienia</Settings.Title>
         <OrderData User={User} setOpenModal={setOpenModal} />
-        <Settings.Title>Usuwanie konta</Settings.Title>
-        <Settings.DeleteUserBtn onClick={() => DeleteUserAccount()}>
+        <Settings.Title data-testid="title">Usuwanie konta</Settings.Title>
+        <Settings.DeleteUserBtn
+          data-testid="delete"
+          onClick={() => DeleteUserAccount()}
+        >
           Usuń konto
         </Settings.DeleteUserBtn>
       </Settings>
       {openModal.state ? (
-        <Settings.Modal onClick={(e) => CloseModal(e)} id="activeModal">
+        <Settings.Modal
+          data-testid="modal"
+          onClick={(e) => CloseModal(e)}
+          id="activeModal"
+        >
           <ModalSettings
             setOpenModal={setOpenModal}
             User={User}

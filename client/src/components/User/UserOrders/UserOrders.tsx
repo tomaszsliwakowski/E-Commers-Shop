@@ -14,7 +14,7 @@ const UserOrders = () => {
     <Layout>
       <UserPanel />
       <Orders>
-        <Orders.Title>Zamówienia</Orders.Title>
+        <Orders.Title data-testid="title">Zamówienia</Orders.Title>
         <SortOrders setSort={setSelectSort} />
         <OrderList selectSort={selectSort} />
       </Orders>

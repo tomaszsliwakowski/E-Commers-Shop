@@ -26,7 +26,7 @@ const SingleProductSection = () => {
   const [ActiveCountInput, setActiveCountInput] = useState<boolean>(false);
   const [ProductCount, setProductCount] = useState<number>(1);
   const [CountInput, setCountInput] = useState<number>(1);
-  let { width, height }: WindowSizeType = useWindowSize();
+  let { width }: WindowSizeType = useWindowSize();
   const [ProductData, setProductData] = useState<ProductType>({
     id: 0,
     name: "",

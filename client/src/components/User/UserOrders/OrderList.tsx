@@ -75,16 +75,25 @@ const OrderList = (props: Props) => {
               <Orders.OrderDetails>
                 <Orders.OrderStatus>Dostarczone</Orders.OrderStatus>
                 <Orders.OrderInfoCon>
-                  <Orders.OrderInfo>
+                  <Orders.OrderInfo data-testid="date">
                     {new Date(item.OrderData).toLocaleDateString()}
                   </Orders.OrderInfo>
-                  <Orders.OrderInfo>nr {item._id}</Orders.OrderInfo>
+                  <Orders.OrderInfo data-testid="number">
+                    nr {item._id}
+                  </Orders.OrderInfo>
                 </Orders.OrderInfoCon>
-                <Orders.OrderPrice>{item.Price.toFixed(2)}zł</Orders.OrderPrice>
+                <Orders.OrderPrice data-testid="price">
+                  {item.Price.toFixed(2)}zł
+                </Orders.OrderPrice>
               </Orders.OrderDetails>
               <Orders.OrderContent>
                 {item.Products.map((item, id) => (
-                  <Orders.Image key={id} src={item.img} alt={item.name} />
+                  <Orders.Image
+                    data-testid="img"
+                    key={id}
+                    src={item.img}
+                    alt={item.name}
+                  />
                 ))}
               </Orders.OrderContent>
             </li>

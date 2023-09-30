@@ -59,10 +59,11 @@ const OpnionComment = ({
             "Content-Type": "application/x-www-form-urlencoded",
           },
         })
-        .then((reasult) => console.log(reasult))
+        .then(() => {
+          setRender((prev) => !prev);
+        })
         .catch((err) => console.log(err));
       setOpinionValue("");
-      setRender((prev) => !prev);
       setActiveAddOpinon(false);
     }
   };

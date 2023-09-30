@@ -22,7 +22,7 @@ const HeaderSection = () => {
     Basket: false,
   });
   const [ScrollAction, setScrollAction] = useState<boolean>(true);
-  const { width, height }: WindowSizeType = useWindowSize();
+  const { width }: WindowSizeType = useWindowSize();
   const { position }: { position: number | undefined } = useScrollPosition();
   const [SearchInput, setSearchInput] = useState<string>("");
   const navigate = useNavigate();

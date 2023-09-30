@@ -85,6 +85,7 @@ const LoginSection = () => {
               type="text"
               required
               name="email"
+              data-testid="email"
               onChange={HandleForm}
             />
             <Login.InputName>E-mail</Login.InputName>

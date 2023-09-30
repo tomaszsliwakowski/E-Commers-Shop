@@ -126,6 +126,7 @@ exports.AddOpinion = async (req, res) => {
       opinionId: req.body.opinionId,
     });
     await com.save();
+    return res.status(200).json(com).end();
   } catch (error) {
     console.log(err.message);
   }

@@ -21,7 +21,7 @@ const HomeMainSection = () => {
       })
       .catch((err) => console.log(err));
   }, [width]);
-  // PROBLEM // state lost data when resize screen
+
   return (
     <Main width={width}>
       <Main.Baner>

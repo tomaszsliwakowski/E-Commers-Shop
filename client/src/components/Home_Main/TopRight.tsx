@@ -43,7 +43,7 @@ const responsive = {
 
 const TopRightSection = (ProductsData: AllProductsType) => {
   const number = [0, 19, 46, 52, 57, 69];
-  const { width, height }: WindowSizeType = useWindowSize();
+  const { width }: WindowSizeType = useWindowSize();
   const ProductsShow = ProductsData.products.filter((item) =>
     number.includes(item.id)
   );
