@@ -1,4 +1,4 @@
-# E-Commers-Shop work in progress!
+# E-Commers-Shop 
 # Tech: {React JS (Redux , Styled Components), TypeScript , Node JS (Express JS) , MongoDB}
 
 CLIENT: https://tomaszsliwakowski.github.io/E-Commers-Shop/
