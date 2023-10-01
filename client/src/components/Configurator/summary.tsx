@@ -21,6 +21,7 @@ const Summary = (props: Props) => {
   function AddPcToBasket() {
     if (configuratorProducts.length < 1) return;
     dispatch(AddToBasketPc(configuratorProducts));
+    setConfiguratorData([]);
     toast.success("Dodano do koszyka");
   }
 
@@ -52,7 +53,7 @@ const Summary = (props: Props) => {
               zł
             </Configurator.SumValue>
           </Configurator.SumField>
-          <AiOutlineDelete size={28} onClick={() => ClearConfigurator} />
+          <AiOutlineDelete size={28} onClick={() => ClearConfigurator()} />
         </Configurator.SumCon>
         <Configurator.SumBtn
           onClick={() => {
