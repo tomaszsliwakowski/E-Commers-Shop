@@ -8,12 +8,12 @@ let schemaQueue = new mongoose.Schema([
     producer: String,
     price: Number,
     newPrice: Number,
-    queue: Number,
     category: String,
     opinion: Number,
     spec: [String],
   },
 ]);
-const ProdQueue = mongoose.model("ProdQueue", schemaQueue);
+
+const ProdQueue = mongoose.model("saleQueue", schemaQueue);
 
 module.exports = ProdQueue;

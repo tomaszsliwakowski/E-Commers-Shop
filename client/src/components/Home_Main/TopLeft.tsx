@@ -16,12 +16,14 @@ const TopLeftSection = () => {
   const [ProductData, setProductData] = useState<ProductType | undefined>(
     undefined
   );
+  const [fetchError, setFetchError] = useState(false);
 
   useEffect(() => {
     axios
       .get(`${ServerRoute}/api/sale/product`)
       .then((reasult) => {
-        setProductData(reasult.data);
+        if (typeof reasult.data === "object") setProductData(reasult.data);
+        if (typeof reasult.data === "string") setFetchError(true);
       })
       .catch((err) => {
         console.log("fail get data");
@@ -77,9 +79,9 @@ const TopLeftSection = () => {
     };
   }, []);
 
-  return (
+  return fetchError ? null : (
     <TopLeft href={`/E-Commers-Shop/product/sale`}>
-      {ProductData ? (
+      {ProductData !== undefined ? (
         <>
           <TopLeft.ImageAndTitle>
             <Main.Title>Gorący strzał</Main.Title>

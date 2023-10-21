@@ -168,7 +168,7 @@ exports.SaleProduct = async (req, res) => {
       if (!reasult) {
         res.status(404).send({ message: `Not found any products` });
       } else {
-        res.send(reasult.filter((item) => item.queue === 1)[0]);
+        res.send(reasult[0]);
       }
     })
     .catch((err) => {
