@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/E-Commers-Shop/static/css/main.93f68457.css",
-    "main.js": "/E-Commers-Shop/static/js/main.847bf854.js",
+    "main.js": "/E-Commers-Shop/static/js/main.b35b9990.js",
     "static/media/power-supply.png": "/E-Commers-Shop/static/media/power-supply.828a9440c499cdd2ce02.png",
     "static/media/gpu.png": "/E-Commers-Shop/static/media/gpu.a5053c5193b00767335c.png",
     "static/media/exhaust-fan.png": "/E-Commers-Shop/static/media/exhaust-fan.2cd0dabcb24e6c9c824e.png",
@@ -15,10 +15,10 @@
     "static/media/revicons.woff": "/E-Commers-Shop/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/E-Commers-Shop/index.html",
     "main.93f68457.css.map": "/E-Commers-Shop/static/css/main.93f68457.css.map",
-    "main.847bf854.js.map": "/E-Commers-Shop/static/js/main.847bf854.js.map"
+    "main.b35b9990.js.map": "/E-Commers-Shop/static/js/main.b35b9990.js.map"
   },
   "entrypoints": [
     "static/css/main.93f68457.css",
-    "static/js/main.847bf854.js"
+    "static/js/main.b35b9990.js"
   ]
 }
